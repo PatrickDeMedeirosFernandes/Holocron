@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+#URL AMIGAVEIS
+RewriteRule ^HOME/?$ view/index.php [NC,L]
+RewriteRule ^O_que_e_ChatterBot/?$ sobrebot.php [NC,L]
+RewriteRule ^O_que_e_AI/?$ sobreia.php [NC,L]
+RewriteRule ^O_que_e_SW/?$  sobresw.php [NC,L]
+ 
+
+RewriteRule ^O_que_e_Holocron/?$  sobreholo.php [NC,L]

@@ -1,0 +1,34 @@
+RewriteEngine On
+<IfModule mod_rewrite.c> 
+#Removendo extens�es de arquivos das URLs
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+#URL AMIGAVEIS
+RewriteRule ^HOME/?$ view/index.php [NC,L]
+RewriteRule ^O_que_e_ChatterBot/?$ view/sobrebot.php [NC,L]
+RewriteRule ^O_que_e_AI/?$ view/sobreia.php [NC,L]
+RewriteRule ^O_que_e_SW/?$  view/sobresw.php [NC,L]
+RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
+# RewriteRule ^/?$ view/index.php [NC,L]
+
+RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
+
+DirectoryIndex index.html index.php view/index.php 
+
+# Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
+<FilesMatch ".(htm|html|css|js)$">
+AddDefaultCharset UTF-8
+</FilesMatch>
+# desativa listagemde indixes de pasta
+Options -Indexes
+
+#Protegendo seu arquivo .htaccess
+<files ~ "^.*\.([Hh][Tt][Aa])">
+order allow,deny
+deny from all
+satisfy all
+</files>
+
+</ifModule>

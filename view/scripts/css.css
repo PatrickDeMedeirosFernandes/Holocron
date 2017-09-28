@@ -1,0 +1,108 @@
+body {
+    font: 15px arial, sans-serif;
+
+}
+.img {
+    margin: 10px auto auto auto;
+    width: 10%;height: 100px;
+    text-align: center;
+}
+.img3 {
+    margin: 0;padding: 0;
+    width: 100%;height: 100px;
+    text-align: center;}
+h1{
+    size: 12px;
+}
+.img2 {
+    width: 100px;height: 100px;
+}
+#bodybox {
+    margin: 10px auto auto auto;
+    max-width: 550px;
+    font: 15px arial, sans-serif;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 15px;
+}
+
+#chatborder {
+    border-style: solid;
+    background-color: #f6f9f6;
+    border-width: 3px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 15px;
+    border-radius: 15px;
+}
+
+
+#caixa {
+    background-color: transparent;
+    margin: 0;
+    padding-bottom: 7px;
+}
+.chatlog {
+    font: 15px arial, sans-serif;
+}
+
+#chatbox {
+    font: 17px arial, sans-serif;
+    height: 22px;
+    width: 100%;
+}
+
+
+
+
+
+.menu
+{
+    width: 100%;
+    height: 43px;
+    background: #000000;
+    font-weight: bold;
+    text-align:center;
+}
+
+
+.menu li
+{
+    margin:2px 0 0 0;
+    float:left;
+    list-style-type: none;
+
+}
+
+.menu li a
+{
+    color: #FFF;
+    text-decoration: none;
+    float: left;
+    padding: 10px 20px 10px 20px;
+}
+
+.menu li a:hover
+{
+    color: #9d9d9d;
+    font-weight:bolder;
+}
+
+.menu li a.selecionado
+{
+    color: red;
+}
+.menu ul
+{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:0;
+    display:table;
+}
