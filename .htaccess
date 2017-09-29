@@ -5,14 +5,17 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
+
 #URL AMIGAVEIS
+#view
 RewriteRule ^HOME/?$ view/index.php [NC,L]
 RewriteRule ^O_que_e_ChatterBot/?$ view/sobrebot.php [NC,L]
 RewriteRule ^O_que_e_AI/?$ view/sobreia.php [NC,L]
 RewriteRule ^O_que_e_SW/?$  view/sobresw.php [NC,L]
+RewriteRule ^Star_Wars/?$  view/sobresw.php [NC,L]
 RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
-# RewriteRule ^/?$ view/index.php [NC,L]
-
+RewriteRule ^/?$ view/index.php [NC,L]
+#controller
 RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
 
 DirectoryIndex index.html index.php view/index.php 
@@ -21,8 +24,9 @@ DirectoryIndex index.html index.php view/index.php
 <FilesMatch ".(htm|html|css|js)$">
 AddDefaultCharset UTF-8
 </FilesMatch>
+
 # desativa listagemde indixes de pasta
-Options -Indexes
+#Options -Indexes
 
 #Protegendo seu arquivo .htaccess
 <files ~ "^.*\.([Hh][Tt][Aa])">
