@@ -6,7 +6,7 @@ if (isset($_GET['fala'])) {
     $fala = "nullteste";
     
 }
-$n = rand(1, 5);
+$n = rand(1, 1);
 ?>
 <html>
     <head>
@@ -19,7 +19,7 @@ $n = rand(1, 5);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head> <style>
         body {
-            /*background-image: url("./img/plano/<?= $n ?>.jpg");*/
+            background-image: url("./img/plano/<?= $n ?>.jpg");
             font: 15px arial, sans-serif;   }
     </style>
     <body>

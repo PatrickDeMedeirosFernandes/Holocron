@@ -3,16 +3,17 @@
 function aa($sess) {
     $sess = str_replace("/teste/", "", $sess);
     $sess = str_replace("/TCC/", "", $sess);
+        $sess = str_replace("/TCC-CHATBOT/", "", $sess);
     return $sess;
 }
 
 $a = aa($_SERVER['REQUEST_URI']);
 ?>
 <div id='caixa'> 
-    <!--    <div class="img3">
+        <div class="img3">
             <h1>Holocrom</h1>
             <h3>O chatterbot de Star Wars</h3>
-        </div>-->
+        </div>
     <div class="img">
 
         <img  class="img2"  src="img/Holocron.png"  alt="logo"/></div>
