@@ -14,7 +14,7 @@
    
      <form role="form" action="enviar"  method="post" enctype="multipart/form-data">
                     <input type="text" name="chat" id="chatbox" placeholder="" onfocus="placeHolder()">
-                    <button type="submit" class="btn btn-default">Enviar</button>
+                    <!--<button type="submit" class="btn btn-default">Enviar</button>-->
                 </form>
     </div>
 

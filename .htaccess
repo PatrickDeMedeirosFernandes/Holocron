@@ -19,7 +19,7 @@ RewriteRule ^/?$ view/index.php [NC,L]
 RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
 
 DirectoryIndex index.html index.php view/index.php 
-
+RewriteRule ^Duvidas/?$  view/report.php [NC,L]
 # Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
 <FilesMatch ".(htm|html|css|js)$">
 AddDefaultCharset UTF-8
