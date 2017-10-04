@@ -6,7 +6,7 @@ if (isset($_GET['fala'])) {
     $fala = "nullteste";
     
 }
-$n = rand(1, 22);
+$n = rand(1, 16);
 ?>
 <html>
     <head>
