@@ -1,0 +1,16 @@
+RewriteEngine On
+<IfModule mod_rewrite.c> 
+#Removendo extens�es de arquivos das URLs
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#URL AMIGAVEIS
+RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
+RewriteRule ^/?$ view/index.php [NC,L]
+DirectoryIndex index.html index.php view/index.php 
+
+
+RewriteRule ^adm   admin.php [NC,L]
+</ifModule>
