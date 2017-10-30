@@ -19,10 +19,10 @@ $n = rand(1, 16);
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head> <style>
         body {
-            background-image: url("./img/plano/<?= $n ?>.jpg") ;
-            font: 15px arial, sans-serif;   background-size: 100%;
-
-        }
+            background-image: url("./img/plano/<?= $n ?>.jpg") ;   
+            font: 15px arial, sans-serif;  background-size: 100%;
+            background-repeat: no-repeat; background-color: #000;
+   }
     </style>
     <body>
 
