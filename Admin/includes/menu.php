@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
-                <div class="input-group custom-search-form">
+                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="...">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
@@ -12,35 +12,30 @@
                 </div>
                 <!-- /input-group -->
             </li>
-            
             <li>
-                <a href="ADM"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                <a href="ADM"><i class="fa fa-dashboard fa-fw active"></i> Home</a>
             </li>
-
-
             <li>
-                <a href=""><i class="fa fa-edit fa-fw"></i>Duvidas</a>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Duvidas</a>
             </li>
-
-
             <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Perguntas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="">Perguntas Nativas</a>
+                        <a href="#">Perguntas Nativas</a>
                     </li> 
                     <li>
-                        <a href="">Pergunta sem respota</a>
+                        <a href="#">Pergunta sem respota</a>
                     </li> 
 
                     <li>
-                        <a href="">Perguntas dos Usuarios</a>
+                        <a href="#">Perguntas dos Usuarios</a>
                     </li>
                     <li>
-                        <a href="">Perguntas criadas do Bot</a>
+                        <a href="#">Perguntas criadas do Bot</a>
                     </li>
                     <li>
-                        <a href="">Cadastro de Perguntas</a>
+                        <a href="#">Cadastro de Perguntas</a>
                     </li>
 
                 </ul>
