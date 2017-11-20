@@ -20,9 +20,25 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-12">
                             <div class="table-responsive">
-                                Aqui vai ser a tabela de perguntas
+                                <table class="table-responsive table">
+                                    <tr>
+                                        <TH>
+                                            PERGUNTA
+                                        </TH>
+                                        <TH>Respota</TH>
+                                        <th>Valida</th>
+                                        <th>Data</th>
+                                    </tr>
+                                    <tr>
+                                        <td>PERGUNTA</td>
+                                        <td>RESPOSTA</td>
+                                        <td>Não</td>
+                                        <td>12-12-1212 12:12</td>
+                                    </tr>
+                                </table>
+
                             </div>
                             <!-- /.table-responsive -->
                         </div>
@@ -51,6 +67,8 @@
                     <!-- /.list-group -->
                     <a href="#" class="btn btn-default btn-block">Todas as notificações</a>
                 </div>
+                <!-- /.panel-heading -->
+
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->

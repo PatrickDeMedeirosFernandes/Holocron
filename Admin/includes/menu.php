@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
-                <div class="input-group custom-search-form">
+                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="...">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
@@ -14,7 +14,7 @@
             </li>
 
             <li>
-                <a href="ADM"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                <a href="ADM"><i class="fa fa-dashboard fa-fw active"></i> Home</a>
             </li>
             <li>
                 <a href="Report"><i class="fa fa-edit fa-fw"></i>Duvidas</a>

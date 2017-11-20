@@ -13,8 +13,6 @@
         o estudo de como fazer os computadores realizarem coisas que, atualmente, os humanos fazem melhor.
     </p>
 </div>
-
-
 <div id='bodybox'>
     <h4>O que é ChatterBot ou ChatBot</h4>
     <p>
@@ -25,6 +23,4 @@
         uma resposta que tenta imitar o comportamento humano.
     </p>
 </div>
-
-<?php
-include '../includes/rodape.php';
+<?php include '../includes/rodape.php';
