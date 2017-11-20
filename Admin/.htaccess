@@ -13,4 +13,13 @@ DirectoryIndex index.html index.php view/index.php
 
 
 RewriteRule ^adm   admin.php [NC,L]
-</ifModule>
+RewriteRule ^Report   report.php [NC,L]
+RewriteRule ^Perguntas_Nativas  PergNat.php [NC,L]
+RewriteRule ^Perguntas_Sem_Resp  PergSemResp.php [NC,L]
+RewriteRule ^Perguntas_Usuarios  PergUser.php [NC,L]
+RewriteRule ^Perguntas_Criadas_PorBot  PergCreatBot.php [NC,L]
+RewriteRule ^Cad-Lote-PergResp  CadLotePerg.php [NC,L]
+RewriteRule ^Cad-Uma-PergResp  CadUmaPerg.php [NC,L]
+RewriteRule ^Lista_Usuarios  UserList.php [NC,L]
+RewriteRule ^Cadastro_Usuario  UserCad.php [NC,L]
+</ifModule> 

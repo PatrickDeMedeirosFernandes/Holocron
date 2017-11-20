@@ -12,35 +12,38 @@
                 </div>
                 <!-- /input-group -->
             </li>
-            
+
             <li>
                 <a href="ADM"><i class="fa fa-dashboard fa-fw"></i> Home</a>
             </li>
-
-
             <li>
-                <a href=""><i class="fa fa-edit fa-fw"></i>Duvidas</a>
+                <a href="Report"><i class="fa fa-edit fa-fw"></i>Duvidas</a>
             </li>
-
-
             <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Perguntas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="">Perguntas Nativas</a>
+                        <a href="Perguntas_Nativas">Perguntas Nativas</a>
                     </li> 
                     <li>
-                        <a href="">Pergunta sem respota</a>
+                        <a href="Perguntas_Sem_Resp">Pergunta sem respota</a>
                     </li> 
-
                     <li>
-                        <a href="">Perguntas dos Usuarios</a>
+                        <a href="Perguntas_Usuarios">Perguntas dos Usuarios</a>
                     </li>
                     <li>
-                        <a href="">Perguntas criadas do Bot</a>
-                    </li>
+                        <a href="Perguntas_Criadas_PorBot">Perguntas criadas do Bot</a>
+                    </li>    
                     <li>
-                        <a href="">Cadastro de Perguntas</a>
+                        <a href="#">Cadastro de Perguntas <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="Cad-Lote-PergResp">Cadastro em Lote de Perguntas e Respotas</a>
+                            </li>
+                            <li>
+                                <a href="Cad-Uma-PergResp">Cadastro de uma Pergunta e Respota</a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>
@@ -50,13 +53,12 @@
                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Usuário<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="#">Lista usuário</a>
+                        <a href="Lista_Usuarios">Lista usuário</a>
                     </li>
                     <li>
-                        <a href="#">Cadastro de Usuario</a>
+                        <a href="Cadastro_Usuario">Cadastro de Usuario</a>
                     </li>
                     <!--                              menu dendtro do menu
-                    
                     <li>
                                                         <a href="#">Third Level <span class="fa arrow"></span></a>
                                                         <ul class="nav nav-third-level">
@@ -78,15 +80,10 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-     
-            
-            
-             <li>
+            <li>
                 <a href="home"><i class="fa fa-dashboard fa-fw"></i> Chatbot</a>
             </li>
-        </ul>
-        
-        
+        </ul>      
     </div>
     <!-- /.sidebar-collapse -->
 </div>
