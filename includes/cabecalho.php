@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<?php
+
+    <?php
+    header('Content-Type: text/html; charset=utf-8');
 if (isset($_GET['fala'])) {
     $fala = $_GET['fala'];
 } else {
