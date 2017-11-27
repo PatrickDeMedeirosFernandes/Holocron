@@ -27,12 +27,13 @@
                             $i++;
                         }
                         ?>
-                        <strong> <span style="color: red; font-size: 15px;"><?php if ($i == 10) {
-                            echo $i + "+";
-                        } ELSE {
-                            echo $i;
-                        }
-                        ?></span> </strong>
+                        <strong> <span style="color: red; font-size: 15px;"><?php
+                                if ($i == 10) {
+                                    echo $i + "+";
+                                } ELSE {
+                                    echo $i;
+                                }
+                                ?></span> </strong>
                         <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
@@ -43,9 +44,9 @@
                             // output data of each row
                             while ($row = mysqli_fetch_assoc($result1)) {
                                 ?>
-        <?php $string = mb_strimwidth($row["texto"], 0, 10, ""); ?>
+                                <?php $string = mb_strimwidth($row["texto"], 0, 10, ""); ?>
                                 <li>
-                                    <a href="Report<?php //echo $row["id_report"]     ?>">
+                                    <a href="Duvida<?php echo $row["id_report"] ?>">
                                         <div>
                                             <strong><?= $row["nome"] ?></strong>
                                             <span class="pull-right text-muted">
@@ -55,10 +56,10 @@
                                         <div><?= mb_strimwidth($string, 0, 20, "..."); ?></div>
                                     </a>
                                 </li><br>
-        <?php
-    }
-} else {
-    ?>
+                                <?php
+                            }
+                        } else {
+                            ?>
                             <li>
                                 <a href="Report">
                                     <div>
@@ -67,9 +68,9 @@
                                     <div>Sem Mensagens novas</div>
                                 </a>
                             </li>   
-    <?php
-}
-?>
+                            <?php
+                        }
+                        ?>
 
                         <li class="divider"></li>
 

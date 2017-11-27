@@ -26,7 +26,6 @@ RewriteRule ^adm   admin/admin.php [NC,L]
 RewriteRule ^adm   admin/admin.php [NC,L]
 
 RewriteRule ^HOME/?$   admin/ [NC,L]
-RewriteRule ^Report   admin/report.php [NC,L]
 RewriteRule ^Perguntas_Nativas  admin/PergNat.php [NC,L]
 RewriteRule ^Perguntas_Sem_Resp  admin/PergSemResp.php [NC,L]
 RewriteRule ^Perguntas_Usuarios  admin/PergUser.php [NC,L]
@@ -35,6 +34,11 @@ RewriteRule ^Cad-Lote-PergResp  admin/CadLotePerg.php [NC,L]
 RewriteRule ^Cad-Uma-PergResp  admin/CadUmaPerg.php [NC,L]
 RewriteRule ^Lista_Usuarios  admin/UserList.php [NC,L]
 RewriteRule ^Cadastro_Usuario  admin/UserCad.php [NC,L]
+RewriteRule ^Report   admin/report.php [NC,L]
+
+
+
+RewriteRule ^Duvida([0-9]+)  admin/duvidaUnico.php?id=$1
 
 # Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
 <FilesMatch ".(htm|html|css|js)$">

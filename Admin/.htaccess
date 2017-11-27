@@ -8,8 +8,8 @@ RewriteRule ^(.*)$ $1.php
 
 #URL AMIGAVEIS
 RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
-RewriteRule ^/?$ view/index.php [NC,L]
-DirectoryIndex index.html index.php view/index.php 
+#RewriteRule ^/?$ view/index.php [NC,L]
+#DirectoryIndex index.html index.php view/index.php 
 
 
 RewriteRule ^adm   admin.php [NC,L]
@@ -22,4 +22,7 @@ RewriteRule ^Cad-Lote-PergResp  CadLotePerg.php [NC,L]
 RewriteRule ^Cad-Uma-PergResp  CadUmaPerg.php [NC,L]
 RewriteRule ^Lista_Usuarios  UserList.php [NC,L]
 RewriteRule ^Cadastro_Usuario  UserCad.php [NC,L]
+RewriteRule ^Duvida([0-9]+)  duvidaUnico.php?id=$1
+
+
 </ifModule> 

@@ -32,7 +32,6 @@ include './includes/cabeca.php';
                                             <TH>Nome</TH>
                                             <th>E-mail</th>
                                             <th>Data de envio</th>
-                                            <th>IP</th>
                                             <th>Data de visualizado</th>
                                             <th>Visto?</th>
                                             <th>Quem Visualizou</th>
@@ -42,7 +41,7 @@ include './includes/cabeca.php';
                                     <tbody>
 
                                         <?php
-                                        $result = lista_report();
+                                       $result = lista_report();
                                         if (mysqli_num_rows($result) > 0) {
                                             // output data of each row
                                             while ($row = mysqli_fetch_assoc($result)) {
@@ -54,7 +53,6 @@ include './includes/cabeca.php';
                                                     <td><?= $row["nome"] ?></td>
                                                     <td><?= $row["email"] ?></td>
                                                     <td><?= $row["data_envio"] ?></td>
-                                                    <td><?= $row["ip"] ?></td>
                                                     <td><?= $row["data_visto"] ?></td>
                                                     <td><?php
                                                         if ($row["visto"] == 0) {
@@ -64,8 +62,8 @@ include './includes/cabeca.php';
                                                         }
                                                         ?></td>
                                                     <td><?= $row["user"] ?></td>
-                                                    <td><?= mb_strimwidth($string, 0, 10, "..."); ?></td>
-                                                    <td></td>
+                                                    <td> <a href="Duvida<?php echo $row["id_report"] ?>"><?= mb_strimwidth($string, 0, 10, "..."); ?><br>Ver resto da mensagem</a></td>
+
                                                 </tr>
                                                 <?php
                                             }
