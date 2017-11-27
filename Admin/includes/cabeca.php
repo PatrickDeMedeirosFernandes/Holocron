@@ -1,5 +1,4 @@
-    <?php
-    header('Content-Type: text/html; charset=utf-8'); ?>
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +14,10 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="Admin/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- MetisMenu CSS -->
         <link href="Admin/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
         <!-- Custom CSS -->
         <link href="Admin/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
-
         <!-- Morris Charts CSS -->
         <link href=".Admin/estilo/Admin/vendor/morrisjs/morris.css" rel="stylesheet">
 

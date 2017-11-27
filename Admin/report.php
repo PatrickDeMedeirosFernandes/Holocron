@@ -1,4 +1,7 @@
-<?php include './includes/cabeca.php'; ?>
+<?php
+include './includes/cabeca.php';
+//include './controller/Lista_Report.php';
+?>
 
 
 
@@ -10,7 +13,89 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- /.panel -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Lista de Reports        
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table-responsive table">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <TH>ID</TH>
+                                            <TH>Nome</TH>
+                                            <th>E-mail</th>
+                                            <th>Data de envio</th>
+                                            <th>IP</th>
+                                            <th>Data de visualizado</th>
+                                            <th>Visto?</th>
+                                            <th>Quem Visualizou</th>
+                                            <th>Texto</th>
+                                        <tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        $result = lista_report();
+                                        if (mysqli_num_rows($result) > 0) {
+                                            // output data of each row
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                <?php $string = $row["texto"]; ?>
+
+                                                <tr class="form-group">
+                                                    <td><?= $row["id_report"] ?></td>       
+                                                    <td><?= $row["nome"] ?></td>
+                                                    <td><?= $row["email"] ?></td>
+                                                    <td><?= $row["data_envio"] ?></td>
+                                                    <td><?= $row["ip"] ?></td>
+                                                    <td><?= $row["data_visto"] ?></td>
+                                                    <td><?php
+                                                        if ($row["visto"] == 0) {
+                                                            echo 'não';
+                                                        } else {
+                                                            echo "sim";
+                                                        }
+                                                        ?></td>
+                                                    <td><?= $row["user"] ?></td>
+                                                    <td><?= mb_strimwidth($string, 0, 10, "..."); ?></td>
+                                                    <td></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <tr>
+                                                <td>Sem nenhum resultado</td>
+                                            </tr>    
+                                            <?php
+                                        }
+                                        ?>
+
+                                    <tbody>
+
+
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+        <!-- /.col-lg-4 -->
+    </div>
     <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->

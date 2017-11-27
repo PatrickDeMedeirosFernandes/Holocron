@@ -23,8 +23,9 @@ RewriteRule ^Duvidas/?$  view/report.php [NC,L]
 RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
 RewriteRule ^adm   admin/admin.php [NC,L]
 
-
 RewriteRule ^adm   admin/admin.php [NC,L]
+
+RewriteRule ^HOME/?$   admin/ [NC,L]
 RewriteRule ^Report   admin/report.php [NC,L]
 RewriteRule ^Perguntas_Nativas  admin/PergNat.php [NC,L]
 RewriteRule ^Perguntas_Sem_Resp  admin/PergSemResp.php [NC,L]

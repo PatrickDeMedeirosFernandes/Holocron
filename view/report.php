@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="Texto">Texto:</label>
-            <textarea rows="5" cols="60" ame="Texto" placeholder="Texto" ></textarea>
+            <textarea rows="5" cols="60" name="Texto" placeholder="Texto" ></textarea>
         </div>
         <button type="submit" class="btn btn-default">Enviar</button>
     </form>

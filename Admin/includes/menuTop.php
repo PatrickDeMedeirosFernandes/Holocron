@@ -19,50 +19,87 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <?php
+                        $i = 0;
+                        include './controller/Lista_Report.php';
+                        $result2 = lista_report_limit10();
+                        while (mysqli_fetch_assoc($result2)) {
+                            $i++;
+                        }
+                        ?>
+                        <strong> <span style="color: red; font-size: 15px;"><?php if ($i == 10) {
+                            echo $i + "+";
+                        } ELSE {
+                            echo $i;
+                        }
+                        ?></span> </strong>
+                        <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
-                      
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>Titulo Mensagem</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>data</em>
-                                    </span>
-                                </div>
-                                <div>mensa</div>
-                            </a>
-                        </li>
+                        <?php
+                        $result1 = lista_report_limit10();
+
+                        if (mysqli_num_rows($result1) > 0) {
+                            // output data of each row
+                            while ($row = mysqli_fetch_assoc($result1)) {
+                                ?>
+        <?php $string = mb_strimwidth($row["texto"], 0, 10, ""); ?>
+                                <li>
+                                    <a href="Report<?php //echo $row["id_report"]     ?>">
+                                        <div>
+                                            <strong><?= $row["nome"] ?></strong>
+                                            <span class="pull-right text-muted">
+                                                <em><?= $row["data_envio"] ?></em>
+                                            </span>
+                                        </div>
+                                        <div><?= mb_strimwidth($string, 0, 20, "..."); ?></div>
+                                    </a>
+                                </li><br>
+        <?php
+    }
+} else {
+    ?>
+                            <li>
+                                <a href="Report">
+                                    <div>
+                                        <strong>Sem Mensagens novas</strong>
+                                    </div>
+                                    <div>Sem Mensagens novas</div>
+                                </a>
+                            </li>   
+    <?php
+}
+?>
+
                         <li class="divider"></li>
-                       
-                        
+
+
                         <li>
-                            <a class="text-center" href="#">
-                                <strong>ver restante</strong>
+                            <a class="text-center" href="Report">
+                                <strong>ver restantes</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
-                
-                
-                
+
+
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-tasks">
-                     <li>
+                        <li>
                             <a href="#">
                                 <div>
                                     <p>
                                         <strong>Pergunta</strong><br>
                                         <span>data</span>
                                     </p>
-                                 
+
                                 </div>
                             </a>
                         </li>
@@ -76,11 +113,11 @@
                     </ul>
                     <!-- /.dropdown-tasks -->
                 </li>
-                
-                
-                
-                
-                
+
+
+
+
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
