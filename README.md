@@ -1,6 +1,5 @@
 
 
-
 # ***Holocron*** 
 
 ## **Assistente Virtual (ChatterBot) de Star Wars**
@@ -44,34 +43,35 @@ Adicionada a licença GNU General Public Licence v3.0
 
 
 
+# *Space Car*
+#### *Sistema de Revenda e Anúncios de Automóveis*
 
+### *Documentação*
+A visão geral da documentação está na Wiki do projeto. Link de acesso [Wiki](https://gitlab.com/otaviogarciamarzullo/TCC/wikis/home)
 
+### *Licença*
+Adicionada a licença GNU General Public License v3.0.
 
+### *Linguagens e Tecnologias que serão utilizadas:*
+A seguir serão apresentados as linguagens e tecnologias que serão utilizadas.
+<ul>
+<li><a href="https://secure.php.net/manual/pt_BR/migration70.php"><B>PHP 7.0</B></a></li>
+<li><a href="https://www.codeigniter.com/user_guide/"><B>CodeIgniter 3.1.5</B></a></li>
+<li><a href="http://getbootstrap.com/getting-started/"><B>Bootstrap 3.3.7</B></a></li>
+<li><a href="https://dev.mysql.com/doc/relnotes/mysql/5.7/en/"><B>MySQL 5.7</B></a></li>
+<li><a href="https://dev.w3.org/html5/html-author/"><B>HTML 5</B></a></li>
+<li><a href="http://devdocs.io/css/"><B>CSS 3</B></a></li>
+<li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/New_in_JavaScript/1.8.5"><B>JavaScript 1.8.5</B></a></li>
+</ul>
 
+### *Execução no Netbeans*
+<ul>
+<li> Clone o projeto.
 
+<code>https://gitlab.com/Patrick-Fernandes/TCC-CHATBOT.git</code>
 
+<li>Execute o script do Banco de Dados para criar o banco.
 
+<a href="https://gitlab.com/Patrick-Fernandes/TCC-CHATBOT.git"> <b>"Holocron"</b> </a></li>
 
-
-
-
-
-
-### **Linguagens e tecnologias do projeto**
-A seguir serão apresentadas as tecnologias do sistemas.
-
-* <b>HTML 5</b>: é uma linguagem para estruturação e apresentação de conteúdo para a World Wide Web e é uma tecnologia chave da Internet originalmente proposto por Opera Software;
-
-* <b>CSS 3</b>: é a segunda mais nova versão das famosas Cascading Style Sheets (ou simplesmente CSS), onde se define estilos para páginas web com efeitos de transição, imagem, e outros, que dão um estilo novo às páginas Web 2.0 em todos os aspectos de design do layout;
-
-* <b>BootStrap</b>: agradável, intuítivo, e poderoso framework front-end para criar facilmente de forma ágil projetos web responsivos e mobile-first;
-
-* <b>Java Script</b>: Uma linguagem de scripting é comumente definida como uma linguagem de programação que permite ao programador controlar uma ou mais aplicações de terceiros. No caso do JavaScript, podemos controlar alguns comportamentos dos navegadores através de trechos de código que são enviados na página HTML;
-
-* <b>JQuery</b>: jQuery é uma biblioteca de funções JavaScript que interage com o HTML, desenvolvida para simplificar os scripts interpretados no navegador do cliente. ;
-
-*  <b>PHP</b>: PHP é uma linguagem interpretada livre, usada originalmente apenas para o desenvolvimento de aplicações presentes e atuantes no lado do servidor, capazes de gerar conteúdo dinâmico na World Wide Web;
-
-* <b>Banco de dados MYSql</b>: O MySQL é um sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. É atualmente um dos bancos de dados mais populares, com mais de 10 milhões de instalações pelo mundo.
-
-
+<li>Abra o projeto na versão 8 ou superior do Netbeans.</li>
