@@ -1,5 +1,4 @@
 
-
 # ***Holocron*** 
 
 ## **Assistente Virtual (ChatterBot) de Star Wars**
@@ -56,7 +55,6 @@ Adicionada a licença GNU General Public License v3.0.
 A seguir serão apresentados as linguagens e tecnologias que serão utilizadas.
 <ul>
 <li><a href="https://secure.php.net/manual/pt_BR/migration70.php"><B>PHP 7.0</B></a></li>
-<li><a href="https://www.codeigniter.com/user_guide/"><B>CodeIgniter 3.1.5</B></a></li>
 <li><a href="http://getbootstrap.com/getting-started/"><B>Bootstrap 3.3.7</B></a></li>
 <li><a href="https://dev.mysql.com/doc/relnotes/mysql/5.7/en/"><B>MySQL 5.7</B></a></li>
 <li><a href="https://dev.w3.org/html5/html-author/"><B>HTML 5</B></a></li>
