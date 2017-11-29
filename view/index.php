@@ -1,9 +1,8 @@
 <?php include '../includes/cabecalho.php'; ?>
-
 <div id='bodybox'>
     <center>
-    <h3>Holocron</h3>
-    <h4>Vamos conversar sobre Star Wars :)</h4>
+        <h3>Holocron</h3>
+        <h4>Vamos conversar sobre Star Wars :)</h4>
     </center>
     <div id='chatborder'>
         <p id="chatlog7" class="chatlog">&nbsp;</p>
@@ -14,10 +13,11 @@
         <p id="chatlog2" class="chatlog">&nbsp;</p>
         <p id="chatlog1" class="chatlog">&nbsp;</p>
         <!--<input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">-->
-        <form role="form" action="enviar"  method="post" enctype="multipart/form-data">
-            <input type="text" name="chat" id="chatbox" placeholder="Escreva alguma coisa" onfocus="placeHolder()">
-            <!--<button type="submit" class="btn btn-default">Enviar</button>-->
+        <form method="post" action="chat">
+            <input type="text" size="50" name="nome">
+            <!--<input type="submit" value="Pergunte">-->
         </form>
+
     </div>
 
     <br>

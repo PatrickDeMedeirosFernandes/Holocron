@@ -9,6 +9,7 @@ RewriteRule ^(.*)$ $1.php
 #URL AMIGAVEIS
 #view
 RewriteRule ^HOME/?$ view/index.php [NC,L]
+
 RewriteRule ^O_que_e_ChatterBot/?$ view/sobrebot.php [NC,L]
 RewriteRule ^O_que_e_AI/?$ view/sobreia.php [NC,L]
 RewriteRule ^O_que_e_SW/?$  view/sobresw.php [NC,L]
@@ -21,6 +22,7 @@ RewriteRule ^Duvidas/?$  view/report.php [NC,L]
 
 #administration
 RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
+RewriteRule ^chat/?$  controller/torreDeBabel.php [NC,L]
 RewriteRule ^adm   admin/admin.php [NC,L]
 
 RewriteRule ^adm   admin/admin.php [NC,L]
@@ -47,8 +49,8 @@ AddDefaultCharset UTF-8
 
 # desativa listagemde indixes de pasta
 Options -Indexes
-ErrorDocument 403  <script>window.history.go(-1);</script>
-ErrorDocument 404 <script>window.history.go(-1);</script>
+#ErrorDocument 403  <script>window.history.go(-1);</script>
+#ErrorDocument 404 <script>window.history.go(-1);</script>
 #Protegendo seu arquivo .htaccess
 <files ~ "^.*\.([Hh][Tt][Aa])">
 order allow,deny

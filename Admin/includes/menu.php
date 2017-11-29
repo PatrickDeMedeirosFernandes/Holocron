@@ -26,13 +26,13 @@
                         <a href="Perguntas_Nativas">Perguntas Nativas</a>
                     </li> 
                     <li>
-                        <a href="Perguntas_Sem_Resp">Pergunta sem respota</a>
+                        <a href="Perguntas_Sem_Resp">Pergunta do user sem respota</a>
                     </li> 
                     <li>
-                        <a href="Perguntas_Usuarios">Perguntas dos Usuarios</a>
+                        <a href="Perguntas_Usuarios">Perguntas dos Usuarios respota bot</a>
                     </li>
                     <li>
-                        <a href="Perguntas_Criadas_PorBot">Perguntas criadas do Bot</a>
+                        <!--<a href="Perguntas_Criadas_PorBot">Perguntas criadas do Bot</a>-->
                     </li>    
                     <li>
                         <a href="#">Cadastro de Perguntas <span class="fa arrow"></span></a>

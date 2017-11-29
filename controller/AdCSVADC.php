@@ -16,7 +16,7 @@ $check = getimagesize($_FILES["userfile"]["tmp_name"]);
 if (file_exists($target_file)) {
     ?><script>
         alert('ARQUIVO JÁ EXISTI');
-   window.location.href = '../../ADM';
+   window.location.href = '../ADM';
     </script>
     <?PHP
 } else {
@@ -24,7 +24,7 @@ if (file_exists($target_file)) {
     if ($_FILES["userfile"]["size"] < 5) {
         ?><script>
             alert('ARQUIVO COM TAMANHO NÁO SUPORTADO');
-              window.location.href = '../../ADM';
+              window.location.href = '../ADM';
         </script>
         <?PHP
     } else {
@@ -32,7 +32,7 @@ if (file_exists($target_file)) {
         if ($imageFileType != "csv" && $imageFileType != "txt") {
             ?><script>
                 alert('ARQUIVO TEM QUE SER .CSV OU .TXT');
-   window.location.href = '../../ADM';
+   window.location.href = '../ADM';
             </script>
             <?PHP
         } ELSE {
@@ -41,7 +41,7 @@ if (file_exists($target_file)) {
                 //        echo "The file " . basename($_FILES["userfile"]["name"]) . " has been uploaded.<br>";
 //                echo 'Aqui está mais informações de debug:';
                 //   print_r($_FILES);
-                include_once '../../controller/DB.php';
+                include_once '../controller/DB.php';
 
                 $arquivo = fopen("../ANEXO/" . $_FILES['userfile']['name'], "r");
                 //    $arquivo = fopen('dados_emails.csv', 'r');
@@ -78,7 +78,7 @@ if (file_exists($target_file)) {
                     }
                     ?><script>
                         alert('Envio de dados terminado');
-                                 window.location.href = '../../ADM';
+                                 window.location.href = '../ADM';
 
                     </script>
                     <?PHP
@@ -86,7 +86,7 @@ if (file_exists($target_file)) {
             } else {
                 ?><script>
                     alert('Aconteceu algum problema no envio do arquivo e náo foi enviado');
-                   window.location.href = '../../ADM';
+                   window.location.href = '../ADM';
                 </script>
                 <?PHP
             }

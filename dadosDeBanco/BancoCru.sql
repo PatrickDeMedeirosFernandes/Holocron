@@ -238,23 +238,23 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `report`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `report` ;
-
-CREATE TABLE IF NOT EXISTS `report` (
-  `id_report` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
-  `email` VARCHAR(90) CHARACTER SET 'utf8' NOT NULL COMMENT '',
-  `nome` VARCHAR(90) CHARACTER SET 'utf8' NOT NULL COMMENT '',
-  `texto` TEXT CHARACTER SET 'utf8' NOT NULL COMMENT '',
-  `visto` INT(1) NOT NULL COMMENT '',
-  `data_envio` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
-  `data_visto` DATETIME NOT NULL COMMENT '',
-  `visuaizado_por` INT(11) NOT NULL COMMENT '',
-   `ip` VARCHAR(60)  CHARACTER SET 'utf8' NOT NULL COMMENT '', 
+CREATE TABLE `report` (
+  `id_report` int(11) NOT NULL,
+  `email` varchar(90) COLLATE utf8_german2_ci NOT NULL,
+  `nome` varchar(90) COLLATE utf8_german2_ci NOT NULL,
+  `texto` text COLLATE utf8_german2_ci NOT NULL,
+  `visto` int(1) NOT NULL,
+  `data_envio` datetime DEFAULT CURRENT_TIMESTAMP,
+  `data_visto` datetime DEFAULT NULL,
+  `visuaizado_por` int(11) DEFAULT NULL,
+  `ip` varchar(60) COLLATE utf8_german2_ci NOT NULL,
   PRIMARY KEY (`id_report`)  COMMENT '',
   CONSTRAINT `report_ibfk_1`
     FOREIGN KEY (`visuaizado_por`)
     REFERENCES `user` (`id_user`)
-    ON UPDATE CASCADE)
-ENGINE = InnoDB
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+
 DEFAULT CHARACTER SET = utf8;
 
 CREATE INDEX `vp` ON `report` (`visuaizado_por` ASC)  COMMENT '';

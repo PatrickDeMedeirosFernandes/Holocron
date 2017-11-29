@@ -9,12 +9,12 @@
 function nomes($str) {
 include './DB.php';
 
-    $sql = " SELECT ``, `` FROM `` ;";
-    $result = $conecta->query($sql);
+    $sql = "SELECT `expressao`, `significado` FROM `dicionario`  ;";
+    $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($linha = $result->fetch_assoc()) {
-           $aa= $linha[''];
-            $bb=$linha[''];
+           $aa= $linha['expressao'];
+            $bb=$linha['significado'];
           $str = str_replace("$aa", "$bb", $str);
         }
     }

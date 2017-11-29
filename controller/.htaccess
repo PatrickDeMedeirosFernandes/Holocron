@@ -4,3 +4,4 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 #URL AMIGAVEIS
 RewriteRule ^enviar/?$ mensagem.php [NC,L]
+RewriteRule ^chat/?$ torreDeBabel.php [NC,L]

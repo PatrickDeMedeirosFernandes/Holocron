@@ -16,7 +16,7 @@
                     <div class="table-responsive">
                         <h2>Adcionar arquivo CSV</h2>
                         <form class="form-group"  enctype="multipart/form-data"
-                              name="myForm" id="myForm"  action="admin/controller/CSVADC.php" method="POST">
+                              name="myForm" id="myForm"  action="controller/AdCSVADC.php" method="POST">
                             <input type="file" name="userfile"  class="btn btn-block btn-default">
                             <input type="submit" class="btn btn-block btn-success" value="enviar" /> 
                         </form>
