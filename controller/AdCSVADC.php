@@ -61,14 +61,9 @@ if (file_exists($target_file)) {
                         $result = mysqli_query($conn, $sql);
                         $sql3 = "SELECT id FROM `respota` ORDER BY id DESC LIMIT 1";
                         //             echo $sql3;
-                        $result2 = mysqli_query($conn, $sql3);
+                      
 
-                        while ($row = mysqli_fetch_assoc($result2)) {
-                            $resp = $row["id"];
-                        }
-
-
-                        echo $resp;
+                        echo $resp = mysqli_insert_id($conn);
                         $sql2 = " INSERT INTO `pergunta`(`pergunta`, `valida`, `resposta_pergunta`) VALUES ("
                                 . "'" . utf8_encode($dados[0]) . "',1,$resp
 

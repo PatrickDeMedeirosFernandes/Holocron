@@ -31,15 +31,15 @@
                     <!-- /.table-responsive -->
                     <H4>Lista de Arquivos no sistema:</H4>
                     <?php
-                    $pasta = '../admin/ANEXO/';
+                    $pasta = '../ANEXO/';
 
                     if (is_dir($pasta)) {
                         $diretorio = dir($pasta);
 
                         while (($arquivo = $diretorio->read()) !== false) {
                             if ($arquivo != "." && $arquivo != "..") {
-                                echo '<br><a href="admin/ANEXO/' . $arquivo . '">' . $arquivo . '</a><br />';
-                                $arquivo2 = fopen("../admin/ANEXO/" . $arquivo, "r");
+                                echo '<br><a href="ANEXO/' . $arquivo . '">' . $arquivo . '</a><br />';
+                                $arquivo2 = fopen("../ANEXO/" . $arquivo, "r");
 //                            // Lê o conteúdo do arquivo
                             }
                         }

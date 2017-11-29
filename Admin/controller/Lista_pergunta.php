@@ -32,3 +32,15 @@ $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta
 return $result = mysqli_query($conn, $sql);
 
 }
+function lista_pergunta_bot_user_invalidas(){
+      include '../controller/DB.php';
+
+$sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
+    FROM `perg_user` p
+    LEFT JOIN respota u ON p.respota_perg_user = u.id 
+    where valida = 0;
+
+ "; 
+return $result = mysqli_query($conn, $sql);
+
+}
