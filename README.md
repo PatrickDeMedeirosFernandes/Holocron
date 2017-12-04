@@ -1,4 +1,3 @@
-
 # ***Holocron*** 
 
 ## **Assistente Virtual (ChatterBot) de Star Wars**
@@ -41,15 +40,6 @@ Adicionada a licença GNU General Public Licence v3.0
 
 
 
-
-# *Space Car*
-#### *Sistema de Revenda e Anúncios de Automóveis*
-
-### *Documentação*
-A visão geral da documentação está na Wiki do projeto. Link de acesso [Wiki](https://gitlab.com/otaviogarciamarzullo/TCC/wikis/home)
-
-### *Licença*
-Adicionada a licença GNU General Public License v3.0.
 
 ### *Linguagens e Tecnologias que serão utilizadas:*
 A seguir serão apresentados as linguagens e tecnologias que serão utilizadas.
