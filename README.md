@@ -4,23 +4,17 @@
  
 
 
-
-
-
-
-
-
-
-
 ### **O que é ChatterBot ou ChatBot**
 Chatbot (ou chatterbot) é um programa de computador que tenta simular um ser humano na conversação com as pessoas. O objetivo é responder as perguntas de tal forma que as pessoas tenham a impressão de estar conversando com outra pessoa e não com um programa de computador. Após o envio de perguntas em linguagem natural, o programa consulta uma base de conhecimento e em seguida fornece uma resposta que tenta imitar o comportamento humano.
 
 
+
+## **Hollocron**
+Hollocron é um assistente virtual criado para  se comunicar com as pessoas, conversando sobre a saga de filmes Star Wars
+
 ## **Motivo do Nome**
 Na serie Star Wars os Holocrons são receptáculos de informações, sendo a maioria deles usada para guardar os segredos do uso da Força para futuras gerações. O criador de um holocron praticamente transfere um pouco de sua personalidade para dentro do objeto e muitos deles têm um tipo de componente orgânico cristalizado, uma rara facilidade encontrada apenas em mundos remotos.
 E por este motivo me inspirei nele para ser o nome do ChatterBot.
-
-
 
 
 
@@ -63,3 +57,10 @@ A seguir serão apresentados as linguagens e tecnologias que serão utilizadas.
 <a href="https://gitlab.com/Patrick-Fernandes/TCC-CHATBOT.git"> <b>"Holocron"</b> </a></li>
 
 <li>Abra o projeto na versão 8 ou superior do Netbeans.</li>
+
+
+### *Autor*
+Patrick de Medeiros Fernandes
+
+
+
