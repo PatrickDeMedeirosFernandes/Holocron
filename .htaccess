@@ -41,6 +41,7 @@ RewriteRule ^Cadastro_Usuario  admin/UserCad.php [NC,L]
 RewriteRule ^Report   admin/report.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  admin/duvidaUnico.php?id=$1
 RewriteRule ^Editar_Usuario-([0-9]+)   admin/UserEdit.php?id=$1
+RewriteRule ^404  view/404.php [NC,L]
 
 # Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
 <FilesMatch ".(htm|html|css|js)$">
@@ -49,8 +50,8 @@ AddDefaultCharset UTF-8
 
 # desativa listagemde indixes de pasta
 Options -Indexes
-#ErrorDocument 403  <script>window.history.go(-1);</script>
-#ErrorDocument 404 <script>window.history.go(-1);</script>
+ErrorDocument 403  <script>window.history.go(-1);</script>
+ErrorDocument 404     <script>window.location.assign("404");</script>
 #Protegendo seu arquivo .htaccess
 <files ~ "^.*\.([Hh][Tt][Aa])">
 order allow,deny

@@ -1,7 +1,7 @@
 <?php
     include './includes/cabeca.php';
 
-include './controller/Envia_Report.php';
+include './Buscas/Envia_Report.php';
 $id = $_GET['id'];
 $user =  $_SESSION['id_user'];
 if (atualiza_quem_viu($id, $user)) {

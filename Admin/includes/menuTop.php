@@ -21,7 +21,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php
                         $i = 0;
-                        include './controller/Lista_Report.php';
+                        include './Buscas/Lista_Report.php';
                         $result2 = lista_report_limit10();
                         while (mysqli_fetch_assoc($result2)) {
                             $i++;

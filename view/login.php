@@ -85,7 +85,13 @@ form button {
 form button:hover {
   background: #ff5252;
 }
+#centro {
+position:absolute;
+left:50%;
+margin-left:-50px;
+min-height: 40px;
 
+}
     </style>
   <meta charset="UTF-8">
   <title>Área de LOGIN DE HOLOCRON</title>
@@ -105,7 +111,11 @@ form button:hover {
   <input type="text" name="login">
   <label>Senha <span>*</span></label>
   <input  type="password" name="senha">
-    
+   <label>Captcha <span>*</span></label>
+   <input  type="text" name="caracteres"><br>
+          
+  <img src="includes/captcha/gera.php" alt="Caracteres" id="centro" />
+
 <br>
   <button type="submit">Entrar</button>
 </form>

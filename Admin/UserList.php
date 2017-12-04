@@ -1,6 +1,6 @@
 <?php
 include './includes/cabeca.php';
-include './controller/Lista_usuer.php';
+include './Buscas/Lista_usuer.php';
 ?>
 <div id="page-wrapper">
     <div class="row">

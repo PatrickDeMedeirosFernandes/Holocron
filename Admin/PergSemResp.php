@@ -1,6 +1,6 @@
 <?php
 include './includes/cabeca.php';
-include './controller/Lista_pergunta.php';
+include './Buscas/Lista_pergunta.php';
 ?>
 
 

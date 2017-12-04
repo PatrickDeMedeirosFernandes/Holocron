@@ -1,6 +1,6 @@
 <?php
 include './includes/cabeca.php';
-//include './controller/Lista_Report.php';
+//include './Buscas/Lista_Report.php';
 ?>
 
 
