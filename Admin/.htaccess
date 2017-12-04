@@ -10,7 +10,7 @@ RewriteRule ^(.*)$ $1.php
 RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
 #RewriteRule ^/?$ view/index.php [NC,L]
 #DirectoryIndex index.html index.php view/index.php 
-
+333COLOCAR AUTOR NO README E O QUE É PROJETO
 
 RewriteRule ^adm   admin.php [NC,L]
 RewriteRule ^Report   report.php [NC,L]
@@ -24,5 +24,8 @@ RewriteRule ^Lista_Usuarios  UserList.php [NC,L]
 RewriteRule ^Cadastro_Usuario  UserCad.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  duvidaUnico.php?id=$1
 
+RewriteRule ^Editar_Usuario-([0-9]+)  UserEdit.php?id=$1
+
+RewriteRule ^Sair  logout.php [NC,L]
 
 </ifModule> 

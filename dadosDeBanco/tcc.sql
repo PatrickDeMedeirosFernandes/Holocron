@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Nov-2017 às 20:46
--- Versão do servidor: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: 04-Dez-2017 às 14:16
+-- Versão do servidor: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -160,20 +158,6 @@ CREATE TABLE `report` (
   `ip` varchar(60) COLLATE utf8_german2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
---
--- Extraindo dados da tabela `report`
---
-
-INSERT INTO `report` (`id_report`, `email`, `nome`, `texto`, `visto`, `data_envio`, `data_visto`, `visuaizado_por`, `ip`) VALUES
-(0, 'h', 'hf', 'fhgh', 0, '2017-11-29 17:43:41', NULL, NULL, '::1'),
-(1, 'gdfgd', 'gdf', 'gdfg', 1, '2017-11-29 16:07:19', '2017-11-29 16:58:18', 1, '::1'),
-(4, 'gjh2', 'gh1', 'gjhjghjg3', 1, '2017-11-27 15:44:50', '2017-11-29 16:44:57', 1, '::1'),
-(5, 'gjh2', 'gh1', 'gjhjghjg3', 0, '2017-11-27 15:45:39', '2017-11-27 17:58:21', 1, ''),
-(6, 'gjh2', 'gh1', 'gjhjghjg3', 1, '2017-11-27 15:47:41', '2017-11-27 17:59:19', 1, '::1'),
-(7, 'gjh2', 'gh1', 'gjhjghjg3', 1, '2017-11-27 15:47:43', '2017-11-27 18:05:31', 1, '::1'),
-(8, 'gjh2', 'gh1', 'gjhjghjg3', 1, '2017-11-27 15:48:32', '2017-11-27 18:05:28', 1, '::1'),
-(9, 'fg', 'fhfghf', 'fghfg', 1, '2017-11-27 17:40:50', '2017-11-27 17:59:26', 1, '::1');
-
 -- --------------------------------------------------------
 
 --
@@ -228,7 +212,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`) VALUES
-(1, 'p', 'p', 3, 1, NULL, NULL);
+(1, 'p', 'p', 3, 1, NULL, NULL),
+(2, 'root', '202cb962ac59075b964b07152d234b70', 3, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -371,6 +356,11 @@ ALTER TABLE `perg_user`
 ALTER TABLE `propriedade`
   MODIFY `id_propriedade` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `report`
+--
+ALTER TABLE `report`
+  MODIFY `id_report` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `respota`
 --
 ALTER TABLE `respota`
@@ -384,7 +374,7 @@ ALTER TABLE `temp`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -424,7 +414,6 @@ ALTER TABLE `report`
 --
 ALTER TABLE `valor`
   ADD CONSTRAINT `fk_valor_personagem1` FOREIGN KEY (`personagem_id_personagem`) REFERENCES `personagem` (`id_personagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

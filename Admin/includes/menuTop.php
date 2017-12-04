@@ -28,8 +28,8 @@
                         }
                         ?>
                         <strong> <span style="color: red; font-size: 15px;"><?php
-                                if ($i == 10) {
-                                    echo $i + "+";
+                                if ($i >= 10) {
+                                    echo "+".$i;
                                 } ELSE {
                                     echo $i;
                                 }
@@ -125,12 +125,10 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Meu Perfil</a>
+                        <li><a href="Editar_Usuario-<?=  $_SESSION['id'] ?>"><i class="fa fa-user fa-fw"></i>Meu Perfil</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                         <li class="divider"></li>
+                        <li><a href="Sair"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

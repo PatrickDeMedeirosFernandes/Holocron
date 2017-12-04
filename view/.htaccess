@@ -9,6 +9,7 @@ RewriteRule ^O_que_e_AI/?$ sobreia.php [NC,L]
 RewriteRule ^O_que_e_SW/?$  sobresw.php [NC,L]
  RewriteRule ^Star_Wars/?$  view/sobresw.php [NC,L]
 
+RewriteRule ^Goiaba/?$  login.php [NC,L]
 
 RewriteRule ^O_que_e_Holocron/?$  sobreholo.php [NC,L]
 RewriteRule ^Duvidas/?$  report.php [NC,L]
