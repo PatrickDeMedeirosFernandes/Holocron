@@ -42,6 +42,7 @@ if (file_exists($target_file)) {
 //                echo 'Aqui está mais informações de debug:';
                 //   print_r($_FILES);
                 include_once '../controller/DB.php';
+include '../includes/funcao.php';
 
                 $arquivo = fopen("../ANEXO/" . $_FILES['userfile']['name'], "r");
                 //    $arquivo = fopen('dados_emails.csv', 'r');
@@ -56,7 +57,7 @@ if (file_exists($target_file)) {
                     //  // Verifica se o Dados Não é o cabeçalho ou não esta em branco
                     if (!empty($linha)) {
                         $sql = " INSERT INTO `respota`(`resposta`) VALUES ("
-                                . "'" . utf8_encode($dados[1]) . "');";
+                                . "'" . utf8_encode(htmlspecialchars(strip_tags($dados[1]))) . "');";
                         //  echo $sql;
                         $result = mysqli_query($conn, $sql);
                         $sql3 = "SELECT id FROM `respota` ORDER BY id DESC LIMIT 1";
@@ -65,7 +66,7 @@ if (file_exists($target_file)) {
 
                         echo $resp = mysqli_insert_id($conn);
                         $sql2 = " INSERT INTO `pergunta`(`pergunta`, `valida`, `resposta_pergunta`) VALUES ("
-                                . "'" . utf8_encode($dados[0]) . "',1,$resp
+                                . "'" . utf8_encode(htmlspecialchars(strip_tags($dados[0]))) . "',1,$resp
 
                               );";
                         $result4 = mysqli_query($conn, $sql2);

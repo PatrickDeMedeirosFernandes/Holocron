@@ -1,17 +1,48 @@
 <?php
+if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
+        !isset($_POST['reposta']) || $_POST['reposta'] == "" ||
+        !isset($_POST['valida']) || $_POST['valida'] == "") {
+    ?><script>
+            alert('Verifique os campos');
+            window.history.go(-1);
+    //            window.location.href = '../ADM';
+    </script>
+    <?PHP
+} else {
+    $pergunta =  htmlspecialchars(strip_tags($_POST['pergunta']));
+    $resposta =  htmlspecialchars(strip_tags($_POST['reposta']));
+    $valida =  htmlspecialchars(strip_tags($_POST['valida']));
+    include './DB.php';
+    $query = "INSERT INTO `respota`(`resposta`) VALUES ('$resposta')";
 
-$pergunta = $_POST['pergunta']; 
-$resposta = $_POST['reposta']; 
-$valida = $_POST['valida']; 
+    if (!mysqli_query($conn, $query)) {
+        ?>
+        <script>
+            alert('<?= ("Error description: " . mysqli_error($con)) ?>');
+        //    window.history.go(-1);
+            window.location.href = '../ADM';
+        </script> <?PHP
+    } else {
+        $ID = mysqli_insert_id($conn);
+        IF (isset($ID) || $ID != '') {
+            $query2 = "INSERT INTO `pergunta`(`pergunta`, `valida`, `resposta_pergunta`) VALUES ('$pergunta',$valida,$ID)";
 
-include './DB.php';
-
-
-
-
-
-$query = "INSERT INTO `respota`(`resposta`) VALUES ('$resposta')";
-mysqli_query($conn, $query);
-
-echo mysqli_insert_id($conn);
+            if (!mysqli_query($conn, $query2)) {
+                ?>
+                <script>
+                    alert('<?= ("Error description: " . mysqli_error($con)) ?>');
+                //    window.history.go(-1);
+                    window.location.href = '../ADM';
+                </script> <?PHP
+            } else {
+                ?><script>
+                                    alert('Cadastro de Pergunta realizado com sucesso');
+                //    window.history.go(-1);
+                                    window.location.href = '../ADM';
+                </script>
+                <?PHP
+            }
+        }
+    }
+}
 /* drop table */

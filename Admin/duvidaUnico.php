@@ -3,7 +3,7 @@
 
 include './Buscas/Envia_Report.php';
 $id = $_GET['id'];
-$user =  $_SESSION['id_user'];
+$user =  $_SESSION['id'];
 if (atualiza_quem_viu($id, $user)) {
     ?>
     <div id="page-wrapper">
@@ -33,11 +33,6 @@ if (atualiza_quem_viu($id, $user)) {
                                     <strong>Data enviada: <?= $row["data_envio"] ?></strong> </p><BR><BR>
                                 <h3><strong>Mensagem</strong></h3>
                                 <p><?= $string ?></p><br>
-
-
-
-
-
 
 
                                 <BR><BR><BR><BR><BR><BR><BR>
