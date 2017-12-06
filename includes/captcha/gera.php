@@ -4,7 +4,9 @@
 function geraCodigo($num) {
     // $possiveis: caracteres a serem exibidos na imagem
     // não utilizar caracteres parecidos: 1 e l, 0 e O
-    $possiveis = "23456789abcdefghijmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-+.!@#$%¨&*'%¨&*()_<>:?^}{`´[]~,.;/";
+//    $possiveis = "23456789abcdefghijmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-+.!@#$%¨&*'%¨&*()_<>:?^}{`´[]~,.;/";
+        $possiveis = "23456789abcdefghijmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     $codigo = "";
     $i = 0;
     
@@ -36,7 +38,7 @@ imageline($figura, 0, 0, 35, 29, $cor_linha);
 imageline($figura, 0, 0, 64, 29, $cor_linha);
 
 // obtém os caracteres a serem inseridos na figura
-$string = geraCodigo(8);
+$string = geraCodigo(5);
 
 // insere os caracteres na figura
 imagestring($figura, 7, 20, 6, $string, $cor_texto);
