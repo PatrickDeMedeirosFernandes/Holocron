@@ -42,7 +42,9 @@ if (!isset($_SESSION['login'])) {
         ?>
         <!DOCTYPE html>
     <html lang="pt">
-        <head>  
+        <head>  <?php
+        if($_SESSION['nivel'] != 3){
+        ?>
             <script type='text/javascript'>
     //desabilita menu de opcoes ao clicar no botao direito
                 function desabilitaMenu(e)
@@ -132,8 +134,10 @@ if (!isset($_SESSION['login'])) {
 
                 };
 
-            </script>
-
+            </script><?php   
+        }
+        
+        ?>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title><?= $_SESSION['login'] ?></title>
