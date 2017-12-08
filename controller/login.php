@@ -3,11 +3,13 @@ session_start();
 
 include './DB.php';
 include '../includes/funcao.php';
-if (!isset($_POST['login']) || !isset($_POST['senha'])) {
+if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] != '' || $_POST['login'] != '') {
     ?>
     <script language="javascript">
         alert("Verifique se os campos, SENHA NÃO CONFERE");
-        window.history.go(-1);
+      //  window.history.go(-1);
+                            document.location.href = 'goiaba';
+
     </script>
     ?>
     <?php
@@ -20,18 +22,20 @@ if (!isset($_POST['login']) || !isset($_POST['senha'])) {
         ?>
         <script language="javascript">
             alert("Erro na captcha");
-            window.history.go(-1);
+      //      window.history.go(-1);
+                      document.location.href = 'goiaba';
+
         </script>
         <?php
     } else {
         $login = htmlspecialchars(strip_tags($_POST['login']));
         $senha = htmlspecialchars(strip_tags($_POST['senha']));
         //  $senhaMD5 = md5(md5($senha));
-        echo $senha . "<br>";
+     //   echo $senha . "<br>";
         $senhaM5 = md5($senha);
-        echo $senhaM5 . "<br>";
+     //   echo $senhaM5 . "<br>";
         $senhaMD5 = md5($senhaM5);
-        echo $senhaMD5 . "<br>";
+    //    echo $senhaMD5 . "<br>";
         $sql = "SELECT `id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`
         FROM `user` 
         WHERE `senha` = '$senhaMD5' AND login = '$login' and ativo = 1";
