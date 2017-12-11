@@ -2,9 +2,6 @@
 include './includes/cabeca.php';
 include './Buscas/Lista_pergunta.php';
 ?>
-
-
-
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -55,7 +52,6 @@ include './Buscas/Lista_pergunta.php';
                                                 
                                                 <td><?= $STATUS ?></td>
                                                                                                 <td><?= $row["data"]; ?></td>
-
                                                 <td><a href="Editar_Perg_Bot-<?= $row["id_perg_user"]; ?>">Editar</a></td>
 
 

@@ -1,4 +1,8 @@
-<?php include './includes/cabeca.php'; ?>
+<?php
+include './includes/cabeca.php';
+
+include './Buscas/Lista_pergunta.php';
+?>
 
 
 
@@ -12,16 +16,39 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-   <form class="form-group"  enctype="multipart/form-data"
-              action="controller/AdPergunta.php" method="POST">
-                         
+            <form class="form-group"  enctype="multipart/form-data"
+                  action="controller/AdPergunta.php" method="POST">
+
                 <div class="form-group">
                     <label>Pergunta </label>
                     <textarea class="form-control" rows="3" name="pergunta"></textarea>
                 </div>
+
                 <div class="form-group">
-                    <label>Resposta </label>
+                    <label>Resposta Não Cadastradas </label>
                     <textarea class="form-control" rows="3" name="reposta"></textarea>
+
+                    <label>Resposta Cadastradas</label>
+                    <select class="form-control" name="repostaQW">
+                        <option value=" ">Não tem resposta</option>
+                        <?php
+                        $resul = resposta();
+                        if (mysqli_num_rows($resul) > 0) {
+                            // output data of each row
+                            while ($row = mysqli_fetch_assoc($resul)) {
+                                ?>
+                                <option value="<?= $row["id"] ?>"><?= $row["resposta"] ?></option>
+
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <option value=" ">Não tem pergunta Cadastrada</option>
+
+                            <?php
+                        }
+                        ?>
+                    </select>
                 </div>
 
 

@@ -25,6 +25,7 @@ RewriteRule ^Cadastro_Usuario  UserCad.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  duvidaUnico.php?id=$1
 
 RewriteRule ^Editar_Usuario-([0-9]+)  UserEdit.php?id=$1
+RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) EditPergNat.php?id=$1
 
 RewriteRule ^Sair  logout.php [NC,L]
 

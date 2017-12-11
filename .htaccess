@@ -41,6 +41,8 @@ RewriteRule ^Cadastro_Usuario  admin/UserCad.php [NC,L]
 RewriteRule ^Report   admin/report.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  admin/duvidaUnico.php?id=$1
 RewriteRule ^Editar_Usuario-([0-9]+)   admin/UserEdit.php?id=$1
+RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) admin/EditPergNat.php?id=$1
+
 RewriteRule ^404  view/404.php [NC,L]
 
 # Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
