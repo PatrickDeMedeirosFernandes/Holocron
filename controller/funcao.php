@@ -7,7 +7,7 @@
  * trazer a lista de expressoes a serem corrigidas
  */
 function nomes($str) {
-include './DB.php';
+include '../controller/DB.php';
 
     $sql = "SELECT `expressao`, `significado` FROM `dicionario`  ;";
     $result = $conn->query($sql);

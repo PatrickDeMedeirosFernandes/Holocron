@@ -23,7 +23,6 @@ RewriteRule ^Goiaba/?$  view/login.php [NC,L]
 
 #administration
 RewriteRule ^enviar/?$   controller/mensagem.php [NC,L]
-RewriteRule ^chat/?$  controller/torreDeBabel.php [NC,L]
 RewriteRule ^logando/?$ controller/login.php [NC,L]
 
 RewriteRule ^Sair  admin/logout.php [NC,L]

@@ -1,27 +1,28 @@
-<?php include '../includes/cabecalho.php'; ?>
+<?php include '../includes/cabecalho.php'; 
+ include '../controller/torreDeBabel.php';
+ 
+?>
 <div id='bodybox'>
     <center>
         <h3>Holocron</h3>
         <h4>Vamos conversar sobre Star Wars :)</h4>
     </center>
-    <div id='chatborder'>
-        <p id="chatlog7" class="chatlog">&nbsp;</p>
-        <p id="chatlog6" class="chatlog">&nbsp;</p>
-        <p id="chatlog5" class="chatlog">&nbsp;</p>
-        <p id="chatlog4" class="chatlog">&nbsp;</p>
-        <p id="chatlog3" class="chatlog">&nbsp;</p>
-        <p id="chatlog2" class="chatlog">&nbsp;</p>
-        <p id="chatlog1" class="chatlog">&nbsp;</p>
+    <div id='chatborder' class="form-group">
+        <p>IHSAHSAIUUHIHDDHHUAIASDHUAHUIAHDHIHUADSIHHSDHHSADHASDHHASHAUIASHUIHAUIAHHSADHAHIHUSDUIASDHUIASDH</p>
+        <?php
+        if(isset($_POST['nome'])){
+            echo $torre;
+        }
+        
+        ?>
         <!--<input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">-->
-        <form method="post" action="chat">
+        <form method="post" action="">
             <input type="text" size="50" name="nome">
             <!--<input type="submit" value="Pergunte">-->
         </form>
 
     </div>
 
-    <br>
-    <p></p>
 </div>
 <?php
 include '../includes/rodape.php';

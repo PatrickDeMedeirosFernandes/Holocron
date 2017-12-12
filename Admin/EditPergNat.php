@@ -25,7 +25,7 @@ $row = mysqli_fetch_assoc($result)
     <div class="row">
         <div class="col-lg-12">
             <form class="form-group"  enctype="multipart/form-data"
-                  action="controller/AdEdtPergunta.php?" method="POST">
+                  action="controller/AdEdtPergunta.php" method="POST">
                 <input type="hidden" value="<?= $row["id_pergunta"] ?>" name="id">
 
                 <div class="form-group">
@@ -39,8 +39,10 @@ $row = mysqli_fetch_assoc($result)
 
                     <label>Resposta Cadastradas</label>
                     <select class="form-control" name="respostaQR">
+                        <option value="">Não tem pergunta Cadastrada</option>
+
                         <?php
-                                   //=========================================
+                        //=========================================
                         $result2 = resposta_Escolida($row["id"]);
                         if (mysqli_num_rows($result2) > 0) {
                             // output data of each row
@@ -56,10 +58,10 @@ $row = mysqli_fetch_assoc($result)
 
                             <?php
                         }
-                        
-                        
-                        
-                        
+
+
+
+
                         $resul = resposta();
                         if (mysqli_num_rows($resul) > 0) {
                             // output data of each row
@@ -75,31 +77,30 @@ $row = mysqli_fetch_assoc($result)
 
                             <?php
                         }
-             
                         ?>
                     </select>
                 </div>
 
+
+
+                <div class="form-group">
+                    <label>Valida</label>
+                    <select class="form-control" name="valida">
+
+                        <option value="1">sim</option>
+                        <option value="0">não</option>
+
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Enviar </button>
+                <button type="reset" class="btn btn-default">Resetar</button>
+            </form>
+            <!-- /.col-lg-12 -->
         </div>
-
-
-        <div class="form-group">
-            <label>Valida</label>
-            <select class="form-control" name="valida">
-
-                <option value="1">sim</option>
-                <option value="0">não</option>
-
-
-            </select>
-        </div>
-        <button type="submit" class="btn btn-default">Enviar </button>
-        <button type="reset" class="btn btn-default">Resetar</button>
-        </form>
-        <!-- /.col-lg-12 -->
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
-<?php
-include './includes/rodape.php';
+    <!-- /#page-wrapper -->
+    <?php
+    include './includes/rodape.php';
+    

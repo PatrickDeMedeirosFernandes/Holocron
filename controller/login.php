@@ -3,7 +3,7 @@ session_start();
 
 include './DB.php';
 include '../includes/funcao.php';
-if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] != '' || $_POST['login'] != '') {
+if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' || $_POST['login'] == '') {
     ?>
     <script language="javascript">
         alert("Verifique se os campos, SENHA NÃO CONFERE");
@@ -53,7 +53,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] != '' 
             $_SESSION['frase_respota'] = $row["frase_respota"];
             ?>
             <script language="javascript">
-                alert("Bem Vindo <?= $_SESSION['login'] ?>");
+             //   alert("Bem Vindo <?= $_SESSION['login'] ?>");
 
                 document.location.href = 'adm';
             </script>
@@ -61,7 +61,8 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] != '' 
         } else {
             ?>
             <script language="javascript">
-                alert("<?= $sql ?>");
+    alert("Erro ao logar");          
+    // alert("<?= $sql ?>");
                 window.history.go(-1);
             </script>
             <?php
