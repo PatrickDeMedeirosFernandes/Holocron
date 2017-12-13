@@ -15,8 +15,8 @@ if (isset($_POST['nome'])) {
     function pergunta($text) {
 //camada 1
 
-        if (BuscaConcreta($text) != '') {
-            return $text;
+        if (BuscaConcreta($text) != ' ') {
+            return BuscaConcreta($text);
         }ELSE{
             return '';
         }

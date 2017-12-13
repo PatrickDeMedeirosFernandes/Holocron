@@ -8,14 +8,14 @@
         <h4>Vamos conversar sobre Star Wars :)</h4>
     </center>
     <div id='chatborder' class="form-group">
-        <p>IHSAHSAIUUHIHDDHHUAIASDHUAHUIAHDHIHUADSIHHSDHHSADHASDHHASHAUIASHUIHAUIAHHSADHAHIHUSDUIASDHUIASDH</p>
-        <?php
+       <p class='chatlog'>&nbsp;</p>
+       <p class='chatlog'>&nbsp;</p> <?php
         if(isset($_POST['nome'])){
             echo $torre;
         }
         
         ?>
-        <!--<input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">-->
+        <!--<inpnut type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">-->
         <form method="post" action="">
             <input type="text" size="50" name="nome">
             <!--<input type="submit" value="Pergunte">-->
