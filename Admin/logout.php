@@ -1,9 +1,0 @@
-<?php
-session_start();
-if(isset($_SESSION['login'])){
-    session_destroy();    
-    header("Location:Home");
-}else{
-    session_destroy();    
-    header("Location:Home");
-}

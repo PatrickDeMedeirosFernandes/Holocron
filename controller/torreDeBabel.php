@@ -3,6 +3,8 @@
 include '../controller/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
+include '../controller/BuscaDefaut.php';
+
 
 if (isset($_POST['nome'])) {
 
@@ -16,9 +18,12 @@ if (isset($_POST['nome'])) {
 //camada 1
 
         if (BuscaConcreta($text) != ' ') {
+            
             return BuscaConcreta($text);
+            
         }ELSE{
-            return '';
+            
+            return BuscaDefaut($text);
         }
 
 
