@@ -10,11 +10,7 @@ if (empty($_POST['chat'])) {
 } else {
     $a = sanitizeString(// tira acentos
             strip_tags(//tira tags
-
-
                     $_POST['chat']));
-
-
     $first = "eu foi que matei?";
     $second = "quem te matou?";
     similar_text($first, $second, $percent); //Calcula o a proximidade de duas string e devolve a porcentagem

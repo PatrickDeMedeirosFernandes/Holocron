@@ -8,9 +8,19 @@
  */
 function nomes($str) {
     include '../controller/DB.php';
-
     $sql = "SELECT `expressao`, `significado` FROM `dicionario`  ;";
     $result = $conn->query($sql);
+    $str = str_replace("-", "", $str);
+//LIMPA ESPAÇOS EXTRAS
+   $str = preg_replace('/\s\s+/', ' ', $str);
+//coloca tudo em minusculo
+   // $str = strtolower($str);
+//tira o ?
+    $str = trim($str, '? ');
+//tira o !
+    $str = trim($str, '! ');
+//tira o .
+    $str = trim($str, '. ');
     if ($result->num_rows > 0) {
         while ($linha = $result->fetch_assoc()) {
             $aa = $linha['expressao'];
@@ -20,7 +30,6 @@ function nomes($str) {
     }
     return $str;
 }
-
 function saldacao($str) {
     return $str;
 }

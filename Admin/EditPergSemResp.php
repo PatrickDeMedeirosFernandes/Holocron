@@ -9,8 +9,7 @@ IF ($_SESSION['nivel'] == 3 || $_SESSION['nivel'] == 2) {
         window.history.go(-1);
     </script>';
 }
-
-$result = lista_pergunta_nativa_1($id);
+$result = lista_pergunta_Sem_Resp_unica($id);
 // output data of each row
 $row = mysqli_fetch_assoc($result)
 ?>
@@ -25,8 +24,8 @@ $row = mysqli_fetch_assoc($result)
     <div class="row">
         <div class="col-lg-12">
             <form class="form-group"  enctype="multipart/form-data"
-                  action="controller/AdEdtPergunta.php" method="POST">
-                <input type="hidden" value="<?= $row["id_pergunta"] ?>" name="id">
+                  action="controller/AdEdtPergSemResp.php" method="POST">
+                <input type="hidden" value="<?= $row["id_perg_sem_resp"] ?>" name="id">
 
                 <div class="form-group">
                     <label>Pergunta </label>
@@ -39,8 +38,7 @@ $row = mysqli_fetch_assoc($result)
 
                     <label>Resposta Cadastradas</label>
                     <select class="form-control" name="respostaQR">
-                        <option value=" ">Não tem pergunta Cadastrada</option>
-
+                        <option value="">Não tem pergunta Cadastrada</option>
                         <?php
                         //=========================================
                         $result2 = resposta_Escolida($row["id"]);
@@ -58,39 +56,20 @@ $row = mysqli_fetch_assoc($result)
 
                             <?php
                         }
-
-
-
-
                         $resul = resposta();
                         if (mysqli_num_rows($resul) > 0) {
                             // output data of each row
                             while ($row = mysqli_fetch_assoc($resul)) {
                                 ?>
                                 <option value="<?= $row["id"] ?>"><?= $row["resposta"] ?></option>
-
                                 <?php
                             }
                         } else {
                             ?>
                             <option value="">Não tem pergunta Cadastrada</option>
-
                             <?php
                         }
                         ?>
-                    </select>
-                </div>
-
-
-
-                <div class="form-group">
-                    <label>Valida</label>
-                    <select class="form-control" name="valida">
-
-                        <option value="1">sim</option>
-                        <option value="0">não</option>
-
-
                     </select>
                 </div>
                 <button type="submit" class="btn btn-default">Enviar </button>

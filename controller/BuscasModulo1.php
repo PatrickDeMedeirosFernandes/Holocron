@@ -45,7 +45,7 @@ function BuscaConcreta($text) {
                     $SAIDA = $aa;
                 }
             } else {
-                $SAIDA = '';
+                $SAIDA = ' ';
             }
         }
 

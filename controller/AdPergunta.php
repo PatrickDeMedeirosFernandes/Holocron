@@ -9,33 +9,20 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
     </script>
     <?PHP
 } else {
+    if ($_POST['repostaQW'] == ' ') {
+
+        $vaitecada = 'poorra';
+    } else {
+
+        $vaitecada = $_POST['repostaQW'];
+    }
     $pergunta = htmlspecialchars(strip_tags($_POST['pergunta']));
     $resposta = htmlspecialchars(strip_tags($_POST['reposta']));
-    $resposta2 = $_POST['repostaQW'];
-    ECHO $resposta2;
+    //echo $resposta.'<br>';
+    ECHO $vaitecada;
     $valida = htmlspecialchars(strip_tags($_POST['valida']));
-
     include './DB.php';
-
-    if (isset($resposta2) || $resposta2 != '' || $resposta2 != ' ') {
-        $query2 = "INSERT INTO `pergunta`(`pergunta`, `valida`, `resposta_pergunta`) VALUES ('$pergunta',$valida,$resposta2)";
-
-        if (!mysqli_query($conn, $query2)) {
-            ?>
-            <script>
-                alert('<?= ("Error description: " . mysqli_error($con)) ?>');
-                window.history.go(-1);
-                //  window.location.href = '../ADM';
-            </script> <?PHP
-        } else {
-            ?><script>
-                alert('Cadastro de Pergunta realizado com sucesso');
-            //                    window.history.go(-1);
-                window.location.href = '../ADM';
-            </script>
-            <?PHP
-        }
-    } else {
+    if (!isset($vaitecada) || $vaitecada == '' || $vaitecada == 'poorra' || $vaitecada == ' ') {
         if (!isset($resposta) || $resposta == '' || $resposta == ' ') {
             ?>
             <script>
@@ -74,6 +61,26 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                     }
                 }
             }
+        }
+    } else {
+
+
+        $query2 = "INSERT INTO `pergunta`(`pergunta`, `valida`, `resposta_pergunta`) VALUES ('$pergunta',$valida,$vaitecada)";
+        echo $query2;
+        if (!mysqli_query($conn, $query2)) {
+            ?>
+            <script>
+                alert('<?= ("Error description: " . mysqli_error($con)) ?>');
+                window.history.go(-1);
+                //  window.location.href = '../ADM';
+            </script> <?PHP
+        } else {
+            ?><script>
+                alert('Cadastro de Pergunta realizado com sucesso');
+                //                    window.history.go(-1);
+                window.location.href = '../ADM';
+            </script>
+            <?PHP
         }
     }
 }

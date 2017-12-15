@@ -7,28 +7,46 @@ set_time_limit("1000");
  * @return string retorna uma resposta padrão
  */
 function BuscaDefaut($text) {
+
     include '../controller/DB.php';
-    $SAIDA = '';
-    $ip = get_client_ip();
-
-    $query2 = "INSERT INTO `perg_sem_resp`(`pergunta`, `ip`) 
+    // $SAIDA = '';
+    $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, `resposta`, `ip`, `resposta_pergunta` FROM `perg_sem_resp` p
+       where    p.pergunta = '$text';";
+    $result2 = $conn->query($sql);
+    if ($result2->num_rows > 0) {
+        $alfa = false;
+    } else {
+        $alfa = true;
+    }
+//    echo $sql;
+    if ($alfa == true) {
+        $ip = get_client_ip();
+        $query2 = "INSERT INTO `perg_sem_resp`(`pergunta`, `ip`) 
              VALUES ('$text', '$ip')";
+//    echo $query2;
 
-    if (mysqli_query($conn, $query2)) {
-        $id = rand(1, 1);
-        //BUSCA NA PRIEMIRA TABELA
-        $sql = "SELECT `id_defaut`, `pergunta`, `resposta` FROM `defaut` where id = $id ;";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($linha = $result->fetch_assoc()) {
-                $aa = $linha['resposta'];
-                $SAIDA = $aa;
-            }
+        if (mysqli_query($conn, $query2)) {
+            $id = rand(1, 2);
+            $sql = "SELECT `id_defaut`, `pergunta`, `resposta` FROM `defaut` where id_defaut = $id ;";
+            $result = mysqli_query($conn, $sql);
+            $linha = mysqli_fetch_assoc($result);
+            //echo $sql;
+            $aa = $linha['resposta'];
+            $text = $aa;
+        } else {
+            $text = "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
         }
     } else {
-        $SAIDA = "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+        $id = rand(1, 2);
+        $sql = "SELECT `id_defaut`, `pergunta`, `resposta` FROM `defaut` where id_defaut = $id ;";
+        $result = mysqli_query($conn, $sql);
+        $linha = mysqli_fetch_assoc($result);
+        //echo $sql;
+        $aa = $linha['resposta'];
+        $text = $aa;
     }
-    return $SAIDA;
+
+    return $text;
 }
 
 function get_client_ip() {
