@@ -7,12 +7,18 @@ include '../controller/BuscasModulo2.php';
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
     $text = nomes(strip_tags(htmlspecialchars($_POST['nome'])));
-
     function pergunta($text) {
 //camada 1
         if (BuscaConcreta($text) != ' ') {
             return BuscaConcreta($text);
-        } ELSE {
+            
+            
+        }elseif (BuscaSimilar($text) != ' ') {
+            return BuscaSimilar;
+        }
+        
+        
+        ELSE {
             return BuscaDefaut($text);
         }
         return $text;

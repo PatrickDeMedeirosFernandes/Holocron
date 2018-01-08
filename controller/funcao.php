@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * Função dicionario, serve para limpar vicios, termos, girias de linguagem
  * @param type $str  a linha que vai ser moadificada
  * @return type  o valor corrigido
  * trazer a lista de expressoes a serem corrigidas
@@ -30,6 +30,12 @@ function nomes($str) {
     }
     return $str;
 }
+/**
+ * metodo não implmentado
+ * @param type $str
+ * @return type
+ */
+
 function saldacao($str) {
     return $str;
 }

@@ -3,7 +3,7 @@
 set_time_limit("1000");
 
 /**
- * função que funiona para pegar alguma respota padrão
+ * função que funiona para pegar alguma respota padrã, ele recebe a frase do usuario para cadastrar no banco de dados
  * @return string retorna uma resposta padrão
  */
 function BuscaDefaut($text) {
