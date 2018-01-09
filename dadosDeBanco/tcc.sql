@@ -227,7 +227,7 @@ CREATE TABLE `pergunta` (
 INSERT INTO `pergunta` (`id_pergunta`, `pergunta`, `valida`, `resposta_pergunta`) VALUES
 (1, 'quem é a esposa de anakin', 1, 1),
 (3, 'quem disse a frase eu sou seu pai', 1, 3),
-(4, 'que disse a frase eu sou seu pai', 1, 6);
+(2, 'que disse a frase eu sou seu pai', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -317,8 +317,7 @@ CREATE TABLE `respota` (
 
 INSERT INTO `respota` (`id`, `resposta`) VALUES
 (1, 'Padmé\r\n'),
-(3, 'Darth Vader disse para o Luke\r\n'),
-(6, 'Darth Vader disse para o Luke\r\n');
+(2, 'Darth Vader disse para o Luke\r\n'),
 
 -- --------------------------------------------------------
 

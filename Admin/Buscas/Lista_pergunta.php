@@ -5,7 +5,8 @@
  */
 function resposta() {
     include '../controller/DB.php';
-    $sql = " SELECT `id`, `resposta` FROM `respota`";
+    $sql = "SELECT DISTINCT(resposta) as resposta, `id` FROM `respota`";
+    echo $sql;
     return $result1 = mysqli_query($conn, $sql);
 }
 

@@ -34,7 +34,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     $login =  htmlspecialchars(strip_tags($_POST['login']));
     $senha = $_POST['senha'];
     $nivel =  htmlspecialchars(strip_tags($_POST['nivel']));
-    $senhaMD5 = md5($senha);
+    $senhaMD5 = md5(md5($senha));
     include './DB.php';
     include '../includes/funcao.php';
 

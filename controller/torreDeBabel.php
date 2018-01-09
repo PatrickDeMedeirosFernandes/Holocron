@@ -14,7 +14,7 @@ if (isset($_POST['nome'])) {
             
             
         }elseif (BuscaSimilar($text) != ' ') {
-            return BuscaSimilar;
+            return BuscaSimilar($text);
         }
         
         

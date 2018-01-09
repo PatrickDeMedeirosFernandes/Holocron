@@ -2,9 +2,9 @@
 include './includes/cabeca.php';
 include './Buscas/Lista_pergunta.php';
 IF ($_SESSION['nivel'] == 3 || $_SESSION['nivel'] == 2) {
-    $id = $_GET['id'];
+$id = $_GET['id'];
 } ELSE {
-    echo ' <script language="javascript">
+echo ' <script language="javascript">
         alert("<Tu não tem poder nessa pagina>");
         window.history.go(-1);
     </script>';
@@ -40,42 +40,40 @@ $row = mysqli_fetch_assoc($result)
                     <label>Resposta Cadastradas</label>
                     <select class="form-control" name="respostaQR">
                         <option value=" ">Não tem pergunta Cadastrada</option>
-
                         <?php
                         //=========================================
                         $result2 = resposta_Escolida($row["id"]);
                         if (mysqli_num_rows($result2) > 0) {
-                            // output data of each row
-                            while ($row = mysqli_fetch_assoc($result2)) {
-                                ?>
-                                <option value="<?= $row["id"] ?>"><?= $row["resposta"] ?></option>
+                        // output data of each row
+                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                        ?>
+                                                                <!--<option value="<?= $row2["id"] ?>"><?= $row2["resposta"] ?></option>-->
 
-                                <?php
-                            }
-                        } else {
-                            ?>
-                            <option value="">Não tem pergunta Cadastrada</option>
-
-                            <?php
+                        <?php
                         }
-
-
-
-
-                        $resul = resposta();
-                        if (mysqli_num_rows($resul) > 0) {
-                            // output data of each row
-                            while ($row = mysqli_fetch_assoc($resul)) {
-                                ?>
-                                <option value="<?= $row["id"] ?>"><?= $row["resposta"] ?></option>
-
-                                <?php
-                            }
                         } else {
-                            ?>
-                            <option value="">Não tem pergunta Cadastrada</option>
+                        ?>
+                        <!--<option value="">Não tem pergunta Cadastrada</option>-->
 
-                            <?php
+                        <?php
+                        }  $resul = resposta();
+                        if (mysqli_num_rows($resul) > 0) {
+                        // output data of each row
+                        while ($row3 = mysqli_fetch_assoc($resul)) {
+                        ?>
+
+                        <option value="<?= $row3["id"] ?>" <?php if($row['resposta'] ==  $row3["resposta"]) { ?>
+                                selected <?php } ?>  >
+                                    <?= $row3["resposta"] ?> 
+                        </option>
+
+                        <?php
+                        
+                        }} else {
+                        ?>
+                        <option value="">Não tem pergunta Cadastrada</option>
+
+                        <?php
                         }
                         ?>
                     </select>
