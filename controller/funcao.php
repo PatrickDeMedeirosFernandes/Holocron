@@ -11,10 +11,12 @@ function nomes($str) {
     $sql = "SELECT `expressao`, `significado` FROM `dicionario`  ;";
     $result = $conn->query($sql);
     $str = str_replace("-", "", $str);
+    $str = str_replace("\"", "\\\"", $str);
+    $str = str_replace("'", "\'", $str);
 //LIMPA ESPAÇOS EXTRAS
-   $str = preg_replace('/\s\s+/', ' ', $str);
+    $str = preg_replace('/\s\s+/', ' ', $str);
 //coloca tudo em minusculo
-   // $str = strtolower($str);
+    // $str = strtolower($str);
 //tira o ?
     $str = trim($str, '? ');
 //tira o !
@@ -30,12 +32,12 @@ function nomes($str) {
     }
     return $str;
 }
+
 /**
  * metodo não implmentado
  * @param type $str
  * @return type
  */
-
 function saldacao($str) {
     return $str;
 }

@@ -7,23 +7,23 @@ include '../controller/BuscasModulo2.php';
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
     $text = nomes(strip_tags(htmlspecialchars($_POST['nome'])));
+
     function pergunta($text) {
 //camada 1
+        $saida = ' ';
         if (BuscaConcreta($text) != ' ') {
-            return BuscaConcreta($text);
-            
-            
-        }elseif (BuscaSimilar($text) != ' ') {
-            return BuscaSimilar($text);
+            $saida = BuscaConcreta($text);
+        } else if (BuscaSimilar($text) != ' ') {
+            $saida = BuscaSimilar($text);
         }
-        
-        
+        //else if (AI($text) != ' ') {
+        //RETURN ai($text);
+        //}
         ELSE {
-            return BuscaDefaut($text);
+            $saida = BuscaDefaut($text);
         }
-        return $text;
+        return $saida;
     }
-
     $resposta1 = pergunta($text);
     $respostaATT = saldacao($resposta1);
     $torre = "<p class='chatlog'><B>Você: </B> " . $_POST['nome'] . "&nbsp;</p><BR>"

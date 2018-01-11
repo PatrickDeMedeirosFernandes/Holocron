@@ -1,4 +1,6 @@
-<?php include '../includes/cabecalho.php'; ?>
+<?php 
+include '../includes/top.php';
+include '../includes/menu.php'; ?>
 <!--https://codepen.io/geoffgraham/pen/BpwqOE?depth=everything&order=popularity&page=2&q=star+wars&show_forks=false-->
 <!--<div id='bodybox'>-->
 <!--    <h4>Holocron</h4>
@@ -12,19 +14,87 @@
         <div id="container">
 
             <div id="paragraph">
-                <h2>Episode V</h2>
-                <h1>The Empire Strikes Back</h1>
-                <p>It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the
-                    Rebel forces from their hidden base and pursued them across the galaxy.</p>
-
-                <p>Evading the dreaded Imperial Starfleet, a group of freedom fighters led by Luke Skywalker has established a 
-                    new secret base on the remote ice world of Hoth.</p>
-
-                <p>The evil lord Darth Vader, obsessed with finding young Skywalker, has dispatched thousands of remote 
-                    probes into the far reaches of space...</p>
+                <h2>Episode TCC</h2>
+                <h1>Holocron o Assistente virtual de Star Wars</h1>
+                
+                <p>Com a destruição da Estrela da Morte, e com algumas informações destruidas pelos Rebeldes, o Império com medo que mais
+                informações sejam destruidas pelas Forças Rebeldes ....</p>
+              
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    //variables
+    var $startButton = $('<div class="tableCellDiv"><input type="button" value="Start"/></div>');
+    var $replayButton = $('<div class="tableCellDiv"><input type="button" value="Replay"/></div>');
+    var $starWars = $('<div id="title"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png"/></div>');
+    var $aLongTimeAgo = $('<div class="tableCellDiv"><div id="aLongTimeAgo">Em uma galáxia muito, muito distante...</div></div>');
+    var $crawl = $('#paragraph');
+    var $container = $('#container');
+
+//functions 
+//starts animation
+    function start() {
+        $(this).detach();
+        $("#wrapper").append($container);
+        $aLongTimeAgo.fadeIn(2000).delay(1000).fadeOut(2000).queue(function () {
+            $starWars.show().addClass("playFade");
+            $crawl.show().addClass("playScroll").dequeue();
+        });
+        $crawl.one('webkitAnimationEnd mozanimationend msAnimationEnd animationend',
+                function () {
+                    // code to execute after animation ends
+                    $(this).fadeOut(700);
+                    $replayButton.fadeIn(1000);
+                });
+    }
+
+//replays animation
+    function replay() {
+        $(this).detach();
+        $("#wrapper").append($container);
+        //clone aLongTimeAgo 
+        $replayALongTimeAgo = $aLongTimeAgo.clone(true).remove().appendTo("#wrapper").hide().fadeIn(2000).delay(1000).fadeOut(2000).queue(function () {
+            //clone starWars 
+            $replayStarWars = $starWars.clone(true);
+            $starWars.before($replayStarWars);
+            $("." + $starWars.attr("class") + ":last").remove().appendTo("#wrapper");
+            //clone Crawl
+            $replayCrawl = $crawl.clone(true).show().one('webkitAnimationEnd mozanimationend msAnimationEnd animationend',
+                    function () {
+                        $(this).fadeOut(700);
+                        $replayButton.appendTo("#wrapper").fadeIn(1000);
+                    });
+            $crawl.before($replayCrawl);
+            $("." + $crawl.attr("class") + ":last").remove().appendTo("#container");
+        });
+        $aLongTimeAgo.before($replayALongTimeAgo);
+        $("." + $aLongTimeAgo.attr("class") + ":last").remove().appendTo("#wrapper");
+
+    }
+
+//add a start button
+    $("#wrapper").append($startButton);
+//ass a replay button
+    $("#wrapper").append($replayButton);
+// add star wars title
+    $("#wrapper").append($starWars);
+//add aLongTimeAgo
+    $("#wrapper").append($aLongTimeAgo);
+
+//hide elements
+    $starWars.hide();
+    $crawl.hide();
+    $aLongTimeAgo.hide();
+    $replayButton.hide();
+
+//start button
+    $startButton.on("click", start);
+
+//replay button
+    $replayButton.on("click", replay);
+</script>
+
 
 <style>
     /*-- general stuff ------------------ */
@@ -202,78 +272,6 @@
             top: -475px;
         }
     }</style>
-
-<script type="text/javascript">
-    //variables
-    var $startButton = $('<div class="tableCellDiv"><input type="button" value="Start"/></div>');
-    var $replayButton = $('<div class="tableCellDiv"><input type="button" value="Replay"/></div>');
-    var $starWars = $('<div id="title"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png"/></div>');
-    var $aLongTimeAgo = $('<div class="tableCellDiv"><div id="aLongTimeAgo">A long time ago in a galaxy far, far away...</div></div>');
-    var $crawl = $('#paragraph');
-    var $container = $('#container');
-
-//functions 
-//starts animation
-    function start() {
-        $(this).detach();
-        $("#wrapper").append($container);
-        $aLongTimeAgo.fadeIn(2000).delay(1000).fadeOut(2000).queue(function () {
-            $starWars.show().addClass("playFade");
-            $crawl.show().addClass("playScroll").dequeue();
-        });
-        $crawl.one('webkitAnimationEnd mozanimationend msAnimationEnd animationend',
-                function () {
-                    // code to execute after animation ends
-                    $(this).fadeOut(700);
-                    $replayButton.fadeIn(1000);
-                });
-    }
-
-//replays animation
-    function replay() {
-        $(this).detach();
-        $("#wrapper").append($container);
-        //clone aLongTimeAgo 
-        $replayALongTimeAgo = $aLongTimeAgo.clone(true).remove().appendTo("#wrapper").hide().fadeIn(2000).delay(1000).fadeOut(2000).queue(function () {
-            //clone starWars 
-            $replayStarWars = $starWars.clone(true);
-            $starWars.before($replayStarWars);
-            $("." + $starWars.attr("class") + ":last").remove().appendTo("#wrapper");
-            //clone Crawl
-            $replayCrawl = $crawl.clone(true).show().one('webkitAnimationEnd mozanimationend msAnimationEnd animationend',
-                    function () {
-                        $(this).fadeOut(700);
-                        $replayButton.appendTo("#wrapper").fadeIn(1000);
-                    });
-            $crawl.before($replayCrawl);
-            $("." + $crawl.attr("class") + ":last").remove().appendTo("#container");
-        });
-        $aLongTimeAgo.before($replayALongTimeAgo);
-        $("." + $aLongTimeAgo.attr("class") + ":last").remove().appendTo("#wrapper");
-
-    }
-
-//add a start button
-    $("#wrapper").append($startButton);
-//ass a replay button
-    $("#wrapper").append($replayButton);
-// add star wars title
-    $("#wrapper").append($starWars);
-//add aLongTimeAgo
-    $("#wrapper").append($aLongTimeAgo);
-
-//hide elements
-    $starWars.hide();
-    $crawl.hide();
-    $aLongTimeAgo.hide();
-    $replayButton.hide();
-
-//start button
-    $startButton.on("click", start);
-
-//replay button
-    $replayButton.on("click", replay);
-</script>
 <!--</div>-->
 <?php
 include '../includes/rodape.php';

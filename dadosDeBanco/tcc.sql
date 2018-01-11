@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2017 às 14:16
--- Versão do servidor: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: 11-Jan-2018 às 12:05
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,17 +21,76 @@ SET time_zone = "+00:00";
 --
 -- Database: `tcc`
 --
--- Função de LEVEL STEN
--- funções para fazer o calculo de proximidade de strings
--- Levenshtein function
--- Source: https://openquery.com.au/blog/levenshtein-mysql-stored-function
--- Levenshtein reference: http://en.wikipedia.org/wiki/Levenshtein_distance
 
- 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein`(`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `split` (IN `input` TEXT CHARSET utf8mb4, IN `delim` VARCHAR(10) CHARSET utf8mb4)  begin
+ 
+    declare foundPos tinyint unsigned;
+    declare tmpTxt text CHARSET utf8;
+    declare delimLen tinyint unsigned;
+    declare element text;
+ 
+    drop temporary table if exists tmpValues;
+    create temporary table tmpValues
+    (
+        `values` varchar(256) CHARSET utf8mb4 not null default ''
+    ) engine = memory;
+ 
+    set delimLen = length(delim);
+    set tmpTxt = input;
+ 
+    set foundPos = instr(tmpTxt,delim);
+    while foundPos <> 0 do
+        set element = substring(tmpTxt, 1, foundPos-1);
+        set tmpTxt = replace(tmpTxt, concat(element,delim), '');
+        insert into tmpValues (`values`) values ( element);
+        set foundPos = instr(tmpTxt,delim);
+    end while;
+ 
+    if tmpTxt <> '' then
+        insert into tmpValues (`values`) values (tmpTxt);
+    end if;
+ 
+    END$$
+
+--
+-- Functions
+--
+CREATE DEFINER=`root`@`localhost` FUNCTION `compare_title` (`title` VARCHAR(255) CHARSET utf8mb4, `keyword` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
+ 
+    DECLARE done INT DEFAULT 0;
+    DECLARE match_found INT DEFAULT 0;
+    DECLARE a VARCHAR(255) CHARSET utf8mb4;
+    DECLARE ratio INT DEFAULT 0;
+    DECLARE cur1 CURSOR FOR SELECT `values` FROM tmpValues;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+ 
+    OPEN cur1;
+ 
+    call split(title, ' ');
+ 
+    read_loop: LOOP
+        FETCH cur1 INTO a;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+  select levenshtein_ratio(upper(a),upper(keyword)) into ratio;
+        IF ratio > 80 THEN
+  SET done = 1;
+  SET match_found = 1;
+        END IF;
+       
+    END LOOP read_loop;
+ 
+    CLOSE cur1;
+    return match_found;
+ 
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
  DECLARE s1_len, s2_len, i, j, c, c_temp, cost INT;
  DECLARE s1_char CHAR CHARSET utf8mb4;
  DECLARE cv0, cv1 VARBINARY(256);
@@ -66,14 +127,8 @@ BEGIN
     END IF;
     RETURN c;
 END$$
-DELIMITER ;
- 
- 
- 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein_ratio`(`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein_ratio` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
 DECLARE s1_len, s2_len, max_len INT;
 SET s1_len = LENGTH(s1), s2_len = LENGTH(s2);
 IF s1_len > s2_len THEN
@@ -83,86 +138,10 @@ SET max_len = s2_len;
 END IF;
 RETURN ROUND((1 - LEVENSHTEIN(s1, s2) / max_len) * 100);
 END$$
-DELIMITER ;
- 
- 
- 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `split`(IN `input` TEXT CHARSET utf8mb4, IN `delim` VARCHAR(10) CHARSET utf8mb4)
-begin
- 
-    declare foundPos tinyint unsigned;
-    declare tmpTxt text CHARSET utf8;
-    declare delimLen tinyint unsigned;
-    declare element text;
- 
-    drop temporary table if exists tmpValues;
-    create temporary table tmpValues
-    (
-        `values` varchar(256) CHARSET utf8mb4 not null default ''
-    ) engine = memory;
- 
-    set delimLen = length(delim);
-    set tmpTxt = input;
- 
-    set foundPos = instr(tmpTxt,delim);
-    while foundPos <> 0 do
-        set element = substring(tmpTxt, 1, foundPos-1);
-        set tmpTxt = replace(tmpTxt, concat(element,delim), '');
-        insert into tmpValues (`values`) values ( element);
-        set foundPos = instr(tmpTxt,delim);
-    end while;
- 
-    if tmpTxt <> '' then
-        insert into tmpValues (`values`) values (tmpTxt);
-    end if;
- 
-    END$$
-DELIMITER ;
- 
- 
- 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `compare_title`(`title` VARCHAR(255) CHARSET utf8mb4, `keyword` VARCHAR(255) CHARSET utf8mb4) RETURNS int(11)
-    DETERMINISTIC
-BEGIN
- 
-    DECLARE done INT DEFAULT 0;
-    DECLARE match_found INT DEFAULT 0;
-    DECLARE a VARCHAR(255) CHARSET utf8mb4;
-    DECLARE ratio INT DEFAULT 0;
-    DECLARE cur1 CURSOR FOR SELECT `values` FROM tmpValues;
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
- 
-    OPEN cur1;
- 
-    call split(title, ' ');
- 
-    read_loop: LOOP
-        FETCH cur1 INTO a;
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-  select levenshtein_ratio(upper(a),upper(keyword)) into ratio;
-        IF ratio > 80 THEN
-  SET done = 1;
-  SET match_found = 1;
-        END IF;
-       
-    END LOOP read_loop;
- 
-    CLOSE cur1;
-    return match_found;
- 
-END$$
-DELIMITER ;
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
 
+DELIMITER ;
+
+-- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `defaut`
@@ -226,8 +205,8 @@ CREATE TABLE `pergunta` (
 
 INSERT INTO `pergunta` (`id_pergunta`, `pergunta`, `valida`, `resposta_pergunta`) VALUES
 (1, 'quem é a esposa de anakin', 1, 1),
-(3, 'quem disse a frase eu sou seu pai', 1, 3),
-(2, 'que disse a frase eu sou seu pai', 1, 3);
+(2, 'que disse a frase eu sou seu pai', 1, 2),
+(3, 'quem disse a frase eu sou seu pai', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -317,7 +296,7 @@ CREATE TABLE `respota` (
 
 INSERT INTO `respota` (`id`, `resposta`) VALUES
 (1, 'Padmé\r\n'),
-(2, 'Darth Vader disse para o Luke\r\n'),
+(2, 'Darth Vader disse para o Luke\r\n');
 
 -- --------------------------------------------------------
 
@@ -345,14 +324,13 @@ CREATE TABLE `user` (
   `frase` text,
   `frase_respota` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO `user` ( `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`)
- VALUES ('root', 'd9b1d7db4cd6e70935368a1efb10e377', '3', '1', NULL, NULL);
 
 --
 -- Extraindo dados da tabela `user`
 --
 
-
+INSERT INTO `user` (`id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`) VALUES
+(0, 'root', 'd9b1d7db4cd6e70935368a1efb10e377', 3, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -407,6 +385,7 @@ ALTER TABLE `perg_sem_resp`
 --
 ALTER TABLE `perg_user`
   ADD PRIMARY KEY (`id_perg_user`),
+  ADD UNIQUE KEY `data` (`data`),
   ADD KEY `rpu` (`respota_perg_user`);
 
 --
@@ -537,22 +516,11 @@ ALTER TABLE `perg_user`
   ADD CONSTRAINT `perg_user_ibfk_1` FOREIGN KEY (`respota_perg_user`) REFERENCES `respota` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `propriedade`
---
-ALTER TABLE `propriedade`
-  ADD CONSTRAINT `fk_propriedade_temp` FOREIGN KEY (`temp_id_temp`) REFERENCES `temp` (`id_temp`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Limitadores para a tabela `report`
 --
 ALTER TABLE `report`
   ADD CONSTRAINT `report_ibfk_1` FOREIGN KEY (`visuaizado_por`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `valor`
---
-ALTER TABLE `valor`
-  ADD CONSTRAINT `fk_valor_personagem1` FOREIGN KEY (`personagem_id_personagem`) REFERENCES `personagem` (`id_personagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
