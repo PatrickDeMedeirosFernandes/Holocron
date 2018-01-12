@@ -41,7 +41,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     $senhaMD5  =md5($senhaM5);
 
     include './DB.php';
-    include '../includes/funcao.php';
+    include '../scripts/funcao.php';
 
     $query = "
         UPDATE `user` SET `login`='$login',

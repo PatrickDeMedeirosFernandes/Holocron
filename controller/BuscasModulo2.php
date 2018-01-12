@@ -1,7 +1,14 @@
 <?PHP
 
 set_time_limit("1000");
-
+//ANALIZAR ESTA LINHA
+// SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, 
+// (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN respota u ON p.resposta_pergunta = u.id
+/**
+ * Essa função serve para buscar resposta onde tenha alguma proximidade relativa na da frase enviada, com as frases que em no banco de dados 
+ * @param type String
+ * @return string retorna a resposta da pergunta ou vazio caso não ache nenhuma
+ */
 function BuscaSimilar($text) {
     include '../controller/DB.php';
     $SAIDA = '';

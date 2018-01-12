@@ -1,9 +1,11 @@
 <?php
 
-include '../controller/funcao.php';
+include '../scripts/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
 include '../controller/BuscasModulo2.php';
+include '../controller/BuscasModulo2Soundex.php';
+
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
     $text = nomes(strip_tags(htmlspecialchars($_POST['nome'])));
@@ -13,6 +15,8 @@ if (isset($_POST['nome'])) {
         $saida = ' ';
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
+        } else if (BuscaSimilarSoundex($text) != ' ') {
+            $saida = BuscaSimilarSoundex($text);
         } else if (BuscaSimilar($text) != ' ') {
             $saida = BuscaSimilar($text);
         }
@@ -24,6 +28,7 @@ if (isset($_POST['nome'])) {
         }
         return $saida;
     }
+
     $resposta1 = pergunta($text);
     $respostaATT = saldacao($resposta1);
     $torre = "<p class='chatlog'><B>Você: </B> " . $_POST['nome'] . "&nbsp;</p><BR>"

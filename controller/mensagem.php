@@ -1,7 +1,7 @@
 <?php
 
 include './DB.php';
-include '../includes/funcao.php';
+include '../scripts/funcao.php';
 if (!isset($_POST['chat']) || !isset($_POST['Email']) || !isset($_POST['Texto'])) {
     ?>
     <script language="javascript">

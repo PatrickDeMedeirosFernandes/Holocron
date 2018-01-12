@@ -42,8 +42,7 @@ if (file_exists($target_file)) {
 //                echo 'Aqui está mais informações de debug:';
                 //   print_r($_FILES);
                 include_once '../controller/DB.php';
-include '../includes/funcao.php';
-
+include '../scripts/funcao.php';
                 $arquivo = fopen("../ANEXO/" . $_FILES['userfile']['name'], "r");
                 //    $arquivo = fopen('dados_emails.csv', 'r');
                 // Lê o conteúdo do arquivo

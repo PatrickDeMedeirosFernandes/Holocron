@@ -2,7 +2,7 @@
 session_start();
 
 include './DB.php';
-include '../includes/funcao.php';
+include '../scripts/funcao.php';
 if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' || $_POST['login'] == '') {
     ?>
     <script language="javascript">
@@ -17,7 +17,6 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
 
     $caracteres = $_POST["caracteres"];
     $codigo = $_SESSION["codigo"];
-
     if ($codigo != $caracteres) {
         ?>
         <script language="javascript">
@@ -40,7 +39,6 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
         FROM `user` 
         WHERE `senha` = '$senhaMD5' AND login = '$login' and ativo = 1";
         $result = mysqli_query($conn, $sql);
-
         if (mysqli_num_rows($result) > 0) {
             // output data of each row
             $row = mysqli_fetch_assoc($result);
@@ -50,11 +48,9 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
             $_SESSION['nivel'] = $row["nivel"];
             $_SESSION['ativo'] = $row["ativo"];
             $_SESSION['frase'] = $row["frase"];
-            $_SESSION['frase_respota'] = $row["frase_respota"];
-            ?>
+            $_SESSION['frase_respota'] = $row["frase_respota"];  ?>
             <script language="javascript">
              //   alert("Bem Vindo <?= $_SESSION['login'] ?>");
-
                 document.location.href = 'adm';
             </script>
             <?php

@@ -36,7 +36,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     $nivel =  htmlspecialchars(strip_tags($_POST['nivel']));
     $senhaMD5 = md5(md5($senha));
     include './DB.php';
-    include '../includes/funcao.php';
+    include '../scripts/funcao.php';
 
     $query = "INSERT INTO `user`(`login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`) 
          VALUES ('$login','$senhaMD5',$nivel,$valida,'$pergunta','$resposta')";

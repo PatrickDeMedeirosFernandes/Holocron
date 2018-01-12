@@ -9,7 +9,47 @@ include '../includes/menu.php'; ?>
     </p>
     <br>-->
 <!-- I did not find the text of the original generic. So here is a translation into my native language. -->
+//COLOCAR MUSICA CERTA
+<audio loop id="audio">
+  <source src="view/Kalimba.ogg" type="audio/ogg">
+  <source src="view/Kalimba.mp3" type="audio/mpeg">
+</audio>
 
+ 
+ 
+ 
+<script>
+    audio = document.getElementById('audio');
+ 
+    function play(){
+        audio.play();
+    }
+ 
+    function pause(){
+        audio.pause();
+    }
+ 
+    function stop(){
+        audio.pause();
+        audio.currentTime = 0;
+    }
+ 
+    function aumentar_volume(){
+        if( audio.volume < 1)  audio.volume += 0.1;
+    }
+ 
+    function diminuir_volume(){
+        if( audio.volume > 0)  audio.volume -= 0.1;
+    }
+         
+    function mute(){
+        if( audio.muted ){
+            audio.muted = false;
+        }else{
+            audio.muted = true;
+        }
+    }
+</script>
     <div id="wrapper">
         <div id="container">
 
@@ -18,15 +58,19 @@ include '../includes/menu.php'; ?>
                 <h1>Holocron o Assistente virtual de Star Wars</h1>
                 
                 <p>Com a destruição da Estrela da Morte, e com algumas informações destruidas pelos Rebeldes, o Império com medo que mais
-                informações sejam destruidas pelas Forças Rebeldes ....</p>
-              
+                informações sejam destruidas pelas Forças Rebeldes, contratam um estudante de
+                Analise e Desenvolvimento de Sistemas, da Faculdade de Tecnologia Senac Pelotas, chamado Patrick de Medeiros Fernandes </p>
+                <P>Para fim de Desenolver um novo tipo de Holocron, um que pudesse se passar por uma pessoa, se fosse capaz
+                conversar com ele, um sistema de conversar, mas que também conte-se toda a base de informações,
+                onde somente o alto comando do Império tivesse acesso ao mesmo. </P>
+                <p>Mas os planos não foram como o planejado, </p>
             </div>
         </div>
     </div>
 <script type="text/javascript">
     //variables
-    var $startButton = $('<div class="tableCellDiv"><input type="button" value="Start"/></div>');
-    var $replayButton = $('<div class="tableCellDiv"><input type="button" value="Replay"/></div>');
+    var $startButton = $('<div class="tableCellDiv"><input type="button" value="Start" onclick="play()"/></div>');
+    var $replayButton = $('<div class="tableCellDiv"><input type="button" value="Replay" onclick="play()"/></div>');
     var $starWars = $('<div id="title"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2000px-Star_Wars_Logo.svg.png"/></div>');
     var $aLongTimeAgo = $('<div class="tableCellDiv"><div id="aLongTimeAgo">Em uma galáxia muito, muito distante...</div></div>');
     var $crawl = $('#paragraph');
@@ -40,6 +84,7 @@ include '../includes/menu.php'; ?>
         $aLongTimeAgo.fadeIn(2000).delay(1000).fadeOut(2000).queue(function () {
             $starWars.show().addClass("playFade");
             $crawl.show().addClass("playScroll").dequeue();
+            
         });
         $crawl.one('webkitAnimationEnd mozanimationend msAnimationEnd animationend',
                 function () {
