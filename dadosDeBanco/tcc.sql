@@ -26,7 +26,7 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `split` (IN `input` TEXT CHARSET utf8mb4, IN `delim` VARCHAR(10) CHARSET utf8mb4)  begin
+CREATE  PROCEDURE `split` (IN `input` TEXT CHARSET utf8mb4, IN `delim` VARCHAR(10) CHARSET utf8mb4)  begin
  
     declare foundPos tinyint unsigned;
     declare tmpTxt text CHARSET utf8;
@@ -59,7 +59,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `split` (IN `input` TEXT CHARSET utf
 --
 -- Functions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `compare_title` (`title` VARCHAR(255) CHARSET utf8mb4, `keyword` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
+CREATE  FUNCTION `compare_title` (`title` VARCHAR(255) CHARSET utf8mb4, `keyword` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
  
     DECLARE done INT DEFAULT 0;
     DECLARE match_found INT DEFAULT 0;
@@ -90,7 +90,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `compare_title` (`title` VARCHAR(255)
  
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
+CREATE  FUNCTION `levenshtein` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
  DECLARE s1_len, s2_len, i, j, c, c_temp, cost INT;
  DECLARE s1_char CHAR CHARSET utf8mb4;
  DECLARE cv0, cv1 VARBINARY(256);
@@ -128,7 +128,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein` (`s1` VARCHAR(255) CHAR
     RETURN c;
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `levenshtein_ratio` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
+CREATE FUNCTION `levenshtein_ratio` (`s1` VARCHAR(255) CHARSET utf8mb4, `s2` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
 DECLARE s1_len, s2_len, max_len INT;
 SET s1_len = LENGTH(s1), s2_len = LENGTH(s2);
 IF s1_len > s2_len THEN
@@ -151,7 +151,7 @@ CREATE TABLE `defaut` (
   `id_defaut` int(11) NOT NULL,
   `pergunta` int(1) NOT NULL DEFAULT '1',
   `resposta` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE `dicionario` (
   `id_dicionario` int(11) NOT NULL,
   `expressao` text NOT NULL,
   `significado` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Extraindo dados da tabela `dicionario`
@@ -184,7 +184,7 @@ CREATE TABLE `log_conversa` (
   `ip` varchar(45) NOT NULL,
   `data_inc` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `data_fim` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,7 @@ CREATE TABLE `pergunta` (
   `pergunta` text,
   `valida` int(11) NOT NULL DEFAULT '1',
   `resposta_pergunta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Extraindo dados da tabela `pergunta`
@@ -221,7 +221,7 @@ CREATE TABLE `perg_sem_resp` (
   `resposta` text,
   `ip` varchar(45) NOT NULL,
   `resposta_pergunta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 -- --------------------------------------------------------
 
@@ -235,7 +235,7 @@ CREATE TABLE `perg_user` (
   `valida` int(11) NOT NULL DEFAULT '1',
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `respota_perg_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 -- --------------------------------------------------------
 
@@ -246,7 +246,7 @@ CREATE TABLE `perg_user` (
 CREATE TABLE `personagem` (
   `id_personagem` int(11) NOT NULL,
   `nome` text COLLATE utf8_german2_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -259,7 +259,7 @@ CREATE TABLE `propriedade` (
   `propriedade` text COLLATE utf8_german2_ci,
   `valo` text COLLATE utf8_german2_ci,
   `temp_id_temp` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,7 @@ CREATE TABLE `report` (
   `data_visto` datetime DEFAULT NULL,
   `visuaizado_por` int(11) DEFAULT NULL,
   `ip` varchar(60) COLLATE utf8_german2_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -288,7 +288,7 @@ CREATE TABLE `report` (
 CREATE TABLE `respota` (
   `id` int(11) NOT NULL,
   `resposta` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Extraindo dados da tabela `respota`
@@ -307,7 +307,7 @@ INSERT INTO `respota` (`id`, `resposta`) VALUES
 CREATE TABLE `temp` (
   `id_temp` int(11) NOT NULL,
   `nome` text COLLATE utf8_german2_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,7 @@ CREATE TABLE `user` (
   `ativo` int(1) NOT NULL DEFAULT '1',
   `frase` text,
   `frase_respota` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 --
 -- Extraindo dados da tabela `user`
@@ -342,7 +342,7 @@ CREATE TABLE `valor` (
   `id_valor` int(11) NOT NULL,
   `valor` text COLLATE utf8_german2_ci,
   `personagem_id_personagem` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+);
 
 --
 -- Indexes for dumped tables
