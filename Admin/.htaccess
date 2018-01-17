@@ -12,22 +12,22 @@ RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
 #DirectoryIndex index.html index.php view/index.php 
 
 
-RewriteRule ^adm   admin.php [NC,L]
-RewriteRule ^Report   report.php [NC,L]
-RewriteRule ^Perguntas_Nativas  PergNat.php [NC,L]
-RewriteRule ^Perguntas_Sem_Resp  PergSemResp.php [NC,L]
-RewriteRule ^Perguntas_Usuarios  PergUser.php [NC,L]
-RewriteRule ^Perguntas_Criadas_PorBot  PergCreatBot.php [NC,L]
-RewriteRule ^Cad-Lote-PergResp  CadLotePerg.php [NC,L]
-RewriteRule ^Cad-Uma-PergResp  CadUmaPerg.php [NC,L]
-RewriteRule ^Lista_Usuarios  UserList.php [NC,L]
-RewriteRule ^Cadastro_Usuario  UserCad.php [NC,L]
+RewriteRule ^adm/?$  admin.php [NC,L]
+RewriteRule ^Report/?$   report.php [NC,L]
+RewriteRule ^Perguntas_Nativas/?$  PergNat.php [NC,L]
+RewriteRule ^Perguntas_Sem_Resp/?$  PergSemResp.php [NC,L]
+RewriteRule ^Perguntas_Usuarios/?$  PergUser.php [NC,L]
+RewriteRule ^Perguntas_Criadas_PorBot/?$  PergCreatBot.php [NC,L]
+RewriteRule ^Cad-Lote-PergResp/?$  CadLotePerg.php [NC,L]
+RewriteRule ^Cad-Uma-PergResp/?$  CadUmaPerg.php [NC,L]
+RewriteRule ^Lista_Usuarios/?$  UserList.php [NC,L]
+RewriteRule ^Cadastro_Usuario/?$  UserCad.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  duvidaUnico.php?id=$1
 
 RewriteRule ^Editar_Usuario-([0-9]+)  UserEdit.php?id=$1
 RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) EditPergNat.php?id=$1
 RewriteRule ^Editar_Pergunta_SemResp-([0-9]+) EditPergSemResp.php?id=$1
 RewriteRule ^Editar_Pergunta_FeitaBot-([0-9]+) EditPerUser.php?id=$1
-RewriteRule ^Sair  logout.php [NC,L]
+RewriteRule ^Sair/?$  logout.php [NC,L]
 
 </ifModule> 
