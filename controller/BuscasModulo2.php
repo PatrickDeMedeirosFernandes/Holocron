@@ -1,6 +1,6 @@
 <?PHP
 
-set_time_limit("1000");
+//set_time_limit("1000");
 //ANALIZAR ESTA LINHA
 // SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, 
 // (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN respota u ON p.resposta_pergunta = u.id

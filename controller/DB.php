@@ -1,21 +1,21 @@
-<?php 
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
-//$dbname = "tcc";
+<?php // 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "tcc";
 
-
-$servername = "mysql.hostinger.com.br";
-$username = "u381013248_tcc";
-$password = "defecon2";
-$dbname = "u381013248_tcc";
+//
+//$servername = "mysql.hostinger.com.br";
+//$username = "u381013248_tcc";
+//$password = "defecon2";
+//$dbname = "u381013248_tcc";
 
 //
 //$servidor = "mysql.hostinger.com.br";
 //$usuarioBD = "u381013248_ujo";
 //$senhaBD = "1234567890-=pfqwert";
 //$banco = "u381013248_ujo";
-$conecta = mysqli_connect($servidor, $usuarioBD, $senhaBD, $banco)or die(mysqli_errno($conecta));
+//$conecta = mysqli_connect($servidor, $usuarioBD, $senhaBD, $banco)or die(mysqli_errno($conecta));
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);

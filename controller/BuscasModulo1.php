@@ -1,6 +1,6 @@
 <?PHP
 
-set_time_limit("1000");
+////set_time_limit("1000");
 /**
  * ele faz uma analise da frase que vai que foi enviada e busca no banco de dados alguma pergunta que seja igual a pergunta informada,
  *  e enviar uma resposta caso essa tenha no banco de dados

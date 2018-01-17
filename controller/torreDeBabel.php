@@ -1,5 +1,5 @@
 <?php
-
+$respostaATT ="teste";
 include '../scripts/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
@@ -31,6 +31,7 @@ if (isset($_POST['nome'])) {
 
     $resposta1 = pergunta($text);
     $respostaATT = saldacao($resposta1);
-    $torre = "<p class='chatlog'><B>Você: </B> " . $_POST['nome'] . "&nbsp;</p><BR>"
-            . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
+ 
 }
+
+?> 

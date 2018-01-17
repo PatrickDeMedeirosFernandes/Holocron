@@ -1,6 +1,6 @@
 <?php
 
-set_time_limit("1000");
+//set_time_limit("1000");
 
 /**
  * função que funiona para pegar alguma respota padrã, ele recebe a frase do usuario para cadastrar no banco de dados
@@ -48,22 +48,22 @@ function BuscaDefaut($text) {
 
     return $text;
 }
-
-function get_client_ip() {
-    $ipaddress = '';
-    if (isset($_SERVER['HTTP_CLIENT_IP']))
-        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-    else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    else if (isset($_SERVER['HTTP_X_FORWARDED']))
-        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-    else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
-        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-    else if (isset($_SERVER['HTTP_FORWARDED']))
-        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-    else if (isset($_SERVER['REMOTE_ADDR']))
-        $ipaddress = $_SERVER['REMOTE_ADDR'];
-    else
-        $ipaddress = 'UNKNOWN';
-    return $ipaddress;
-}
+//
+//function get_client_ip2() {
+//    $ipaddress = '';
+//    if (isset($_SERVER['HTTP_CLIENT_IP']))
+//        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+//    else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+//        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+//    else if (isset($_SERVER['HTTP_X_FORWARDED']))
+//        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+//    else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
+//        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+//    else if (isset($_SERVER['HTTP_FORWARDED']))
+//        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+//    else if (isset($_SERVER['REMOTE_ADDR']))
+//        $ipaddress = $_SERVER['REMOTE_ADDR'];
+//    else
+//        $ipaddress = 'UNKNOWN';
+//    return $ipaddress;
+//}
