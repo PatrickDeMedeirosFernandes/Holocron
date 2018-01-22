@@ -51,7 +51,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
             $_SESSION['frase_respota'] = $row["frase_respota"];  ?>
             <script language="javascript">
              //   alert("Bem Vindo <?= $_SESSION['login'] ?>");
-                document.location.href = 'adm';
+                document.location.href = 'EstrelaDaMorte';
             </script>
             <?php
         } else {

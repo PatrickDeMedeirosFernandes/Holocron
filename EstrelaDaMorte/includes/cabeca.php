@@ -13,15 +13,26 @@ if (!isset($_SESSION['login'])) {
 
     <title><?= $_SESSION['login'] ?></title>
     <!-- Bootstrap Core CSS -->
-    <link href="Admin/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="Admin/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="Admin/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="estilo/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="Admin/estilo/Admin/vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="Admin/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    
+        <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="EstrelaDaMorte/estilo/dist/css/sb-EstrelaDaMorte-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="EstrelaDaMorte/estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar-default sidebar" role="navigation">
@@ -142,15 +153,25 @@ if (!isset($_SESSION['login'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title><?= $_SESSION['login'] ?></title>
             <!-- Bootstrap Core CSS -->
-            <link href="Admin/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link href="estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
             <!-- MetisMenu CSS -->
-            <link href="Admin/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+            <link href="estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
             <!-- Custom CSS -->
-            <link href="Admin/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
+            <link href="estilo/dist/css/sb-admin-2.css" rel="stylesheet">
             <!-- Morris Charts CSS -->
-            <link href="Admin/estilo/Admin/vendor/morrisjs/morris.css" rel="stylesheet">
+            <link href="estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
             <!-- Custom Fonts -->
-            <link href="Admin/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <link href="estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            
+        <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="EstrelaDaMorte/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="EstrelaDaMorte/estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         </head>
         <?php
         date_default_timezone_set('America/Sao_Paulo');

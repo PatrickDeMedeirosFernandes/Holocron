@@ -12,7 +12,7 @@ RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
 #DirectoryIndex index.html index.php view/index.php 
 
 
-RewriteRule ^adm/?$  admin.php [NC,L]
+RewriteRule ^adm/?$  index.php [NC,L]
 RewriteRule ^Report/?$   report.php [NC,L]
 RewriteRule ^Perguntas_Nativas/?$  PergNat.php [NC,L]
 RewriteRule ^Perguntas_Sem_Resp/?$  PergSemResp.php [NC,L]

@@ -16,7 +16,7 @@ $check = getimagesize($_FILES["userfile"]["tmp_name"]);
 if (file_exists($target_file)) {
     ?><script>
         alert('ARQUIVO JÁ EXISTI');
-   window.location.href = '../ADM';
+   window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else {
@@ -24,7 +24,7 @@ if (file_exists($target_file)) {
     if ($_FILES["userfile"]["size"] < 5) {
         ?><script>
             alert('ARQUIVO COM TAMANHO NÁO SUPORTADO');
-              window.location.href = '../ADM';
+              window.location.href = '../EstrelaDaMorte';
         </script>
         <?PHP
     } else {
@@ -32,7 +32,7 @@ if (file_exists($target_file)) {
         if ($imageFileType != "csv" && $imageFileType != "txt") {
             ?><script>
                 alert('ARQUIVO TEM QUE SER .CSV OU .TXT');
-   window.location.href = '../ADM';
+   window.location.href = '../EstrelaDaMorte';
             </script>
             <?PHP
         } ELSE {
@@ -73,7 +73,7 @@ include '../scripts/funcao.php';
                     }
                     ?><script>
                         alert('Envio de dados terminado');
-                                 window.location.href = '../ADM';
+                                 window.location.href = '../EstrelaDaMorte';
 
                     </script>
                     <?PHP
@@ -81,7 +81,7 @@ include '../scripts/funcao.php';
             } else {
                 ?><script>
                     alert('Aconteceu algum problema no envio do arquivo e náo foi enviado');
-                   window.location.href = '../ADM';
+                   window.location.href = '../EstrelaDaMorte';
                 </script>
                 <?PHP
             }

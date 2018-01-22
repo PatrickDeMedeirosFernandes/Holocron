@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form class="form-group"  enctype="multipart/form-data"
-                  action="controller/AdUser.php" method="POST">
+                  action="../controller/AdUser.php" method="POST">
                 <div class="form-group">
                     <label>Login* </label>
                     <input type="text" name="login" class="form-control" >

@@ -25,7 +25,7 @@ $row = mysqli_fetch_assoc($result)
     <div class="row">
         <div class="col-lg-12">
             <form class="form-group"  enctype="multipart/form-data"
-                  action="controller/AdEdtPergunta.php" method="POST">
+                  action="../controller/AdEdtPergunta.php" method="POST">
                 <input type="hidden" value="<?= $row["id_pergunta"] ?>" name="id">
 
                 <div class="form-group">

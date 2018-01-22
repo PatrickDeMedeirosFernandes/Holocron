@@ -8,14 +8,14 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     ?><script>
             alert('Verifique os campos');
             window.history.go(-1);
-    //            window.location.href = '../ADM';
+    //            window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else if ($_POST['senha'] != $_POST['senha2']) {
     ?><script>
             alert('senhas não conferem');
             window.history.go(-1);
-    // window.location.href = '../ADM';
+    // window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else {

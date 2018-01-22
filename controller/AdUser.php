@@ -8,7 +8,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     ?><script>
             alert('Verifique os campos');
             window.history.go(-1);
-    //            window.location.href = '../ADM';
+    //            window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else if ($_POST['senha'] != $_POST['senha2']) {
@@ -16,7 +16,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
             alert('senhas não conferem');
             window.history.go(-1);
 
-    //            window.location.href = '../ADM';
+    //            window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else {
@@ -47,13 +47,13 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
                 <script>
                     alert('<?= ("Error description: " . mysqli_error($con)) ?>');
                 //    window.history.go(-1);
-                    window.location.href = '../ADM';
+                    window.location.href = '../EstrelaDaMorte';
                 </script> <?PHP
             } else {
                 ?><script>
                                     alert('Cadastro de Usuario feito com sucesso realizado com sucesso');
                 //    window.history.go(-1);
-                                    window.location.href = '../ADM';
+                                    window.location.href = '../EstrelaDaMorte';
                 </script>
                 <?PHP
             }

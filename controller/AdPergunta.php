@@ -5,7 +5,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
     ?><script>
         alert('Verifique os campos');
         window.history.go(-1);
-        //            window.location.href = '../ADM';
+        //            window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
 } else {
@@ -28,7 +28,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
             <script>
                 alert('ERRO NO Cadastro de Pergunta');
                 window.history.go(-1);
-                //  window.location.href = '../ADM';
+                //  window.location.href = '../EstrelaDaMorte';
             </script> <?PHP
         } else {
             $query = "INSERT INTO `respota`(`resposta`) VALUES ('$resposta')";
@@ -37,7 +37,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                 <script>
                     alert('<?= ("Error description: " . mysqli_error($con)) ?>');
                     window.history.go(-1);
-                    //  window.location.href = '../ADM';
+                    //  window.location.href = '../EstrelaDaMorte';
                 </script> <?PHP
             } else {
                 $ID = mysqli_insert_id($conn);
@@ -49,13 +49,13 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                         <script>
                             alert('<?= ("Error description: " . mysqli_error($con)) ?>');
                             window.history.go(-1);
-                            //     window.location.href = '../ADM';
+                            //     window.location.href = '../EstrelaDaMorte';
                         </script> <?PHP
                     } else {
                         ?><script>
                             alert('Cadastro de Pergunta realizado com sucesso');
                             window.history.go(-1);
-                            //   window.location.href = '../ADM';
+                            //   window.location.href = '../EstrelaDaMorte';
                         </script>
                         <?PHP
                     }
@@ -72,13 +72,13 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
             <script>
                 alert('<?= ("Error description: " . mysqli_error($con)) ?>');
                 window.history.go(-1);
-                //  window.location.href = '../ADM';
+                //  window.location.href = '../EstrelaDaMorte';
             </script> <?PHP
         } else {
             ?><script>
                 alert('Cadastro de Pergunta realizado com sucesso');
                 //                    window.history.go(-1);
-                window.location.href = '../ADM';
+                window.location.href = '../EstrelaDaMorte';
             </script>
             <?PHP
         }

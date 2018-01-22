@@ -27,7 +27,7 @@ $row = mysqli_fetch_assoc($result)
             <?php
             ?>
             <form class="form-group"  enctype="multipart/form-data"
-                  action="controller/EdtUser.php" method="POST">
+                  action="../controller/EdtUser.php" method="POST">
                 <input type="hidden" value="<?= $row["id_user"] ?>" name="id">
                 <div class="form-group">
                     <label>Login </label>

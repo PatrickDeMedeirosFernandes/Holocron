@@ -3,8 +3,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "tcc";
-
 //
+//////
 //$servername = "mysql.hostinger.com.br";
 //$username = "u381013248_tcc";
 //$password = "defecon2";

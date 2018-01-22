@@ -14,7 +14,7 @@
             </li>
 
             <li>
-                <a href="ADM"><i class="fa fa-dashboard fa-fw active"></i> Home</a>
+                <a href="./ADM"><i class="fa fa-dashboard fa-fw active"></i> Home</a>
             </li>
             <li>
                 <a href="Report"><i class="fa fa-edit fa-fw"></i>Duvidas</a>
