@@ -13,26 +13,6 @@ if (!isset($_SESSION['login'])) {
 
     <title><?= $_SESSION['login'] ?></title>
     <!-- Bootstrap Core CSS -->
-    <link href="estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="estilo/dist/css/sb-admin-2.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
- <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-    
-        <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="EstrelaDaMorte/estilo/dist/css/sb-EstrelaDaMorte-2.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="EstrelaDaMorte/estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="navbar-default sidebar" role="navigation">
@@ -54,101 +34,99 @@ if (!isset($_SESSION['login'])) {
         <!DOCTYPE html>
     <html lang="pt">
         <head>  <?php
-        if($_SESSION['nivel'] != 3){
-        ?>
-            <script type='text/javascript'>
-    //desabilita menu de opcoes ao clicar no botao direito
-                function desabilitaMenu(e)
-                {
-                    if (window.Event)
+            if ($_SESSION['nivel'] != 3) {
+                ?>
+                <script type='text/javascript'>
+                    //desabilita menu de opcoes ao clicar no botao direito
+                    function desabilitaMenu(e)
                     {
-                        if (e.which == 2 || e.which == 3)
+                        if (window.Event)
+                        {
+                            if (e.which == 2 || e.which == 3)
+                                return false;
+                        } else
+                        {
+                            event.cancelBubble = true
+                            event.returnValue = false;
                             return false;
-                    } else
-                    {
-                        event.cancelBubble = true
-                        event.returnValue = false;
-                        return false;
+                        }
                     }
-                }
-    //desabilita botao direito
-                function desabilitaBotaoDireito(e)
-                {
-                    if (window.Event)
+                    //desabilita botao direito
+                    function desabilitaBotaoDireito(e)
                     {
-                        if (e.which == 2 || e.which == 3)
+                        if (window.Event)
+                        {
+                            if (e.which == 2 || e.which == 3)
+                                return false;
+                        } else
+                        if (event.button == 2 || event.button == 3)
+                        {
+                            event.cancelBubble = true
+                            event.returnValue = false;
                             return false;
-                    } else
-                    if (event.button == 2 || event.button == 3)
-                    {
-                        event.cancelBubble = true
-                        event.returnValue = false;
-                        return false;
-                    }
-
-                }
-    //desabilita botao direito do mouse
-                if (window.Event)
-                    document.captureEvents(Event.MOUSEUP);
-                if (document.layers)
-                    document.captureEvents(Event.MOUSEDOWN);
-                document.oncontextmenu = desabilitaMenu;
-                document.onmousedown = desabilitaBotaoDireito;
-                document.onmouseup = desabilitaBotaoDireito;
-    //    //////////////////f12
-    //                document.onkeypress = function (event) {
-    //                    event = (event || window.event);
-    //                    if (event.keyCode == 123) {
-    //                        //alert('No F-12');
-    //                        return false;
-    //                    }
-    //                
-    //                };
-    //                document.onmousedown = function (event) {
-    //                    event = (event || window.event);
-    //                    if (event.keyCode == 123) {
-    //                        //alert('No F-keys');
-    //                        return false;
-    //                    }
-    //                    
-    //                };
-    //                document.onkeydown = function (event) {
-    //                    event = (event || window.event);
-    //                    if (event.keyCode == 123) {
-    //                        //alert('No F-keys');
-    //                        return false;
-    //                    }
-    //                  
-    //                };
-    //
-    //
-    //
-    //
-    //    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-                /*function check(e)
-                 {
-                 alert(e.keyCode);
-                 }*/
-                document.onkeydown = function (e) {
-                    if (e.ctrlKey && e.keyCode === 16 && e.keyCode === 73
-                            || e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)
-                            || e.keyCode === 123) {
-                        //Alt+c, Alt+v will also be disabled sadly.
-                        //alert('not allowed');
-                        return false;
-                    } else {
-                        return true;
+                        }
 
                     }
+                    //desabilita botao direito do mouse
+                    if (window.Event)
+                        document.captureEvents(Event.MOUSEUP);
+                    if (document.layers)
+                        document.captureEvents(Event.MOUSEDOWN);
+                    document.oncontextmenu = desabilitaMenu;
+                    document.onmousedown = desabilitaBotaoDireito;
+                    document.onmouseup = desabilitaBotaoDireito;
+                    //    //////////////////f12
+                    //                document.onkeypress = function (event) {
+                    //                    event = (event || window.event);
+                    //                    if (event.keyCode == 123) {
+                    //                        //alert('No F-12');
+                    //                        return false;
+                    //                    }
+                    //                
+                    //                };
+                    //                document.onmousedown = function (event) {
+                    //                    event = (event || window.event);
+                    //                    if (event.keyCode == 123) {
+                    //                        //alert('No F-keys');
+                    //                        return false;
+                    //                    }
+                    //                    
+                    //                };
+                    //                document.onkeydown = function (event) {
+                    //                    event = (event || window.event);
+                    //                    if (event.keyCode == 123) {
+                    //                        //alert('No F-keys');
+                    //                        return false;
+                    //                    }
+                    //                  
+                    //                };
+                    //
+                    //
+                    //
+                    //
+                    //    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    /*function check(e)
+                     {
+                     alert(e.keyCode);
+                     }*/
+                    document.onkeydown = function (e) {
+                        if (e.ctrlKey && e.keyCode === 16 && e.keyCode === 73
+                                || e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 117)
+                                || e.keyCode === 123) {
+                            //Alt+c, Alt+v will also be disabled sadly.
+                            //alert('not allowed');
+                            return false;
+                        } else {
+                            return true;
 
-                };
+                        }
 
-            </script><?php   
-        }
-        
-        ?>
+                    };
+
+                </script>
+                <?php
+            }
+            ?>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title><?= $_SESSION['login'] ?></title>
@@ -159,19 +137,20 @@ if (!isset($_SESSION['login'])) {
             <!-- Custom CSS -->
             <link href="estilo/dist/css/sb-admin-2.css" rel="stylesheet">
             <!-- Morris Charts CSS -->
-            <link href="estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
+            <link href="estilo/vendor/morrisjs/morris.css" rel="stylesheet">
             <!-- Custom Fonts -->
             <link href="estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-            
-        <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- MetisMenu CSS -->
-    <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="EstrelaDaMorte/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="EstrelaDaMorte/estilo/EstrelaDaMorte/vendor/morrisjs/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+            <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <!-- MetisMenu CSS -->
+            <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+            <!-- Custom CSS -->
+            <link href="EstrelaDaMorte/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
+            <!-- Morris Charts CSS -->
+            <link href="EstrelaDaMorte/estilo/vendor/morrisjs/morris.css" rel="stylesheet">
+            <!-- Custom Fonts -->
+            <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
         </head>
         <?php
         date_default_timezone_set('America/Sao_Paulo');

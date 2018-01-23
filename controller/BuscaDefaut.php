@@ -23,7 +23,7 @@ function BuscaDefaut($text) {
         $ip = get_client_ip();
         $query2 = "INSERT INTO `perg_sem_resp`(`pergunta`, `ip`) 
              VALUES ('$text', '$ip')";
-//    echo $query2;
+//    //echo $query2;
 
         if (mysqli_query($conn, $query2)) {
             $id = rand(1, 2);

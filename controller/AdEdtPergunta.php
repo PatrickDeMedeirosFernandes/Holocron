@@ -37,7 +37,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                     $query2 = "UPDATE `pergunta` SET 
                 `pergunta`='$pergunta',`valida`=$valida,`resposta_pergunta`=$ID 
                 WHERE id_pergunta = $id2";
-                    echo $query2;
+                    //echo $query2;
 
                     if (!mysqli_query($conn, $query2)) {
                         ?>
@@ -68,7 +68,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
         $query2 = "UPDATE `pergunta` SET 
                 `pergunta`='$pergunta',`valida`=$valida,
                 `resposta_pergunta`=$resposta2 WHERE id_pergunta=$id2   ";
-        echo $query2;
+        //echo $query2;
         if (!mysqli_query($conn, $query2)) {
             ?>
             <script>

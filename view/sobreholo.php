@@ -52,18 +52,16 @@ include '../includes/menu.php'; ?>
 </script>
     <div id="wrapper">
         <div id="container">
-
             <div id="paragraph">
                 <h2>Episode TCC</h2>
-                <h1>Holocron o Assistente virtual de Star Wars</h1>
-                
+                <h1>Holocron o ChatBot de Star Wars</h1>
                 <p>Com a destruição da Estrela da Morte, e com algumas informações destruidas pelos Rebeldes, o Império com medo que mais
                 informações sejam destruidas pelas Forças Rebeldes, contratam um estudante de
                 Analise e Desenvolvimento de Sistemas, da Faculdade de Tecnologia Senac Pelotas, chamado Patrick de Medeiros Fernandes </p>
-                <P>Para fim de Desenolver um novo tipo de Holocron, um que pudesse se passar por uma pessoa, se fosse capaz
-                conversar com ele, um sistema de conversar, mas que também conte-se toda a base de informações,
-                onde somente o alto comando do Império tivesse acesso ao mesmo. </P>
-                <p>Mas os planos não foram como o planejado, </p>
+                <P>Para fim de Desenolver um novo tipo de Holocron, um que pudesse ser capaz de conversar com ele, 
+                 mas que também conte-se toda a base de informações, onde somente o alto comando do Império pode-se ter o acesso aquelas informações. </P>
+                <p>Mas os planos não foram como o planejado, para a infelicidade do  Império o sistema ficou em aberto, onde todo e qualquer civil
+                poderia ter o acesso e poder conversar com ele ... </p>
             </div>
         </div>
     </div>

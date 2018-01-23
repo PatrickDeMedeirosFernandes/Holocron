@@ -86,7 +86,7 @@
                 </li>
             <?php } ?>
             <li>
-                <a href="home"><i class="fa fa-dashboard fa-fw"></i> Chatbot</a>
+                <a href="../home"><i class="fa fa-dashboard fa-fw"></i> Chatbot</a>
             </li>
         </ul>      
     </div>

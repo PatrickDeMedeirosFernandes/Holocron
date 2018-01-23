@@ -22,13 +22,10 @@ include './Buscas/Lista_pergunta.php';
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">
-
                                 <table class="table-responsive table">
                                     <tr>
                                         <th>ID</th>
-                                        <TH>
-                                            Pergunta
-                                        </TH>
+                                        <TH>Pergunta</TH>
                                         <TH>Respota</TH>
                                         <th>Valida</th>
                                         <th>Data criação</th>
