@@ -1,5 +1,5 @@
 <?php
-$respostaATT ="teste";
+//$respostaATT ="Olá tudo bem? Vamos conversar sobre Star Wars?";
 include '../scripts/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
@@ -28,10 +28,8 @@ if (isset($_POST['nome'])) {
         }
         return $saida;
     }
-
     $resposta1 = pergunta($text);
     $respostaATT = saldacao($resposta1);
  
 }
-
 ?> 

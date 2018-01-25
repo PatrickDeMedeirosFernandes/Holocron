@@ -8,10 +8,7 @@ header('Content-Type: text/html; charset=utf-8'); ?>
         <script src="./scripts/js.js" type="text/javascript"></script>
         <link rel="shortcut icon" type="image/x-icon" href="img/Holocron.png" id="favicon" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="http://code.responsivevoice.org/responsivevoice.js"></script>
-
+      
     </head> 
     <style>
         body {

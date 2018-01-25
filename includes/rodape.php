@@ -1,44 +1,41 @@
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 <script>
-
 //text to Speech
 //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
-function Speech(say) {
-    
-    var utterance = new SpeechSynthesisUtterance(say);
-    //msg.voice = voices[10]; // Note: some voices don't support altering params
-    //msg.voiceURI = 'native';
-    //utterance.volume = 1; // 0 to 1
-    //utterance.rate = 0.1; // 0.1 to 10
-    //utterance.pitch = 1; //0 to 2
-    //utterance.text = 'Hello World';
-    //utterance.lang = 'en-US';
-    speechSynthesis.speak(utterance);
-  
-}
-
+    function Speech(say) {
+        var utterance = new SpeechSynthesisUtterance(say);
+        //msg.voice = voices[10]; // Note: some voices don't support altering params
+        //msg.voiceURI = 'native';
+        //utterance.volume = 1; // 0 to 1
+        //utterance.rate = 0.1; // 0.1 to 10
+        //utterance.pitch = 1; //0 to 2
+        //utterance.text = 'Hello World';
+        //utterance.lang = 'en-US';
+        speechSynthesis.speak(utterance);
+    }
 //runs the keypress() function when a key is pressed
-document.onkeypress = keyPress;
+    document.onkeypress = keyPress;
 //if the key pressed is 'enter' runs the function newEntry()
-function keyPress(e) {
-  var x = e || window.event;
-  var key = (x.keyCode || x.which);
-  if (key == 13 || key == 3) {
-    //runs this function when enter is pressed
-    newEntry();
-  }
-  if (key == 38) {
-    console.log('hi')
-      //document.getElementById("chatbox").value = lastUserMessage;
-  }
-}
-
+    function keyPress(e) {
+        var x = e || window.event;
+        var key = (x.keyCode || x.which);
+        if (key == 13 || key == 3) {
+            //runs this function when enter is pressed
+            newEntry();
+        }
+        if (key == 38) {
+            console.log('hi')
+            //document.getElementById("chatbox").value = lastUserMessage;
+        }
+    }
 //clears the placeholder text ion the chatbox
 //this function is set to run when the users brings focus to the chatbox, by clicking on it
-function placeHolder() {
-  document.getElementById("chatbox").placeholder = "";
-}</script>
-
+    function placeHolder() {
+        document.getElementById("chatbox").placeholder = "";
+    }
+</script>
 <!--
 <script>
 //links
