@@ -7,7 +7,7 @@
 function resposta() {
     include '../controller/DB.php';
     $sql = "SELECT DISTINCT(resposta) as resposta, `id` FROM `respota` order by resposta";
-  //  echo $sql;
+    //  echo $sql;
     return $result1 = mysqli_query($conn, $sql);
 }
 
@@ -118,4 +118,42 @@ function lista_pergunta_bot_user_invalidas() {
     order by valida;
  ";
     return $result = mysqli_query($conn, $sql);
+}
+
+////////////////////////personagem
+function lista_personagem() {
+    include '../controller/DB.php';
+
+    $sql = "SELECT * FROM `personagem` 
+ ";
+
+    return $result1 = mysqli_query($conn, $sql);
+}
+
+
+function lista_personagem_Unico($id) {
+    include '../controller/DB.php';
+    $sql = "SELECT * FROM `personagem` WHERE `id_personagem` = $id
+ ";
+
+    return $result1 = mysqli_query($conn, $sql);
+}
+
+function lista_personagem_dados($id) {
+    include '../controller/DB.php';
+
+    $sql = "SELECT * FROM `valor` WHERE `personagem_id_personagem` = $id
+ ";
+
+    return $result1 = mysqli_query($conn, $sql);
+}
+
+
+function lista_dado_unico($id) {
+    include '../controller/DB.php';
+
+    $sql = "SELECT `id_valor`, `valor`, `personagem_id_personagem`, `dado` FROM `valor` WHERE id_valor = $id
+ ";
+
+    return $result1 = mysqli_query($conn, $sql);
 }

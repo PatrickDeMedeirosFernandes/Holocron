@@ -38,6 +38,7 @@ RewriteRule ^Cad-Uma-PergResp/?$  EstrelaDaMorte/CadUmaPerg.php [NC,L]
 RewriteRule ^Lista_Usuarios/?$  EstrelaDaMorte/UserList.php [NC,L]
 RewriteRule ^Cadastro_Usuario/?$ EstrelaDaMorte/UserCad.php [NC,L]
 RewriteRule ^Report/?$   EstrelaDaMorte/report.php [NC,L]
+
 RewriteRule ^Duvida([0-9]+)  EstrelaDaMorte/duvidaUnico.php?id=$1
 RewriteRule ^Editar_Usuario-([0-9]+)   EstrelaDaMorte/UserEdit.php?id=$1
 RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) EstrelaDaMorte/EditPergNat.php?id=$1

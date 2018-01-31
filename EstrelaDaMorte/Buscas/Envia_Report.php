@@ -12,6 +12,7 @@ $sql = "UPDATE `report` SET `data_visto`='$data',
     `visuaizado_por`=$user
     WHERE id_report=$id and visto !=1;
 ";
+//echo $sql;
 return $result2 = mysqli_query($conn, $sql);
 }
 

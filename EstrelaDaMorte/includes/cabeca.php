@@ -131,25 +131,8 @@ if (!isset($_SESSION['login'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title><?= $_SESSION['login'] ?></title>
             <!-- Bootstrap Core CSS -->
-            <link href="estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <!-- MetisMenu CSS -->
-            <link href="estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-            <!-- Custom CSS -->
-            <link href="estilo/dist/css/sb-admin-2.css" rel="stylesheet">
-            <!-- Morris Charts CSS -->
-            <link href="estilo/vendor/morrisjs/morris.css" rel="stylesheet">
-            <!-- Custom Fonts -->
-            <link href="estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-            <link href="EstrelaDaMorte/estilo/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <!-- MetisMenu CSS -->
-            <link href="EstrelaDaMorte/estilo/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-            <!-- Custom CSS -->
-            <link href="EstrelaDaMorte/estilo/dist/css/sb-admin-2.css" rel="stylesheet">
-            <!-- Morris Charts CSS -->
-            <link href="EstrelaDaMorte/estilo/vendor/morrisjs/morris.css" rel="stylesheet">
-            <!-- Custom Fonts -->
-            <link href="EstrelaDaMorte/estilo/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+           
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
         </head>
         <?php
