@@ -1,6 +1,13 @@
 <?php
 include './includes/cabeca.php';
 include './Buscas/Lista_pergunta.php';
+if (!isset($_SESSION['login'])) {
+    echo ' <script language="javascript">
+        alert("<Logue>");
+        window.history.go(-3);
+    </script>';
+} else{ 
+
 ?>
 <div id="page-wrapper">
     <div class="row">
@@ -43,10 +50,15 @@ include './Buscas/Lista_pergunta.php';
                                                 <td><?= $row["nome"]; ?></td>
                                                 <td><a href="Detalhes_Personagem-<?= $row["id_personagem"]; ?>">Detalhes</a></td>
                                                 <td>
-                                                    <a style="cursor: pointer;}" 
+                                                    <a style="cursor: pointer;}"  class="btn btn-default"
                                                        onclick="window.open('Editar_Personagem-<?= $row["id_personagem"]; ?>',
                                                                        'Pagina', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO, DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=770, HEIGHT=400');">
                                                         Editar</a>
+                                            
+                                                    <a style="cursor: pointer;}" class="btn btn-danger" 
+                                                          href="../Controller/ADExclusao.php?OQUE=<?= base64_encode("PERSONAGEM")."&id=".
+                                                               base64_encode($row["id_personagem"]) ?>">
+                                                        EXCLUIR</a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -70,5 +82,5 @@ include './Buscas/Lista_pergunta.php';
     </div>
 </div>
 <?php
-include './includes/rodape.php';
+include './includes/rodape.php'; }
 ?>

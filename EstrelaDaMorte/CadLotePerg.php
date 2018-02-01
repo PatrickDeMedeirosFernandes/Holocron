@@ -1,14 +1,27 @@
-<?php include './includes/cabeca.php'; ?>
+<?php
+include './includes/cabeca.php';
 
-
-
-<div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Área administrativa</h1>
+header('Content-Type: text/html; charset=utf-8');
+session_start();
+if (!isset($_SESSION['login'])) {
+    echo ' <script language="javascript">
+        alert("<Logue>");
+        window.history.go(-1);
+    </script>';
+} else if ($_SESSION['nivel'] == 0) {
+    echo ' <script language="javascript">
+        alert("<Logue>");
+        window.history.go(-1);
+    </script>';
+} else {
+    ?>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Área administrativa</h1>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="row">
@@ -32,10 +45,8 @@
                     <H4>Lista de Arquivos no sistema:</H4>
                     <?php
                     $pasta = '../ANEXO/';
-
                     if (is_dir($pasta)) {
                         $diretorio = dir($pasta);
-
                         while (($arquivo = $diretorio->read()) !== false) {
                             if ($arquivo != "." && $arquivo != "..") {
                                 echo '<br><a href="ANEXO/' . $arquivo . '">' . $arquivo . '</a><br />';
@@ -43,7 +54,6 @@
 //                            // Lê o conteúdo do arquivo
                             }
                         }
-
                         $diretorio->close();
                     } else {
                         echo 'A pasta não existe.';
@@ -55,9 +65,10 @@
         </div>
         <!-- /.panel-body -->
     </div>
-</div>
+    </div>
     <!-- /.row -->
-</div>
-<!-- /#page-wrapper -->
-<?php
-include './includes/rodape.php';
+    </div>
+    <!-- /#page-wrapper -->
+    <?php
+    include './includes/rodape.php';
+}

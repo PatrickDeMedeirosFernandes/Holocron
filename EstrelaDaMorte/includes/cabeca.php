@@ -44,7 +44,7 @@ if (!isset($_SESSION['login'])) {
                         {
                             if (e.which == 2 || e.which == 3)
                                 return false;
-                        } else
+                        } elseF
                         {
                             event.cancelBubble = true
                             event.returnValue = false;
@@ -131,7 +131,7 @@ if (!isset($_SESSION['login'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title><?= $_SESSION['login'] ?></title>
             <!-- Bootstrap Core CSS -->
-           
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
         </head>

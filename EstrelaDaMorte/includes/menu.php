@@ -86,6 +86,10 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                
+                   <li>
+                       <a href="./Backup.php"><i class="fa fa-dashboard fa-fw"></i> BackUp</a>
+            </li>
             <?php } ?>
             <li>
                 <a href="../home"><i class="fa fa-dashboard fa-fw"></i> Chatbot</a>
