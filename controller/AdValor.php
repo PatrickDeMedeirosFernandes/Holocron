@@ -7,6 +7,7 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
     </script>
     <?PHP
 } else {
+   // $erro = "erro";
     include './DB.php';
     include '../scripts/funcao.php';
     $id = $_POST['id'];
@@ -21,13 +22,14 @@ if (!isset($_POST['id']) || $_POST['id'] == "") {
                 
             } else {
                 //INSERT INTO `valor`(`valor`, `personagem_id_personagem`, `dado`) VALUES();
-                $query = " INSERT INTO `valor`(`valor`, `personagem_id_personagem`, `dado`)
+            echo    $query = " INSERT INTO `valor`(`valor`, `personagem_id_personagem`, `dado`)
                          VALUES('" . $_POST["VALOR"][$i] . "',$id,'"
                         . $_POST['DADO'][$i] . "' )";
                 if (mysqli_query($conn, $query)) {
                     
                 } else {
-                    $erro = "Error description: " . mysqli_error($con) . $query . $erro;
+                    $erro = "Error description: " . mysqli_error($conn) . $query . $erro;
+                            ;
                 }
             }
 

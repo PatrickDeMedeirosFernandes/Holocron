@@ -148,7 +148,7 @@ DELIMITER ;
 --
 
 CREATE TABLE `defaut` (
-  `id_defaut` int(11) NOT NULL,
+  `id_defaut` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `pergunta` int(1) NOT NULL DEFAULT '1',
   `resposta` text NOT NULL
 ) ;
@@ -160,7 +160,7 @@ CREATE TABLE `defaut` (
 --
 
 CREATE TABLE `dicionario` (
-  `id_dicionario` int(11) NOT NULL,
+  `id_dicionario` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `expressao` text NOT NULL,
   `significado` text NOT NULL
 ) ;
@@ -179,7 +179,7 @@ INSERT INTO `dicionario` (`id_dicionario`, `expressao`, `significado`) VALUES
 --
 
 CREATE TABLE `log_conversa` (
-  `id_log_conversa` int(11) NOT NULL,
+  `id_log_conversa` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `conversa` longtext NOT NULL,
   `ip` varchar(45) NOT NULL,
   `data_inc` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -193,7 +193,7 @@ CREATE TABLE `log_conversa` (
 --
 
 CREATE TABLE `pergunta` (
-  `id_pergunta` int(11) NOT NULL,
+  `id_pergunta` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `pergunta` text,
   `valida` int(11) NOT NULL DEFAULT '1',
   `resposta_pergunta` int(11) DEFAULT NULL
@@ -215,7 +215,7 @@ INSERT INTO `pergunta` (`id_pergunta`, `pergunta`, `valida`, `resposta_pergunta`
 --
 
 CREATE TABLE `perg_sem_resp` (
-  `id_perg_sem_resp` int(11) NOT NULL,
+  `id_perg_sem_resp` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `pergunta` text NOT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `resposta` text,
@@ -230,7 +230,7 @@ CREATE TABLE `perg_sem_resp` (
 --
 
 CREATE TABLE `perg_user` (
-  `id_perg_user` int(11) NOT NULL,
+  `id_perg_user` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `pergunta` text,
   `valida` int(11) NOT NULL DEFAULT '1',
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -244,7 +244,7 @@ CREATE TABLE `perg_user` (
 --
 
 CREATE TABLE `personagem` (
-  `id_personagem` int(11) NOT NULL,
+  `id_personagem` int(11) NOT NULl PRIMARY KEY AUTO_INCREMENT,
   `nome` text COLLATE utf8_german2_ci
 );
 
@@ -255,7 +255,7 @@ CREATE TABLE `personagem` (
 --
 
 CREATE TABLE `propriedade` (
-  `id_propriedade` int(11) NOT NULL,
+  `id_propriedade` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `propriedade` text COLLATE utf8_german2_ci,
   `valo` text COLLATE utf8_german2_ci,
   `temp_id_temp` int(11) NOT NULL
@@ -268,7 +268,7 @@ CREATE TABLE `propriedade` (
 --
 
 CREATE TABLE `report` (
-  `id_report` int(11) NOT NULL,
+  `id_report` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `email` varchar(90) COLLATE utf8_german2_ci NOT NULL,
   `nome` varchar(90) COLLATE utf8_german2_ci NOT NULL,
   `texto` text COLLATE utf8_german2_ci NOT NULL,
@@ -286,7 +286,7 @@ CREATE TABLE `report` (
 --
 
 CREATE TABLE `respota` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `resposta` text NOT NULL
 ) ;
 
@@ -305,7 +305,7 @@ INSERT INTO `respota` (`id`, `resposta`) VALUES
 --
 
 CREATE TABLE `temp` (
-  `id_temp` int(11) NOT NULL,
+  `id_temp` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `nome` text COLLATE utf8_german2_ci
 );
 
@@ -316,7 +316,7 @@ CREATE TABLE `temp` (
 --
 
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `login` varchar(90) NOT NULL,
   `senha` varchar(90) NOT NULL,
   `nivel` int(1) NOT NULL DEFAULT '1',
@@ -337,12 +337,10 @@ INSERT INTO `user` (`id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `fra
 --
 -- Estrutura da tabela `valor`
 --
+CREATE TABLE `valor` ( `id_valor` int(11) PRIMARY KEY AUTO_INCREMENT,
+ `valor` text COLLATE utf8_german2_ci, `dado` text COLLATE utf8_german2_ci,
+ `personagem_id_personagem` int(11) NOT NULL );
 
-CREATE TABLE `valor` (
-  `id_valor` int(11) NOT NULL,
-  `valor` text COLLATE utf8_german2_ci,
-  `personagem_id_personagem` int(11) NOT NULL
-);
 
 --
 -- Indexes for dumped tables

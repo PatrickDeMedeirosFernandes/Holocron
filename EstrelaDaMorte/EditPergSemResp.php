@@ -9,8 +9,8 @@ IF ($_SESSION['nivel'] == 3 || $_SESSION['nivel'] == 2) {
         window.history.go(-1);
     </script>';
 }
-header('Content-Type: text/html; charset=utf-8');
-session_start();
+//header('Content-Type: text/html; charset=utf-8');
+//session_start();
 if (!isset($_SESSION['login'])) {
     echo ' <script language="javascript">
         alert("<Logue>");

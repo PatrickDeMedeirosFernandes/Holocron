@@ -1,7 +1,7 @@
 <?php
 include './includes/cabeca.php';
-header('Content-Type: text/html; charset=utf-8');
-session_start();
+//header('Content-Type: text/html; charset=utf-8');
+//session_start();
 if (!isset($_SESSION['login'])) {
     echo ' <script language="javascript">
         alert("<Logue>");
