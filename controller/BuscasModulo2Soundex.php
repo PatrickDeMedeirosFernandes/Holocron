@@ -1,8 +1,8 @@
 <?PHP
+
 ///https://gist.github.com/dannykopping/1272466
 // UTILIZAÇÃO DA CLAUSULA SOUDDEX
 //set_time_limit("1000");
-
 //ANALIZAR ESTA LINHA
 // SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN respota u ON p.resposta_pergunta = u.id
 /**
@@ -10,10 +10,22 @@
  * @param type String
  * @return string retorna a resposta da pergunta ou vazio caso não ache nenhuma
  */
-function BuscaSimilarSoundex($text) {
+function BuscaSimilarSoundex($text, $time2=0) {
+     if(isset($time2)){
+    $time =$time2;
+        
+    }else{
+        $time = 0;
+    }
     include '../controller/DB.php';
     $SAIDA = '';
     $i = 0;
+
+
+
+
+
+
     //BUSCA NA PRIEMIRA TABELA
     $sql = "
         SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, 
@@ -40,15 +52,17 @@ function BuscaSimilarSoundex($text) {
                 $bb = $linha['id'];
                 $aa = $linha['resposta'];
                 $SAIDA = $aa;
-                if ($i == 1) {
-                    echo "i=" . $i;
-                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                if (!isset($time) || $time == 0) {
+                    if ($i == 1) {
+                        //     echo "i=" . $i;
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                    echo $quary4;
-                    if (mysqli_query($conn, $quary4)) {
-                        //        $SAIDA = " ok" . $i;
-                    } else {
-                        //     $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        // echo $quary4;
+                        if (mysqli_query($conn, $quary4)) {
+                            //        $SAIDA = " ok" . $i;
+                        } else {
+                            //     $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        }
                     }
                 }
             }
@@ -62,7 +76,20 @@ function BuscaSimilarSoundex($text) {
         $i = 0;
         $SAIDA = ' ';
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+//BUSCA NA SEGUNDA TABELA
     $sql2 = "  SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta, id,
                (SELECT SOUNDEX('$text')) as text1, 
                (Select SOUNDEX(pergunta)) as text2 
@@ -77,14 +104,16 @@ function BuscaSimilarSoundex($text) {
                 $bb = $linha2['id'];
                 $aa = $linha2['resposta'];
                 $SAIDA = $aa;
-                if ($i == 1) {
-                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                if (!isset($time) || $time == 0) {
+                    if ($i == 1) {
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                    // echo $quary4;
-                    if (mysqli_query($conn, $quary4)) {
-                        //  $SAIDA = " ok";
-                    } else {
-                        //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        // echo $quary4;
+                        if (mysqli_query($conn, $quary4)) {
+                            //  $SAIDA = " ok";
+                        } else {
+                            //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        }
                     }
                 }
             } if ($SAIDA != '') {
@@ -96,6 +125,17 @@ function BuscaSimilarSoundex($text) {
         $i = 0;
         $SAIDA = ' ';
     }
+
+
+
+
+
+
+
+
+
+
+
 //BUSCA NA TERCEIRA TABELA
     $sql = "   SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita,id,
                 `ip`, u.resposta as respotaReal ,
@@ -113,14 +153,16 @@ function BuscaSimilarSoundex($text) {
                 $aa = $linha8['respotaReal'] . $linha8['respostaEscrita'];
                 $SAIDA = $aa;
                 $bb = $linha8['id'];
-                if ($i == 1) {
-                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                if (!isset($time) || $time == 0) {
+                    if ($i == 1) {
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                    // echo $quary4;
-                    if (mysqli_query($conn, $quary4)) {
-                        //  $SAIDA = " ok";
-                    } else {
-                        //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        // echo $quary4;
+                        if (mysqli_query($conn, $quary4)) {
+                            //  $SAIDA = " ok";
+                        } else {
+                            //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
+                        }
                     }
                 }
             }

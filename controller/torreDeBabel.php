@@ -1,11 +1,12 @@
 <?php
-//$respostaATT ="Olá tudo bem? Vamos conversar sobre Star Wars?";
+
+$respostaATT = "Olá tudo bem? <br>
+        Vamos conversar sobre Star Wars?";
 include '../scripts/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
 include '../controller/BuscasModulo2.php';
 include '../controller/BuscasModulo2Soundex.php';
-
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
     $text = nomes(strip_tags(htmlspecialchars($_POST['nome'])));
@@ -15,9 +16,13 @@ if (isset($_POST['nome'])) {
         $saida = ' ';
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
-        } else if (BuscaSimilarSoundex($text) != ' ') {
+            
+            
+        } else if (BuscaSimilarSoundex($text, 1) != ' ') {
             $saida = BuscaSimilarSoundex($text);
-        } else if (BuscaSimilar($text) != ' ') {
+            
+            
+        } else if (BuscaSimilar($text, 1) != ' ') {
             $saida = BuscaSimilar($text);
         }
         //else if (AI($text) != ' ') {
@@ -28,8 +33,8 @@ if (isset($_POST['nome'])) {
         }
         return $saida;
     }
+
     $resposta1 = pergunta($text);
     $respostaATT = saldacao($resposta1);
- 
 }
 ?> 

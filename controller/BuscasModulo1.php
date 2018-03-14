@@ -25,6 +25,9 @@ function BuscaConcreta($text) {
             $SAIDA = $aa;
         }
     } else {
+        
+        
+        
 //BUSCA NA SEGUNDA TABALE
         $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
                 FROM `perg_user` p
@@ -37,6 +40,12 @@ function BuscaConcreta($text) {
                 $SAIDA = $aa;
             }
         } else {
+            
+            
+            
+            
+            
+            
 //BUSCA NA TERCEIRA TABELA
             $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita, 
                 `ip`, u.resposta as respotaReal 
