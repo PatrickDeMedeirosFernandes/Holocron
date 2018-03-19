@@ -10,15 +10,8 @@ function BuscaDefaut($text) {
 
     include '../controller/DB.php';
     // $SAIDA = '';
-    $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, `resposta`, `ip`, `resposta_pergunta` FROM `perg_sem_resp` p
-       where    p.pergunta = '$text';";
-    $result2 = $conn->query($sql);
-    if ($result2->num_rows > 0) {
-        $alfa = false;
-    } else {
         $alfa = true;
-    }
-//    echo $sql;
+    //echo $sql."oi";
     if ($alfa == true) {
         $ip = get_client_ip();
         $query2 = "INSERT INTO `perg_sem_resp`(`pergunta`, `ip`) 
@@ -48,22 +41,3 @@ function BuscaDefaut($text) {
 
     return $text;
 }
-//
-//function get_client_ip2() {
-//    $ipaddress = '';
-//    if (isset($_SERVER['HTTP_CLIENT_IP']))
-//        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-//    else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-//        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-//    else if (isset($_SERVER['HTTP_X_FORWARDED']))
-//        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-//    else if (isset($_SERVER['HTTP_FORWARDED_FOR']))
-//        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-//    else if (isset($_SERVER['HTTP_FORWARDED']))
-//        $ipaddress = $_SERVER['HTTP_FORWARDED'];
-//    else if (isset($_SERVER['REMOTE_ADDR']))
-//        $ipaddress = $_SERVER['REMOTE_ADDR'];
-//    else
-//        $ipaddress = 'UNKNOWN';
-//    return $ipaddress;
-//}

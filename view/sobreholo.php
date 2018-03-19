@@ -12,10 +12,10 @@ include '../includes/top.php'; include '../includes/menu.php';
     </p>
     <br>-->
 <!-- I did not find the text of the original generic. So here is a translation into my native language. -->
-//COLOCAR MUSICA CERTA
+<!--//https://github.com/phalt/swapi-->
 <audio loop id="audio">
-    <source src="Anexo/Kalimba.ogg" type="audio/ogg">
-    <source src="Anexo/Kalimba.mp3" type="audio/mpeg">
+    <source src="Anexo/sw.ogg" type="audio/ogg">
+    <source src="Anexo/sw.mp3" type="audio/mpeg">
 </audio>
 <div id="wrapper">
     <div id="container">

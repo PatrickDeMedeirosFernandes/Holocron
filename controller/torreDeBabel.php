@@ -17,19 +17,22 @@ if (isset($_POST['nome'])) {
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
             
-            
-        } else if (BuscaSimilarSoundex($text, 1) != ' ') {
+
+        } else if (BuscaSimilarSoundex($text) != ' ') {
             $saida = BuscaSimilarSoundex($text);
             
-            
-        } else if (BuscaSimilar($text, 1) != ' ') {
+                     
+
+       }
+        else if (BuscaSimilar($text, 1) != ' ') {
             $saida = BuscaSimilar($text);
-        }
+            }
         //else if (AI($text) != ' ') {
         //RETURN ai($text);
         //}
         ELSE {
             $saida = BuscaDefaut($text);
+
         }
         return $saida;
     }

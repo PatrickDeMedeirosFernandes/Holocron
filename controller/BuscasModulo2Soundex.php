@@ -10,11 +10,10 @@
  * @param type String
  * @return string retorna a resposta da pergunta ou vazio caso não ache nenhuma
  */
-function BuscaSimilarSoundex($text, $time2=0) {
-     if(isset($time2)){
-    $time =$time2;
-        
-    }else{
+function BuscaSimilarSoundex($text, $time2 = 0) {
+    if (isset($time2)) {
+        $time = $time2;
+    } else {
         $time = 0;
     }
     include '../controller/DB.php';
@@ -52,29 +51,25 @@ function BuscaSimilarSoundex($text, $time2=0) {
                 $bb = $linha['id'];
                 $aa = $linha['resposta'];
                 $SAIDA = $aa;
-                if (!isset($time) || $time == 0) {
-                    if ($i == 1) {
-                        //     echo "i=" . $i;
-                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                if ($i == 1) {
+                    //     echo "i=" . $i;
+                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                        // echo $quary4;
-                        if (mysqli_query($conn, $quary4)) {
-                            //        $SAIDA = " ok" . $i;
-                        } else {
-                            //     $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
-                        }
+                    // echo $quary4;
+                    if (mysqli_query($conn, $quary4)) {
+                        $SAIDA = " ok" . $i;
+                    } else {
+                        $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
                     }
                 }
-            }
-            if ($SAIDA != '') {
-                $i = 0;
-                return $SAIDA;
+            } else {
+                $SAIDA = '';
             }
         }///fim do while
         /////////////////////////////////FINALIZAAAAAAR//////////////////////////////////
     } else {
         $i = 0;
-        $SAIDA = ' ';
+        $SAIDA = '';
     }
 
 
@@ -116,10 +111,7 @@ function BuscaSimilarSoundex($text, $time2=0) {
                         }
                     }
                 }
-            } if ($SAIDA != '') {
-                $i = 0;
-                return $SAIDA;
-            }
+            } 
         }//FIM DO WHILE
     } else {
         $i = 0;
@@ -166,10 +158,7 @@ function BuscaSimilarSoundex($text, $time2=0) {
                     }
                 }
             }
-            if ($SAIDA != '') {
-                $i = 0;
-                return $SAIDA;
-            }
+     
         }//fim do while
     } else {
         $i = 0;

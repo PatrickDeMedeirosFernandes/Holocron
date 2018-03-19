@@ -1,13 +1,29 @@
 <?php
-
+//https://github.com/phalt/swapi
 /**
  * metodo não implmentado
  * @param type $str
  * @return type
  */
 function saldacao($str) {
+    if ($str == "==saudacao==") {
+        date_default_timezone_set('America/Sao_Paulo');
+        $hora = date("H");
+        if ($hora >= 0 && $hora < 6) {
+            $str= "Boa madrugada! Vamos falar sobre o que?";
+        } elseif ($hora >= 6 && $hora < 12) {
+            $str= "Bom dia!  Vamos falar sobre o que?";
+        } elseif ($hora >= 12 && $hora < 18) {
+            $str= "Boa tarde!  Vamos falar sobre o que?";
+        } else {
+            $str = "Boa noite!  Vamos falar sobre o que?";
+        }
+    } else {
+         $str =$str;
+    }
     return $str;
 }
+
 //
 //https://imasters.com.br/artigo/18121/linguagens/vicios-de-linguagem-de-programacao/?trace=1519021197&source=single
 //https://imasters.com.br/artigo/11364/php/voce-quis-dizer-com-php/?trace=1519021197&source=single
@@ -43,7 +59,7 @@ function str_maiuscula($texto) {
 }
 
 //Esta Função transforma a primeira letra do texto em maiúsculo respeitando a acentuação
-function primaira_maiuscula($texto) {
+function primaria_maiuscula($texto) {
     $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
@@ -149,7 +165,7 @@ $texto = CodeLimpaNeve($texto);
         $caracter_anterior_paragrafo = substr($array[$i], -5);
 
         if ($caracter_anterior == "." || $caracter_anterior == "!" || $caracter_anterior == "?" || $caracter_anterior_paragrafo == "[:p:]" || $i == 0) {
-            $nova_palavra = primaira_maiuscula($nova_palavra);
+            $nova_palavra = primaria_maiuscula($nova_palavra);
         }
 
         $novo_texto .= $nova_palavra . " ";
@@ -204,7 +220,7 @@ $texto = CodeLimpaNeve($texto);
 
         $paragrafo = trim($paragrafo);
         $paragrafo = trim($paragrafo, ",");
-        $paragrafo = primaira_maiuscula($paragrafo);
+        $paragrafo = primaria_maiuscula($paragrafo);
 
         if ($paragrafo == "") {
             break;
@@ -259,6 +275,5 @@ function sanitizeString($string) {
          $ip = getenv('REMOTE_ADDR');
      else
          $ip = 'UNKNOWN';
-
      return $ip; 
 }
