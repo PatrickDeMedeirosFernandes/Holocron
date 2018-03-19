@@ -1,0 +1,23 @@
+{
+  "name": "slackbot/slackbot",
+  "description": "Simple Slackbot that can listen to Slack messages and send back appropriate responses to a channel(s).",
+  "homepage": "https://github.com/iranianpep/slackbot",
+  "license": "MIT",
+  "authors": [
+    { "name": "Ehsan Abbasi", "email": "ehsan.abb@gmail.com" }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "nlp-tools/nlp-tools": "^0.1.3",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*",
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Slackbot\\": ["src/Slackbot"]
+    }
+  }
+}

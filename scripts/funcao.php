@@ -9,9 +9,7 @@ function saldacao($str) {
     if ($str == "==saudacao==") {
         date_default_timezone_set('America/Sao_Paulo');
         $hora = date("H");
-        if ($hora >= 0 && $hora < 6) {
-            $str= "Boa madrugada! Vamos falar sobre o que?";
-        } elseif ($hora >= 6 && $hora < 12) {
+         if ($hora >= 6 && $hora < 12) {
             $str= "Bom dia!  Vamos falar sobre o que?";
         } elseif ($hora >= 12 && $hora < 18) {
             $str= "Boa tarde!  Vamos falar sobre o que?";
@@ -24,7 +22,7 @@ function saldacao($str) {
     return $str;
 }
 
-//
+//https://canaltech.com.br/entretenimento/10-sites-e-apps-de-relacionamento-para-voce-encontrar-a-metade-de-sua-laranja/
 //https://imasters.com.br/artigo/18121/linguagens/vicios-de-linguagem-de-programacao/?trace=1519021197&source=single
 //https://imasters.com.br/artigo/11364/php/voce-quis-dizer-com-php/?trace=1519021197&source=single
 //http://www.paulocollares.com.br/2011/12/filtro-gramatical-em-php/

@@ -9,11 +9,10 @@
  * @param type String
  * @return string retorna a resposta da pergunta ou vazio caso não ache nenhuma
  */
-function BuscaSimilar($text, $time2=0) {
-    if(isset($time2)){
-    $time =$time2;
-        
-    }else{
+function BuscaSimilar($text, $time2 = 0) {
+    if (isset($time2)) {
+        $time = $time2;
+    } else {
         $time = 0;
     }
 
@@ -37,7 +36,7 @@ function BuscaSimilar($text, $time2=0) {
      LEFT JOIN respota u ON p.resposta_pergunta = u.id 
      HAVING (textDiff) > 70 and max(textDiff) 
      ORDER BY `textDiff` DESC";
-    // echo $sql;
+    //  echo $sql;
     /* @var $conn type */
     $result5 = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result5) > 0) {
@@ -46,52 +45,42 @@ function BuscaSimilar($text, $time2=0) {
             $bb = $linha['id'];
             $aa = $linha['resposta'];
             $SAIDA = $aa;
-            if (!isset($time) || $time == 0) {
-                if ($i == 1) {
-                    //              echo "i=" . $i;
-                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+            if ($i == 1) {
+                $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                    //                  echo $quary4;
-                    if (mysqli_query($conn, $quary4)) {
-                        //        $SAIDA = " ok" . $i;
-                    } else {
-                        //     $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
-                    }
+                if (mysqli_query($conn, $quary4)) {
+                    
+                } else {
+                    
                 }
             }
         }
     } else {
-
+        $i = 0;
 
 
 
 
         //BUSCA NA Segunda TABELA
-        $i = 0;
         $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta, id,  LEVENSHTEIN_RATIO( '$text', `pergunta` ) as textDiff
                 FROM `perg_user` p
                 LEFT JOIN respota u ON p.respota_perg_user = u.id
                 HAVING (textDiff) > 70 and max(textDiff) 
                 ORDER BY `textDiff` DESC";
-
         $result4 = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result4) > 0) {
             while ($linha2 = mysqli_fetch_assoc($result4)) {
                 $i++;
                 $bb = $linha2['id'];
-                $aa = $linha2['resposta'];
+                $aa = $linha2['pergunta'];
                 $SAIDA = $aa;
-                if ($time == 0) {
-                    if ($i == 1) {
-                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                if ($i == 1) {
+                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                        // echo $quary4;
-
-                        if (mysqli_query($conn, $quary4)) {
-                            //  $SAIDA = " ok";
-                        } else {
-                            //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
-                        }
+                    if (mysqli_query($conn, $quary4)) {
+                        
+                    } else {
+                        
                     }
                 }
             }
@@ -117,23 +106,24 @@ function BuscaSimilar($text, $time2=0) {
                     HAVING (textDiff) > 70 and 
                     max(textDiff) ORDER BY `textDiff` DESC
                     ;";
+            //     echo $sql;
+
             $result3 = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result3) > 0) {
                 while ($linha8 = mysqli_fetch_assoc($result3)) {
                     $i++;
-                    $aa = $linha8['respotaReal'] . $linha8['respostaEscrita'];
+                    $aa = $linha8['pergunta'] . $linha8['pergunta'];
                     $SAIDA = $aa;
                     $bb = $linha8['id'];
-                    if (!isset($time) || $time == 0) {
-                        if ($i == 1) {
-                            $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                    //  echo $aa;
+                    if ($i == 1) {
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
                     VALUES('$text',1,'$bb');";
-                            // echo $quary4;
-                            if (mysqli_query($conn, $quary4)) {
-                                //  $SAIDA = " ok";
-                            } else {
-                                //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
-                            }
+                        //     echo $quary4;
+                        if (mysqli_query($conn, $quary4)) {
+                            //  $SAIDA = " ok";
+                        } else {
+                            //    $SAIDA .= "<H1>ESTAMOS COM PROBLEMAS TECNICOS, VOLTE MAIS TARDE</H1>";
                         }
                     }
                 }

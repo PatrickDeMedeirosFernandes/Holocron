@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])) {
     $baixar = "../anexo/bak_Tcc_$data.sql";
 // SET FOREIGN_KEY_CHECKS = 0; serve para desabilitar a validação dos relacionamentos
 // no momento da restauração. Exemplo: criar a tabela itens_venda antes da venda
-    fwrite($arq, "SET FOREIGN_KEY_CHECKS=0;\r\n");
+    fwrite($arq, "\r\n");
 
 // obtém as tabelas do banco
     $tables = mysqli_query($conn, "show tables");

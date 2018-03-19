@@ -9,7 +9,7 @@ include '../controller/BuscasModulo2.php';
 include '../controller/BuscasModulo2Soundex.php';
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
-    $text = nomes(strip_tags(htmlspecialchars($_POST['nome'])));
+    $text = trim(nomes(strip_tags(htmlspecialchars(trim($_POST['nome'])))));
 
     function pergunta($text) {
 //camada 1
@@ -17,20 +17,27 @@ if (isset($_POST['nome'])) {
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
             
+            ECHO "<SCRIPT>ALERT('1')</SCRIPT>";
+//            
 
         } else if (BuscaSimilarSoundex($text) != ' ') {
             $saida = BuscaSimilarSoundex($text);
-            
-                     
+//            
+//                     
 
        }
-        else if (BuscaSimilar($text, 1) != ' ') {
+        else if (BuscaSimilar($text) != ' ') {
             $saida = BuscaSimilar($text);
+                        ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
+
+            
             }
         //else if (AI($text) != ' ') {
         //RETURN ai($text);
         //}
         ELSE {
+                        ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
+
             $saida = BuscaDefaut($text);
 
         }
