@@ -17,7 +17,7 @@ if (isset($_POST['nome'])) {
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
             
-            ECHO "<SCRIPT>ALERT('1')</SCRIPT>";
+           // ECHO "<SCRIPT>ALERT('1')</SCRIPT>";
 //            
 
         } else if (BuscaSimilarSoundex($text) != ' ') {
@@ -28,7 +28,7 @@ if (isset($_POST['nome'])) {
        }
         else if (BuscaSimilar($text) != ' ') {
             $saida = BuscaSimilar($text);
-                        ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
+             //           ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
 
             
             }
@@ -36,7 +36,7 @@ if (isset($_POST['nome'])) {
         //RETURN ai($text);
         //}
         ELSE {
-                        ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
+               //         ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
 
             $saida = BuscaDefaut($text);
 

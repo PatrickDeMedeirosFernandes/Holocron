@@ -54,74 +54,55 @@ if (!isset($_SESSION['login'])) {
                             Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
                             <br>
                             <div data-name="per" class="hide">
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="O que é" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" value="Personagem" name="DADO[]" /> 
-
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Data de Nascimento" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Data de Morte" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Cor" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Cor do cabelo" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Espécie" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"   value="Cor dos olhos" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Gênero" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Cor da pele" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Afiliação" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Mestres conhecidos" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-                                Valor <input type="text" style="background-color: #000; color:#fff"  value="Aprendizes conhecidos" class="form-control" id="fone" name="VALOR[]" />
-                                Dado <input type="text" class="form-control" id="fone" name="DADO[]" /> 
-                                <br>
-
-
-
+                                <?php
+                                include './TIPOS/personagem.php';
+                                ?>
                             </div>
-
-
                             <div data-name="nav" class="hide">
-                                2
+                                <?php
+                                include './TIPOS/nave.php';
+                                ?>
                             </div>
                             <div data-name="rac" class="hide">
-                                3                    
+                                <?php
+                                include './TIPOS/raca.php';
+                                ?>
+
                             </div>
                             <div data-name="pla"class="hide">
-                                4
+                                <?php
+                                include './TIPOS/planeta.php';
+                                ?>
+
                             </div>
                             <div data-name="fc" class="hide">
-                                5
+                                <?php
+                                include './TIPOS/fanClube.php';
+                                ?>
                             </div>
                             <div data-name="droid" class="hide">
-                                6
+                                <?php
+                                include './TIPOS/droid.php';
+                                ?>
+
                             </div> 
                             <div data-name="ling" class="hide">
-                                7
+                                <?php
+                                include './TIPOS/lingua.php';
+                                ?>
                             </div>
                             <div data-name="era" class="hide">
-                                8
+                                <?php
+                                include './TIPOS/era.php';
+                                ?>
                             </div> 
                             <div data-name="cid" class="hide">
-                                9
+                                <?php
+                                include './TIPOS/cidade.php';
+                                ?>
                             </div> 
                             <div data-name="outro" class="hide">
-                                10
+
                             </div> 
                             <br><br>
                             Para outros ou mais detalhes clieque no botão de +
