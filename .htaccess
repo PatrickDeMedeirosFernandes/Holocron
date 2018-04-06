@@ -46,7 +46,10 @@ RewriteRule ^Editar_Pergunta_SemResp-([0-9]+) EstrelaDaMorte/EditPergSemResp.php
 RewriteRule ^Editar_Pergunta_FeitaBot-([0-9]+) EstrelaDaMorte/EditPerUser.php?id=$1
 
 RewriteRule ^404  view/404.php [NC,L]
+RewriteRule ^403  view/403.php [NC,L]
 
+
+#https://codepen.io/team/nclud/pen/GJpdVo?q=%20404%20&order=popularity&depth=everything&show_forks=false 403 <<<<
 # Apache configuration file (see httpd.apache.org/docs/2.2/mod/quickreference.html)
 <FilesMatch ".(htm|html|css|js)$">
 AddDefaultCharset UTF-8
@@ -54,7 +57,9 @@ AddDefaultCharset UTF-8
 
 # desativa listagemde indixes de pasta
 Options -Indexes
-ErrorDocument 403  <script>window.history.go(-1);</script>
+ErrorDocument 403   <script>window.location.assign("403");</script>
+#ErrorDocument 403  <script>window.history.go(-1);</script>
+
 ErrorDocument 404     <script>window.location.assign("404");</script>
 #Protegendo seu arquivo .htaccess
 <files ~ "^.*\.([Hh][Tt][Aa])">

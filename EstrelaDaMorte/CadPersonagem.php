@@ -1,4 +1,6 @@
 <?php
+
+// error 403 https://codepen.io/team/nclud/pen/GJpdVo?q=%20404%20&order=popularity&depth=everything&show_forks=false
 include './includes/cabeca.php';
 //header('Content-Type: text/html; charset=utf-8');
 //session_start();
@@ -44,6 +46,8 @@ if (!isset($_SESSION['login'])) {
                                 <option data-section="ling"  value="ling">Lingua</option>
                                 <option data-section="era"  value="era">Era</option>
                                 <option data-section="cid"  value="cid">Cidade</option>
+                                <option data-section="act"  value="act">Acontecimentos</option>
+
                                 <option data-section="outro" value="outro">Outro</option>
                             </select>
                             <br>
@@ -101,6 +105,11 @@ if (!isset($_SESSION['login'])) {
                                 include './TIPOS/cidade.php';
                                 ?>
                             </div> 
+                            
+                                 <div data-name="act" class="hide">
+                                <?php
+                                include './TIPOS/acontecimento.php';
+                                ?>
                             <div data-name="outro" class="hide">
 
                             </div> 
