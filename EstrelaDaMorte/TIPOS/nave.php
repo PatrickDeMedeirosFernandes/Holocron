@@ -1,7 +1,5 @@
 Valor <input type="text" style="background-color: #000; color:#fff"  value="o que é" class="form-control" id="fone" name="VALOR[]" />
-Dado <input type="text" class="form-control" id="fone" value="nave" name="DADO[]" /> 
-
-
+Dado <input type="text" class="form-control" id="fone" value="" name="DADO[]" /> 
 
 Valor <input type="text" style="background-color: #000; color:#fff"  value="Fabricante" class="form-control" id="fone" name="VALOR[]" />
 Dado <input type="text" class="form-control" id="fone" value="" name="DADO[]" /> 
@@ -18,6 +16,6 @@ Dado <input type="text" class="form-control" id="fone" value="" name="DADO[]" />
 
 Valor <input type="text" style="background-color: #000; color:#fff"  value="Blindagem" class="form-control" id="fone" name="VALOR[]" />
 Dado <input type="text" class="form-control" id="fone" value="" name="DADO[]" /> 
-V
-alor <input type="text" style="background-color: #000; color:#fff"  value="Ofício de fuga" class="form-control" id="fone" name="VALOR[]" />
+
+Valor <input type="text" style="background-color: #000; color:#fff"  value="Ofício de fuga" class="form-control" id="fone" name="VALOR[]" />
 Dado <input type="text" class="form-control" id="fone" value="" name="DADO[]" /> 

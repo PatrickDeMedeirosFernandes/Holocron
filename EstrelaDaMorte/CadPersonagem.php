@@ -1,5 +1,4 @@
 <?php
-
 // error 403 https://codepen.io/team/nclud/pen/GJpdVo?q=%20404%20&order=popularity&depth=everything&show_forks=false
 include './includes/cabeca.php';
 //header('Content-Type: text/html; charset=utf-8');
@@ -105,11 +104,12 @@ if (!isset($_SESSION['login'])) {
                                 include './TIPOS/cidade.php';
                                 ?>
                             </div> 
-                            
-                                 <div data-name="act" class="hide">
+
+                            <div data-name="act" class="hide">
                                 <?php
                                 include './TIPOS/acontecimento.php';
                                 ?>
+                            </DIV>
                             <div data-name="outro" class="hide">
 
                             </div> 

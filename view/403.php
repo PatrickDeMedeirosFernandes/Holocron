@@ -40,7 +40,7 @@ body {
   font-weight: bold;
   letter-spacing: 0.15em;
   white-space: pre-wrap;
-  text-shadow: 0 0 2px rgba($green, 0.75);
+  text-shadow: 0 0 2px rgba(green, 0.75);
   line-height: 1;
 }
 
