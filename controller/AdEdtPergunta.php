@@ -29,7 +29,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                 //  window.location.href = '../EstrelaDaMorte';
             </script> <?PHP
         } else {
-            $query = "INSERT INTO `respota`(`resposta`) VALUES ('$resposta')";
+            $query = "INSERT INTO `resposta`(`resposta`) VALUES ('$resposta')";
             if (mysqli_query($conn, $query)) {
                 $ID = mysqli_insert_id($conn);
 

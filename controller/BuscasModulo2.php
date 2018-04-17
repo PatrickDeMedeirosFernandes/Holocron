@@ -3,7 +3,7 @@
 //set_time_limit("1000");
 //ANALIZAR ESTA LINHA
 // SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, 
-// (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN respota u ON p.resposta_pergunta = u.id
+// (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN resposta u ON p.resposta_pergunta = u.id
 /**
  * Essa função serve para buscar resposta onde tenha alguma proximidade relativa na da frase enviada, com as frases que em no banco de dados 
  * @param type String
@@ -33,7 +33,7 @@ function BuscaSimilar($text, $time2 = 0) {
     $sql = "SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id,
      LEVENSHTEIN_RATIO( '$text', `pergunta` ) as textDiff
      FROM `pergunta` p 
-     LEFT JOIN respota u ON p.resposta_pergunta = u.id 
+     LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
      HAVING (textDiff) > 70 and max(textDiff) 
      ORDER BY `textDiff` DESC";
     //  echo $sql;
@@ -46,7 +46,7 @@ function BuscaSimilar($text, $time2 = 0) {
             $aa = $linha['resposta'];
             $SAIDA = $aa;
             if ($i == 1) {
-                $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                 if (mysqli_query($conn, $quary4)) {
                     
@@ -64,7 +64,7 @@ function BuscaSimilar($text, $time2 = 0) {
         //BUSCA NA Segunda TABELA
         $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta, id,  LEVENSHTEIN_RATIO( '$text', `pergunta` ) as textDiff
                 FROM `perg_user` p
-                LEFT JOIN respota u ON p.respota_perg_user = u.id
+                LEFT JOIN resposta u ON p.resposta_perg_user = u.id
                 HAVING (textDiff) > 70 and max(textDiff) 
                 ORDER BY `textDiff` DESC";
         $result4 = mysqli_query($conn, $sql);
@@ -75,7 +75,7 @@ function BuscaSimilar($text, $time2 = 0) {
                 $aa = $linha2['pergunta'];
                 $SAIDA = $aa;
                 if ($i == 1) {
-                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                    $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                     if (mysqli_query($conn, $quary4)) {
                         
@@ -99,9 +99,9 @@ function BuscaSimilar($text, $time2 = 0) {
 
 //BUSCA NA TERCEIRA TABELA
             $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita,  LEVENSHTEIN_RATIO( '$text', `pergunta` ) as textDiff,id,
-                `ip`, u.resposta as respotaReal 
+                `ip`, u.resposta as respostaReal 
                  FROM `perg_sem_resp` p
-                 LEFT JOIN respota u ON p.resposta_pergunta = u.id 
+                 LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
                     where u.resposta is not null or p.resposta is not null 
                     HAVING (textDiff) > 70 and 
                     max(textDiff) ORDER BY `textDiff` DESC
@@ -117,7 +117,7 @@ function BuscaSimilar($text, $time2 = 0) {
                     $bb = $linha8['id'];
                     //  echo $aa;
                     if ($i == 1) {
-                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                         //     echo $quary4;
                         if (mysqli_query($conn, $quary4)) {

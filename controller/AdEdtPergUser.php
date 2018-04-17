@@ -24,14 +24,14 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
                 //  window.location.href = '../EstrelaDaMorte';
             </script> <?PHP
         } else {
-            $query = "INSERT INTO `respota`(`resposta`) VALUES ('$resposta')";
+            $query = "INSERT INTO `resposta`(`resposta`) VALUES ('$resposta')";
             if (mysqli_query($conn, $query)) {
                 $ID = mysqli_insert_id($conn);
 
                 IF (isset($ID)) {
 
                     $query2 = "UPDATE `perg_user` SET `pergunta`='$pergunta',
-                        `respota_perg_user` = $ID, valida = $valida WHERE id_perg_user=$id2";
+                        `resposta_perg_user` = $ID, valida = $valida WHERE id_perg_user=$id2";
                     //echo $query2;
 
                     if (!mysqli_query($conn, $query2)) {
@@ -61,7 +61,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
         }
     } else {
         $query2 = $query2 = "UPDATE `perg_user` SET `pergunta`= " . '"' . $pergunta . '"' . ",
-                        respota_perg_user = $resposta2, valida = $valida WHERE id_perg_user=$id2";
+                        resposta_perg_user = $resposta2, valida = $valida WHERE id_perg_user=$id2";
         //     //echo $query2;
         if (mysqli_query($conn, $query2)) {
             ?> 

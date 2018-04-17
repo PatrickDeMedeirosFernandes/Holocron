@@ -38,7 +38,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
     include './DB.php';
     include '../scripts/funcao.php';
 
-    $query = "INSERT INTO `user`(`login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`) 
+    $query = "INSERT INTO `user`(`login`, `senha`, `nivel`, `ativo`, `frase`, `frase_resposta`) 
          VALUES ('$login','$senhaMD5',$nivel,$valida,'$pergunta','$resposta')";
  //   mysqli_query($conn, $query);
 

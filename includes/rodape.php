@@ -6,10 +6,7 @@
 <!--link util: https://responsivevoice.org/text-to-speech-script-server/
 https://responsivevoice.org/api/
 https://github.com/phalt/swapi
-
-
 https://codepen.io/suez/pen/KGaqD
-
 -->
 
 <?php

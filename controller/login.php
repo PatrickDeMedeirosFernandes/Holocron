@@ -35,7 +35,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
      //   echo $senhaM5 . "<br>";
         $senhaMD5 = md5($senhaM5);
     //    echo $senhaMD5 . "<br>";
-        $sql = "SELECT `id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_respota`
+        $sql = "SELECT `id_user`, `login`, `senha`, `nivel`, `ativo`, `frase`, `frase_resposta`
         FROM `user` 
         WHERE `senha` = '$senhaMD5' AND login = '$login' and ativo = 1";
         $result = mysqli_query($conn, $sql);
@@ -48,7 +48,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
             $_SESSION['nivel'] = $row["nivel"];
             $_SESSION['ativo'] = $row["ativo"];
             $_SESSION['frase'] = $row["frase"];
-            $_SESSION['frase_respota'] = $row["frase_respota"];  ?>
+            $_SESSION['frase_resposta'] = $row["frase_resposta"];  ?>
             <script language="javascript">
              //   alert("Bem Vindo <?= $_SESSION['login'] ?>");
                 document.location.href = 'EstrelaDaMorte';

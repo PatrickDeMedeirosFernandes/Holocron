@@ -47,7 +47,7 @@ $row = mysqli_fetch_assoc($result)
                 </div>
                 <div class="form-group">
                     <label>Resposta </label>
-                    <textarea class="form-control" rows="3" name="resposta" ><?= $row["frase_respota"] ?></textarea>
+                    <textarea class="form-control" rows="3" name="resposta" ><?= $row["frase_resposta"] ?></textarea>
                 </div>
                 <?php IF ($_SESSION['nivel'] == 3) { ?>
                     <div class="form-group">

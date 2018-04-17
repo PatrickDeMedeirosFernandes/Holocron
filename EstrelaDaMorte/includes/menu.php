@@ -28,10 +28,10 @@
                         <a href="Perguntas_Nativas">Perguntas Nativas</a>
                     </li> 
                     <li>
-                        <a href="Perguntas_Sem_Resp">Pergunta do user sem respota</a>
+                        <a href="Perguntas_Sem_Resp">Pergunta do user sem resposta</a>
                     </li> 
                     <li>
-                        <a href="Perguntas_Usuarios">Perguntas dos Usuarios respota bot</a>
+                        <a href="Perguntas_Usuarios">Perguntas dos Usuarios resposta bot</a>
                     </li>
                     <li>
                         <!--<a href="Perguntas_Criadas_PorBot">Perguntas criadas do Bot</a>-->
@@ -42,10 +42,10 @@
                         <a href="#">Cadastro de Perguntas <span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a href="Cad-Lote-PergResp">Cadastro em Lote de Perguntas e Respotas</a>
+                                <a href="Cad-Lote-PergResp">Cadastro em Lote de Perguntas e respostas</a>
                             </li>
                             <li>
-                                <a href="Cad-Uma-PergResp">Cadastro de uma Pergunta e Respota</a>
+                                <a href="Cad-Uma-PergResp">Cadastro de uma Pergunta e resposta</a>
                             </li>
                         </ul>
                     </li>

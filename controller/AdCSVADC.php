@@ -55,11 +55,11 @@ include '../scripts/funcao.php';
                     $dados = explode(';', $linha);
                     //  // Verifica se o Dados Não é o cabeçalho ou não esta em branco
                     if (!empty($linha)) {
-                        $sql = " INSERT INTO `respota`(`resposta`) VALUES ("
+                        $sql = " INSERT INTO `resposta`(`resposta`) VALUES ("
                                 . "'" . utf8_encode(htmlspecialchars(strip_tags($dados[1]))) . "');";
                         //  echo $sql;
                         $result = mysqli_query($conn, $sql);
-                        $sql3 = "SELECT id FROM `respota` ORDER BY id DESC LIMIT 1";
+                        $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
                         //             echo $sql3;
                       
 

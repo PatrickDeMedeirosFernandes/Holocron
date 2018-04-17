@@ -13,7 +13,7 @@ function BuscaConcreta($text) {
 
     //BUSCA NA PRIEMIRA TABELA
     $sql = "SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id FROM `pergunta` p
-    LEFT JOIN respota u ON p.resposta_pergunta = u.id
+    LEFT JOIN resposta u ON p.resposta_pergunta = u.id
     
     where p.pergunta = '$text' ;
            
@@ -31,7 +31,7 @@ function BuscaConcreta($text) {
 //BUSCA NA SEGUNDA TABALE
         $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
                 FROM `perg_user` p
-                LEFT JOIN respota u ON p.respota_perg_user = u.id
+                LEFT JOIN resposta u ON p.resposta_perg_user = u.id
                where valida = 1 and pergunta = '$text';";
         $result2 = $conn->query($sql);
         if ($result2->num_rows > 0) {
@@ -48,9 +48,9 @@ function BuscaConcreta($text) {
             
 //BUSCA NA TERCEIRA TABELA
             $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita, 
-                `ip`, u.resposta as respotaReal 
+                `ip`, u.resposta as respostaReal 
                  FROM `perg_sem_resp` p
-                 LEFT JOIN respota u ON p.resposta_pergunta = u.id 
+                 LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
                     where 
                     p.pergunta = '$text' and u.resposta is not null
                      or p.pergunta = '$text' and p.resposta is not null ;";
@@ -58,7 +58,7 @@ function BuscaConcreta($text) {
             if ($result2->num_rows > 0) {
                 
                 while ($linha2 = $result2->fetch_assoc()) {
-                    $aa = $linha2['respotaReal'] . $linha2['respostaEscrita'];
+                    $aa = $linha2['respostaReal'] . $linha2['respostaEscrita'];
                     $SAIDA = $aa;
                 }
             } else {

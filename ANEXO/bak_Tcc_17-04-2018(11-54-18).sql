@@ -37,7 +37,7 @@ CREATE TABLE `perg_sem_resp` (
   `ip` varchar(45) NOT NULL,
   `resposta_pergunta` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_perg_sem_resp`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('1', 'teste', '2017-12-13 12:41:45', 'testeoo', '', '');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('2', 'quem é o Yoda', '2017-12-14 19:50:35', '', '::1', '27');
@@ -67,19 +67,19 @@ insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, respos
         ', '2018-03-19 11:13:20', '', '::1', '');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('21', 'Boa tarde:
 
-        ', '2018-03-19 11:24:00', '', '::1', '');
+        ', '2018-03-19 11:24:00', '', '::1', '26');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('22', 'Bom dia
 
-        ', '2018-03-19 11:24:16', '', '::1', '');
+        ', '2018-03-19 11:24:16', '', '::1', '26');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('23', 'Bom dia
 
-        ', '2018-03-19 11:24:28', '', '::1', '');
+        ', '2018-03-19 11:24:28', '', '::1', '26');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('24', 'Boa noite
 
-        ', '2018-03-19 11:24:36', '', '::1', '');
+        ', '2018-03-19 11:24:36', '', '::1', '26');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('25', 'Boa noite
 
-        ', '2018-03-19 11:24:45', '', '::1', '');
+        ', '2018-03-19 11:24:45', '', '::1', '26');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('26', 'Quais são as armas dos Storm Trooper', '2018-03-22 09:55:15', '', '::1', '32');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('27', 'Quais são as armas dos Storm Trooper', '2018-03-22 09:56:49', '', '::1', '');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('28', 'Uui tft', '2018-03-22 10:19:58', '', '::1', '');
@@ -91,46 +91,63 @@ insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, respos
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('34', 'ONDE fica tATUINI', '2018-03-22 10:35:52', '', '::1', '');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('35', 'Vai tu te fuder', '2018-03-22 10:37:32', '', '::1', '');
 insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('36', 'Hitler', '2018-03-22 10:38:02', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('37', 'Quais são as armas dos Storm Trooper4', '2018-04-02 10:12:06', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('38', 'Oque é star wars', '2018-04-02 10:16:35', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('39', 'Então star trek', '2018-04-02 10:16:47', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('40', 'Hbhi', '2018-04-07 08:54:33', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('41', 'Bua tarde', '2018-04-07 11:40:16', '', '::1', '26');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('42', 'Boa tardi', '2018-04-07 11:40:23', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('43', 'Bon dia', '2018-04-07 11:40:30', '', '::1', '26');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('44', 'Bon di/a', '2018-04-07 11:42:17', '', '::1', '');
+insert into perg_sem_resp(id_perg_sem_resp, pergunta, data, resposta, ip, resposta_pergunta) values('45', 'Bom dia/', '2018-04-07 11:42:25', '', '::1', '');
 
 CREATE TABLE `perg_user` (
   `id_perg_user` int(11) NOT NULL AUTO_INCREMENT,
   `pergunta` text,
   `valida` int(11) NOT NULL DEFAULT '1',
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `respota_perg_user` int(11) DEFAULT NULL,
+  `resposta_perg_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_perg_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('1', 'Teste
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('1', 'Teste
 
-        ', '1', '2018-03-19 10:02:09', '0');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('2', 'Quem é a esposa de anakin
+        ', '0', '2018-03-19 10:02:09', '41');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('2', 'Quem é a esposa de anakin
 
         ', '1', '2018-03-19 10:03:26', '1');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('3', 'Quem é Yoda
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('3', 'Quem é Yoda
 
         ', '1', '2018-03-19 10:09:24', '27');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('4', 'Oi
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('4', 'Oi
 
         ', '1', '2018-03-19 10:16:51', '26');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('5', 'Quais são as armas dos Storme Troopers
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('5', 'Quais são as armas dos Storme Troopers
 
         ', '1', '2018-03-19 10:18:45', '32');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('6', 'Quais são as armas dos Storm Troopers
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('6', 'Quais são as armas dos Storm Troopers
 
         ', '1', '2018-03-19 10:18:57', '32');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('7', 'Boa tarde
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('7', 'Boa tarde
 
         ', '1', '2018-03-19 10:19:13', '26');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('8', 'Boa tarde/
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('8', 'Boa tarde/
 
         ', '1', '2018-03-19 11:00:32', '26');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('9', 'Boa noite
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('9', 'Boa noite
 
         ', '1', '2018-03-19 11:25:17', '26');
-insert into perg_user(id_perg_user, pergunta, valida, data, respota_perg_user) values('10', 'Boa noite
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('10', 'Boa noite
 
         ', '1', '2018-03-19 11:25:17', '26');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('11', 'Bua tarde', '1', '2018-04-07 11:40:15', '26');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('12', 'Boa tardi', '1', '2018-04-07 11:40:22', '26');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('13', 'Quem é a esposa de anakim', '1', '2018-04-07 11:42:40', '1');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('14', 'Quem é a esposa de anakim', '1', '2018-04-07 11:42:41', '1');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('15', 'Quem é a esposa de anakim', '1', '2018-04-07 11:42:41', '1');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('16', 'Quem é a espoza de anakin', '1', '2018-04-07 11:43:00', '1');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('17', 'Quem é a espoza de anakin', '1', '2018-04-07 11:43:00', '1');
+insert into perg_user(id_perg_user, pergunta, valida, data, resposta_perg_user) values('18', 'Quem é a espoza de anakin', '1', '2018-04-07 11:43:01', '1');
 
 CREATE TABLE `pergunta` (
   `id_pergunta` int(11) NOT NULL AUTO_INCREMENT,
@@ -146,16 +163,19 @@ insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('3
 insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('4', 'quem é a esposa de anakin', '1', '1');
 insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('5', 'quem disse a frase eu sou seu pai', '1', '3');
 insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('6', 'que disse a frase eu sou seu pai', '1', '3');
-insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('7', 'quem são os filhos de Anakin Skywalker ', '1', '37');
+insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('7', 'quem são os filhos de Anakin Skywalker ', '1', '39');
 insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('8', 'Boa tarde', '1', '26');
-insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('9', 'patrcik', '1', '38');
+insert into pergunta(id_pergunta, pergunta, valida, resposta_pergunta) values('9', 'patrick', '1', '40');
 
 CREATE TABLE `personagem` (
   `id_personagem` int(11) NOT NULL AUTO_INCREMENT,
   `nome` text CHARACTER SET utf8 COLLATE utf8_german2_ci,
   PRIMARY KEY (`id_personagem`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+insert into personagem(id_personagem, nome) values('1', 'X-wing');
+insert into personagem(id_personagem, nome) values('2', 'teste 1 banca  1');
+insert into personagem(id_personagem, nome) values('3', 'Ordem 66');
 
 CREATE TABLE `propriedade` (
   `id_propriedade` int(11) NOT NULL AUTO_INCREMENT,
@@ -187,38 +207,42 @@ insert into report(id_report, email, nome, texto, visto, data_envio, data_visto,
 insert into report(id_report, email, nome, texto, visto, data_envio, data_visto, visuaizado_por, ip) values('4', 'teste', 'teste', 'oi
 ', '1', '2017-12-15 08:32:55', '2017-12-15 09:00:55', '5', '::1');
 insert into report(id_report, email, nome, texto, visto, data_envio, data_visto, visuaizado_por, ip) values('5', 'patrick@email', 'Patrick', 'oi testentdo asaois 
-', '0', '2017-12-15 09:22:10', '', '', '::1');
+', '1', '2017-12-15 09:22:10', '2018-04-17 10:06:01', '5', '::1');
 insert into report(id_report, email, nome, texto, visto, data_envio, data_visto, visuaizado_por, ip) values('6', 'email@meueamil', 'Genoveva', 'pq ele não ta responde direito minhas perguntas?', '0', '2017-12-15 11:05:38', '', '', '::1');
 insert into report(id_report, email, nome, texto, visto, data_envio, data_visto, visuaizado_por, ip) values('7', 'patrick@email', 'Patrick', 'oi como vai vocÊ', '1', '2017-12-15 11:34:02', '2017-12-15 11:34:14', '3', '::1');
 
-CREATE TABLE `respota` (
+CREATE TABLE `resposta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `resposta` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
-insert into respota(id, resposta) values('1', 'Padmé
+insert into resposta(id, resposta) values('1', 'Padmé
 ');
-insert into respota(id, resposta) values('2', 'Darth Vader disse para o Luke
+insert into resposta(id, resposta) values('2', 'Darth Vader disse para o Luke
 ');
-insert into respota(id, resposta) values('3', 'Darth Vader disse para o Luke
+insert into resposta(id, resposta) values('3', 'Darth Vader disse para o Luke
 ');
-insert into respota(id, resposta) values('7', 'Luke Skywalker  e Princesa Leia Organa, que ele teve com a Senadora Padmé Amidala.');
-insert into respota(id, resposta) values('26', '==saudacao==');
-insert into respota(id, resposta) values('27', ' Yoda é um membro masculino de uma raça cujo nome nunca foi revelado. Ele foi o Grão Mestre da Ordem Jedi durante as Guerras Clônicas, um dos membros mais importantes do Alto Conselho Jedi nos últimos dias da República Galáctica, e um dos mais sábios e poderosos Jedi de todos os tempos.');
-insert into respota(id, resposta) values('28', 'Um holocron, abreviação de crônica holográfica, foi um dispositivo cristalino lapidado orgânico, em que os Jedi antigos armazenavam quantidades fenomenais de dados, bem como o guardião do holocron. Os Sith também tinham sua própria forma de tecnologia de holocron, e parecem anteriores aos Jedi na utilização da tecnologia em pelo menos três mil anos.<br><b> E tbm é o nome que meu pai me deu </b>');
-insert into respota(id, resposta) values('29', 'Meu pai é o Darth Vader -q, zuera é o Patrick de Medeiros Fernandes,  graduando na melhor faculdade de todas, o Faculade Senac de Pelotas
+insert into resposta(id, resposta) values('7', 'Luke Skywalker  e Princesa Leia Organa, que ele teve com a Senadora Padmé Amidala.');
+insert into resposta(id, resposta) values('26', '==saudacao==');
+insert into resposta(id, resposta) values('27', ' Yoda é um membro masculino de uma raça cujo nome nunca foi revelado. Ele foi o Grão Mestre da Ordem Jedi durante as Guerras Clônicas, um dos membros mais importantes do Alto Conselho Jedi nos últimos dias da República Galáctica, e um dos mais sábios e poderosos Jedi de todos os tempos.');
+insert into resposta(id, resposta) values('28', 'Um holocron, abreviação de crônica holográfica, foi um dispositivo cristalino lapidado orgânico, em que os Jedi antigos armazenavam quantidades fenomenais de dados, bem como o guardião do holocron. Os Sith também tinham sua própria forma de tecnologia de holocron, e parecem anteriores aos Jedi na utilização da tecnologia em pelo menos três mil anos.<br><b> E tbm é o nome que meu pai me deu </b>');
+insert into resposta(id, resposta) values('29', 'Meu pai é o Darth Vader -q, zuera é o Patrick de Medeiros Fernandes,  graduando na melhor faculdade de todas, o Faculade Senac de Pelotas
 ');
-insert into respota(id, resposta) values('30', 'vamo falar sobre outra, coisa, esse assunto é complicado e não gosto de lembrar ;~;');
-insert into respota(id, resposta) values('31', 'Stormtroopers foram tropas de assalto do Império Galáctico. Cidadãos contrários ao regime os chamavam de cabeças de balde, um apelido pejorativo inspirado nos capacetes dos stormtroopers. Eles utilizavam armadura branca sobre um macacão preto que, além de criar uma imagem impositiva, era equipado com uma variedade de equipamentos de sobrevivência e controle de temperatura que permitiam que seu usuário sobrevivesse na maioria dos ambientes, mas ofereciam proteção limitada contra tiros de blaster.');
-insert into respota(id, resposta) values('32', 'Eles tem uma variedade de armas, mas a arma mais básica é o blaster');
-insert into respota(id, resposta) values('33', 'Um Blaster era qualquer tipo de arma à distância que disparava tiros de intensa energia de plasma, muitas vezes confundida como lasers. Operando sob os mesmos princípios que o armamento do laser, os blasters convertiam o gás rico em energia a um feixe de partícula incandescente que poderia derreter através dos alvos.');
-insert into respota(id, resposta) values('34', 'Soldados clones formavam um exército de clones idênticos, geneticamente modificados, criados para servir à República Galáctica no Grande Exército da República durante as Guerras Clônicas. Criados em uma taxa de crescimento acelerada e em laboratórios e fábricas no planeta Kamino, os soldados eram treinados durante seus primeiros dez anos de suas vidas para serem uma das forças militares mais eficientes da história galáctica.');
-insert into respota(id, resposta) values('35', 'Star Wars (Guerra nas Estrelas (título no Brasil) ou Guerra das Estrelas (título em Portugal)) é uma franquia do tipo space opera estadunidense criada pelo cineasta George Lucas que conta com uma série de oito filmes de fantasia científica e um spin-off. O primeiro filme foi lançado apenas com o título Star Wars em 25 de maio de 1977, e tornou-se um fenômeno mundial inesperado de cultura popular, sendo responsável pelo início da &quot;era dos blockbusters&quot;: Super produções cinematográficas que fazem sucesso nas bilheterias e viram franquias com brinquedos, jogos, livros, etc. ');
-insert into respota(id, resposta) values('36', 'o
+insert into resposta(id, resposta) values('30', 'vamo falar sobre outra, coisa, esse assunto é complicado e não gosto de lembrar ;~;');
+insert into resposta(id, resposta) values('31', 'Stormtroopers foram tropas de assalto do Império Galáctico. Cidadãos contrários ao regime os chamavam de cabeças de balde, um apelido pejorativo inspirado nos capacetes dos stormtroopers. Eles utilizavam armadura branca sobre um macacão preto que, além de criar uma imagem impositiva, era equipado com uma variedade de equipamentos de sobrevivência e controle de temperatura que permitiam que seu usuário sobrevivesse na maioria dos ambientes, mas ofereciam proteção limitada contra tiros de blaster.');
+insert into resposta(id, resposta) values('32', 'Eles tem uma variedade de armas, mas a arma mais básica é o blaster');
+insert into resposta(id, resposta) values('33', 'Um Blaster era qualquer tipo de arma à distância que disparava tiros de intensa energia de plasma, muitas vezes confundida como lasers. Operando sob os mesmos princípios que o armamento do laser, os blasters convertiam o gás rico em energia a um feixe de partícula incandescente que poderia derreter através dos alvos.');
+insert into resposta(id, resposta) values('34', 'Soldados clones formavam um exército de clones idênticos, geneticamente modificados, criados para servir à República Galáctica no Grande Exército da República durante as Guerras Clônicas. Criados em uma taxa de crescimento acelerada e em laboratórios e fábricas no planeta Kamino, os soldados eram treinados durante seus primeiros dez anos de suas vidas para serem uma das forças militares mais eficientes da história galáctica.');
+insert into resposta(id, resposta) values('35', 'Star Wars (Guerra nas Estrelas (título no Brasil) ou Guerra das Estrelas (título em Portugal)) é uma franquia do tipo space opera estadunidense criada pelo cineasta George Lucas que conta com uma série de oito filmes de fantasia científica e um spin-off. O primeiro filme foi lançado apenas com o título Star Wars em 25 de maio de 1977, e tornou-se um fenômeno mundial inesperado de cultura popular, sendo responsável pelo início da &quot;era dos blockbusters&quot;: Super produções cinematográficas que fazem sucesso nas bilheterias e viram franquias com brinquedos, jogos, livros, etc. ');
+insert into resposta(id, resposta) values('36', 'o
 ');
-insert into respota(id, resposta) values('37', 'teste');
-insert into respota(id, resposta) values('38', 'tste');
+insert into resposta(id, resposta) values('37', 'teste');
+insert into resposta(id, resposta) values('38', 'tste');
+insert into resposta(id, resposta) values('39', 'Ele tem 2 filhos
+');
+insert into resposta(id, resposta) values('40', 'Este é o nome do meu criador');
 
 CREATE TABLE `temp` (
   `id_temp` int(11) NOT NULL AUTO_INCREMENT,
@@ -234,16 +258,16 @@ CREATE TABLE `user` (
   `nivel` int(1) NOT NULL DEFAULT '1',
   `ativo` int(1) NOT NULL DEFAULT '1',
   `frase` text,
-  `frase_respota` text,
+  `frase_resposta` text,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('0', 'root', 'd9b1d7db4cd6e70935368a1efb10e377', '3', '1', '', '');
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('1', 'P', 'd9b1d7db4cd6e70935368a1efb10e377', '0', '1', 'NULL', 'NULL');
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('3', 'root', 'd9b1d7db4cd6e70935368a1efb10e377', '3', '1', '', '');
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('4', 'glad', 'd9b1d7db4cd6e70935368a1efb10e377', '2', '1', 'NULL', 'NULL');
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('5', 'lv1', 'd9b1d7db4cd6e70935368a1efb10e377', '1', '1', 'NULL', 'NULL');
-insert into user(id_user, login, senha, nivel, ativo, frase, frase_respota) values('6', 'lv0', 'd9b1d7db4cd6e70935368a1efb10e377', '0', '1', 'NULL', 'NULL');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('0', 'root', 'd9b1d7db4cd6e70935368a1efb10e377', '3', '1', '', '');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('1', 'P', 'd9b1d7db4cd6e70935368a1efb10e377', '0', '1', 'NULL', 'NULL');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('3', 'root', 'd9b1d7db4cd6e70935368a1efb10e377', '3', '1', '', '');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('4', 'glad', 'd9b1d7db4cd6e70935368a1efb10e377', '2', '1', 'NULL', 'NULL');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('5', 'lv1', 'd9b1d7db4cd6e70935368a1efb10e377', '1', '1', 'NULL', 'NULL');
+insert into user(id_user, login, senha, nivel, ativo, frase, frase_resposta) values('6', 'lv0', 'd9b1d7db4cd6e70935368a1efb10e377', '0', '1', 'NULL', 'NULL');
 
 CREATE TABLE `valor` (
   `id_valor` int(11) NOT NULL AUTO_INCREMENT,
@@ -251,5 +275,15 @@ CREATE TABLE `valor` (
   `dado` text CHARACTER SET utf8 COLLATE utf8_german2_ci,
   `personagem_id_personagem` int(11) NOT NULL,
   PRIMARY KEY (`id_valor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('1', 'Sobre', 'Caças estelares X-wing eram um tipo de caça estelar marcados por suas distintivas asas que se assemelhavam a um "X" quando em posição de ataque. Durante a Guerra Civil Galáctica, a Aliança Rebelde usou caças T-65B X-wing em várias batalhas, como a Batalha de Yavin e a Batalha de Endor.  Aproximadamente trinta anos depois, uma diferente variante de X-wing, o T-70, foi usado pela Resistência, e um modelo mais avançado, o T-85, foi usado pela Nova República.', '1');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('2', 'Resumo sobre', 'Caças estelares X-wing eram um tipo de caça estelar marcados por suas distintivas asas que se assemelhavam a um "X" quando em posição de ataque. Durante a Guerra Civil Galáctica, a Aliança Rebelde usou caças T-65B X-wing em várias batalhas, como a Batalha de Yavin e a Batalha de Endor.', '1');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('4', 'O que é', 'nave especial', '1');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('5', 'O que é', 'Personagem', '2');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('6', 'o que é', 'nave', '2');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('7', 'Fabricante', 'sdsa', '2');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('8', 'Modelo', 'werwer', '2');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('18', 'Sobre', 'é uma ordem dada pelo Conde Dukan, aos Stormes Troopes para exterminar os Jedis', '3');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('19', 'Resumo sobre', 'é uma ordem dada pelo Conde Dukan, aos Stormes Troopes para exterminar os Jedis, matando quase todos', '3');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('20', 'o que é', 'é uma ordem, e comando do para os Storms Troopes', '3');

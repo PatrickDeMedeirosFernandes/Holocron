@@ -45,7 +45,7 @@ if (!isset($_POST['valida']) || $_POST['valida'] == "" ||
 
     $query = "
         UPDATE `user` SET `login`='$login',
-        `senha`='$senhaMD5',`nivel`=$nivel,`ativo`=$valida,`frase`='$pergunta',`frase_respota`='$resposta' WHERE `id_user` =$id
+        `senha`='$senhaMD5',`nivel`=$nivel,`ativo`=$valida,`frase`='$pergunta',`frase_resposta`='$resposta' WHERE `id_user` =$id
 ";
  //   mysqli_query($conn, $query);
 

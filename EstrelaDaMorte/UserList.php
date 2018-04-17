@@ -28,7 +28,7 @@ include './Buscas/Lista_usuer.php';
                                         <th>Nivel</th>
                                         <th>Ativo</th>
                                         <TH>frase</TH>
-                                        <TH>frase_respota</TH>
+                                        <TH>frase_resposta</TH>
                                         <th>Ações</th>
                                     </tr>         
                                     <?php
@@ -49,7 +49,7 @@ include './Buscas/Lista_usuer.php';
                                                     }
                                                     ?></td>
                                                 <td><?= $row["frase"]; ?></td>
-                                                <td><?= $row["frase_respota"]; ?></td>
+                                                <td><?= $row["frase_resposta"]; ?></td>
                                                 <td><a href="Editar_Usuario-<?= $row["id_user"]; ?>">Editar</a></td>
                                             </tr>
                                             <?php

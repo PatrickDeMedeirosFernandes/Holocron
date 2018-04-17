@@ -4,7 +4,7 @@
 // UTILIZAÇÃO DA CLAUSULA SOUDDEX
 //set_time_limit("1000");
 //ANALIZAR ESTA LINHA
-// SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN respota u ON p.resposta_pergunta = u.id
+// SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id, (SELECT SOUNDEX('quem A ESPOZA anaquim')) as text1, (Select SOUNDEX(pergunta)) as text2 FROM `pergunta` p LEFT JOIN resposta u ON p.resposta_pergunta = u.id
 /**
  * Essa função serve para buscar resposta onde tenha alguma similariedade na fonetica da frase enviada, com as frases que em no banco de dados 
  * @param type String
@@ -31,12 +31,12 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
         (SELECT SOUNDEX('$text')) as text1, 
         (Select SOUNDEX(pergunta)) as text2 
         FROM `pergunta` p 
-        LEFT JOIN respota u 
+        LEFT JOIN resposta u 
         ON p.resposta_pergunta = u.id";
 //SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id,
 //     LEVENSHTEIN_RATIO( '$text', `pergunta` ) as textDiff
 //     FROM `pergunta` p 
-//     LEFT JOIN respota u ON p.resposta_pergunta = u.id 
+//     LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
 //     HAVING (textDiff) > 70 and max(textDiff) 
 //     ORDER BY `textDiff` DESC"
         // . "";
@@ -55,7 +55,7 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
                     $SAIDA = $aa;
                     if ($i == 1) {
                         //     echo "i=" . $i;
-                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                        $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                         // echo $quary4;
                         if (mysqli_query($conn, $quary4)) {
@@ -81,7 +81,7 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
                (SELECT SOUNDEX('$text')) as text1, 
                (Select SOUNDEX(pergunta)) as text2 
                FROM `perg_user` p
-               LEFT JOIN respota u ON p.respota_perg_user = u.id";
+               LEFT JOIN resposta u ON p.resposta_perg_user = u.id";
             // echo  $sql ;
 
             $result4 = mysqli_query($conn, $sql2);
@@ -93,7 +93,7 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
                         $aa = $linha2['resposta'];
                         $SAIDA = $aa;
                         if ($i == 1) {
-                            $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                            $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                             // echo $quary4;
                             if (mysqli_query($conn, $quary4)) {
@@ -112,11 +112,11 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
 
 //BUSCA NA TERCEIRA TABELA
                 $sql = "   SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita,id,
-                `ip`, u.resposta as respotaReal ,
+                `ip`, u.resposta as respostaReal ,
                  (SELECT SOUNDEX('$text')) as text1, 
                (Select SOUNDEX(pergunta)) as text2 
                  FROM `perg_sem_resp` p
-                 LEFT JOIN respota u ON p.resposta_pergunta = u.id 
+                 LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
                     where u.resposta is not null or p.resposta is not null 
               ;";
                 // echo  $sql ;
@@ -125,11 +125,11 @@ function BuscaSimilarSoundex($text, $time2 = 0) {
                     while ($linha8 = mysqli_fetch_assoc($result3)) {
                         if ($linha8['text1'] == $linha8['text2']) {
                             $i++;
-                            $aa = $linha8['respotaReal'] . $linha8['respostaEscrita'];
+                            $aa = $linha8['respostaReal'] . $linha8['respostaEscrita'];
                             $SAIDA = $aa;
                             $bb = $linha8['id'];
                             if ($i == 1) {
-                                $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `respota_perg_user`) 
+                                $quary4 = "INSERT INTO `perg_user`(`pergunta`, `valida`, `resposta_perg_user`) 
                     VALUES('$text',1,'$bb');";
                                 // echo $quary4;
                                 if (mysqli_query($conn, $quary4)) {

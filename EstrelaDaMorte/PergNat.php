@@ -31,7 +31,7 @@ include './Buscas/Lista_pergunta.php';
                                         <TH>
                                             PERGUNTA
                                         </TH>
-                                        <TH>Respota</TH>
+                                        <TH>resposta</TH>
                                         <th>Valida</th>
                                         <th>Ações</th>
                                     </tr>

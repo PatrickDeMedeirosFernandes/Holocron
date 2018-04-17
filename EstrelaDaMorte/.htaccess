@@ -23,8 +23,6 @@ RewriteRule ^Cad-Uma-PergResp/?$  CadUmaPerg.php [NC,L]
 RewriteRule ^Lista_Usuarios/?$  UserList.php [NC,L]
 RewriteRule ^Cadastro_Usuario/?$  UserCad.php [NC,L]
 RewriteRule ^Duvida([0-9]+)  duvidaUnico.php?id=$1
-RewriteRule ^404  ../view/404.php [NC,L]
-RewriteRule ^403  ../view/403.php [NC,L]
 
 RewriteRule ^Editar_Usuario-([0-9]+)  UserEdit.php?id=$1
 RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) EditPergNat.php?id=$1
@@ -39,6 +37,9 @@ RewriteRule ^Detalhes_Personagem-([0-9]+)  PersonagemDetalhes.php?id=$1
 RewriteRule ^Editar_Dado-([0-9]+)  EditDado.php?id=$1
 
 
+ 
+RewriteRule ^404  ../view/404.php [NC,L]
+RewriteRule ^403  ../view/403.php [NC,L] 
  
  
 
