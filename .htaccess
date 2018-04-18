@@ -8,15 +8,16 @@ RewriteRule ^(.*)$ $1.php
 
 #URL AMIGAVEIS
 #view
-RewriteRule ^HOME/?$ view/index.php [NC,L]
+RewriteRule ^/?$ view/index2.php [NC,L]
+#DirectoryIndex index2.html index2.php view/index2.php 
+RewriteRule ^HOME/?$ view/index2.php [NC,L]
 
 RewriteRule ^O_que_e_ChatterBot/?$ view/sobrebot.php [NC,L]
 RewriteRule ^O_que_e_AI/?$ view/sobreia.php [NC,L]
 RewriteRule ^O_que_e_SW/?$  view/sobresw.php [NC,L]
 RewriteRule ^Star_Wars/?$  view/sobresw.php [NC,L]
 RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
-RewriteRule ^/?$ view/index.php [NC,L]
-DirectoryIndex index.html index.php view/index.php 
+
 RewriteRule ^Duvidas/?$  view/report.php [NC,L]
 RewriteRule ^Goiaba/?$  view/login.php [NC,L]
 
@@ -44,6 +45,7 @@ RewriteRule ^Editar_Usuario-([0-9]+)   EstrelaDaMorte/UserEdit.php?id=$1
 RewriteRule ^Editar_Pergunta_Nativa-([0-9]+) EstrelaDaMorte/EditPergNat.php?id=$1
 RewriteRule ^Editar_Pergunta_SemResp-([0-9]+) EstrelaDaMorte/EditPergSemResp.php?id=$1
 RewriteRule ^Editar_Pergunta_FeitaBot-([0-9]+) EstrelaDaMorte/EditPerUser.php?id=$1
+
 
 RewriteRule ^404  view/404.php [NC,L]
 RewriteRule ^403  view/403.php [NC,L]
