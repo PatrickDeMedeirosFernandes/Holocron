@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 function BuscaDeRespostaPLN($text) {
     header('Content-Type: text/html; charset=utf-8');
     $ddo = '';
