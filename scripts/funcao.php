@@ -22,9 +22,9 @@ function saldacao($str) {
     return $str;
 }
 
+
 //https://canaltech.com.br/entretenimento/10-sites-e-apps-de-relacionamento-para-voce-encontrar-a-metade-de-sua-laranja/
 //https://imasters.com.br/artigo/18121/linguagens/vicios-de-linguagem-de-programacao/?trace=1519021197&source=single
-//https://imasters.com.br/artigo/11364/php/voce-quis-dizer-com-php/?trace=1519021197&source=single
 //http://www.paulocollares.com.br/2011/12/filtro-gramatical-em-php/
 # Filtro maior
 ###################################################################################################################################################
