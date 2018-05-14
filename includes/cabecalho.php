@@ -13,7 +13,7 @@ include '../includes/top.php';
  
         <div id='caixa'> 
             <div class="img3">
-                <h1>Holocrom</h1>
+                <h1>Holocron</h1>
                 <h3>O chatterbot de Star Wars</h3>
             </div>
             <div class="img">

@@ -1,5 +1,4 @@
-<?php
-header('Content-Type: text/html; charset=utf-8'); ?>
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -8,11 +7,13 @@ header('Content-Type: text/html; charset=utf-8'); ?>
         <script src="./scripts/js.js" type="text/javascript"></script>
         <link rel="shortcut icon" type="image/x-icon" href="img/Holocron.png" id="favicon" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+
     </head> 
     <style>
         body {
-            background-image: url("./img/plano/<?= $n ?>.jpg") ;   
+            /*background-image: url("./img/plano/<?= $n ?>.jpg") ;*/ 
+            background-image: url("./img/plano/9.jpg") ;   
             font: 15px arial, sans-serif;  background-size: 100%;
             background-repeat: no-repeat; background-color: #000;
         }

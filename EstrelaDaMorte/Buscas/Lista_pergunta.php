@@ -21,8 +21,8 @@ function resposta_Escolida($id) {
 
     $sql = " SELECT id_pergunta, `pergunta`,`valida` ,u.resposta, id
     FROM `pergunta` p LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
-    where u.id = $id"
-            . "order by resposta";
+    where u.id = $id
+            order by id_pergunta";
     return $result1 = mysqli_query($conn, $sql);
 }
 
@@ -36,7 +36,7 @@ function lista_pergunta_nativa_1($id) {
 
     $sql = "SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id FROM `pergunta` p
     LEFT JOIN resposta u ON p.resposta_pergunta = u.id
-    where p.id_pergunta = $id order by resposta;
+    where p.id_pergunta = $id order by id;
  ";
     return $result1 = mysqli_query($conn, $sql);
 }
@@ -49,7 +49,7 @@ function lista_pergunta_nativa() {
     include '../controller/DB.php';
 
     $sql = "SELECT `id_pergunta`,  `pergunta`,`valida` ,u.resposta FROM `pergunta` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by resposta
+    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by id_pergunta,resposta
  ";
 
     return $result1 = mysqli_query($conn, $sql);
@@ -64,7 +64,7 @@ function lista_pergunta_Sem_Resp() {
 
     $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita, `ip`, u.resposta as respostaReal 
     FROM `perg_sem_resp` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by u.resposta
+    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by id_perg_sem_resp,u.resposta
  ";
     return $result = mysqli_query($conn, $sql);
 }
@@ -93,7 +93,7 @@ function lista_pergunta_bot_user_unica($id) {
     FROM `perg_user` p
     LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
     where id_perg_user =$id
-order by resposta
+order by id_perg_user, resposta
  ";
     return $result = mysqli_query($conn, $sql);
 }
@@ -104,7 +104,7 @@ function lista_pergunta_bot_user() {
     $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
     FROM `perg_user` p
     LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
-order by resposta
+order by id_perg_user, resposta
  ";
     return $result = mysqli_query($conn, $sql);
 }
@@ -115,7 +115,7 @@ function lista_pergunta_bot_user_invalidas() {
     $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
     FROM `perg_user` p
     LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
-    order by valida;
+    order by id_perg_user,valida;
  ";
     return $result = mysqli_query($conn, $sql);
 }
@@ -129,7 +129,6 @@ function lista_personagem() {
 
     return $result1 = mysqli_query($conn, $sql);
 }
-
 
 function lista_personagem_Unico($id) {
     include '../controller/DB.php';
@@ -147,7 +146,6 @@ function lista_personagem_dados($id) {
 
     return $result1 = mysqli_query($conn, $sql);
 }
-
 
 function lista_dado_unico($id) {
     include '../controller/DB.php';

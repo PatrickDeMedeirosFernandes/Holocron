@@ -29,9 +29,9 @@ include './Buscas/Lista_pergunta.php';
                                     <tr>
                                         <th>ID</th>
                                         <TH>
-                                            PERGUNTA
+                                            Pergunta
                                         </TH>
-                                        <TH>resposta</TH>
+                                        <TH>Resposta</TH>
                                         <th>Valida</th>
                                         <th>Data criação</th>
                                         <th>Ações</th>

@@ -1,9 +1,9 @@
 <?php
 
 
+$text ="QUAL É O NOME VERDADEIRO DE Darth Vader e Darth Sirius";
 
-
-function BuscaDeRespostaPLN($text) {
+//function BuscaDeRespostaPLN($text) {
     header('Content-Type: text/html; charset=utf-8');
     $ddo = '';
 // Example 1
@@ -73,7 +73,7 @@ function BuscaDeRespostaPLN($text) {
     personagem.nome like '$um%'  and valor.valor like '%$ddo'; "; 
         }
     }
-}
+// }
 
 function limpa($string) {
     $string = mb_strtolower($string, 'UTF-8'); //strtolower($string);
