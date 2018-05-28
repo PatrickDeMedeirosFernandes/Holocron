@@ -7,10 +7,12 @@ $text ="QUAL É O NOME VERDADEIRO DE Darth Vader e Darth Sirius";
     header('Content-Type: text/html; charset=utf-8');
     $ddo = '';
 // Example 1
-    $pizza = $text; // "QUAL É O NOME VERDADEIRO DE Darth Vader e Darth Sirius";
+    $pizza = $text; // "QUAL É O NOME VERDADEIRO DE Darth Vader ";
     echo "Envio:" . $pizza . "<br><br>";
 
     $pieces = explode(" ", $pizza);
+    
+    
     if ($pieces[0] == "QUAL") {
         $pizza2 = limpa($pizza);
         $pieces2 = explode(" de ", $pizza2);
@@ -24,53 +26,41 @@ $text ="QUAL É O NOME VERDADEIRO DE Darth Vader e Darth Sirius";
         IF(isset($dois)) {
 
             $sql = "Busca:      
-    SELECT *
-    FROM personagem
-    INNER JOIN valor 
-    ON personagem.id_personagem = valor.personagem_id_personagem
-    where
-    personagem.nome like '%$um%' and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$um%' and valor.valor like '%$ddo' or 
-    personagem.nome like '%$um%' and valor.valor like '$ddo%' or 
+    <br>SELECT *
+    <br>FROM personagem
+    <br>INNER JOIN valor 
+    <br>ON personagem.id_personagem = valor.personagem_id_personagem
+    <br>where
+    <br>personagem.nome like '%$um%' and valor.valor like '%$ddo%' or 
+    <br>personagem.nome like '%$um%' and valor.valor like '%$ddo' or 
+    <br>personagem.nome like '%$um%' and valor.valor like '$ddo%' or 
             
-    personagem.nome like '%$um'  and valor.valor like '$ddo%' or 
-    personagem.nome like '%$um'  and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$um'  and valor.valor like '%$ddo' or 
-
-    personagem.nome like '$um%'  and valor.valor like '%$ddo%' or 
-    personagem.nome like '$um%'  and valor.valor like '$ddo%' or 
-    personagem.nome like '$um%'  and valor.valor like '%$ddo' or 
-
-    personagem.nome like '%$dois%' and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$dois%' and valor.valor like '$ddo%' or 
-    personagem.nome like '%$dois%' and valor.valor like '%$ddo' or 
-
-    personagem.nome like '%$dois'  and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$dois'  and valor.valor like '%$ddo' or 
-    personagem.nome like '%$dois'  and valor.valor like '$ddo%' or 
-     
-    personagem.nome like '$dois%' and valor.valor like '%$ddo%' or 
-    personagem.nome like '$dois%' and valor.valor like '$ddo%' or 
-    personagem.nome like '$dois%' and valor.valor like '%$ddo' ";
+    <br>personagem.nome like '%$um'  and valor.valor like '$ddo%' or 
+<br>    personagem.nome like '%$um'  and valor.valor like '%$ddo%' or 
+    <br>personagem.nome like '%$um'  and valor.valor like '%$ddo' or 
+<br>
+<br>    personagem.nome like '$um%'  and valor.valor like '%$ddo%' or 
+<br>    personagem.nome like '$um%'  and valor.valor like '$ddo%' or 
+<br>    personagem.nome like '$um%'  and valor.valor like '%$ddo' ; ";
             ECHO ($sql);
         } else {
                  $sql = "Busca:      
-    SELECT *
-    FROM personagem
-    INNER JOIN valor 
-    ON personagem.id_personagem = valor.personagem_id_personagem
-    where
-    personagem.nome like '%$um%' and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$um%' and valor.valor like '%$ddo' or 
-    personagem.nome like '%$um%' and valor.valor like '$ddo%' or 
-            
-    personagem.nome like '%$um'  and valor.valor like '$ddo%' or 
-    personagem.nome like '%$um'  and valor.valor like '%$ddo%' or 
-    personagem.nome like '%$um'  and valor.valor like '%$ddo' or 
-
-    personagem.nome like '$um%'  and valor.valor like '%$ddo%' or 
-    personagem.nome like '$um%'  and valor.valor like '$ddo%' or 
-    personagem.nome like '$um%'  and valor.valor like '%$ddo'; "; 
+<br>    SELECT *
+<br>    FROM personagem
+<br>    INNER JOIN valor 
+<br>    ON personagem.id_personagem = valor.personagem_id_personagem
+<br>    where
+<br>    personagem.nome like '%$um%' and valor.valor like '%$ddo%' or 
+<br>    personagem.nome like '%$um%' and valor.valor like '%$ddo' or 
+<br>    personagem.nome like '%$um%' and valor.valor like '$ddo%' or 
+<br>            <br>
+<br>    personagem.nome like '%$um'  and valor.valor like '$ddo%' or 
+<br>    personagem.nome like '%$um'  and valor.valor like '%$ddo%' or 
+<br>    personagem.nome like '%$um'  and valor.valor like '%$ddo' or 
+<br>
+<br>    personagem.nome like '$um%'  and valor.valor like '%$ddo%' or 
+<br>    personagem.nome like '$um%'  and valor.valor like '$ddo%' or 
+<br>    personagem.nome like '$um%'  and valor.valor like '%$ddo'; "; 
         }
     }
 // }
@@ -89,7 +79,7 @@ function limpa($string) {
 echo "<br><br>
         Resposta: 
         
-        O $ddo de $um é %linha[dado1] e de $dois é %linha[dado2];
+        O $ddo de $um é %linha[dado1];
 
 
 ";

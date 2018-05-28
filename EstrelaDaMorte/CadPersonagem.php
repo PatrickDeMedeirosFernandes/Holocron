@@ -27,7 +27,7 @@ if (!isset($_SESSION['login'])) {
             <div class="row">
                 <div class="col-lg-7">
                     <div class="table-responsive">
-                        <h2>Adcionar novo personagem</h2>
+                        <h2>Adicionar novo personagem</h2>
 
                         <form class="form-group"  enctype="multipart/form-data"
                               name="myForm" id="myForm"  action="../controller/AdPersonagem.php" method="POST">
@@ -114,7 +114,7 @@ if (!isset($_SESSION['login'])) {
 
                             </div> 
                             <br><br>
-                            Para outros ou mais detalhes clieque no botão de +
+                            Para outros ou mais detalhes clique no botão de +
                             <span  class="btn btn-info form" style="cursor: pointer;" onclick="duplicarCampos();">+</span>
                             <span  class="btn btn-danger form" style="cursor: pointer;" onclick="removerCampos(this);">-</span>
                             <br>

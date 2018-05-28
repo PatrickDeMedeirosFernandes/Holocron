@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Holocrom - O ChatBot de STAR WARS</title>
+        <title>Holocron - O ChatBot de STAR WARS</title>
         <link href="./scripts/css.css" rel="stylesheet" type="text/css"/>
         <script src="./scripts/js.js" type="text/javascript"></script>
         <link rel="shortcut icon" type="image/x-icon" href="img/Holocron.png" id="favicon" />
