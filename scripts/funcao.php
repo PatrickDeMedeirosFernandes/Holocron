@@ -1,4 +1,5 @@
 <?php
+
 //https://github.com/phalt/swapi
 /**
  * metodo não implmentado
@@ -9,19 +10,18 @@ function saldacao($str) {
     if ($str == "==saudacao==") {
         date_default_timezone_set('America/Sao_Paulo');
         $hora = date("H");
-         if ($hora >= 6 && $hora < 12) {
-            $str= "Bom dia!  Vamos falar sobre o que?";
+        if ($hora >= 6 && $hora < 12) {
+            $str = "Bom dia!  Vamos falar sobre o que?";
         } elseif ($hora >= 12 && $hora < 18) {
-            $str= "Boa tarde!  Vamos falar sobre o que?";
+            $str = "Boa tarde!  Vamos falar sobre o que?";
         } else {
             $str = "Boa noite!  Vamos falar sobre o que?";
         }
     } else {
-         $str =$str;
+        $str = $str;
     }
     return $str;
 }
-
 
 //https://canaltech.com.br/entretenimento/10-sites-e-apps-de-relacionamento-para-voce-encontrar-a-metade-de-sua-laranja/
 //https://imasters.com.br/artigo/18121/linguagens/vicios-de-linguagem-de-programacao/?trace=1519021197&source=single
@@ -133,8 +133,9 @@ function CodeLimpaNeve($str) {
  * @param type String recebe a frase
  * @return type String retorna o texto já formatado
  */
+
 function nomes($texto) {
-$texto = CodeLimpaNeve($texto);
+    $texto = CodeLimpaNeve($texto);
     //Variáveis
     $pontuacoes = array(",", ".", "!", "?", ";");
 
@@ -244,34 +245,59 @@ $texto = CodeLimpaNeve($texto);
     return $texto;
 }
 
-
 function sanitizeString($string) {
     // matriz de entrada
     $what = array('ä', 'ã', 'à', 'á', 'â', 'ê', 'ë', 'è', 'é', 'ï', 'ì', 'í', 'ö', 'õ', 'ò', 'ó', 'ô', 'ü', 'ù', 'ú', 'û', 'À', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ', 'ç', 'Ç', ' ', '-', '(', ')', ',', ';', ':', '|', '!', '"', '#', '$', '%', '&', '/', '=', '?', '~', '^', '>', '<', 'ª', 'º');
 
     // matriz de saída
-    $by = array('a', 'a', 'a', 'a', 'a', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'A', 'A', 'E', 'I', 'O', 'U', 'n', 'n', 'c', 'C', ' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ',' ', ' ');
+    $by = array('a', 'a', 'a', 'a', 'a', 'e', 'e', 'e', 'e', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'A', 'A', 'E', 'I', 'O', 'U', 'n', 'n', 'c', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 
     // devolver a string
     return str_replace($what, $by, $string);
 }
 
-
-    function get_client_ip() {
-     $ip = '';
-     if (getenv('HTTP_CLIENT_IP'))
-         $ip = getenv('HTTP_CLIENT_IP');
-     else if(getenv('HTTP_X_FORWARDED_FOR'))
-         $ip = getenv('HTTP_X_FORWARDED_FOR');
-     else if(getenv('HTTP_X_FORWARDED'))
-         $ip = getenv('HTTP_X_FORWARDED');
-     else if(getenv('HTTP_FORWARDED_FOR'))
-         $ip = getenv('HTTP_FORWARDED_FOR');
-     else if(getenv('HTTP_FORWARDED'))
+function get_client_ip() {
+    $ip = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ip = getenv('HTTP_CLIENT_IP');
+    else if (getenv('HTTP_X_FORWARDED_FOR'))
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
+    else if (getenv('HTTP_X_FORWARDED'))
+        $ip = getenv('HTTP_X_FORWARDED');
+    else if (getenv('HTTP_FORWARDED_FOR'))
+        $ip = getenv('HTTP_FORWARDED_FOR');
+    else if (getenv('HTTP_FORWARDED'))
         $ip = getenv('HTTP_FORWARDED');
-     else if(getenv('REMOTE_ADDR'))
-         $ip = getenv('REMOTE_ADDR');
-     else
-         $ip = 'UNKNOWN';
-     return $ip; 
+    else if (getenv('REMOTE_ADDR'))
+        $ip = getenv('REMOTE_ADDR');
+    else
+        $ip = 'UNKNOWN';
+    return $ip;
+}
+
+function stopwords($str) {
+    $what = array(' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ', ' um ', ' para ', ' é ', ' com ',  ' os ',
+        ' no ', ' se ', ' na ', ' por ', ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
+        ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' já ', ' está ', ' eu ',
+        ' também ', ' só ', ' pelo ', ' pela ', ' até ', ' isso ', ' ela ', ' entre ', ' era ', ' depois ', ' sem ', ' mesmo ',
+        ' aos ', ' ter ', ' seus ', ' quem ', ' nas ', ' me ', ' esse ', ' eles ', ' estão ', ' tinha ', ' foram ', ' essa ', ' num ',
+        ' nem ', ' suas ', ' meu ', ' às ', ' minha ', ' têm ', ' numa ', ' pelos ', ' elas ', ' havia ',
+        ' seja ', ' qual ', ' será ', ' nós ', ' tenho ', ' lhe ', ' deles ', ' essas ', ' esses ', ' pelas ',
+        ' este ', ' fosse ', ' dele ', ' tu ', ' te ', ' vocês ', ' vos ', ' lhes ', ' meus ', ' minhas', ' teu ', ' tua ', ' teus ',
+        ' tuas ', ' nosso ', ' nossa ', ' nossos ', ' nossas ', ' dela ', ' delas ', ' esta ', ' estes ', ' estas ', ' aquele ', ' aquela ',
+        ' aqueles ', ' aquelas ', ' isto ', ' aquilo ', ' estou ', ' está ', ' estamos ', ' estão ', ' estive ', ' esteve ', ' estivemos ',
+        ' estiveram ', ' estava ', ' estávamos ', ' estavam ', ' estivera ', ' estivéramos ', ' esteja ', ' estejamos ', ' estejam ',
+        ' estivesse ', ' estivéssemos ', ' estivessem ', ' estiver ', ' estivermos ', ' estiverem ', ' hei ', ' há ', ' havemos ',
+        ' hão ', ' houve ', ' houvemos ', ' houveram ', ' houvera ', ' houvéramos ', ' haja ', ' hajamos ', ' hajam ',
+        ' houvesse ', ' houvéssemos ', ' houvessem ', ' houver ', ' houvermos ', ' houverem ', ' houverei ',
+        ' houverá ', ' houveremos ', ' houverão ', ' houveria ', ' houveríamos ', ' houveriam ', ' sou ', ' somos ',
+        ' são ', ' era ', ' éramos ', ' eram ', ' fui ', ' foi ', ' fomos ', ' foram ', ' fora ',
+        ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' fossem ', ' for ',
+        ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' seríamos ', ' seriam ', ' tenho ',
+        ' tem ', ' temos ', ' tém ', ' tinha ', ' tínhamos ', ' tinham ', ' tive ', ' teve ', ' tivemos ', ' tiveram ', ' tivera ', ' tivéramos ',
+        ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', ' tiver ', ' tivermos ',
+        ' tiverem ', ' terei ', ' terá ', ' teremos ', ' terão ', ' teria ', ' teríamos ', ' teriam ', ' # ', ' * ', ' .. ', ' ... ', '  a  ');
+
+    // devolver a string
+    return str_replace($what, "", $str);
 }
