@@ -15,7 +15,39 @@ include '../includes/menu.php';
     <br>-->
 <!-- I did not find the text of the original generic. So here is a translation into my native language. -->
 <!--//https://github.com/phalt/swapi-->
-
+<audio loop id="audio">
+    <source src="Anexo/sw.ogg" type="audio/ogg">
+    <source src="Anexo/sw.mp3" type="audio/mpeg">
+</audio>
+<div id="wrapper">
+    <div id="container">
+        <div id="paragraph">
+            <h2>Episode TCC</h2>
+            <h1>Holocron o ChatBot de Star Wars</h1><Br><br>
+            <p>Holocron é um chatbot criado por Patrick de Medeiros Fernandes, como trabalho de conclusão de curso.
+                Para o curso de Analise e Desenvolvimento de sistemas, na Faculdade Senac da cidade de Pelotas, no 
+                estado do Rio Grande do Sul.
+                Criado no ano de 2018, sua primeira versão beta.
+            </p>
+            <p>
+                Holocron foi criado, como um assistente virtual, para ajudar as fãns da franquia,
+                podesse conversar e interagir, com um software sobre a franquia, um sistema que aloca-se um grande
+                numero de informações, de uma forma que não fica-se tão formal e padrão como muitas Wikis, e sim um 
+                sistema que pudesse conversar com as pessoas sobre aquele assunto, que ele gosta.</p>
+            <p>
+                Que é Star Wars
+            </p>
+            <p>
+                O nome Holocron, surgiu com referencia a  receptáculos de informações,
+                sendo a maioria deles usada para guardar os segredos do uso da Força para futuras gerações.
+                O criador de um holocron praticamente transfere um pouco de sua personalidade para dentro do objeto e
+                muitos deles têm um tipo de componente orgânico cristalizado, uma rara facilidade encontrada apenas em mundos remotos.
+                E por este motivo teve a inspiração deste nome, já que de certa, forma, o HOLOCRON
+                é um "receptáculo" de informações sobre a franquia.
+            </p>
+        </div>
+    </div>
+</div>
 <script>
     audio = document.getElementById('audio');
 
@@ -123,39 +155,7 @@ include '../includes/menu.php';
     $replayButton.on("click", replay);
 </script>
 <!--=========================================================================================-->
-<audio loop id="audio">
-    <source src="Anexo/sw.ogg" type="audio/ogg">
-    <source src="Anexo/sw.mp3" type="audio/mpeg">
-</audio>
-<div id="wrapper">
-    <div id="container">
-        <div id="paragraph">
-            <h2>Episode TCC</h2>
-            <h1>Holocron o ChatBot de Star Wars</h1><Br><br>
-            <p>Holocron é um chatbot criado por Patrick de Medeiros Fernandes, como trabalho de conclusão de curso.
-                Para o curso de Analise e Desenvolvimento de sistemas, na Faculdade Senac da cidade de Pelotas, no 
-                estado do Rio Grande do Sul.
-                Criado no ano de 2018, sua primeira versão beta.
-            </p>
-            <p>
-                Holocron foi criado, como um assistente virtual, para ajudar as fãns da franquia,
-                podesse conversar e interagir, com um software sobre a franquia, um sistema que aloca-se um grande
-                numero de informações, de uma forma que não fica-se tão formal e padrão como muitas Wikis, e sim um 
-                sistema que pudesse conversar com as pessoas sobre aquele assunto, que ele gosta.</p>
-            <p>
-                Que é Star Wars
-            </p>
-            <p>
-                O nome Holocron, surgiu com referencia a  receptáculos de informações,
-                sendo a maioria deles usada para guardar os segredos do uso da Força para futuras gerações.
-                O criador de um holocron praticamente transfere um pouco de sua personalidade para dentro do objeto e
-                muitos deles têm um tipo de componente orgânico cristalizado, uma rara facilidade encontrada apenas em mundos remotos.
-                E por este motivo teve a inspiração deste nome, já que de certa, forma, o HOLOCRON
-                é um "receptáculo" de informações sobre a franquia.
-            </p>
-        </div>
-    </div>
-</div>
+
 <!--</div>-->
 <?php
 
