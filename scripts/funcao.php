@@ -276,28 +276,33 @@ function get_client_ip() {
 }
 
 function stopwords($str) {
-    $what = array(' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ', ' um ', ' para ', ' é ', ' com ',  ' os ',
-        ' no ', ' se ', ' na ', ' por ', ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
-        ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' já ', ' está ', ' eu ',
-        ' também ', ' só ', ' pelo ', ' pela ', ' até ', ' isso ', ' ela ', ' entre ', ' era ', ' depois ', ' sem ', ' mesmo ',
-        ' aos ', ' ter ', ' seus ', ' quem ', ' nas ', ' me ', ' esse ', ' eles ', ' estão ', ' tinha ', ' foram ', ' essa ', ' num ',
-        ' nem ', ' suas ', ' meu ', ' às ', ' minha ', ' têm ', ' numa ', ' pelos ', ' elas ', ' havia ',
+    $what = array(
+        ' também ',
+//
+        ' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
+        ' um ', ' para ', ' é ', ' com ', ' os ', ' no ', ' se ', ' na ', ' por ', ' teve ', ' teriam ',
+        ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
+        ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' tiverem ', ' terei ',
+        ' já ', ' está ', ' eu ', ' só ', ' pelo ', ' pela ', ' até ', ' isso ', ' teríamos ',
+        ' ela ', ' entre ', ' era ', ' depois ', ' sem ', ' mesmo ', ' foram ', ' fora ', ' tinha ', ' tínhamos ',
+        ' aos ', ' ter ', ' seus ', ' quem ', ' nas ', ' me ', ' esse ', ' eles ', ' estamos ', ' seriam ',
+        ' estão ', ' tinha ', ' foram ', ' essa ', ' num ', ' nem ', ' suas ', ' meu ', ' às ', ' # ', ' * ',
+        ' minha ', ' têm ', ' numa ', ' pelos ', ' elas ', ' havia ', ' fossem ', ' for ', ' seríamos ',
         ' seja ', ' qual ', ' será ', ' nós ', ' tenho ', ' lhe ', ' deles ', ' essas ', ' esses ', ' pelas ',
-        ' este ', ' fosse ', ' dele ', ' tu ', ' te ', ' vocês ', ' vos ', ' lhes ', ' meus ', ' minhas', ' teu ', ' tua ', ' teus ',
-        ' tuas ', ' nosso ', ' nossa ', ' nossos ', ' nossas ', ' dela ', ' delas ', ' esta ', ' estes ', ' estas ', ' aquele ', ' aquela ',
-        ' aqueles ', ' aquelas ', ' isto ', ' aquilo ', ' estou ', ' está ', ' estamos ', ' estão ', ' estive ', ' esteve ', ' estivemos ',
-        ' estiveram ', ' estava ', ' estávamos ', ' estavam ', ' estivera ', ' estivéramos ', ' esteja ', ' estejamos ', ' estejam ',
-        ' estivesse ', ' estivéssemos ', ' estivessem ', ' estiver ', ' estivermos ', ' estiverem ', ' hei ', ' há ', ' havemos ',
-        ' hão ', ' houve ', ' houvemos ', ' houveram ', ' houvera ', ' houvéramos ', ' haja ', ' hajamos ', ' hajam ',
-        ' houvesse ', ' houvéssemos ', ' houvessem ', ' houver ', ' houvermos ', ' houverem ', ' houverei ',
-        ' houverá ', ' houveremos ', ' houverão ', ' houveria ', ' houveríamos ', ' houveriam ', ' sou ', ' somos ',
-        ' são ', ' era ', ' éramos ', ' eram ', ' fui ', ' foi ', ' fomos ', ' foram ', ' fora ',
-        ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' fossem ', ' for ',
-        ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' seríamos ', ' seriam ', ' tenho ',
-        ' tem ', ' temos ', ' tém ', ' tinha ', ' tínhamos ', ' tinham ', ' tive ', ' teve ', ' tivemos ', ' tiveram ', ' tivera ', ' tivéramos ',
-        ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', ' tiver ', ' tivermos ',
-        ' tiverem ', ' terei ', ' terá ', ' teremos ', ' terão ', ' teria ', ' teríamos ', ' teriam ', ' # ', ' * ', ' .. ', ' ... ', '  a  ');
-
-    // devolver a string
+        ' este ', ' fosse ', ' dele ', ' tu ', ' te ', ' vocês ', ' vos ', ' tem ', ' .. ', ' ... ',
+        ' lhes ', ' meus ', ' minhas', ' teu ', ' tua ', ' teus ', ' tuas ', ' nosso ', ' nossa ',
+        ' nossos ', ' nossas ', ' dela ', ' delas ', ' esta ', ' estes ', ' estas ', ' aquele ', ' aquela ',
+        ' aqueles ', ' aquelas ', ' isto ', ' aquilo ', ' estou ', ' está ', ' tivemos ', ' tivéramos ',
+        ' estão ', ' estive ', ' esteve ', ' estivemos ', ' estiveram ', ' estava ', ' estávamos ',
+        ' estavam ', ' estivera ', ' estivéramos ', ' esteja ', ' estejamos ', ' estejam ', ' terá ', ' teremos ',
+        ' estivesse ', ' estivéssemos ', ' estivessem ', ' estiver ', ' estivermos ', ' estiverem ',
+        ' hei ', ' há ', ' havemos ', ' hão ', ' houve ', ' houvemos ', ' houveram ', ' houvera ',
+        ' houvéramos ', ' haja ', ' hajamos ', ' hajam ', ' houvesse ', ' houvéssemos ', ' houvessem ',
+        ' houver ', ' houvermos ', ' houverem ', ' houverei ', ' houverá ', ' houveremos ', ' houverão ',
+        ' houveria ', ' houveríamos ', ' houveriam ', ' sou ', ' somos ', ' temos ', ' tém ',
+        ' são ', ' era ', ' éramos ', ' eram ', ' fui ', ' foi ', ' fomos ', ' tiveram ', ' tivera ',
+        ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' tiver ', ' tivermos ',
+        ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
+        ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ');
     return str_replace($what, "", $str);
 }
