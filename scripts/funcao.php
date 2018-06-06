@@ -93,7 +93,10 @@ function comparaPalavraMaiuscula($palavra) {
  */
 function CodeLimpaNeve($str) {
     include '../controller/DB.php';
-    $sql = "SELECT `expressao`, `significado` FROM `dicionario`  ;";
+   
+    $sql = " SELECT d.`texto`,u.expressao FROM `dicionario` d 
+            LEFT JOIN expressoes u 
+            ON d.`expressoes_idexpressoes` = u.idexpressoes  ;";
     $result = $conn->query($sql);
     $str = str_replace("-", "", $str);
     $str = str_replace("\"", "\\\"", $str);
@@ -110,8 +113,8 @@ function CodeLimpaNeve($str) {
     $str = trim($str, '. ');
     if ($result->num_rows > 0) {
         while ($linha = $result->fetch_assoc()) {
-            $aa = $linha['expressao'];
-            $bb = $linha['significado'];
+            $aa = $linha['texto'];
+            $bb = $linha['expressao'];
             $str = str_replace("$aa", "$bb", $str);
         }
     }
@@ -303,6 +306,13 @@ function stopwords($str) {
         ' são ', ' era ', ' éramos ', ' eram ', ' fui ', ' foi ', ' fomos ', ' tiveram ', ' tivera ',
         ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' tiver ', ' tivermos ',
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
-        ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ');
-    return str_replace($what, "", $str);
+        ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
+        
+        ' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ','qual ',' quem ',' seu ','quem ',' é '
+        );
+  
+    $str= str_replace($what, ' ', $str);
+    
+    
+    return $str;
 }

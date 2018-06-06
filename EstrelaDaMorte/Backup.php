@@ -19,8 +19,8 @@ if (!isset($_SESSION['login'])) {
     include '../controller/DB.php';
     $data = date("d-m-Y(H-s-i)");
 // arquivo onde ficará os comandos para o restore
-    $arq = fopen("../anexo/bak_Tcc_$data.sql", "w");
-    $baixar = "../anexo/bak_Tcc_$data.sql";
+    $arq = fopen("../ANEXO/bak_Tcc_$data.sql", "w");
+    $baixar = "../ANEXO/bak_Tcc_$data.sql";
 // SET FOREIGN_KEY_CHECKS = 0; serve para desabilitar a validação dos relacionamentos
 // no momento da restauração. Exemplo: criar a tabela itens_venda antes da venda
     fwrite($arq, "\r\n");

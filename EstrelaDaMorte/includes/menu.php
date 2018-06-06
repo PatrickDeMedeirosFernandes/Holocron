@@ -47,6 +47,9 @@
                             <li>
                                 <a href="Cad-Uma-PergResp">Cadastro de uma Pergunta e resposta</a>
                             </li>
+                             <li>
+                                <a href="CadExpressoes.php">Cadastro de expressões</a>
+                            </li>
                         </ul>
                     </li>
             <?php } ?>
