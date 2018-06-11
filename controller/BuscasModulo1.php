@@ -71,35 +71,38 @@ function BuscaConcreta($text) {
 //        //return ' ';
 //    }
 
-    
-    
-    
-    
-    
-       $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal 
+
+ 
+
+
+    $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff
                  FROM `pergunta_keyworks` p
                  LEFT JOIN resposta u ON p.resposta_id = u.id 
-                    where 
+                    HAVING (textDiff) > 89 and max(textDiff) 
+     ORDER BY `textDiff` DESC 
+                    
+
+
                     p.pergunta_key = '$text' and u.resposta is not null;";
-            $result2 = $conn->query($sql);
-            if ($result2->num_rows > 0) {
-                
-                while ($linha2 = $result2->fetch_assoc()) {
-                    $aa = $linha2['respostaReal'] . $linha2['respostaEscrita'];
-                    $SAIDA = $aa;
-                }
-            } else {
-                $SAIDA = ' ';
-            }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    $result2 = $conn->query($sql);
+    if ($result2->num_rows > 0) {
+
+        while ($linha2 = $result2->fetch_assoc()) {
+            $aa = $linha2['respostaReal'] . $linha2['respostaEscrita'];
+            $SAIDA = $aa;
+        }
+    } else {
+        $SAIDA = ' ';
+    }
+
+
+
+
+
+
+
+
+
+
     return $SAIDA;
 }

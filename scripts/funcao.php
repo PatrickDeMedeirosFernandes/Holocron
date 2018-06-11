@@ -93,7 +93,7 @@ function comparaPalavraMaiuscula($palavra) {
  */
 function CodeLimpaNeve($str) {
     include '../controller/DB.php';
-   
+
     $sql = " SELECT d.`texto`,u.expressao FROM `dicionario` d 
             LEFT JOIN expressoes u 
             ON d.`expressoes_idexpressoes` = u.idexpressoes  ;";
@@ -115,7 +115,7 @@ function CodeLimpaNeve($str) {
         while ($linha = $result->fetch_assoc()) {
             $aa = $linha['texto'];
             $bb = $linha['expressao'];
-            $str = str_replace("$aa", "$bb", $str);
+            $str = str_replace("$aa", " $bb ", $str);
         }
     }
     return $str;
@@ -279,10 +279,9 @@ function get_client_ip() {
 }
 
 function stopwords($str) {
+    
     $what = array(
-        ' também ',
-//
-        ' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
+        ' também ',' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
         ' um ', ' para ', ' é ', ' com ', ' os ', ' no ', ' se ', ' na ', ' por ', ' teve ', ' teriam ',
         ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
         ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' tiverem ', ' terei ',
@@ -307,12 +306,23 @@ function stopwords($str) {
         ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' tiver ', ' tivermos ',
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
-        
-        ' de ', ' a ', ' o ', ' que ', ' e ', ' do ', ' da ', ' em ','qual ',' quem ',' seu ','quem ',' é '
-        );
-  
-    $str= str_replace($what, ' ', $str);
-    
-    
+        ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ','não',' que '
+    );
+
+    $str = str_ireplace($what, '  ', $str);
+
+
+    return $str;
+}
+
+function dicionario($str) {
+    //algumas palavras tem q ficar junto
+    $real = array('Darth Vader','Darth Maul');
+
+    $what = array('Darth_Vader','Darth_Maul');
+
+
+
+    $str = str_replace($real,$what, $str);
     return $str;
 }
