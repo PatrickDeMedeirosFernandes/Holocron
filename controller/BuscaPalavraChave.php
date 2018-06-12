@@ -1,10 +1,11 @@
+<?php header ('Content-type: text/html; charset=UTF-8'); ?>
 <?php
 
 /**
  * Aqui será a função de verificação de metodos, com as palavras chave
  */
 include '../scripts/funcao.php';
-echo $txt = "o que são stormtrooperso";
+echo $txt = "Quais são as armas dos Storm Troopers";
 
 $txt = nomes($txt);
 
@@ -19,7 +20,7 @@ print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br>";
 
 
 //verificação e eliminação de stopwords
-$NovaFrase = stopwords($txt);
+$NovaFrase = stopwords(rtrim(ltrim(trim($txt))));
 
 
 //trim pra limpar escesso de espaços no começo e no fim da frase
@@ -45,11 +46,13 @@ and valor == "sobre"<br>
 
 
     echo "<br><br>
-        SELECT k.keyword, k.valida,($NovaFrase') AS score,r.resposta as resultado  <br>
+        SELECT k.keyword, k.valida,MATCH (keyword) AGAINST ('$NovaFrase') AS score,r.resposta as resultado  <br>
         FROM `keywords` k  <br>
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks <br>
         inner JOIN resposta r ON pk.resposta_id = r.id <br>
-        WHERE MATCH (keyword) AGAINST ('$NovaFrase');";
+        WHERE MATCH (keyword) AGAINST ('$NovaFrase')
+            Limit 1
+           ;";
 }
 
 

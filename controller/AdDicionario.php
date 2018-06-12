@@ -27,3 +27,8 @@ foreach ($dados as $value) {
         $result4 = mysqli_query($conn, $sql2);
     };
 }
+?>
+<script>
+    alert('Cadastrado');
+    window.location.href = '../EstrelaDaMorte/CadExpressoes.php';
+</script>

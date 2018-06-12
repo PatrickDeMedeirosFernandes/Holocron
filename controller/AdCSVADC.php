@@ -67,7 +67,10 @@ if (file_exists($target_file)) {
                         echo $resp = mysqli_insert_id($conn);
 
                         $sql2 = "  INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`, `resposta_id`)
-                                VALUES (" . "'" . utf8_encode(htmlspecialchars(strip_tags($dados[0]))) . 
+                                VALUES (" . "'" .
+                                
+                                nomes(strip_tags(utf8_encode($dados[0])))
+                                 . 
                                 "',1,'SYSTEM',$resp   );";
 
 
@@ -83,7 +86,9 @@ if (file_exists($target_file)) {
                       
                                   $sql3 = 
                                   "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
-                                VALUES (" . "'" . stopwords(utf8_encode(htmlspecialchars(strip_tags($dados[0])))) . 
+                                VALUES (" . "'" .
+                                           trim(stopwords(nomes(strip_tags(utf8_encode($dados[0])))))
+                                           . 
                                 "',1,'SYSTEM',$resp2   );";
 
                         $result5 = mysqli_query($conn, $sql3);
@@ -91,7 +96,7 @@ if (file_exists($target_file)) {
                         
                     }
                     ?><script>
-                        alert('Envio de dados terminado');
+                    //    alert('Envio de dados terminado');
                       //  window.location.href = '../EstrelaDaMorte';
 
                     </script>

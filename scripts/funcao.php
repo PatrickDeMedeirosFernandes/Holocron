@@ -46,19 +46,19 @@ function saldacao($str) {
 // ############### LIMPADORES #####################
 
 function str_minuscula($texto) {
-    $texto = strtr(strtolower($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
+   // $texto = strtr(strtolower($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
 //Esta Função transforma o texto em maiúsculo respeitando a acentuação
 function str_maiuscula($texto) {
-    $texto = strtr(strtoupper($texto), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ");
+  //  $texto = strtr(strtoupper($texto), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ");
     return $texto;
 }
 
 //Esta Função transforma a primeira letra do texto em maiúsculo respeitando a acentuação
 function primaria_maiuscula($texto) {
-    $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
+   // $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
@@ -98,9 +98,9 @@ function CodeLimpaNeve($str) {
             LEFT JOIN expressoes u 
             ON d.`expressoes_idexpressoes` = u.idexpressoes  ;";
     $result = $conn->query($sql);
-    $str = str_replace("-", "", $str);
-    $str = str_replace("\"", "\\\"", $str);
-    $str = str_replace("'", "\'", $str);
+    $str = str_ireplace("-", "", $str);
+    $str = str_ireplace("\"", "\\\"", $str);
+    $str = str_ireplace("'", "\'", $str);
 //LIMPA ESPAÇOS EXTRAS
     $str = preg_replace('/\s\s+/', ' ', $str);
 //coloca tudo em minusculo
@@ -115,7 +115,7 @@ function CodeLimpaNeve($str) {
         while ($linha = $result->fetch_assoc()) {
             $aa = $linha['texto'];
             $bb = $linha['expressao'];
-            $str = str_replace("$aa", " $bb ", $str);
+            $str = str_ireplace("$aa", " $bb ", $str);
         }
     }
     return $str;
@@ -142,7 +142,7 @@ function nomes($texto) {
     //Variáveis
     $pontuacoes = array(",", ".", "!", "?", ";");
 
-    $array_abreviado = array("vc", "tb", "jesus", "naum", "ñ", "pq");
+    $array_abreviado = array( "vc","tb", "jesus", "naum", "ñ", "pq");
     $array_abr_certo = array("você", "também", "Jesus", "não", "não", "porque");
 
     //Prepara paragrafo
@@ -279,9 +279,9 @@ function get_client_ip() {
 }
 
 function stopwords($str) {
-    
+
     $what = array(
-        ' também ',' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
+        ' quais ','quais ',' também ', ' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
         ' um ', ' para ', ' é ', ' com ', ' os ', ' no ', ' se ', ' na ', ' por ', ' teve ', ' teriam ',
         ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
         ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' tiverem ', ' terei ',
@@ -306,23 +306,24 @@ function stopwords($str) {
         ' fôramos ', ' seja ', ' sejamos ', ' sejam ', ' fosse ', ' fôssemos ', ' tiver ', ' tivermos ',
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
-        ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ','não',' que '
+        ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
+        '~',':',';','/','´','´','[',']'
     );
 
     $str = str_ireplace($what, '  ', $str);
-
-
+//    $str = ltrim($str, "o ");
+//    $str = str_ireplace('/^\o\s*/', '', $str);
     return $str;
 }
 
 function dicionario($str) {
     //algumas palavras tem q ficar junto
-    $real = array('Darth Vader','Darth Maul');
+    $real = array('Darth Vader', 'Darth Maul');
 
-    $what = array('Darth_Vader','Darth_Maul');
+    $what = array('Darth_Vader', 'Darth_Maul');
 
 
 
-    $str = str_replace($real,$what, $str);
+    $str = str_replace($real, $what, $str);
     return $str;
 }

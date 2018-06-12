@@ -78,7 +78,7 @@ function BuscaConcreta($text) {
     $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff
                  FROM `pergunta_keyworks` p
                  LEFT JOIN resposta u ON p.resposta_id = u.id 
-                    HAVING (textDiff) > 89 and max(textDiff) 
+                    HAVING (textDiff) > 87 
      ORDER BY `textDiff` DESC 
                     
 
