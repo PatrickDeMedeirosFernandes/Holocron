@@ -1,11 +1,11 @@
-<?php header ('Content-type: text/html; charset=UTF-8'); ?>
+<?php header('Content-type: text/html; charset=UTF-8'); ?>
 <?php
 
 /**
  * Aqui será a função de verificação de metodos, com as palavras chave
  */
 include '../scripts/funcao.php';
-echo $txt = "Quais são as armas dos Storm Troopers";
+echo $txt = "qual a cor do sabre do  Yoda";
 
 $txt = nomes($txt);
 
@@ -37,6 +37,7 @@ if (substr_count(trim($NovaFrase), " ") <= 1) {
 and valor == "sobre"<br>
             
             ' .
+    " " .
     '<br>envia resposta $resposta = $linha[dado]' .
     //casdastra a pergunta
     '<br>cadastra: ' . $txt;
@@ -46,17 +47,94 @@ and valor == "sobre"<br>
 
 
     echo "<br><br>
-        SELECT k.keyword, k.valida,MATCH (keyword) AGAINST ('$NovaFrase') AS score,r.resposta as resultado  <br>
+        SELECT k.keyword, k.valida,MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score,r.resposta as resultado  <br>
         FROM `keywords` k  <br>
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks <br>
         inner JOIN resposta r ON pk.resposta_id = r.id <br>
-        WHERE MATCH (keyword) AGAINST ('$NovaFrase')
-            Limit 1
+        WHERE MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE)
+            Limit 1; <br><br>
+            
+
+SELECT k.keyword, k.valida,r.resposta as resultado, <br>
+LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff <br>
+    FROM `keywords` k <br>
+    inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks<br>
+    inner JOIN resposta r ON pk.resposta_id = r.id<br>
+    ORDER BY `textDiff` DESC<br>
+Limit 1 
            ;";
 }
 
 
 $NovaFrase = str_ireplace("+não", 'não', $NovaFrase);
+
+echo "<br><br><br>Separar<br><BR>";
+
+include '../controller/DB.php';
+$sql = "SELECT k.keyword, k.valida,r.resposta as resultado,pk.pergunta_key as pergunta,
+LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
+    FROM `keywords` k 
+    inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
+    inner JOIN resposta r ON pk.resposta_id = r.id
+    ORDER BY `textDiff` DESC
+Limit 1 ;
+
+
+ 
+
+
+       ";
+$result3 = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result3) > 0) {
+    $linha8 = mysqli_fetch_assoc($result3);
+
+    $keyword = $linha8['keyword'];
+    $valida = $linha8['valida'];
+    $resposta = $linha8['resultado'];
+    $proximidade = $linha8['textDiff'];
+    $Pergunta = $linha8['pergunta'];
+}
+
+
+
+
+$sql = "SELECT pk.pergunta_key as pergunta,k.keyword, k.valida,MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score, 
+    r.resposta as resultado
+        FROM `keywords` k  
+        inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
+        inner JOIN resposta r ON pk.resposta_id = r.id 
+        WHERE MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE)
+            Limit 1;";
+
+
+
+$result3 = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result3) > 0) {
+    $linha8 = mysqli_fetch_assoc($result3);
+
+    $keyword2 = $linha8['keyword'];
+    $valida2 = $linha8['valida'];
+    $resposta2 = $linha8['resultado'];
+    $proximidade2 = $linha8['score'];
+    $Pergunta2 = $linha8['pergunta'];
+}
+
+
+
+
+echo "Palavras chave: $keyword<br>
+    Resposta: $resposta<br>
+        Proximidade: $proximidade<br>
+                    Pergunta: $Pergunta
+
+
+<br><br><br>         ";
+echo "Palavras chave: $keyword2<br>
+    Resposta: $resposta2<br>
+        Proximidade: $proximidade2<br>
+             Pergunta: $Pergunta2
+            <br><br>        ";
+
 
 include './BuscasModulo3.php';
 /*
