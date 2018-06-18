@@ -20,21 +20,21 @@ if (isset($_POST['nome'])) {
            // ECHO "<SCRIPT>ALERT('1')</SCRIPT>";
 //            
 
-        } else if (BuscaSimilarSoundex($text) != ' ') {
-            $saida = BuscaSimilarSoundex($text);
+//        } else if (BuscaSimilarSoundex($text) != ' ') {
+//            $saida = BuscaSimilarSoundex($text);
+////            
+////                     
+//
+//       }
+//        else if (BuscaSimilar($text) != ' ') {
+//            $saida = BuscaSimilar($text);
+//             //           ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
+//
 //            
-//                     
-
-       }
-        else if (BuscaSimilar($text) != ' ') {
-            $saida = BuscaSimilar($text);
-             //           ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
-
-            
-            }
-        //else if (AI($text) != ' ') {
-        //RETURN ai($text);
-        //}
+//            }
+//        else if (AI($text) != ' ') {
+//        RETURN ai($text);
+    }
         ELSE {
                //         ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
 

@@ -83,12 +83,13 @@ function BuscaConcreta($text) {
                     
 
 
-                    p.pergunta_key = '$text' and u.resposta is not null;";
+                  ";
+   // echo $sql;
     $result2 = $conn->query($sql);
     if ($result2->num_rows > 0) {
 
         while ($linha2 = $result2->fetch_assoc()) {
-            $aa = $linha2['respostaReal'] . $linha2['respostaEscrita'];
+            $aa = $linha2['respostaReal'] ;
             $SAIDA = $aa;
         }
     } else {

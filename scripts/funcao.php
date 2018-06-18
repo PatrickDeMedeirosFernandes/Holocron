@@ -17,6 +17,12 @@ function saldacao($str) {
         } else {
             $str = "Boa noite!  Vamos falar sobre o que?";
         }
+    } ELSE IF ($str == "=YES MY LORD=") {
+        
+        $str = "DESTRUIR ESCORIA JEDI";
+    } ELSE IF ($str == "==fraseSW==") {
+        
+        $str = "MANDA A FRASE";
     } else {
         $str = $str;
     }
@@ -46,19 +52,19 @@ function saldacao($str) {
 // ############### LIMPADORES #####################
 
 function str_minuscula($texto) {
-   // $texto = strtr(strtolower($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
+    // $texto = strtr(strtolower($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
 //Esta Função transforma o texto em maiúsculo respeitando a acentuação
 function str_maiuscula($texto) {
-  //  $texto = strtr(strtoupper($texto), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ");
+    //  $texto = strtr(strtoupper($texto), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ");
     return $texto;
 }
 
 //Esta Função transforma a primeira letra do texto em maiúsculo respeitando a acentuação
 function primaria_maiuscula($texto) {
-   // $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
+    // $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
@@ -142,7 +148,7 @@ function nomes($texto) {
     //Variáveis
     $pontuacoes = array(",", ".", "!", "?", ";");
 
-    $array_abreviado = array( "vc","tb", "jesus", "naum", "ñ", "pq");
+    $array_abreviado = array("vc", "tb", "jesus", "naum", "ñ", "pq");
     $array_abr_certo = array("você", "também", "Jesus", "não", "não", "porque");
 
     //Prepara paragrafo
@@ -281,7 +287,7 @@ function get_client_ip() {
 function stopwords($str) {
 
     $what = array(
-        ' quais ','quais ',' também ', ' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
+        ' quais ', 'quais ', ' também ', ' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
         ' um ', ' para ', ' é ', ' com ', ' os ', ' no ', ' se ', ' na ', ' por ', ' teve ', ' teriam ',
         ' mais ', ' as ', ' dos ', ' como ', ' mas ', ' foi ', ' ao ', ' ele ', ' das ', ' tem ',
         ' à ', ' seu ', ' sua ', ' ou ', ' ser ', ' quando ', ' muito ', ' há ', ' nos ', ' tiverem ', ' terei ',
@@ -307,7 +313,7 @@ function stopwords($str) {
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
         ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
-        '~',':',';','/','´','´','[',']'
+        '~', ':', ';', '/', '´', '´', '[', ']'
     );
 
     $str = str_ireplace($what, '  ', $str);
