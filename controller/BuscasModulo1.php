@@ -72,16 +72,18 @@ function BuscaConcreta($text) {
 //    }
 
 
- 
 
 
-    $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff
-                 FROM `pergunta_keyworks` p
-                 LEFT JOIN resposta u ON p.resposta_id = u.id 
-                    HAVING (textDiff) > 87 
-     ORDER BY `textDiff` DESC 
-                    
 
+    $sql = "
+                    SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
+                    LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff 
+                    FROM `pergunta_keyworks` p 
+                    LEFT JOIN resposta u ON p.resposta_id = u.id 
+                    wHERE (LEVENSHTEIN_RATIO( '$text', `pergunta_key` )) > 87 
+                    and p.valida = 1 
+                    ORDER BY `textDiff` DESC
+                    Limit 1
 
                   ";
    // echo $sql;
@@ -89,7 +91,7 @@ function BuscaConcreta($text) {
     if ($result2->num_rows > 0) {
 
         while ($linha2 = $result2->fetch_assoc()) {
-            $aa = $linha2['respostaReal'] ;
+            $aa = $linha2['respostaReal'];
             $SAIDA = $aa;
         }
     } else {

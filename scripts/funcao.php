@@ -18,11 +18,18 @@ function saldacao($str) {
             $str = "Boa noite!  Vamos falar sobre o que?";
         }
     } ELSE IF ($str == "=YES MY LORD=") {
-        
-        $str = "DESTRUIR ESCORIA JEDI";
+
+        $str = '';
     } ELSE IF ($str == "==fraseSW==") {
-        
-        $str = "MANDA A FRASE";
+
+        $str = "Faça ou não faça. Tentativa não há.<br>-----<b>Mestre Yoda</b>";
+    } ELSE IF ($str == "42") {
+        $date = new DateTime( '9999-12-31 23:59:59' ); // data e hora de nascimento
+$interval = $date->diff( new DateTime( ) ); // data e hora atual
+
+$algo = $interval->format( '%Y Anos, %m Meses, %d Dias, %H Horas, %i Minutos e %s Segundos' );
+
+        $str = "A resposta, para a pergunta fundamental, qual sentido da vida, do universo e tudo mais, é algo que meus sistemas, levarão um tempo para calcular, volte aqui há ".$algo;
     } else {
         $str = $str;
     }
@@ -105,7 +112,7 @@ function CodeLimpaNeve($str) {
             ON d.`expressoes_idexpressoes` = u.idexpressoes  ;";
     $result = $conn->query($sql);
     $str = str_ireplace("-", "", $str);
-    $str = str_ireplace("\"", "\\\"", $str);
+    // $str = str_ireplace("\"", "\\\"", $str);
     $str = str_ireplace("'", "\'", $str);
 //LIMPA ESPAÇOS EXTRAS
     $str = preg_replace('/\s\s+/', ' ', $str);
@@ -313,7 +320,7 @@ function stopwords($str) {
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
         ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
-        '~', ':', ';', '/', '´', '´', '[', ']'
+        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que '
     );
 
     $str = str_ireplace($what, '  ', $str);

@@ -7,41 +7,28 @@
  * função que funiona para pegar alguma resposta padrã, ele recebe a frase do usuario para cadastrar no banco de dados
  * @return string retorna uma resposta padrão
  */
-function BuscaDefaut($text) {
+function BuscaDefaut($text, $alfa = true) {
 
     include '../controller/DB.php';
 //    include '../scripts/funcao.php';
     // $SAIDA = '';
-    $alfa = true;
     //echo $sql."oi";
     if ($alfa == true) {
         $ip = get_client_ip();
         $query2 = " INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`) 
-                VALUES ('$text',0,'$ip')";
+                VALUES ('$text',1,'$ip')";
         $result4 = mysqli_query($conn, $query2);
-
-        mysqli_query($conn, $query2);
-
+        //   mysqli_query($conn, $query2);
         $resp2 = mysqli_insert_id($conn);
-
-
-
         $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-                trim(stopwords(nomes(strip_tags(($text)))))
+                trim(stopwords((strip_tags(($text)))))
                 .
                 "',1,'$ip',$resp2   );";
-        echo $sql3;
-        mysqli_query($conn, $sql3);
-
-
-
-
-
-
+        //    echo $sql3;
+        $resulttt = mysqli_query($conn, $sql3);
 //    //echo $query2;
-
-        if (mysqli_query($conn, $query2) && mysqli_query($conn, $sql3)) {
+        if ($resulttt == true) {
             $id = rand(1, 2);
             $sql = "SELECT `id_defaut`, `pergunta`, `resposta` FROM `defaut` where id_defaut = $id ;";
             $result = mysqli_query($conn, $sql);

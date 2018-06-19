@@ -38,7 +38,7 @@ if (isset($_POST['nome'])) {
         ELSE {
                //         ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
 
-            $saida = BuscaDefaut($text);
+            $saida = BuscaDefaut($text,true);
 
         }
         return $saida;

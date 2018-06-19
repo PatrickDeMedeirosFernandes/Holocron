@@ -19,7 +19,7 @@ CREATE TABLE `dicionario` (
   KEY `fk_dicionario_expressoes1_idx` (`expressoes_idexpressoes`),
   FULLTEXT KEY `significado` (`texto`),
   CONSTRAINT `fk_dicionario_expressoes1` FOREIGN KEY (`expressoes_idexpressoes`) REFERENCES `expressoes` (`idexpressoes`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('5', ' vc ', '1');
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('7', 'darth', '8');
@@ -73,7 +73,7 @@ CREATE TABLE `expressoes` (
   `idexpressoes` int(11) NOT NULL AUTO_INCREMENT,
   `expressao` text COLLATE utf8_german2_ci,
   PRIMARY KEY (`idexpressoes`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 insert into expressoes(idexpressoes, expressao) values('1', 'você');
 insert into expressoes(idexpressoes, expressao) values('8', 'Darth');
@@ -83,7 +83,7 @@ insert into expressoes(idexpressoes, expressao) values('11', 'dia');
 insert into expressoes(idexpressoes, expressao) values('12', 'tarde');
 insert into expressoes(idexpressoes, expressao) values('13', 'noite');
 insert into expressoes(idexpressoes, expressao) values('14', 'Star Wars');
-insert into expressoes(idexpressoes, expressao) values('15', 'Anakin');
+insert into expressoes(idexpressoes, expressao) values('15', 'Anakin Skywalker');
 
 CREATE TABLE `keywords` (
   `id_key` int(11) NOT NULL AUTO_INCREMENT,
@@ -95,8 +95,15 @@ CREATE TABLE `keywords` (
   KEY `fk_keywords_pergunta_keyworks1_idx` (`pergunta_keyworks`),
   FULLTEXT KEY `keyword` (`keyword`),
   CONSTRAINT `fk_keywords_pergunta_keyworks1` FOREIGN KEY (`pergunta_keyworks`) REFERENCES `pergunta_keyworks` (`idpergunta_keyworks`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('1', 'oi', '1', '::1', '8');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('7', 'significado  vida  universo  tudo mais', '1', '::1', '5');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('15', 'esposa  Anakin Skywalker', '1', '::1', '30');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('16', 'Anakin Skywalker', '1', '::1', '31');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('17', 'cor  sabre  Yoda', '1', '::1', '32');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('18', 'execute order 66', '1', '::1', '4');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('22', 'sentido  vida  universo', '1', '::1', '37');
 
 CREATE TABLE `log_conversa` (
   `id_log_conversa` int(11) NOT NULL AUTO_INCREMENT,
@@ -121,7 +128,7 @@ CREATE TABLE `perg_sem_resp` (
   FULLTEXT KEY `pergunta` (`pergunta`),
   FULLTEXT KEY `resposta` (`resposta`),
   CONSTRAINT `fk_perg_sem_resp_resposta` FOREIGN KEY (`resposta_pergunta`) REFERENCES `resposta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `perg_user` (
@@ -160,7 +167,7 @@ CREATE TABLE `pergunta_keyworks` (
   KEY `fk_pergunta_keyworks_resposta_idx` (`resposta_id`),
   FULLTEXT KEY `pergunta_key` (`pergunta_key`),
   CONSTRAINT `fk_pergunta_keyworks_resposta` FOREIGN KEY (`resposta_id`) REFERENCES `resposta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1', 'EXECUTE ORDER 66', '1', 'System', '', '2');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('2', 'execute order 66', '1', 'System', '', '2');
@@ -168,6 +175,13 @@ insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fe
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('4', 'EXECUTE ORDEM 66', '1', 'System', '', '2');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('5', 'Qual sentido da vida do universo e tudo mais?', '1', 'System', '', '1');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('6', 'Me diga uma frase famosa de Star Wars ?', '1', 'System', '', '4');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('7', 'oi', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('10', 'teste', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('13', 'Qual o significado da vida do universo e tudo mais', '1', '::1', '', '1');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('30', ''qual é a esposa de Anakin Skywalker', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('31', 'quem é Anakin Skywalker', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('32', 'qual é a cor do sabre do Yoda', '1', '::1', '', '5');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('37', 'qual sentido da vida do universo', '1', '::1', '', '1');
 
 CREATE TABLE `personagem` (
   `id_personagem` int(11) NOT NULL AUTO_INCREMENT,
@@ -216,12 +230,13 @@ CREATE TABLE `resposta` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   FULLTEXT KEY `resposta` (`resposta`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 insert into resposta(id, resposta) values('1', '42');
 insert into resposta(id, resposta) values('2', '=YES MY LORD=');
 insert into resposta(id, resposta) values('3', '==saudacao==');
 insert into resposta(id, resposta) values('4', '==fraseSW==');
+insert into resposta(id, resposta) values('5', 'verde');
 
 CREATE TABLE `temp` (
   `id_temp` int(11) NOT NULL AUTO_INCREMENT,
