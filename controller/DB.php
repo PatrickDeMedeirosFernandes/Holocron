@@ -19,7 +19,7 @@ if (($tipo_conexao == 'localhost') || ($tipo_conexao == '127.0.0.1')) {
     $dbname = "tcc";
 } else {
     // para uso externo
-    $servername = "http://holocron.soled.space/phpmyadmin";
+    $servername = "holocron.soled.space/phpmyadmin";
     $username = "cpte";
     $password = "S3nh@777";
     $dbname = "holocron";
