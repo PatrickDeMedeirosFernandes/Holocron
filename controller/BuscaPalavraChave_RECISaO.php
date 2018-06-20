@@ -7,7 +7,7 @@
 include '../controller/DB.php';
 
 include '../scripts/funcao.php';
-echo $txt = "quem cor de sabre o Yoda utiliza";
+echo $txt = "quem é darth vader ";
 
 $txt = nomes($txt);
 
@@ -22,27 +22,44 @@ print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br>";
 
 
 //verificação e eliminação de stopwords
-$NovaFrase = stopwords(rtrim(ltrim(trim($txt))));
+$NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt)))));
 
 
 //trim pra limpar escesso de espaços no começo e no fim da frase
 if (substr_count(trim($NovaFrase), " ") <= 1) {
     //pesquisar diretamente na tabela sobre o personagem
+;
     echo
 
-    '<br>String pesquisada: ' . $NovaFrase .
+    '<br>String pesquisada: ' . $NovaFrase."<br>";
     //mostra resposta
-    '<br>PESQUISA:<br>
-        SELECT `nome`,valor,dado FROM `personagem`  p<br>
-          inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem <br>
-          where nome = > 70% <br>
-and valor == "sobre"<br>
-            
-            ' .
-    " " .
-    '<br>envia resposta $resposta = $linha[dado]' .
+   echo  $sql89 = "SELECT `nome`,valor,dado,
+      LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) as textDif
+      FROM `personagem`  p
+      inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem 
+      WHERE  LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) > 77 and valor = 'Resumo Sobre'"
+    
+;
+    $result8 = mysqli_query($conn, $sql89);
+    if (mysqli_num_rows($result8) > 0) {
+        $linha8 = mysqli_fetch_assoc($result8);
+
+        $nome= $linha8['nome'];
+        $valor = $linha8['valor'];
+        $dado = $linha8['dado'];
+        $score = $linha8['textDif'];
+    } else{
+        
+        $nome= 'nome';
+        $valor = 'valor';
+        $dado = 'dado';
+        $score = 'textDif';
+    }
+    echo "<br>envia resposta \$resposta =  $nome é $dado" .
     //casdastra a pergunta
-    '<br>cadastra: ' . $txt;
+    '<br>cadastra: ' . $txt.
+                '<br>score: ' . $score
+;
 } else {
     //fAZER a busca pelo full text e porcent
     $NovaFrase = str_ireplace("não", '+não', $NovaFrase);
@@ -168,28 +185,44 @@ for ($i = 0; $i < count($personagem); $i++) {
     echo "
 
 qual a cor do sabre do $personagem[$i]<br>
+Qual a cor do sabre de luz de $personagem[$i]?<br>
+
+qual é a arma do $personagem[$i]?<br>
+Você sabe qual a arma de escolha de $personagem[$i]?<br>
+
+
+qual a idade $personagem[$i] tem?<br>
 qual a idade $personagem[$i] ?<br>
 quantos anos tem $personagem[$i]  ?<br>
-quando morreu $personagem[$i]?<br>
-Qual a cor do sabre de luz de $personagem[$i]?<br>
-qual a cor do sabre do $personagem[$i]?<br>
-qual a idade $personagem[$i]?<br>
-quantos anos tem $personagem[$i]?<br>
-quando morreu $personagem[$i]?<br>
-quem foi que matou $personagem[$i]?<br>
-O que acha do $personagem[$i]?<br>
-quem foi $personagem[$i]?<br>
-Você sabe qual a arma de escolha de $personagem[$i]?<br>
-Qual o nome da mãe de $personagem[$i]?<br>
-Quem não foi treinado por $personagem[$i]?<br>
-Com quantos anos morreu $personagem[$i]?<br>
-Qual o planeta natal dos $personagem[$i]?<br>
-Com quantos anos morreu $personagem[$i]?<br>
 Quem foi o primeiro aprendiz de $personagem[$i]?<br>
-Qual é o planeta natal de $personagem[$i]?<br>
-qual a frase marcante de $personagem[$i]?<br>
-        
+Com quantos anos morreu $personagem[$i]?<br>
 
-        
+
+quando morreu $personagem[$i]?<br>
+Com quantos anos morreu $personagem[$i]?<br>
+
+quem foi que matou $personagem[$i]?<br>
+    
+O que acha do $personagem[$i]?<br>
+    
+o que é o $personagem[$i] ?<br>
+me fale sobre $personagem[$i]? <br>
+quem foi $personagem[$i]?<br>
+quem é $personagem[$i]? <br>
+
+
+Qual o nome da mãe de $personagem[$i]?<br>
+Quem são os parentes do $personagem[$i]? <br>
+Quem é o pai do $personagem[$i]? <br>
+
+Quem não foi treinado por $personagem[$i]?<br>
+
+
+Qual é o planeta natal de $personagem[$i]?<br>
+Qual o planeta natal dos $personagem[$i]?<br>
+    
+
+qual a frase marcante de $personagem[$i]?<br>
+
        ";
 }

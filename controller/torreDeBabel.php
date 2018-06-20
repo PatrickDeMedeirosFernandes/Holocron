@@ -5,8 +5,9 @@ $respostaATT = "Olá tudo bem? <br>
 include '../scripts/funcao.php';
 include '../controller/DB.php';
 include '../controller/BuscasModulo1.php';
-include '../controller/BuscasModulo2.php';
-include '../controller/BuscasModulo2Soundex.php';
+//include '../controller/BuscasModulo2.php';
+//include '../controller/BuscasModulo2Soundex.php';
+include '../controller/BuscaPalavraChave.php';
 include '../controller/BuscaDefaut.php';
 if (isset($_POST['nome'])) {
     $text = trim(nomes(strip_tags(htmlspecialchars(trim($_POST['nome'])))));
@@ -31,7 +32,13 @@ if (isset($_POST['nome'])) {
 //             //           ECHO "<SCRIPT>ALERT('2')</SCRIPT>";
 //
 //            
-//            }
+//            
+           } else if (BuscaKey($text, 0) != ' ') {
+            $saida = BuscaKey($text);
+//            
+//                     
+
+       
 //        else if (AI($text) != ' ') {
 //        RETURN ai($text);
     }
