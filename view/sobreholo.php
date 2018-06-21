@@ -5,7 +5,7 @@ include '../includes/menu.php';
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link href="./scripts/sobreholo.css" rel="stylesheet" type="text/css"/>
+<link href="./scripts/sobreHolo.css" rel="stylesheet" type="text/css"/>
 <!--https://codepen.io/geoffgraham/pen/BpwqOE?depth=everything&order=popularity&page=2&q=star+wars&show_forks=false-->
 <!--<div id='bodybox'>-->
 <!--    <h4>Holocron</h4>
@@ -16,8 +16,8 @@ include '../includes/menu.php';
 <!-- I did not find the text of the original generic. So here is a translation into my native language. -->
 <!--//https://github.com/phalt/swapi-->
 <audio loop id="audio">
-    <source src="Anexo/sw.ogg" type="audio/ogg">
-    <source src="Anexo/sw.mp3" type="audio/mpeg">
+    <source src="ANEXO/sw.ogg" type="audio/ogg">
+    <source src="ANEXO/sw.mp3" type="audio/mpeg">
 </audio>
 <div id="wrapper">
     <div id="container">

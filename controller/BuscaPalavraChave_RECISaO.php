@@ -177,7 +177,9 @@ include './BuscasModulo3.php';
  */
 
 
-$personagem = array('Darth Vader', 'Leia', 'Yoda');
+$personagem = array(
+
+    );
 
 echo "<br><br><br><br><br><br>";
 for ($i = 0; $i < count($personagem); $i++) {

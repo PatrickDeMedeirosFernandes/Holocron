@@ -1,5 +1,36 @@
-<?php
-Qual /=é/o/a/=/ $termo =/do/da/= $pesquisa /=?/./!/=/
-
-
-
+'Anakin Skywalker',
+'Darth Vader',
+'Obi-Wan Kenobi',
+'Luke Skywalker',
+'Leia Organa',
+'Yoda',
+'R2-D2',
+'C-3PO',
+'BB-8',
+'Han Solo',
+'Chewbacca',
+'Padmé Amidala',
+'Mace Windu',
+'Qui-Gon Jinn',
+'Ahsoka Tano',
+'Ezra',
+'Jaden Korr',
+'Poe Dameron',
+'Lando Calrissian',
+'Darth Maul',
+'Boba Fett',
+'Jango Fett',
+'Jabba the Hutt',
+'Conde Dooku',
+'Darth Tyranus',
+'General Grievous',
+'Sheev Palpatine',
+'Darth Sidious',
+'Finn',
+'Maz Kanata',
+'Rey',
+'Ben Solo',
+'Kylo Ren','Darth Vader', 'Leia', 'Yoda',
+'Snoke'
+    
+    

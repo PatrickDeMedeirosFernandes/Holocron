@@ -19,17 +19,15 @@ function saldacao($str) {
         }
     } ELSE IF ($str == "=YES MY LORD=") {
 
-        $str = '';
+        $str = '<iframe width="560" height="315" src="https://www.youtube.com/embed/MobJ0d7SaVM?rel=0&amp;controls=0&amp;showinfo=0&amp;start=18" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
     } ELSE IF ($str == "==fraseSW==") {
 
         $str = "Faça ou não faça. Tentativa não há.<br>-----<b>Mestre Yoda</b>";
     } ELSE IF ($str == "42") {
-        $date = new DateTime( '9999-12-31 23:59:59' ); // data e hora de nascimento
-$interval = $date->diff( new DateTime( ) ); // data e hora atual
-
-$algo = $interval->format( '%Y Anos, %m Meses, %d Dias, %H Horas, %i Minutos e %s Segundos' );
-
-        $str = "A resposta, para a pergunta fundamental, qual sentido da vida, do universo e tudo mais, é algo que meus sistemas, levarão um tempo para calcular, volte aqui há ".$algo;
+        $date = new DateTime('9999-12-31 23:59:59'); // data e hora de nascimento
+        $interval = $date->diff(new DateTime()); // data e hora atual
+        $algo = $interval->format('%Y Anos, %m Meses, %d Dias, %H Horas, %i Minutos e %s Segundos');
+        $str = "A resposta, para a pergunta fundamental, qual sentido da vida, do universo e tudo mais, é algo que meus sistemas, levarão um tempo para calcular, volte aqui há " . $algo . ". A unica coisa que tenho certeza é que não é 42";
     } else {
         $str = $str;
     }
