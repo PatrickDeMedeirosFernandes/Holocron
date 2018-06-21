@@ -51,13 +51,13 @@ if (file_exists($target_file)) {
                     // Pega os dados da linha
                     $linha = fgets($arquivo, 1024);
                     // Divide as Informações das celular para poder salvar
-                    $dados = str_replace(':', ';', $linha);
-                    $dados = str_replace(',', ';', $linha);
+                  //  $dados = str_replace(':', ';', $linha);
+                //    $dados = str_replace(',', ';', $linha);
                     $dados = explode(';', $linha);
                     //  // Verifica se o Dados Não é o cabeçalho ou não esta em branco
                     if (!empty($linha)) {
-                        $sql = " INSERT INTO `resposta`(`resposta`) VALUES ("
-                                . "'" . utf8_encode(htmlspecialchars(strip_tags($dados[1]))) . "');";
+                        $sql = "INSERT INTO `resposta`(`resposta`)
+                                VALUES (". "'".trim(utf8_encode(htmlspecialchars(strip_tags($dados[1]))))."');";
                         //  echo $sql;
                         $result = mysqli_query($conn, $sql);
                         $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
@@ -67,11 +67,7 @@ if (file_exists($target_file)) {
                         echo $resp = mysqli_insert_id($conn);
 
                         $sql2 = "  INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`, `resposta_id`)
-                                VALUES (" . "'" .
-                                
-                                nomes(strip_tags(utf8_encode($dados[0])))
-                                 . 
-                                "',1,'SYSTEM',$resp   );";
+                                VALUES (" . "'".trim(nomes(strip_tags(utf8_encode($dados[0]))))."',1,'SYSTEM',$resp);";
 
 
 
@@ -86,10 +82,7 @@ if (file_exists($target_file)) {
                       
                                   $sql3 = 
                                   "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
-                                VALUES (" . "'" .
-                                           trim(stopwords(nomes(strip_tags(utf8_encode($dados[0])))))
-                                           . 
-                                "',1,'SYSTEM',$resp2   );";
+                                VALUES (" . "'" .trim(stopwords(nomes(strip_tags(utf8_encode($dados[0])))))."',1,'SYSTEM',$resp2);";
 
                         $result5 = mysqli_query($conn, $sql3);
                         echo $sql3;

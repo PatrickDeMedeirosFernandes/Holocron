@@ -7,7 +7,7 @@
  * @return type
  */
 function saldacao($str) {
-    if ($str == "==saudacao==") {
+    if ($str == "-=saudacao=") {
         date_default_timezone_set('America/Sao_Paulo');
         $hora = date("H");
         if ($hora >= 6 && $hora < 12) {
@@ -332,6 +332,99 @@ function dicionario($str) {
     $real = array('Darth Vader', 'Darth Maul');
 
     $what = array('Darth_Vader', 'Darth_Maul');
+
+
+
+    $str = str_replace($real, $what, $str);
+    return $str;
+}
+function Amais($str) {
+    //algumas palavras tem q ficar junto
+    $real = array(  'Anakin Skywalker',
+    'Jar Jar Binks',
+    'Jabba O Hutt',
+    'Lando Calrissian',
+    'Stormtrooper',
+    'Almirante Ackbar',
+    'Obi-Wan Kenobi',
+    'Luke Skywalker',
+    'Leia Organa',
+    'Yoda',
+    'R2-D2',
+    'C-3PO',
+    'BB-8',
+    'Han Solo',
+    'Chewbacca',
+    'Padmé Amidala',
+    'Mace Windu',
+    'Qui-Gon Jinn',
+    'Ahsoka Tano',
+    'Ezra',
+    'Jaden Korr',
+    'Poe Dameron',
+    'Lando Calrissian',
+    'Darth Maul',
+    'Boba Fett',
+    'Jango Fett',
+    'Jabba the Hutt',
+    'Conde Dooku',
+    'Darth Tyranus',
+    'General Grievous',
+    'Sheev Palpatine',
+    'Darth Sidious',
+    'Finn',
+    'Maz Kanata',
+    'Rey',
+    'Ben Solo',
+    'Kylo Ren',
+    'Darth Vader',
+    'Princesa Leia',
+    'Yoda',
+    'Greedo',
+    );
+
+    $what = array(  '+Anakin +Skywalker',
+    '+Jar +Jar +Binks',
+    '+Jabba +O +Hutt',
+    '+Lando +Calrissian',
+    '+Stormtrooper',
+    '+Almirante +Ackbar',
+    '+Obi-Wan +Kenobi',
+    '+Luke +Skywalker',
+    '+Leia +Organa',
+    '+Yoda',
+    '+R2-D2',
+    '+C-3PO',
+    '+BB-8',
+    '+Han +Solo',
+    '+Chewbacca',
+    '+Padmé +Amidala',
+    '+Mace +Windu',
+    '+Qui-Gon +Jinn',
+    '+Ahsoka +Tano',
+    '+Ezra',
+    '+Jaden +Korr',
+    '+Poe +Dameron',
+    '+Lando +Calrissian',
+    '+Darth +Maul',
+    '+Boba +Fett',
+    '+Jango +Fett',
+    '+Jabba +the +Hutt',
+    '+Conde +Dooku',
+    '+Darth +Tyranus',
+    '+General +Grievous',
+    '+Sheev +Palpatine',
+    '+Darth +Sidious',
+    '+Finn',
+    '+Maz +Kanata',
+    '+Rey',
+    '+Ben +Solo',
+    '+Kylo +Ren',
+    '+Darth +Vader',
+    '+Princesa +Leia',
+    '+Yoda',
+    '+Greedo',
+    );
 
 
 
