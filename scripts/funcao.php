@@ -349,7 +349,7 @@ function Amais($str) {
     'Obi-Wan Kenobi',
     'Luke Skywalker',
     'Leia Organa',
-    'Yoda',
+  
     'R2-D2',
     'C-3PO',
     'BB-8',
@@ -392,8 +392,7 @@ function Amais($str) {
     '+Obi-Wan +Kenobi',
     '+Luke +Skywalker',
     '+Leia +Organa',
-    '+Yoda',
-    '+R2-D2',
+     '+R2-D2',
     '+C-3PO',
     '+BB-8',
     '+Han +Solo',
@@ -428,6 +427,6 @@ function Amais($str) {
 
 
 
-    $str = str_replace($real, $what, $str);
+    $str = str_ireplace($real, $what, $str);
     return $str;
 }

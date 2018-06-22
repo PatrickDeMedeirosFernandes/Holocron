@@ -7,7 +7,7 @@
 include '../controller/DB.php';
 
 include '../scripts/funcao.php';
-echo $txt = "qual cor do sabre do yoda?";
+echo $txt = "qual sabre yoda";
 
 $txt = nomes($txt);
 
@@ -62,7 +62,7 @@ if (substr_count(trim($NovaFrase), " ") <= 1) {
     ;
 } else {
     //fAZER a busca pelo full text e porcent
-   // $NovaFrase = Amais($NovaFrase);
+    // $NovaFrase = Amais($NovaFrase);
 
 
     echo "<br><br>
@@ -95,7 +95,7 @@ echo $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as p
         Limit 1 ;
        ";
 echo '<br><br><Br>';
-    $NovaFrase = Amais($NovaFrase);
+$NovaFrase = Amais($NovaFrase);
 
 echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword, MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
@@ -113,10 +113,6 @@ $resultLevel = mysqli_query($conn, $sqlLevel);
 if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
     $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
-
-
-
-
 
     $keyword = $linhalevel['keyword'];
     $resposta = $linhalevel['resultado'];
@@ -142,24 +138,37 @@ if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) 
     $proximidade2 = '0';
     $Pergunta2 = '';
 }
+echo "<br><Br><Br><Br>"
+ . "Analize probalitica<br>"
+ . "Full Text; $proximidade2<br>"
+ . "%: $proximidade<br>";
 
+if ($proximidade >= 85) {
 
-
-
-
-
-echo "<br><br><br>   Palavras chave: $keyword<br>
+    echo "<br><br><br>   Palavras chave: $keyword<br>
     Resposta: $resposta<br>
     Proximidade: $proximidade<br>
     Pergunta: $Pergunta
-
-
 <br><br><br>         ";
-echo "Palavras chave: $keyword2<br>
+} else if ($proximidade2 >= 3.0 && $proximidade >= 50) {
+    echo "Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
+} else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2) {
+    echo "Palavras chave: $keyword2<br>
+    Resposta: $resposta2<br>
+    Proximidade: $proximidade2<br>
+    Pergunta: $Pergunta2
+            <br><br>        ";
+} else if ($proximidade == 0 || $proximidade2 == 0) {
+    echo "FAILL";
+} else if ($proximidade2 <= 0.009) {
+    echo ' ';
+} else if ($proximidade <= 57) {
+    echo ' ';
+}
 
 
 include './BuscasModulo3.php';
@@ -180,7 +189,6 @@ include './BuscasModulo3.php';
 
 
 $personagem = array(
-  
 );
 
 echo "<br><br><br><br><br><br>";
