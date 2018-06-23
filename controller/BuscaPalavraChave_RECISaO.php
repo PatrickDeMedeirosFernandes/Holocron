@@ -8,12 +8,12 @@
 include '../controller/DB.php';
 
 include '../scripts/funcao.php';
-echo $txt = "Qual a cor do sabre do darth varder";
+echo $txt = " ioda ";
 
 $txt = nomes($txt);
 
 
-
+ error_reporting(E_ALL);
 print "<br> " . substr_count(stopwords($txt), " ") . "<br>";
 echo stopwords($txt);
 print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br><br><br>Resposta: <br><br>";
@@ -33,17 +33,17 @@ $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergun
             ORDER BY `textDiff` DESC
         Limit 1 ;
        ";
-// echo '<br><br><Br>';
-$textt = $NovaFrase;
-$NovaFrase = Amais($NovaFrase);
-
+echo $NovaFrase;
+echo '<br><br><Br>';
+$ComMais = Amais($NovaFrase);
+echo $ComMais . "<br><Br>";
 //====
-$sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score, 
+$sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) and k.valida = 1
+        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
           order by k.keyword ;";
 //=============================================================================
 $resultFullText = mysqli_query($conn, $sqlFullText);
@@ -70,14 +70,12 @@ if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) 
     $resposta = '';
     $proximidade = '0';
     $Pergunta = '';
-    $idPregunta2 = '';
 //=============================================================================
     $keyword2 = '';
     $idPregunta2 = '';
     $resposta2 = '';
     $proximidade2 = '0';
     $Pergunta2 = '';
-    $idPregunta2 = '';
 }
 //  echo "<br><Br><Br><Br>"
 // . "Analize probalitica<br>"
@@ -85,12 +83,16 @@ if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) 
 //  . "%: $proximidade<br>";
 $ip = get_client_ip();
 
-if ($proximidade >= 100) {
-   
-      //  $resulttt = mysqli_query($conn, $sql3);
-echo $proximidade;
-           echo "<br>";
+if ($proximidade == 0 || $proximidade2 == 0) {
+    echo " ";
+} else if ($proximidade2 <= 0.09) {
+    echo ' ';
+} else if ($proximidade < 50) {
+    echo ' ';
+} else if ($proximidade >= 100) {
 
+    echo $proximidade;
+    echo "<br>";
 
     echo $resposta;
 } else if ($proximidade >= 85) {
@@ -100,11 +102,11 @@ echo $proximidade;
      */
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-            trim(stopwords((strip_tags(($textt)))))
+            trim(stopwords((strip_tags(($NovaFrase)))))
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-    echo "<br>";
+    echo "<br>1<br>";
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
 
@@ -115,11 +117,12 @@ echo $proximidade;
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-            trim(stopwords((strip_tags(($textt)))))
+            trim(stopwords((strip_tags(($NovaFrase)))))
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-    echo "<br>";
+        echo "<br>2<br>";
+
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
 
@@ -132,11 +135,12 @@ echo $proximidade;
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-            trim(stopwords((strip_tags(($textt)))))
+            trim(stopwords((strip_tags(($NovaFrase)))))
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-    echo "<br>";
+        echo "<br>3<br>";
+
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
 
@@ -144,15 +148,16 @@ echo $proximidade;
 
 
     echo $resposta2;
-} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8) {
+} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 7.8) {
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-            trim(stopwords((strip_tags(($textt)))))
+            trim(stopwords((strip_tags(($NovaFrase)))))
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-    echo "<br>";
+         echo "<br>4<br>";
+
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
 
@@ -193,22 +198,9 @@ echo $proximidade;
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-} else if ($proximidade == 0 || $proximidade2 == 0) {
-    echo " ";
-} else if ($proximidade2 <= 0.09) {
-    echo ' ';
-} else if ($proximidade <= 50) {
-    echo ' ';
 } else {
     echo ' ';
 }
-
-
-
-
-
-
-
 
 
 
@@ -357,15 +349,14 @@ echo $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as p
        ";
 echo '<br><br><Br>';
 $NovaFrase = stopwords($NovaFrase);
+$ComMais = Amais($NovaFrase);
 
-$NovaFrase = Amais($NovaFrase);
-
-echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score, 
+echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) and k.valida = 1
+        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
           order by k.keyword ;";
 
 

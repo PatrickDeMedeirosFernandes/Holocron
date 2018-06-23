@@ -81,12 +81,12 @@ function BuscaConcreta($text) {
                     FROM `pergunta_keyworks` p 
                     LEFT JOIN resposta u ON p.resposta_id = u.id 
                     wHERE (LEVENSHTEIN_RATIO( '$text', `pergunta_key` )) > 87 
-                    and p.valida = 1 
+                    and p.valida = 1 and resposta is not null and resposta != ''
                     ORDER BY `textDiff` DESC
                     Limit 1
 
                   ";
-   // echo $sql;
+    //echo $sql;
     $result2 = $conn->query($sql);
     if ($result2->num_rows > 0) {
 

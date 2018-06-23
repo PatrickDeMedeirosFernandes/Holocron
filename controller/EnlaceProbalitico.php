@@ -2,30 +2,21 @@
 
 //include '../scripts/funcao.php';
 
-function BuscaTermoPersonagem($NovaFrase) {
+function BuscaTermoPersonagem($txt) {
     include '../controller/DB.php';
-
-
-
-    '<br>String pesquisada: ' . $NovaFrase . "<br>";
-    //mostra resposta
-    $sql89 = "SELECT `nome`,valor,dado,
+    $NovaFrase = $txt;
+//mostra resposta
+    $sql89 = "SELECT `nome`,dado,
       LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) as textDif
       FROM `personagem`  p
       inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem 
-      WHERE  LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) > 78 and valor = 'Resumo Sobre'"
-
-    ;
-
+      WHERE  LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) > 78 and valor = 'Resumo Sobre'";
     $result8 = mysqli_query($conn, $sql89);
     if (mysqli_num_rows($result8) > 0) {
         $linha8 = mysqli_fetch_assoc($result8);
-
         $nome = $linha8['nome'];
-        $valor = $linha8['valor'];
         $dado = $linha8['dado'];
-        $score = $linha8['textDif'];
-        $SAIDA = $nome . " é " . $dado;
+        $SAIDA = $nome . ' é ' . $dado;
         return $SAIDA;
     } else {
         return $SAIDA = ' ';
@@ -42,13 +33,16 @@ function BuscaTermoPersonagem($NovaFrase) {
 //======================================================================================================================
 //======================================================================================================================
 //======================================================================================================================
-//======================================================================================================================
-//======================================================================================================================
-function buscaPorKeyWords() {
-    //verificação e eliminação de stopwords
-    $NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt)))));
-    
+function buscaPorKeyWords($txt, $txt2) {
+
     include '../controller/DB.php';
+    $NovaFrase = $txt;
+    $text = $txt2;
+    $ComMais = Amais($NovaFrase);
+    $ip = get_client_ip();
+
+    //echo $ComMais . "<br><Br>";
+//verificação e eliminação de stopwords
     $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergunta,pk.idpergunta_keyworks as chave, 
         LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
             FROM `keywords` k 
@@ -58,20 +52,18 @@ function buscaPorKeyWords() {
             ORDER BY `textDiff` DESC
         Limit 1 ;
        ";
-    // echo '<br><br><Br>';
-    $NovaFrase = Amais($NovaFrase);
-//====
-    $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score, 
+//===
+    $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('$NovaFrase' IN BOOLEAN MODE) and k.valida = 1
+        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
           order by k.keyword ;";
 //=============================================================================
     $resultFullText = mysqli_query($conn, $sqlFullText);
     $resultLevel = mysqli_query($conn, $sqlLevel);
-    //==========================================================================
+//==========================================================================
     if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
         $linhalevel = mysqli_fetch_assoc($resultLevel);
         $linhaFull = mysqli_fetch_assoc($resultFullText);
@@ -100,74 +92,104 @@ function buscaPorKeyWords() {
         $proximidade2 = '0';
         $Pergunta2 = '';
     }
-    //  echo "<br><Br><Br><Br>"
-    // . "Analize probalitica<br>"
-    //  . "Full Text; $proximidade2<br>"
-    //  . "%: $proximidade<br>";
-    if ($proximidade >= 100) {
-        //    echo "<br><br><br>alpha   Palavras chave: $keyword<br>
-        //    Resposta: $resposta<br>
-        //    Proximidade: $proximidade<br>
-        //    Pergunta: $Pergunta
-        //    <br><br><br>         ";
-        echo $resposta;
-    } else if ($proximidade >= 85) {
-        echo $resposta;
-        //        echo "<br><br><br>1   Palavras chave: $keyword<br>
-        //    Resposta: $resposta<br>
-        //    Proximidade: $proximidade<br>
-        //    Pergunta: $Pergunta
-        //<br><br><br>         ";
-    } else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
-        echo $resposta2;
-        //        echo "2Palavras chave: $keyword2<br>
-        //    Resposta: $resposta2<br>
-        //    Proximidade: $proximidade2<br>
-        //    Pergunta: $Pergunta2
-        //            <br><br>        ";
-    } else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2) {
-//        echo "3Palavras chave: $keyword2<br>
-//                    Resposta: $resposta2<br>
-//                    Proximidade: $proximidade2<br>
-//                    Pergunta: $Pergunta2
-//                    <br><br>        ";
-        echo $resposta2;
-    } else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8) {
-//        echo "3,5 Palavras chave: $keyword2<br>
-//                    Resposta: $resposta2<br>
-//                    Proximidade: $proximidade2<br>
-//                    Pergunta: $Pergunta2
-//                            <br><br>        ";
-        echo $resposta2;
-    } else if (($Pergunta == $Pergunta2) && $proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
+//  echo "<br><Br><Br><Br>"
+// . "Analize probalitica<br>"
+//  . "Full Text; $proximidade2<br>"
+//  . "%: $proximidade<br>";
 
-        //        echo "3Palavras chave: $keyword2<br>
-        //    Resposta: \$resposta2<br>
-        //    Proximidade: \$proximidade2<br>
-        //    Pergunta: $Pergunta2
-        //            <br><br>
-        //          ";      
-        echo "<p>Você quis dizer:  $Pergunta2?</p>
-                        <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
+    if ($proximidade == 0 || $proximidade2 == 0) {
+        return ' ';
+    } else if ($proximidade2 <= 0.09) {
+        return ' ';
+    } else if ($proximidade < 50) {
+        return ' ';
+    } else if ($proximidade >= 100) {
+//
+//        echo $proximidade;
+//        echo "<br>";
+        return $resposta;
+    } else if ($proximidade >= 85) {
+        /*
+         * Cadastrar $keyword,$idPregunta2,
+         */
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //      echo $sql3;
+        // echo "<br>";
+        $result = mysqli_query($conn, $sql3);
+        //   echo $proximidade;
+        return $resposta;
+    } else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
+
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //echo $sql3;
+        //echo "<br>";
+        $resulttt = mysqli_query($conn, $sql3);
+        //echo $proximidade;
+        return $resposta2;
+    } else if (($Pergunta == $Pergunta2) && $proximidade >= 70 && $proximidade2 >= 2.2) {
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //  echo $sql3;
+        // echo "<br>";
+        $resulttt = mysqli_query($conn, $sql3);
+        //   echo $proximidade;
+        return $resposta2;
+    } else if (($Pergunta == $Pergunta2) && $proximidade2 >= 7.8) {
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //    echo $sql3;
+        //echo "<br>";
+        $resulttt = mysqli_query($conn, $sql3);
+        //echo $proximidade;
+        return $resposta2;
+        ///===========================================================
+    } else if (($Pergunta == $Pergunta2) && $proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
+        return "<p>Você quis dizer:  $Pergunta2?</p>
+                        <form method='post' action='' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
-                            <input type='hidden' name='resp' value='SIM'>                
+                            <input type='hidden' name='resp' value='SIM'>  
+                            <input type='hidden' name='Usuario' value='$text'>  
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value='Sim'>
                         </form>
-
-                        <form method = 'post' action = 'controller/BuscaSimOuNao.php?d=2' style='float:left'>
+                        <form method = 'post' action='' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='NULL'>
                             <input type='hidden' name='resp' value='NAO'>
+                            <input type='hidden' name='Usuario' value='$text'>  
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-    } else if ($proximidade == 0 || $proximidade2 == 0) {
-        echo " ";
-    } else if ($proximidade2 <= 0.09) {
-        echo ' ';
-    } else if ($proximidade <= 50) {
-        echo ' ';
+    } else if ($proximidade2 > 2.5) {
+        return "<p>Você quis dizer:  $Pergunta2?</p>
+                        <form method='post' action='' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
+                            <input type='hidden' name='resp' value='SIM'>                
+                            <input type='hidden' name='Usuario' value='$text'>  
+                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value='Sim'>
+                        </form>
+                        <form method = 'post' action='' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='NULL'>
+                            <input type='hidden' name='resp' value='NAO'>
+                            <input type='hidden' name='Usuario' value='$text'>  
+                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value = 'Não'>
+                        </form>";
     } else {
-        echo ' ';
+        return ' ';
     }
 }

@@ -1,6 +1,11 @@
 <?php
 include '../includes/cabecalho.php';
 include '../controller/torreDeBabel.php';
+ if (isset($_POST['nome'])) {
+      $bi = $_POST['nome'];
+ }else{
+    // $bi='';
+ }
 ?>
 <div id='bodybox'>
     <center>
@@ -10,19 +15,25 @@ include '../controller/torreDeBabel.php';
     <div id='chatborder' class="form-group">
         <p class='chatlog'>&nbsp;</p>
         <p class='chatlog'>&nbsp;</p>
-       <?php
-        if (isset($_POST['nome'])) {
-            echo "<p class='chatlog'><B>Você: </B> " . $_POST['nome'] . "&nbsp;</p><BR>"
-            . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
-            //echo $torre;
-            $bi = $_POST['nome'];
+        <?php
+        if ((isset($_POST['id_pegunta']) && isset($_POST['resp']) && isset($_POST['kayword']))) {
+               echo "<p class='chatlog'><B>Você: </B> " . $bi . "&nbsp;</p><BR>"
+                . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
+              
         } else {
+            if ($bi !='') {
+                echo "<p class='chatlog'><B>Você: </B> " . $bi . "&nbsp;</p><BR>"
+                . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
+                //echo $torre;
+               
+            } else {
 
-            echo "<p class='chatlog'>&nbsp;</p><BR>"
-            . "<p class='chatlog'><b>Holocron:  </B> Olá tudo bem? Vamos conversar sobre Star Wars? &nbsp;</p>";
+                echo "<p class='chatlog'>&nbsp;</p><BR>"
+                . "<p class='chatlog'><b>Holocron:  </B> Olá tudo bem? Vamos conversar sobre Star Wars? &nbsp;</p>";
 
-            $bi = '';
-            $respostaATT = "Olá tudo bem? Vamos conversar sobre Star Wars?";
+                $bi = '';
+                $respostaATT = "Olá tudo bem? Vamos conversar sobre Star Wars?";
+            }
         }
         ?>  
         <p class='chatlog'>&nbsp;</p>
