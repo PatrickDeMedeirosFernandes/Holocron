@@ -163,14 +163,18 @@ function buscaPorKeyWords($txt, $txt2) {
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
                             <input type='hidden' name='resp' value='SIM'>  
                             <input type='hidden' name='Usuario' value='$text'>  
-                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='hidden' name='resposta' value='$resposta2'>
+
+<input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value='Sim'>
                         </form>
                         <form method = 'post' action='' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='NULL'>
                             <input type='hidden' name='resp' value='NAO'>
                             <input type='hidden' name='Usuario' value='$text'>  
-                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='hidden' name='resposta' value='$resposta2'>
+
+<input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
     } else if ($proximidade2 > 2.5) {
@@ -179,6 +183,8 @@ function buscaPorKeyWords($txt, $txt2) {
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
                             <input type='hidden' name='resp' value='SIM'>                
                             <input type='hidden' name='Usuario' value='$text'>  
+                                                            <input type='hidden' name='resposta' value='$resposta2'>
+
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value='Sim'>
                         </form>
@@ -187,7 +193,9 @@ function buscaPorKeyWords($txt, $txt2) {
                             <input type='hidden' name='resp' value='NAO'>
                             <input type='hidden' name='Usuario' value='$text'>  
                             <input type='hidden' name='kayword' value='$NovaFrase'>
-                            <input type='submit' name='submit' value = 'Não'>
+                            <input type='hidden' name='resposta' value='$resposta2'>
+                            
+<input type='submit' name='submit' value = 'Não'>
                         </form>";
     } else {
         return ' ';

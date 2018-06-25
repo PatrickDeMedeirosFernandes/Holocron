@@ -8,14 +8,14 @@
 include '../controller/DB.php';
 
 include '../scripts/funcao.php';
-echo $txt = " ioda ";
+echo $txt = "qual a idade do Yoda";
 
 $txt = nomes($txt);
 
 
- error_reporting(E_ALL);
+error_reporting(E_ALL);
 print "<br> " . substr_count(stopwords($txt), " ") . "<br>";
-echo stopwords($txt);
+echo stopwords($txt),'';
 print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br><br><br>Resposta: <br><br>";
 
 
@@ -121,7 +121,7 @@ if ($proximidade == 0 || $proximidade2 == 0) {
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-        echo "<br>2<br>";
+    echo "<br>2<br>";
 
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
@@ -139,7 +139,7 @@ if ($proximidade == 0 || $proximidade2 == 0) {
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-        echo "<br>3<br>";
+    echo "<br>3<br>";
 
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
@@ -156,7 +156,7 @@ if ($proximidade == 0 || $proximidade2 == 0) {
             .
             "',1,'$ip',$idPregunta);";
     echo $sql3;
-         echo "<br>4<br>";
+    echo "<br>4<br>";
 
     //  $resulttt = mysqli_query($conn, $sql3);
     echo $proximidade;
@@ -167,7 +167,21 @@ if ($proximidade == 0 || $proximidade2 == 0) {
 
     ///===========================================================
 } else if (($Pergunta == $Pergunta2) && $proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
+    echo "<p>Você quis dizer:  $Pergunta2?</p>
+                        <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
+                            <input type='hidden' name='resp' value='SIM'>                
+                              <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value='Sim'>
+                        </form>
 
+                        <form method = 'post' action = 'controller/BuscaSimOuNao.php?d=2' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='NULL'>
+                            <input type='hidden' name='resp' value='NAO'>
+                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value = 'Não'>
+                        </form>";
+} else if ($proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
@@ -182,7 +196,7 @@ if ($proximidade == 0 || $proximidade2 == 0) {
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-} else if ($proximidade2 > 2.5) {
+} else if ($proximidade2 > 2) {
 
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>

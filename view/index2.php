@@ -1,5 +1,7 @@
 <?php
 include '../includes/cabecalho.php';
+$inicio1 = microtime(true);
+//Seu primeiro script
 include '../controller/torreDeBabel.php';
  if (isset($_POST['nome'])) {
       $bi = $_POST['nome'];
@@ -25,7 +27,10 @@ include '../controller/torreDeBabel.php';
                 echo "<p class='chatlog'><B>Você: </B> " . $bi . "&nbsp;</p><BR>"
                 . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
                 //echo $torre;
-               
+         
+$total1 = microtime(true) - $inicio1;
+echo 'Tempo de execução do primeiro script: ' . $total1;
+
             } else {
 
                 echo "<p class='chatlog'>&nbsp;</p><BR>"

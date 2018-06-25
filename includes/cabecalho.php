@@ -4,7 +4,9 @@ if (isset($_GET['fala'])) {
 } else {
     $fala = "nullteste";
 }
-$n = rand(1, 16);
+set_time_limit(120);
+$bi='';
+//$n = rand(1, 16);
 include '../includes/top.php';
 ?>
 

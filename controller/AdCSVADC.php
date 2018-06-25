@@ -8,6 +8,7 @@ $target_dir = "../ANEXO/";
 $target_file = $target_dir . basename($_FILES["userfile"]["name"]);
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
+set_time_limit(300);
 
 $check = getimagesize($_FILES["userfile"]["tmp_name"]);
 
@@ -63,8 +64,7 @@ if (file_exists($target_file)) {
                         $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
                         //             echo $sql3;
 
-
-                        echo $resp = mysqli_insert_id($conn);
+$resp = mysqli_insert_id($conn);
 
                         $sql2 = "  INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`, `resposta_id`)
                                 VALUES (" . "'".trim(nomes(strip_tags(utf8_encode($dados[0]))))."',1,'SYSTEM',$resp);";
@@ -74,9 +74,8 @@ if (file_exists($target_file)) {
 
 
                         $result4 = mysqli_query($conn, $sql2);
-                        echo $sql2;
-                        
-                          echo $resp2 = mysqli_insert_id($conn);
+                        //echo $sql2;
+                        $resp2 = mysqli_insert_id($conn);
                           
                           
                       
@@ -85,7 +84,7 @@ if (file_exists($target_file)) {
                                 VALUES (" . "'" .trim(stopwords(nomes(strip_tags(utf8_encode($dados[0])))))."',1,'SYSTEM',$resp2);";
 
                         $result5 = mysqli_query($conn, $sql3);
-                        echo $sql3;
+                        //echo $sql3;
                         
                     }
                     ?><script>
