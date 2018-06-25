@@ -43,22 +43,23 @@ function buscaPorKeyWords($txt, $txt2) {
 
     //echo $ComMais . "<br><Br>";
 //verificação e eliminação de stopwords
-    $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergunta,pk.idpergunta_keyworks as chave, 
-        LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
-            FROM `keywords` k 
-            inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
-            inner JOIN resposta r ON pk.resposta_id = r.id
-            where k.valida = 1 and  LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) > 48
-            ORDER BY `textDiff` DESC
-        Limit 1 ;
-       ";
+//    $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergunta,pk.idpergunta_keyworks as chave, 
+//        LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
+//            FROM `keywords` k 
+//            inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
+//            inner JOIN resposta r ON pk.resposta_id = r.id
+//            where k.valida = 1 and  LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) > 48
+//            ORDER BY `textDiff` DESC
+//        Limit 1 ;
+//       ";
 //===
     $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1;";
+        WHERE MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) and k.valida = 1;";
+    
 //=============================================================================
     $resultFullText = mysqli_query($conn, $sqlFullText);
     //$resultLevel = mysqli_query($conn, $sqlLevel);

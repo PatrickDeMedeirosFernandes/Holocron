@@ -10,19 +10,19 @@
 function BuscaConcreta($text) {
     include '../controller/DB.php';
     $SAIDA = '';
-//SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, SOUNDEX(keyword) AS score,SOUNDEX('Luke Skywalker') as as2, r.resposta as resultado FROM `keywords` k inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks inner JOIN resposta r ON pk.resposta_id = r.id WHERE k.valida = 1 and SOUNDEX(keyword) = SOUNDEX('Luke Skywalker')
-    $sql = "
-                    SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
-                    LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff 
-                    FROM `pergunta_keyworks` p 
+
+    $ComMais = Amais($text);
+    $sql = "      SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
+                    MATCH (pergunta_key) AGAINST ('$ComMais' IN BOOLEAN MODE)
+                  FROM `pergunta_keyworks` p 
                     LEFT JOIN resposta u ON p.resposta_id = u.id 
-                    wHERE (LEVENSHTEIN_RATIO( '$text', `pergunta_key` )) > 87 
+                    wHERE  MATCH (pergunta_key) AGAINST ('($ComMais)' IN BOOLEAN MODE) > 3
                     and p.valida = 1 and resposta is not null and resposta != ''
                     ORDER BY `textDiff` DESC
                     Limit 1
 
                   ";
-    //echo $sql;
+    // echo $sql;
     $result2 = $conn->query($sql);
     if ($result2->num_rows > 0) {
 

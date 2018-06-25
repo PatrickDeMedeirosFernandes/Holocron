@@ -12,7 +12,7 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt = " yoda usa sabre de qual cor?";
+echo $txt = "quem é luke";
 
 $txt = nomes($txt);
 
