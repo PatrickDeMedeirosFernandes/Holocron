@@ -20,6 +20,7 @@ RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
 
 RewriteRule ^Duvidas/?$  view/report.php [NC,L]
 RewriteRule ^Goiaba/?$  view/login.php [NC,L]
+RewriteRule ^Norcoloh/?$  view/login.php [NC,L]
 
 
 #EstrelaDaMorteistration

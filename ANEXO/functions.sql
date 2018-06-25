@@ -1,13 +1,5 @@
-
-
---
--- Database: `tcc`
---
-
 DELIMITER $$
---
--- Procedures
---
+
  PROCEDURE `split` (IN `input` TEXT CHARSET utf8mb4, IN `delim` VARCHAR(10) CHARSET utf8mb4)  begin
  
     declare foundPos tinyint unsigned;
@@ -38,9 +30,7 @@ DELIMITER $$
  
     END$$
 
---
--- Functions
---
+
  FUNCTION `compare_title` (`title` VARCHAR(255) CHARSET utf8mb4, `keyword` VARCHAR(255) CHARSET utf8mb4) RETURNS INT(11) BEGIN
  
     DECLARE done INT DEFAULT 0;
