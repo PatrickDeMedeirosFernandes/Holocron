@@ -12,7 +12,7 @@ include '../controller/BuscaDefaut.php';
 
 
 if (isset($_POST['nome'])) {
-    $text = trim(nomes(strip_tags(htmlspecialchars(trim($_POST['nome'])))));
+    $text = trim(nomes(strip_tags($_POST['nome'])));
 
     function pergunta($text) {
 //camada 1
@@ -38,14 +38,9 @@ if (isset($_POST['nome'])) {
         //else
             if (BuscaKey($text, 0) != ' ') {
             $saida = BuscaKey($text);
-//            
-//                     
-//        else if (AI($text) != ' ') {
-//        RETURN ai($text);
-        } ELSE {
-            //         ECHO "<SCRIPT>ALERT('3')</SCRIPT>";
 
-            $saida = BuscaDefaut($text, true);
+        } ELSE {
+ $saida = BuscaDefaut($text, true);
         }
         return $saida;
     }

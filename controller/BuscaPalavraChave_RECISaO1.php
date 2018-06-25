@@ -9,10 +9,7 @@ $inicio1 = microtime(true);
 include '../controller/DB.php';
 
 include '../scripts/funcao.php';
-//qual é a cor do sabre que o yoda usa?
-//    yoda usa sabre de qual cor?
-//    o sabre que o yoda usa tem qual cor?
-echo $txt = " yoda usa sabre de qual cor?";
+echo $txt = "sabre cor do  yoda";
 
 $txt = nomes($txt);
 
@@ -42,22 +39,26 @@ echo '<br><br><Br>';
 $ComMais = Amais($NovaFrase);
 echo $ComMais . "<br><Br>";
 //====
-echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
+$sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
     r.resposta as resultado
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) and k.valida = 1
-         ;";echo '<br>br<br>';
+        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
+          order by k.keyword ;";
 //=============================================================================
 $resultFullText = mysqli_query($conn, $sqlFullText);
-//$resultLevel = mysqli_query($conn, $sqlLevel);
+$resultLevel = mysqli_query($conn, $sqlLevel);
 //==========================================================================
-if (mysqli_num_rows($resultFullText)  > 0) {
-   // $linhalevel = mysqli_fetch_assoc($resultLevel);
+if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
+    $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
 //=============================================================================
-
+    $keyword = $linhalevel['keyword'];
+    $resposta = $linhalevel['resultado'];
+    $proximidade = $linhalevel['textDiff'];
+    $Pergunta = $linhalevel['pergunta'];
+    $idPregunta = $linhalevel['chave'];
 //=============================================================================
     $keyword2 = $linhaFull['keyword'];
     $resposta2 = $linhaFull['resultado'];
@@ -83,25 +84,105 @@ if (mysqli_num_rows($resultFullText)  > 0) {
 //  . "%: $proximidade<br>";
 $ip = get_client_ip();
 
-if ($proximidade2 == 0) {
+if ($proximidade == 0 || $proximidade2 == 0) {
     echo " ";
 } else if ($proximidade2 <= 0.09) {
     echo ' ';
-} else if ($proximidade2 >= 3) {
+} else if ($proximidade < 50) {
+    echo ' ';
+} else if ($proximidade >= 100) {
+
+    echo $proximidade;
+    echo "<br>";
+
+    echo $resposta;
+} else if ($proximidade >= 85) {
+
+    /*
+     * Cadastrar $keyword,$idPregunta2,
+     */
+    $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+            trim(stopwords((strip_tags(($NovaFrase)))))
+            .
+            "',1,'$ip',$idPregunta);";
+    echo $sql3;
+    echo "<br>1<br>";
+    //  $resulttt = mysqli_query($conn, $sql3);
+    echo $proximidade;
+
+
+
+    echo $resposta;
+} else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
             trim(stopwords((strip_tags(($NovaFrase)))))
             .
-            "',1,'$ip',$idPregunta2);";
+            "',1,'$ip',$idPregunta);";
+    echo $sql3;
+    echo "<br>2<br>";
+
+    //  $resulttt = mysqli_query($conn, $sql3);
+    echo $proximidade;
+
+
+
+
+
+    echo $resposta2;
+} else if (($Pergunta == $Pergunta2) && $proximidade >= 70 && $proximidade2 >= 2.2) {
+
+    $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+            trim(stopwords((strip_tags(($NovaFrase)))))
+            .
+            "',1,'$ip',$idPregunta);";
+    echo $sql3;
+    echo "<br>3<br>";
+
+    //  $resulttt = mysqli_query($conn, $sql3);
+    echo $proximidade;
+
+
+
+
+    echo $resposta2;
+} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 7.8) {
+
+    $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+            trim(stopwords((strip_tags(($NovaFrase)))))
+            .
+            "',1,'$ip',$idPregunta);";
     echo $sql3;
     echo "<br>4<br>";
+
+    //  $resulttt = mysqli_query($conn, $sql3);
+    echo $proximidade;
+
 
 
     echo $resposta2;
 
     ///===========================================================
-} else if ($proximidade2 > 1 ) {
+} else if (($Pergunta == $Pergunta2) && $proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
+    echo "<p>Você quis dizer:  $Pergunta2?</p>
+                        <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
+                            <input type='hidden' name='resp' value='SIM'>                
+                              <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value='Sim'>
+                        </form>
+
+                        <form method = 'post' action = 'controller/BuscaSimOuNao.php?d=2' style='float:left'>
+                            <input type='hidden' name='id_pegunta' value='NULL'>
+                            <input type='hidden' name='resp' value='NAO'>
+                            <input type='hidden' name='kayword' value='$NovaFrase'>
+                            <input type='submit' name='submit' value = 'Não'>
+                        </form>";
+} else if ($proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
@@ -116,7 +197,7 @@ if ($proximidade2 == 0) {
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-} else if ($proximidade2 > 0) {
+} else if ($proximidade2 > 2) {
 
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
@@ -293,7 +374,7 @@ echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
         WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
-           ;";
+          order by k.keyword ;";
 
 
 $resultFullText = mysqli_query($conn, $sqlFullText);

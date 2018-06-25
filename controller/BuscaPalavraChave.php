@@ -6,8 +6,9 @@ include '../controller/EnlaceProbalitico.php';
  */
 function BuscaKey($text) {
     include '../controller/DB.php';
-    $NovaFrase = trim(stopwords(rtrim(ltrim(trim($text)))));
-    if (substr_count(trim($NovaFrase), ' ') <= 1) {
+    $NovaFrase = trim(stopwords(($text)));
+    $cout=substr_count(trim($NovaFrase), ' ');
+    if ($cout <= 1) {
         if (BuscaTermoPersonagem($NovaFrase) != ' ') {
             return BuscaTermoPersonagem($NovaFrase);
         } else {

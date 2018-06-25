@@ -318,7 +318,7 @@ function stopwords($str) {
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
         ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
-        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ','+'
+        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ','+','quantos ','qauntos ','quem ',' com ','quando '
     );
 
     $str = str_ireplace($what, '  ', $str);
@@ -369,7 +369,7 @@ function Amais($str) {
         'Darth Vader',
         'Princesa Leia',
         'Yoda',
-        'Greedo',
+        'Greedo','anos ',' cor ','sabre ','arma '
     );
 
     $what = array(
@@ -412,7 +412,7 @@ function Amais($str) {
         '+Darth +Vader',
         '+Princesa +Leia',
         '+Yoda',
-        '+Greedo',
+        '+Greedo','+anos ',' +cor ','+sabre ','+arma '
     );
 
 

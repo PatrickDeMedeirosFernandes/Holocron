@@ -58,14 +58,21 @@ function buscaPorKeyWords($txt, $txt2) {
         FROM `keywords` k  
         inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
         inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1;";
+        WHERE MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) and k.valida = 1
+          ;";
 //=============================================================================
     $resultFullText = mysqli_query($conn, $sqlFullText);
-    //$resultLevel = mysqli_query($conn, $sqlLevel);
+    $resultLevel = mysqli_query($conn, $sqlLevel);
 //==========================================================================
-    if (mysqli_num_rows($resultFullText) > 0) {
-    //    $linhalevel = mysqli_fetch_assoc($resultLevel);
+    if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
+        $linhalevel = mysqli_fetch_assoc($resultLevel);
         $linhaFull = mysqli_fetch_assoc($resultFullText);
+//=============================================================================
+        $keyword = $linhalevel['keyword'];
+        $resposta = $linhalevel['resultado'];
+        $proximidade = $linhalevel['textDiff'];
+        $Pergunta = $linhalevel['pergunta'];
+        $idPregunta = $linhalevel['chave'];
 //=============================================================================
         $keyword2 = $linhaFull['keyword'];
         $resposta2 = $linhaFull['resultado'];
@@ -90,23 +97,67 @@ function buscaPorKeyWords($txt, $txt2) {
 //  . "Full Text; $proximidade2<br>"
 //  . "%: $proximidade<br>";
 
-    if ( $proximidade2 == 0) {
+    if ($proximidade == 0 || $proximidade2 == 0) {
         return ' ';
     } else if ($proximidade2 <= 0.09) {
         return ' ';
-    } else if ($proximidade2 >= 3.0) {
+    } else if ($proximidade < 50) {
+        return ' ';
+    } else if ($proximidade >= 100) {
+//
+//        echo $proximidade;
+//        echo "<br>";
+        return $resposta;
+    } else if ($proximidade >= 85) {
+        /*
+         * Cadastrar $keyword,$idPregunta2,
+         */
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //      echo $sql3;
+        // echo "<br>";
+        $result = mysqli_query($conn, $sql3);
+        //   echo $proximidade;
+        return $resposta;
+    } else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
 
         $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
                 trim(stopwords((strip_tags(($NovaFrase)))))
                 .
-                "',1,'$ip',$idPregunta2);";
+                "',1,'$ip',$idPregunta);";
         //echo $sql3;
         //echo "<br>";
         $resulttt = mysqli_query($conn, $sql3);
         //echo $proximidade;
         return $resposta2;
-    }else if ( $proximidade2 > 1 ) {
+    } else if (($Pergunta == $Pergunta2) && $proximidade >= 70 && $proximidade2 >= 2.2) {
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //  echo $sql3;
+        // echo "<br>";
+        $resulttt = mysqli_query($conn, $sql3);
+        //   echo $proximidade;
+        return $resposta2;
+    } else if (($Pergunta == $Pergunta2) && $proximidade2 >= 7.8) {
+        $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" .
+                trim(stopwords((strip_tags(($NovaFrase)))))
+                .
+                "',1,'$ip',$idPregunta);";
+        //    echo $sql3;
+        //echo "<br>";
+        $resulttt = mysqli_query($conn, $sql3);
+        //echo $proximidade;
+        return $resposta2;
+        ///===========================================================
+    } else if (($Pergunta == $Pergunta2) && $proximidade2 > 1 && ($proximidade > 47 && $proximidade < 71)) {
         return "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
@@ -126,7 +177,7 @@ function buscaPorKeyWords($txt, $txt2) {
 <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-    } else if ($proximidade2 > 0) {
+    } else if ($proximidade2 > 1.0) {
         return "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
