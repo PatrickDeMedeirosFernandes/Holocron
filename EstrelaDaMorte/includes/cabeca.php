@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['login'])) {
     echo ' <script language="javascript">
         alert("<Logue>");
-        window.history.go(-1);
+        window.location.assign("403");
     </script>';
 } else if ($_SESSION['nivel'] == 0) {
     ?>

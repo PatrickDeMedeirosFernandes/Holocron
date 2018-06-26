@@ -1,6 +1,8 @@
-<?php header('Content-type: text/html; charset=UTF-8'); ?>
-<?php
-$inicio1 = microtime(true);
+<?php $inicio1 = microtime(true);
+
+
+header('Content-type: text/html; charset=UTF-8'); 
+
 
 /**
  * Aqui será a função de verificação de metodos, com as palavras chave
@@ -12,7 +14,7 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt = "quem é luke";
+echo $txt = "darth vader é quem";
 
 $txt = nomes($txt);
 
@@ -26,7 +28,6 @@ print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br><br><br>Resposta
 
 //verificação e eliminação de stopwords
 $NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt)))));
-
 include '../controller/DB.php';
 $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergunta,pk.idpergunta_keyworks as chave, 
         LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
@@ -42,12 +43,13 @@ echo '<br><br><Br>';
 $ComMais = Amais($NovaFrase);
 echo $ComMais . "<br><Br>";
 //====
-echo $sqlFullText = "SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, 
-    r.resposta as resultado
-        FROM `keywords` k  
-        inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
-        inner JOIN resposta r ON pk.resposta_id = r.id 
-        WHERE MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) and k.valida = 1
+echo $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `keyword`)) as maior ,
+    pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, 
+    MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, r.resposta as resultado 
+    FROM `keywords` k 
+    inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
+    inner JOIN resposta r ON pk.resposta_id = r.id
+    WHERE MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) and k.valida = 1 ORDER BY `maior` DESC limit 1
          ;";echo '<br>br<br>';
 //=============================================================================
 $resultFullText = mysqli_query($conn, $sqlFullText);
