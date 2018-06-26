@@ -33,7 +33,7 @@ include './Buscas/Lista_pergunta.php';
                                         </TH>
                                         <TH>Resposta</TH>
                                         <th>Valida</th>
-                                        <th>Data criação</th>
+                                        <th>Quem fez</th>
                                         <th>Ações</th>
                                     </tr>
                                     <?php
@@ -49,14 +49,14 @@ include './Buscas/Lista_pergunta.php';
                                             ?>
 
                                             <tr>
-                                                <td><?= $row["id_perg_user"]; ?></td>
+                                                <td><?= $row["idpergunta_keyworks"]; ?></td>
                                                 <td><?= $row["pergunta"]; ?></td>
                                                 <td><?= $row["resposta"]; ?></td>
                                                 
                                                 <td><?= $STATUS ?></td>
-                                                                                                <td><?= $row["data"]; ?></td>
+                                                                                                <td><?= $row["ip"]; ?></td>
 
-                                                <td><a href="Editar_Perg_Bot-<?= $row["id_perg_user"]; ?>">Editar</a></td>
+                                                <td><a href="Editar_Perg_Bot-<?= $row["idpergunta_keyworks"]; ?>">Editar</a></td>
 
 
 

@@ -9,31 +9,40 @@
  */
 function BuscaConcreta($text) {
     include '../controller/DB.php';
-    $SAIDA = '';
-//SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, SOUNDEX(keyword) AS score,SOUNDEX('Luke Skywalker') as as2, r.resposta as resultado FROM `keywords` k inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks inner JOIN resposta r ON pk.resposta_id = r.id WHERE k.valida = 1 and SOUNDEX(keyword) = SOUNDEX('Luke Skywalker')
-    $sql = "
-                    SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
-                    LEVENSHTEIN_RATIO( '$text', `pergunta_key` ) as textDiff 
-                    FROM `pergunta_keyworks` p 
-                    LEFT JOIN resposta u ON p.resposta_id = u.id 
-                    wHERE (LEVENSHTEIN_RATIO( '$text', `pergunta_key` )) > 87 
-                    and p.valida = 1 and resposta is not null and resposta != ''
-                    ORDER BY `textDiff` DESC
-                    Limit 1
-
-                  ";
-    //echo $sql;
+    $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
+            SOUNDEX(pergunta_key) AS score,SOUNDEX('$text') as as2
+            FROM `pergunta_keyworks` p 
+            LEFT JOIN resposta u ON p.resposta_id = u.id 
+            WHERE  p.valida = 1 and resposta is not null and resposta != ''
+            and SOUNDEX(pergunta_key) = SOUNDEX('$text') limit 1;";
+    // echo $sql;
     $result2 = $conn->query($sql);
     if ($result2->num_rows > 0) {
-
-        while ($linha2 = $result2->fetch_assoc()) {
-            $aa = $linha2['respostaReal'];
-            $SAIDA = $aa;
-        }
+        $linha2 = $result2->fetch_assoc();
+        $aa = $linha2['respostaReal'];
+        return  $SAIDA = $aa;
     } else {
-        $SAIDA = ' ';
-    }
 
+        $text = trim(stopwords($text));
+        //SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, SOUNDEX(keyword) AS score,SOUNDEX('Luke Skywalker') as as2, r.resposta as resultado FROM `keywords` k inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks inner JOIN resposta r ON pk.resposta_id = r.id WHERE k.valida = 1 and SOUNDEX(keyword) = SOUNDEX('Luke Skywalker')
+        $sql = " SELECT pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave,           
+            SOUNDEX(keyword) AS score,SOUNDEX('$text') as as2, r.resposta as resultado
+            FROM `keywords` k 
+            inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks 
+            inner JOIN resposta r ON pk.resposta_id = r.id 
+            WHERE k.valida = 1 and SOUNDEX(keyword) = SOUNDEX('$text') and
+                 pk.valida = 1 and resposta is not null and resposta != ''
+                 limit 1;";
+        // echo $sql;
+        $result2 = $conn->query($sql);
+        if ($result2->num_rows > 0) {
+            $linha2 = $result2->fetch_assoc();
+            $aa = $linha2['resultado'];
+            return  $SAIDA = $aa;
+        } else {
+            return  $SAIDA = ' ';
+        }
+    }
 
 
 

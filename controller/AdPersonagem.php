@@ -35,7 +35,7 @@ if (!isset($_POST['NOME']) || $_POST['NOME'] == "" ||
                     if (mysqli_query($conn, $query)) {
                         
                     } else {
-                        $erro = "Error description: " . mysqli_error($con) . $query . $erro;
+//                        $erro = "Error description: " . mysqli_error($conn) . $query . $erro;
                     }
                 }
 

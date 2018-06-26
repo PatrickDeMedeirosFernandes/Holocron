@@ -12,7 +12,7 @@ https://codepen.io/suez/pen/KGaqD
 //$respostaATT = sanitizeString($respostaATT);
 //$respostaATT = str_replace("\n", "", $respostaATT);
 //
-$respostaATT = trim(nomes(strip_tags($respostaATT)));
+$respostaATT = trim((strip_tags($respostaATT)));
 ?>
 <script type="text/javascript">
     window.onload = function () {

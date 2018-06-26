@@ -19,13 +19,8 @@ if (isset($_POST['nome'])) {
         $saida = ' ';
         if (BuscaConcreta($text) != ' ') {
             $saida = BuscaConcreta($text);
-//
-//            
-//            
-//                     
-//
-          
         } else
+
         if (BuscaKey($text, 0) != ' ') {
             $saida = BuscaKey($text);
         } ELSE {

@@ -32,7 +32,6 @@ include './Buscas/Lista_pergunta.php';
                                             Pergunta
                                         </TH>
                                         <TH>resposta</TH>
-                                        <th>Data de Envio</th>
                                         <th>Ip</th>
                                         <th>Ações</th>
                                     </tr>
@@ -45,8 +44,8 @@ include './Buscas/Lista_pergunta.php';
                                             <tr>
                                                 <td><?= $row["id_perg_sem_resp"]; ?></td>
                                                 <td><?= $row["pergunta"]; ?></td>
-                                                <td><?= $row["respostaEscrita"] . $row["respostaReal"]; ?></td>
-                                                <td><?= $row["data"]; ?></td>
+                                                <td><?= $row["respostaReal"]; ?></td>
+                                               
                                                 <td><?= $row["ip"]; ?></td>
                                                 <td><a href="Editar_Pergunta_SemResp-<?= $row["id_perg_sem_resp"]; ?>">Editar</a></td>
                                             </tr>

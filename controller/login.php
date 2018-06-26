@@ -8,7 +8,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
     <script language="javascript">
         alert("Verifique se os campos, SENHA NÃO CONFERE");
       //  window.history.go(-1);
-                            document.location.href = 'goiaba';
+                            document.location.href = 'norcoloh';
 
     </script>
     ?>
@@ -22,7 +22,7 @@ if (!isset($_POST['login']) || !isset($_POST['senha']) || $_POST['senha'] == '' 
         <script language="javascript">
             alert("Erro na captcha");
       //      window.history.go(-1);
-                      document.location.href = 'goiaba';
+                      document.location.href = 'norcoloh';
 
         </script>
         <?php

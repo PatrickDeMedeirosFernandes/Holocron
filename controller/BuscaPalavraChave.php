@@ -5,11 +5,11 @@ include '../controller/EnlaceProbalitico.php';
  * Aqui será a função de verificação de metodos, com as palavras chave
  */
 function BuscaKey($text) {
-    include '../controller/DB.php';
+//    include '../controller/DB.php';
     $NovaFrase = trim(stopwords(($text)));
     $cout=substr_count(trim($NovaFrase), ' ');
     if ($cout <= 1) {
-        if (BuscaTermoPersonagem($NovaFrase) != ' ') {
+        if (BuscaTermoPersonagem($NovaFrase,1) != ' ') {
             return BuscaTermoPersonagem($NovaFrase);
         } else {
             if (buscaPorKeyWords($NovaFrase,$text) != ' ') {

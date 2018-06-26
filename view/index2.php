@@ -1,6 +1,7 @@
 <?php
-include '../includes/cabecalho.php';
 $inicio1 = microtime(true);
+
+include '../includes/cabecalho.php';
 //Seu primeiro script
 include '../controller/torreDeBabel.php';
  if (isset($_POST['nome'])) {

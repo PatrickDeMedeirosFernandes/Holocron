@@ -6,7 +6,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
         //            window.location.href = '../EstrelaDaMorte';
     </script>
     <?PHP
-} {
+}else {
     $pergunta = htmlspecialchars(strip_tags($_POST['pergunta']));
     $resposta = htmlspecialchars(strip_tags($_POST['reposta']));
     $resposta2 = $_POST['respostaQR'];

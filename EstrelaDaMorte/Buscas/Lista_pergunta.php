@@ -19,10 +19,13 @@ function resposta() {
 function resposta_Escolida($id) {
     include '../controller/DB.php';
 
-    $sql = " SELECT id_pergunta, `pergunta`,`valida` ,u.resposta, id
-    FROM `pergunta` p LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
+    $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key`, `valida`, `quem_fez`,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta,id            
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
     where u.id = $id
-            order by id_pergunta";
+            order by idpergunta_keyworks";
     return $result1 = mysqli_query($conn, $sql);
 }
 
@@ -33,12 +36,14 @@ function resposta_Escolida($id) {
  */
 function lista_pergunta_nativa_1($id) {
     include '../controller/DB.php';
-
-    $sql = "SELECT `id_pergunta`, `pergunta`,`valida` ,u.resposta, id FROM `pergunta` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id
-    where p.id_pergunta = $id order by id;
- ";
-    return $result1 = mysqli_query($conn, $sql);
+   $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key`, `valida`, `quem_fez`,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta,id            
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where p.idpergunta_keyworks = $id order by id;"; 
+  // echo $sql;
+   return $result1 = mysqli_query($conn, $sql);
 }
 
 /**
@@ -48,10 +53,13 @@ function lista_pergunta_nativa_1($id) {
 function lista_pergunta_nativa() {
     include '../controller/DB.php';
 
-    $sql = "SELECT `id_pergunta`,  `pergunta`,`valida` ,u.resposta FROM `pergunta` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by id_pergunta,resposta
- ";
-
+   $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key`, `valida`, `quem_fez`,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta,id            
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where  quem_fez ='SYSTEM'"; 
+   
     return $result1 = mysqli_query($conn, $sql);
 }
 
@@ -62,10 +70,16 @@ function lista_pergunta_nativa() {
 function lista_pergunta_Sem_Resp() {
     include '../controller/DB.php';
 
-    $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita, `ip`, u.resposta as respostaReal 
-    FROM `perg_sem_resp` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id order by id_perg_sem_resp,u.resposta
- ";
+       $sql = " 
+SELECT `idpergunta_keyworks` as id_perg_sem_resp, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta respostaReal, id  
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where  (quem_fez !='SYSTEM' and  u.resposta is null) or (quem_fez !='SYSTEM' and  u.resposta ='')
+order by id_perg_sem_resp,u.resposta     
+"
+  ;
+    //  echo $sql;
     return $result = mysqli_query($conn, $sql);
 }
 
@@ -77,36 +91,34 @@ function lista_pergunta_Sem_Resp() {
 function lista_pergunta_Sem_Resp_unica($id) {
     include '../controller/DB.php';
 
-    $sql = "SELECT `id_perg_sem_resp`, `pergunta`, `data`, p.resposta as respostaEscrita, `ip`, u.resposta as respostaReal 
-    FROM `perg_sem_resp` p
-    LEFT JOIN resposta u ON p.resposta_pergunta = u.id 
-    where id_perg_sem_resp = $id
-    order by u.resposta
-";
+                $sql = " 
+SELECT `idpergunta_keyworks` as id_perg_sem_resp, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta respostaReal, id  
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+    where idpergunta_keyworks = $id 
+order by u.resposta     
+"
+  ;
+                
+    //  echo $sql;
     return $result = mysqli_query($conn, $sql);
 }
-
-function lista_pergunta_bot_user_unica($id) {
-    include '../controller/DB.php';
-
-    $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
-    FROM `perg_user` p
-    LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
-    where id_perg_user =$id
-order by id_perg_user, resposta
- ";
-    return $result = mysqli_query($conn, $sql);
-}
+//======================= perguntas dos usuarios com resposta
 
 function lista_pergunta_bot_user() {
     include '../controller/DB.php';
 
-    $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
-    FROM `perg_user` p
-    LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
-order by id_perg_user, resposta
- ";
-    return $result = mysqli_query($conn, $sql);
+
+       $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta resposta, id  
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where  (quem_fez !='SYSTEM' and  u.resposta is not null) or (quem_fez !='SYSTEM' and  u.resposta !='')
+order by idpergunta_keyworks,u.resposta     
+"
+  ;   return $result = mysqli_query($conn, $sql);
 }
 
 function lista_pergunta_bot_user_invalidas() {

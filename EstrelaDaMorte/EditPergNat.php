@@ -38,11 +38,11 @@ if (!isset($_SESSION['login'])) {
             <div class="col-lg-12">
                 <form class="form-group"  enctype="multipart/form-data"
                       action="../controller/AdEdtPergunta.php" method="POST">
-                    <input type="hidden" value="<?= $row["id_pergunta"] ?>" name="id">
+                    <input type="hidden" value="<?= $row["idpergunta_keyworks"] ?>" name="id">
 
                     <div class="form-group">
                         <label>Pergunta </label>
-                        <textarea class="form-control" rows="3" name="pergunta"><?= $row["pergunta"] ?></textarea>
+                        <textarea class="form-control" rows="3" name="pergunta"><?= $row["pergunta_key"] ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Resposta Não Cadastradas </label>

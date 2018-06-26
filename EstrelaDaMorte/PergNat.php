@@ -49,11 +49,11 @@ include './Buscas/Lista_pergunta.php';
 
 
                                             <tr>
-                                                <td><?= $row["id_pergunta"]; ?></td>
-                                                <td><?= $row["pergunta"]; ?></td>
+                                                <td><?= $row["idpergunta_keyworks"]; ?></td>
+                                                <td><?= $row["pergunta_key"]; ?></td>
                                                 <td><?= $row["resposta"]; ?></td>
                                                 <td><?= $STATUS ?></td>
-                                                <td><a href="Editar_Pergunta_Nativa-<?= $row["id_pergunta"]; ?>">Editar</a></td>
+                                                <td><a href="Editar_Pergunta_Nativa-<?= $row["idpergunta_keyworks"]; ?>">Editar</a></td>
 
 
 
