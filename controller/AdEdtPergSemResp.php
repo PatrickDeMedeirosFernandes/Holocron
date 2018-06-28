@@ -27,8 +27,9 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
                 $ID = mysqli_insert_id($conn);
 
                 IF (isset($ID)) {
-                    $query2 = "UPDATE `perg_sem_resp` SET `pergunta`='$pergunta',
-                             `resposta_pergunta`=$ID WHERE id_perg_sem_resp=$id2";
+                           $query2 = "UPDATE `pergunta_keyworks` SET 
+                `pergunta_key`='$pergunta',`valida`=$valida,`resposta_id`=$ID 
+                WHERE idpergunta_keyworks = $id2";
                     //echo $query2;
 
                     if (!mysqli_query($conn, $query2)) {
@@ -57,10 +58,10 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
             }
         }
     } else {
-        $query2=               
-                "UPDATE `perg_sem_resp` SET 
-                `pergunta`='$pergunta',
-                `resposta_pergunta`=$resposta2 WHERE id_perg_sem_resp=$id2   ";
+ 
+        $query2 = "UPDATE `pergunta_keyworks` SET 
+                `pergunta_key`='$pergunta',`valida`=$valida,
+                `resposta_id`=$resposta2 WHERE idpergunta_keyworks=$id2   ";
       //  //echo $query2;
         if (mysqli_query($conn, $query2)) {
             ?> 

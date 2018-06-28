@@ -9,8 +9,8 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
     </script>
     <?PHP
 } else {
-    $pergunta = htmlspecialchars(strip_tags($_POST['pergunta']));
-    $resposta = htmlspecialchars(strip_tags($_POST['reposta']));
+    $pergunta = utf8_encode(htmlspecialchars(strip_tags($_POST['pergunta'])));
+    $resposta = utf8_encode(htmlspecialchars(strip_tags($_POST['reposta'])));
     $resposta2 = $_POST['respostaQR'];
     $id2 = $_POST['id'];
 
@@ -34,23 +34,24 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                 $ID = mysqli_insert_id($conn);
 
                 IF (isset($ID) ) {
-                    $query2 = "UPDATE `pergunta` SET 
-                `pergunta`='$pergunta',`valida`=$valida,`resposta_pergunta`=$ID 
-                WHERE id_pergunta = $id2";
-                    //echo $query2;
+                  
+                    $query2 = "UPDATE `pergunta_keyworks` SET 
+                `pergunta_key`='$pergunta',`valida`=$valida,`resposta_id`=$ID 
+                WHERE idpergunta_keyworks = $id2";
+                  //  echo $query2;
 
                     if (!mysqli_query($conn, $query2)) {
                         ?>
                         <script>
                             alert('<?= ("Error description: " . mysqli_error($con)) ?>');
-                            window.history.go(-1);
+                         //   window.history.go(-1);
                             //     window.location.href = '../EstrelaDaMorte';
                         </script> <?PHP
                     } else {
                         ?><script>
                             alert('Cadastro de Pergunta realizado com sucesso');
                             // window.history.go(-1);
-                            window.location.href = '../EstrelaDaMorte';
+                           window.location.href = '../EstrelaDaMorte';
                         </script>
                         <?PHP
                     }
@@ -60,20 +61,20 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "" ||
                 <script>
                     alert('<?= ("Error description: " . mysqli_error($con)) ?>');
                     window.history.go(-1);
-                    //  window.location.href = '../EstrelaDaMorte';
+                 //     window.location.href = '../EstrelaDaMorte';
                 </script> <?PHP
             }
         }
     } else {
-        $query2 = "UPDATE `pergunta` SET 
-                `pergunta`='$pergunta',`valida`=$valida,
-                `resposta_pergunta`=$resposta2 WHERE id_pergunta=$id2   ";
-        //echo $query2;
+        $query2 = "UPDATE `pergunta_keyworks` SET 
+                `pergunta_key`='$pergunta',`valida`=$valida,
+                `resposta_id`=$resposta2 WHERE idpergunta_keyworks=$id2   ";
+     //   echo $query2;
         if (!mysqli_query($conn, $query2)) {
             ?>
             <script>
                 alert('');
-                //        window.history.go(-1);
+                        window.history.go(-1);
 
             </script> <?PHP
         } else {
