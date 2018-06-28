@@ -13,6 +13,8 @@ https://codepen.io/suez/pen/KGaqD
 //$respostaATT = str_replace("\n", "", $respostaATT);
 //
 $respostaATT = trim((strip_tags($respostaATT)));
+    $respostaATT = str_ireplace('vader', 'veider', $respostaATT);
+
 ?>
 <script type="text/javascript">
     window.onload = function () {

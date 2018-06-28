@@ -1,7 +1,9 @@
-<?php $inicio1 = microtime(true);
+<?php
+
+$inicio1 = microtime(true);
 
 
-header('Content-type: text/html; charset=UTF-8'); 
+header('Content-type: text/html; charset=UTF-8');
 
 
 /**
@@ -14,14 +16,14 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt = "darth vader é quem";
+echo $txt = "o que é o Darth Vader";
 
 $txt = nomes($txt);
 
 
 error_reporting(E_ALL);
 print "<br> " . substr_count(stopwords($txt), " ") . "<br>";
-echo stopwords($txt),'';
+echo stopwords($txt), '';
 print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br><br><br>Resposta: <br><br>";
 
 
@@ -50,23 +52,26 @@ echo $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `keyword`)) as maio
     inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
     inner JOIN resposta r ON pk.resposta_id = r.id
     WHERE MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) and k.valida = 1 ORDER BY `maior` DESC limit 1
-         ;";echo '<br>br<br>';
+         ;";
+echo '<br>br<br>';
 //=============================================================================
 $resultFullText = mysqli_query($conn, $sqlFullText);
 //$resultLevel = mysqli_query($conn, $sqlLevel);
 //==========================================================================
-if (mysqli_num_rows($resultFullText)  > 0) {
-   // $linhalevel = mysqli_fetch_assoc($resultLevel);
+if (mysqli_num_rows($resultFullText) > 0)
+{
+    // $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
 //=============================================================================
-
 //=============================================================================
     $keyword2 = $linhaFull['keyword'];
     $resposta2 = $linhaFull['resultado'];
     $proximidade2 = $linhaFull['score'];
     $Pergunta2 = $linhaFull['pergunta'];
     $idPregunta2 = $linhaFull['chave'];
-} else {
+}
+else
+{
     $keyword = '';
     $idPregunta = '';
     $resposta = '';
@@ -79,17 +84,22 @@ if (mysqli_num_rows($resultFullText)  > 0) {
     $proximidade2 = '0';
     $Pergunta2 = '';
 }
-//  echo "<br><Br><Br><Br>"
-// . "Analize probalitica<br>"
-//  . "Full Text; $proximidade2<br>"
-//  . "%: $proximidade<br>";
+echo "<br><Br><Br><Br>"
+ . "Analize probalitica<br>"
+ . "Full Text; $proximidade2<br>"
+ . "%: $Pergunta2<br>";
 $ip = get_client_ip();
 
-if ($proximidade2 == 0) {
+if ($proximidade2 == 0)
+{
     echo " ";
-} else if ($proximidade2 <= 0.09) {
+}
+else if ($proximidade2 <= 0.09)
+{
     echo ' ';
-} else if ($proximidade2 >= 3) {
+}
+else if ($proximidade2 >= 3)
+{
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
@@ -103,7 +113,9 @@ if ($proximidade2 == 0) {
     echo $resposta2;
 
     ///===========================================================
-} else if ($proximidade2 > 1 ) {
+}
+else if ($proximidade2 > 1)
+{
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
@@ -118,7 +130,9 @@ if ($proximidade2 == 0) {
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-} else if ($proximidade2 > 0) {
+}
+else if ($proximidade2 > 0)
+{
 
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
@@ -134,7 +148,9 @@ if ($proximidade2 == 0) {
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-} else {
+}
+else
+{
     echo ' ';
 }
 
@@ -222,7 +238,8 @@ echo '<br><br><Br><br><br><br>Cruu<br>';
 
 
 //trim pra limpar escesso de espaços no começo e no fim da frase
-if (substr_count(trim($NovaFrase), " ") <= 1) {
+if (substr_count(trim($NovaFrase), " ") <= 1)
+{
     echo '<br>String pesquisada: ' . $NovaFrase . "<br>";
     //mostra resposta
     echo $sql89 = "SELECT `nome`,valor,dado,
@@ -232,14 +249,17 @@ if (substr_count(trim($NovaFrase), " ") <= 1) {
       WHERE  LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) > 77 and valor = 'Resumo Sobre'";
 
     $result8 = mysqli_query($conn, $sql89);
-    if (mysqli_num_rows($result8) > 0) {
+    if (mysqli_num_rows($result8) > 0)
+    {
         $linha8 = mysqli_fetch_assoc($result8);
 
         $nome = $linha8['nome'];
         $valor = $linha8['valor'];
         $dado = $linha8['dado'];
         $score = $linha8['textDif'];
-    } else {
+    }
+    else
+    {
 
         $nome = 'nome';
         $valor = 'valor';
@@ -251,7 +271,9 @@ if (substr_count(trim($NovaFrase), " ") <= 1) {
     '<br>cadastra: ' . $txt .
     '<br>score: ' . $score
     ;
-} else {
+}
+else
+{
     //fAZER a busca pelo full text e porcent
     // $NovaFrase = Amais($NovaFrase);
 
@@ -302,7 +324,8 @@ $resultFullText = mysqli_query($conn, $sqlFullText);
 $resultLevel = mysqli_query($conn, $sqlLevel);
 
 
-if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
+if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0)
+{
     $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
 
@@ -319,7 +342,9 @@ if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) 
     $proximidade2 = $linhaFull['score'];
     $Pergunta2 = $linhaFull['pergunta'];
     $idPregunta2 = $linhaFull['chave'];
-} else {
+}
+else
+{
     $keyword = '';
     $idPregunta = '';
     $resposta = '';
@@ -337,38 +362,49 @@ echo "<br><Br><Br><Br>"
  . "Analize probalitica<br>"
  . "Full Text; $proximidade2<br>"
  . "%: $proximidade<br>";
-if ($proximidade >= 100) {
+if ($proximidade >= 100)
+{
     echo "<br><br><br>alpha   Palavras chave: $keyword<br>
     Resposta: $resposta<br>
     Proximidade: $proximidade<br>
     Pergunta: $Pergunta
 <br><br><br>         ";
-} else if ($proximidade >= 85) {
+}
+else if ($proximidade >= 85)
+{
 
     echo "<br><br><br>1   Palavras chave: $keyword<br>
     Resposta: $resposta<br>
     Proximidade: $proximidade<br>
     Pergunta: $Pergunta
 <br><br><br>         ";
-} else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
+}
+else if ($proximidade2 >= 3.0 && $proximidade >= 70)
+{
     echo "2Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-} else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2) {
+}
+else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2)
+{
     echo "3Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8) {
+}
+else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8)
+{
     echo "3,5 Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 1 && ($proximidade > 47 && $proximidade < 71)) {
+}
+else if (($Pergunta == $Pergunta2) && $proximidade2 >= 1 && ($proximidade > 47 && $proximidade < 71))
+{
 
     echo "3Palavras chave: $keyword2<br>
     Resposta: \$resposta2<br>
@@ -390,7 +426,9 @@ if ($proximidade >= 100) {
             <input type='hidden' name='kayword' value='$NovaFrase'>
             <input type='submit' name='submit' value = 'Não'>
         </form>";
-} else if ($proximidade2 > 2.5) {
+}
+else if ($proximidade2 > 2.5)
+{
 
     echo "3Palavras chave: $keyword2<br>
     Resposta: \$resposta2<br>
@@ -412,13 +450,21 @@ if ($proximidade >= 100) {
             <input type='hidden' name='kayword' value='$NovaFrase'>
             <input type='submit' name='submit' value = 'Não'>
         </form>";
-} else if ($proximidade == 0 || $proximidade2 == 0) {
+}
+else if ($proximidade == 0 || $proximidade2 == 0)
+{
     echo "4FAILL";
-} else if ($proximidade2 <= 0.009) {
+}
+else if ($proximidade2 <= 0.009)
+{
     echo '5 ';
-} else if ($proximidade < 50) {
+}
+else if ($proximidade < 50)
+{
     echo '6 ';
-} else {
+}
+else
+{
     echo '7';
 }
 include './BuscasModulo3.php';
@@ -434,23 +480,39 @@ include './BuscasModulo3.php';
  */
 
 
+////2
+//        'Kit Fisto  Yarael Poof 
+//        Plo        'Koon '
+//'Ki-Adi-Mundi',
+//'Darth 'Malak
+//Darth 'Krayt 
+//Wicket Deej
+//Onaconda Farr
+//    Chanceler Valorum
+//Ahsoka Tano
+//    Eeth 'Koth '
+//        Ponda 
+//        'Shaak 'Ti 
+//        'Peixe-garra 'Luminara 'Unduli 'Kabe'
+////3
+//        'Rey Finn '
+//        'Poe Dameron '
+//        'Jyn Erso'
+//        'Cassian Andor'
 
-
-
-
-$personagem = array(
-);
+$personagem = array();
 
 echo "<br><br><br><br><br><br>";
-for ($i = 0; $i < count($personagem); $i++) {
+for ($i = 0; $i < count($personagem); $i++)
+{
 
     echo "
-
+O $personagem[$i] tem sabre de qual cor?<br>
 qual a cor do sabre do $personagem[$i]<br>
 Qual a cor do sabre de luz de $personagem[$i]?<br>
-
 qual é a arma do $personagem[$i]?<br>
 Você sabe qual a arma de escolha de $personagem[$i]?<br>
+o $personagem[$i] usa sabre?<br>
 
 
 qual a idade $personagem[$i] tem?<br>
@@ -478,13 +540,24 @@ Quem são os parentes do $personagem[$i]? <br>
 Quem é o pai do $personagem[$i]? <br>
 
 Quem não foi treinado por $personagem[$i]?<br>
-
+$personagem[$i] foi treinado por quem?<br>
+quem treinou $personagem[$i]?<br>
 
 Qual é o planeta natal de $personagem[$i]?<br>
-Qual o planeta natal dos $personagem[$i]?<br>
+Qual o planeta natal do $personagem[$i]?<br>
     
 
 qual a frase marcante de $personagem[$i]?<br>
 
+qual filme aprece $personagem[$i]?<br>
+qual epidodio aparece $personagem[$i]?<br>
+
+
+qual a raça $personagem[$i]?<br>
+qual a especie $personagem[$i]?<br>
+    
+
+Qual ator interpretou $personagem[$i]?<br>
+$personagem[$i] foi inter pretado por quem?<Br>
        ";
 }    

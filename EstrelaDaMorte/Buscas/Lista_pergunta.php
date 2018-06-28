@@ -124,11 +124,14 @@ order by idpergunta_keyworks,u.resposta
 function lista_pergunta_bot_user_invalidas() {
     include '../controller/DB.php';
 
-    $sql = "SELECT `id_perg_user`, `pergunta`, `valida`, `data`, u.resposta   
-    FROM `perg_user` p
-    LEFT JOIN resposta u ON p.resposta_perg_user = u.id 
-    order by id_perg_user,valida;
- ";
+ $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta resposta, id  
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where  (quem_fez !='SYSTEM' and  u.resposta is not null and valida != 1) or (quem_fez !='SYSTEM' and  u.resposta !='' and valida != 1)
+order by idpergunta_keyworks,u.resposta     
+";
     return $result = mysqli_query($conn, $sql);
 }
 

@@ -9,12 +9,15 @@
  */
 function BuscaConcreta($text) {
     include '../controller/DB.php';
-    $sql = "SELECT idpergunta_keyworks,pergunta_key, u.resposta as respostaReal , 
+    $sql = "SELECT idpergunta_keyworks,pergunta_key,  (LEVENSHTEIN_RATIO('$text', `pergunta_key`)) as maior ,
+        u.resposta as respostaReal , 
             SOUNDEX(pergunta_key) AS score,SOUNDEX('$text') as as2
             FROM `pergunta_keyworks` p 
             LEFT JOIN resposta u ON p.resposta_id = u.id 
             WHERE  p.valida = 1 and resposta is not null and resposta != ''
-            and SOUNDEX(pergunta_key) = SOUNDEX('$text') limit 1;";
+            and SOUNDEX(pergunta_key) = SOUNDEX('$text') and
+                MATCH (pergunta_key) AGAINST ('($text)' IN BOOLEAN MODE) order by maior desc
+           limit 1;";
     // echo $sql;
     $result2 = $conn->query($sql);
     if ($result2->num_rows > 0) {

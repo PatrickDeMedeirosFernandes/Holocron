@@ -52,14 +52,14 @@ if (file_exists($target_file)) {
                     // Pega os dados da linha
                     $linha = fgets($arquivo, 1024);
                     // Divide as Informações das celular para poder salvar
-                  //  $dados = str_replace(':', ';', $linha);
+                    $dados = str_replace(':', ';', $linha);
                 //    $dados = str_replace(',', ';', $linha);
                     $dados = explode(';', $linha);
                     //  // Verifica se o Dados Não é o cabeçalho ou não esta em branco
                     if (!empty($linha)) {
                         $sql = "INSERT INTO `resposta`(`resposta`)
-                                VALUES (". "'".trim(utf8_encode(htmlspecialchars(strip_tags($dados[1]))))."');";
-                        //  echo $sql;
+                                VALUES (". "'".trim(utf8_encode(strip_tags($dados[1])))."');";
+                          echo $sql;
                         $result = mysqli_query($conn, $sql);
                         $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
                         //             echo $sql3;

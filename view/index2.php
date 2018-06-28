@@ -1,5 +1,5 @@
 <?php
-$inicio1 = microtime(true);
+//$inicio1 = microtime(true);
 
 include '../includes/cabecalho.php';
 //Seu primeiro script
@@ -29,8 +29,8 @@ include '../controller/torreDeBabel.php';
                 . "<p class='chatlog'><b>Holocron:  </B> " . $respostaATT . "&nbsp;</p>";
                 //echo $torre;
          
-$total1 = microtime(true) - $inicio1;
-echo 'Tempo de execução do primeiro script: ' . $total1;
+//$total1 = microtime(true) - $inicio1;
+//echo 'Tempo de execução do primeiro script: ' . $total1;
 
             } else {
 

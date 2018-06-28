@@ -3,12 +3,14 @@
 //include '../scripts/funcao.php';
 
 function BuscaTermoPersonagem($txt, $call = 0) {
+        $ip = get_client_ip();
+
     $call2 = $call;
     include '../controller/DB.php';
     $NovaFrase = $txt;
 //mostra resposta
     $sql89 = "      
-SELECT `nome`,dado,
+      SELECT `nome`,dado,
       SOUNDEX('$NovaFrase') as textDif, SOUNDEX(`nome`) as txt 
       FROM `personagem`  p
       inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem 
@@ -20,31 +22,31 @@ SELECT `nome`,dado,
         $linha8 = mysqli_fetch_assoc($result8);
         $nome = $linha8['nome'];
         $dado = $linha8['dado'];
-        $SAIDA = $nome . ' é ' . $dado;
+        $SAIDA =  $dado;
         //==================================================================
         if ($call2 == 0) {
             $sql = "INSERT INTO `resposta`(`resposta`)
                                 VALUES (" . "'" . trim(strip_tags($SAIDA)) . "');";
 
-            $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
-            //echo $sql3;
+           // $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
+           // echo $sql3;
+            mysqli_query($conn, $sql);
 
-            echo 'aki estou';
             $resp = mysqli_insert_id($conn);
+            echo $resp;
 
             $sql2 = "  INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`, `resposta_id`)
                                 VALUES (" . "'" . trim(nomes(strip_tags(($NovaFrase))))
-                    . "',1,'SYSTEM',$resp);";
+                    . "',1,'$ip',$resp);";
 
+            mysqli_query($conn, $sql2);
 
-            //echo $sql2;
+            echo $sql2;
             $resp2 = mysqli_insert_id($conn);
 
             $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" . trim(stopwords(nomes(strip_tags($NovaFrase))))
-                    . "',1,'SYSTEM',$resp2);";
-            mysqli_query($conn, $sql);
-            mysqli_query($conn, $sql2);
+                    . "',1,'$ip',$resp2);";
             mysqli_query($conn, $sql3);
         }
         //==================================================================
@@ -73,7 +75,7 @@ function buscaPorKeyWords($txt, $txt2) {
 //===
     $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `keyword`)) as maior ,
     pk.pergunta_key as pergunta,k.keyword,pk.idpergunta_keyworks as chave, 
-    MATCH (keyword) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score, r.resposta as resultado 
+    MATCH (keyword) AGAINST ('($ComMais)' IN BOOLEAN MODE) AS score, r.resposta as resultado 
     FROM `keywords` k 
     inner JOIN pergunta_keyworks pk ON k.pergunta_keyworks = pk.idpergunta_keyworks
     inner JOIN resposta r ON pk.resposta_id = r.id
@@ -107,12 +109,10 @@ function buscaPorKeyWords($txt, $txt2) {
 
     if ($proximidade2 == 0) {
         return ' ';
-    } else if ($proximidade2 <= 0.09) {
-        return ' ';
-    } else if ($proximidade2 >= 6.0) {
+    }  else if ($proximidade2 >= 5.0) {
         //echo $proximidade;
         return $resposta2;
-    } else if ($proximidade2 >= 3.5) {
+    } else if ($proximidade2 >= 3) {
         $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
                 trim(stopwords((strip_tags(($NovaFrase)))))

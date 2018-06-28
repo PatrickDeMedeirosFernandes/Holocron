@@ -6,6 +6,7 @@ include './Buscas/Lista_pergunta.php';
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Área administrativa</h1>
+            <h5>Banco de Dados, ainda sendo alimentado.</h5>
         </div>
         <!-- /.col-lg-12 -->
     </div>

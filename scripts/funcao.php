@@ -6,29 +6,44 @@
  * @param type $str
  * @return type
  */
-function saldacao($str) {
-    if ($str == "-=saudacao=") {
+function saldacao($str)
+{
+    if ($str == "-=saudacao=")
+    {
         date_default_timezone_set('America/Sao_Paulo');
         $hora = date("H");
-        if ($hora >= 6 && $hora < 12) {
+        if ($hora >= 6 && $hora < 12)
+        {
             $str = "Bom dia!  Vamos falar sobre o que?";
-        } elseif ($hora >= 12 && $hora < 18) {
+        }
+        elseif ($hora >= 12 && $hora < 18)
+        {
             $str = "Boa tarde!  Vamos falar sobre o que?";
-        } else {
+        }
+        else
+        {
             $str = "Boa noite!  Vamos falar sobre o que?";
         }
-    } ELSE IF ($str == "=YES MY LORD=") {
+    }
+    ELSE IF ($str == "=YES MY LORD=")
+    {
 
         $str = '<iframe width="560" height="315" src="https://www.youtube.com/embed/MobJ0d7SaVM?rel=0&amp;controls=0&amp;showinfo=0&amp;start=18" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-    } ELSE IF ($str == "==fraseSW==") {
+    }
+    ELSE IF ($str == "==fraseSW==")
+    {
 
         $str = "Faça ou não faça. Tentativa não há.<br>-----<b>Mestre Yoda</b>";
-    } ELSE IF ($str == "42") {
+    }
+    ELSE IF ($str == "42")
+    {
         $date = new DateTime('9999-12-31 23:59:59'); // data e hora de nascimento
         $interval = $date->diff(new DateTime()); // data e hora atual
         $algo = $interval->format('%Y Anos, %m Meses, %d Dias, %H Horas, %i Minutos e %s Segundos');
         $str = "A resposta, para a pergunta fundamental, qual sentido da vida, do universo e tudo mais, é algo que meus sistemas, levarão um tempo para calcular, volte aqui há " . $algo . ". A unica coisa que tenho certeza é que não é 42";
-    } else {
+    }
+    else
+    {
         $str = $str;
     }
     return $str;
@@ -56,40 +71,48 @@ function saldacao($str) {
 ###########################################
 // ############### LIMPADORES #####################
 
-function str_minuscula($texto) {
+function str_minuscula($texto)
+{
     // $texto = strtr(strtolower($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
 //Esta Função transforma o texto em maiúsculo respeitando a acentuação
-function str_maiuscula($texto) {
+function str_maiuscula($texto)
+{
     //  $texto = strtr(strtoupper($texto), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ");
     return $texto;
 }
 
 //Esta Função transforma a primeira letra do texto em maiúsculo respeitando a acentuação
-function primaria_maiuscula($texto) {
+function primaria_maiuscula($texto)
+{
     // $texto = strtr(ucfirst($texto), "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞßÇ", "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿç");
     return $texto;
 }
 
 //Verifica se a palavra está toda em maiúscula
-function comparaPalavraMaiuscula($palavra) {
+function comparaPalavraMaiuscula($palavra)
+{
 
     $palavra = str_replace(" ", "", $palavra);
 
-    if ($palavra == "") {
+    if ($palavra == "")
+    {
         return false;
     }
-    if ($palavra == "[:p:]") {
+    if ($palavra == "[:p:]")
+    {
         return false;
     }
-    if (strlen($palavra) <= 1) {
+    if (strlen($palavra) <= 1)
+    {
         return false;
     }
     $palavra = preg_replace("[^a-zA-Z0-9]", "", strtr($palavra, "áàãâéêíóôõúüçÁÀÃÂÉÊÍÓÔÕÚÜÇ ", "aaaaeeiooouucAAAAEEIOOOUUC_"));
 
-    if ($palavra == str_maiuscula($palavra)) {
+    if ($palavra == str_maiuscula($palavra))
+    {
         return true;
     }
 
@@ -102,7 +125,8 @@ function comparaPalavraMaiuscula($palavra) {
  * @return type  o valor corrigido
  * trazer a lista de expressoes a serem corrigidas
  */
-function CodeLimpaNeve($str) {
+function CodeLimpaNeve($str)
+{
     include '../controller/DB.php';
 
     $sql = " SELECT d.`texto`,u.expressao FROM `dicionario` d 
@@ -122,8 +146,10 @@ function CodeLimpaNeve($str) {
     $str = trim($str, '! ');
 //tira o .
     $str = trim($str, '. ');
-    if ($result->num_rows > 0) {
-        while ($linha = $result->fetch_assoc()) {
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
             $aa = $linha['texto'];
             $bb = $linha['expressao'];
             $str = str_ireplace("$aa", " $bb ", $str);
@@ -148,7 +174,8 @@ function CodeLimpaNeve($str) {
  * @return type String retorna o texto já formatado
  */
 
-function nomes($texto) {
+function nomes($texto)
+{
     $texto = CodeLimpaNeve($texto);
     //Variáveis
     $pontuacoes = array(",", ".", "!", "?", ";");
@@ -165,19 +192,24 @@ function nomes($texto) {
     $novo_texto = "";
     $tam_array = count($array);
 
-    for ($i = 0; $i < $tam_array; $i++) {
+    for ($i = 0; $i < $tam_array; $i++)
+    {
         $palavra = $array[$i];
 
-        if (comparaPalavraMaiuscula($palavra)) {
+        if (comparaPalavraMaiuscula($palavra))
+        {
             $nova_palavra = str_minuscula($palavra);
-        } else {
+        }
+        else
+        {
             $nova_palavra = $palavra;
         }
 
         $caracter_anterior = substr($array[$i], -1);
         $caracter_anterior_paragrafo = substr($array[$i], -5);
 
-        if ($caracter_anterior == "." || $caracter_anterior == "!" || $caracter_anterior == "?" || $caracter_anterior_paragrafo == "[:p:]" || $i == 0) {
+        if ($caracter_anterior == "." || $caracter_anterior == "!" || $caracter_anterior == "?" || $caracter_anterior_paragrafo == "[:p:]" || $i == 0)
+        {
             $nova_palavra = primaria_maiuscula($nova_palavra);
         }
 
@@ -187,7 +219,8 @@ function nomes($texto) {
     $texto = $novo_texto;
 
     //Adicionar espaçoes depois das pontuações e remover antes
-    for ($i = 0; $i < count($pontuacoes); $i++) {
+    for ($i = 0; $i < count($pontuacoes); $i++)
+    {
         $ponto = $pontuacoes[$i];
         $texto = str_replace(" " . $ponto . " ", $ponto . " ", $texto);
         $texto = str_replace(" " . $ponto, $ponto . " ", $texto);
@@ -228,14 +261,16 @@ function nomes($texto) {
     $array = explode("[:p:]", $texto);
     $novo_texto = "";
     $tam_array = count($array);
-    for ($i = 0; $i < $tam_array; $i++) {
+    for ($i = 0; $i < $tam_array; $i++)
+    {
         $paragrafo = $array[$i];
 
         $paragrafo = trim($paragrafo);
         $paragrafo = trim($paragrafo, ",");
         $paragrafo = primaria_maiuscula($paragrafo);
 
-        if ($paragrafo == "") {
+        if ($paragrafo == "")
+        {
             break;
         }
         $ultimo_caracter = substr($paragrafo, -1);
@@ -244,7 +279,8 @@ function nomes($texto) {
 //            $paragrafo .= ".";
 //        }
 
-        if ($i != $tam_array) {
+        if ($i != $tam_array)
+        {
             $novo_texto .= $paragrafo . "
 
         ";
@@ -259,7 +295,8 @@ function nomes($texto) {
     return $texto;
 }
 
-function sanitizeString($string) {
+function sanitizeString($string)
+{
     // matriz de entrada
     $what = array('ä', 'ã', 'à', 'á', 'â', 'ê', 'ë', 'è', 'é', 'ï', 'ì', 'í', 'ö', 'õ', 'ò', 'ó', 'ô', 'ü', 'ù', 'ú', 'û', 'À', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ', 'ç', 'Ç', ' ', '-', '(', ')', ',', ';', ':', '|', '!', '"', '#', '$', '%', '&', '/', '=', '?', '~', '^', '>', '<', 'ª', 'º');
 
@@ -270,7 +307,8 @@ function sanitizeString($string) {
     return str_replace($what, $by, $string);
 }
 
-function get_client_ip() {
+function get_client_ip()
+{
     $ip = '';
     if (getenv('HTTP_CLIENT_IP'))
         $ip = getenv('HTTP_CLIENT_IP');
@@ -289,7 +327,8 @@ function get_client_ip() {
     return $ip;
 }
 
-function stopwords($str) {
+function stopwords($str)
+{
 
     $what = array(
         ' quais ', 'quais ', ' também ', ' o ', ' de ', ' a ', ' e ', ' do ', ' da ', ' em ', ' tinham ', ' tive ',
@@ -318,7 +357,7 @@ function stopwords($str) {
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
         ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
-        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ','+','quantos ','qauntos ','quem ',' com ','quando '
+        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ', '+', 'quantos ', 'qauntos ', 'quem ', ' com ', 'quando ', 's '
     );
 
     $str = str_ireplace($what, '  ', $str);
@@ -327,92 +366,30 @@ function stopwords($str) {
     return $str;
 }
 
-function Amais($str) {
+function Amais($str)
+{
     //algumas palavras tem q ficar junto
-    $real = array(
-        'Anakin Skywalker',
-        'Jar Jar Binks',
-        'Jabba O Hutt',
-        'Lando Calrissian',
-        'Stormtrooper',
-        'Almirante Ackbar',
-        'Obi-Wan Kenobi',
-        'Luke Skywalker',
-        'Leia Organa',
-        'R2-D2',
-        'C-3PO',
-        'BB-8',
-        'Han Solo',
-        'Chewbacca',
-        'Padmé Amidala',
-        'Mace Windu',
-        'Qui-Gon Jinn',
-        'Ahsoka Tano',
-        'Ezra',
-        'Jaden Korr',
-        'Poe Dameron',
-        'Lando Calrissian',
-        'Darth Maul',
-        'Boba Fett',
-        'Jango Fett',
-        'Jabba the Hutt',
-        'Conde Dooku',
-        'Darth Tyranus',
-        'General Grievous',
-        'Sheev Palpatine',
-        'Darth Sidious',
-        'Finn',
-        'Maz Kanata',
-        'Rey',
-        'Ben Solo',
-        'Kylo Ren',
-        'Darth Vader',
-        'Princesa Leia',
-        'Yoda',
-        'Greedo','anos ',' cor ','sabre ','arma '
+
+    $real = array('Darth', 'Vader', 'Anakin', 'Skywalker', 'Obi-Wan', 'Kenobi', 'Princesa', 'Leia', 'Organa',
+        'Luke', 'Yoda',
+        'Imperador', 'Palpatine ', 'Sidious',
+        'C-3PO', 'R2-D2', 'Han', 'Solo', 'Chewbacca ',
+        'Padmé', 'Amidala', 'Conde', 'Dookan', 'Tyranus', 'Lando', 'Calrissian',
+        'Mace', 'Windu', 'Qui-Gon', 'Jinn', 'Vice-Rei', 'Gunray',
+        'Cad', 'Bane', 'Shmi', 'Bail',
+        'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
+        'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
+        'anos ', ' cor ', 'sabre ', 'arma '
     );
 
-    $what = array(
-        '+Anakin +Skywalker',
-        '+Jar +Jar +Binks',
-        '+Jabba +O +Hutt',
-        '+Lando +Calrissian',
-        '+Stormtrooper',
-        '+Almirante +Ackbar',
-        '+Obi-Wan +Kenobi',
-        '+Luke +Skywalker',
-        '+Leia +Organa',
-        '+R2-D2',
-        '+C-3PO',
-        '+BB-8',
-        '+Han +Solo',
-        '+Chewbacca',
-        '+Padmé +Amidala',
-        '+Mace +Windu',
-        '+Qui-Gon +Jinn',
-        '+Ahsoka +Tano',
-        '+Ezra',
-        '+Jaden +Korr',
-        '+Poe +Dameron',
-        '+Lando +Calrissian',
-        '+Darth +Maul',
-        '+Boba +Fett',
-        '+Jango +Fett',
-        '+Jabba +the +Hutt',
-        '+Conde +Dooku',
-        '+Darth +Tyranus',
-        '+General +Grievous',
-        '+Sheev +Palpatine',
-        '+Darth +Sidious',
-        '+Finn',
-        '+Maz +Kanata',
-        '+Rey',
-        '+Ben +Solo',
-        '+Kylo +Ren',
-        '+Darth +Vader',
-        '+Princesa +Leia',
-        '+Yoda',
-        '+Greedo','+anos ',' +cor ','+sabre ','+arma '
+    $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
+        '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
+        '+C-3PO', '+R2-D2', '+Han', '+Solo', '+Chewbacca ',
+        '+Padmé', '+Amidala', '+Conde', '+Dookan', '+Tyranus', '+Lando', '+Calrissian',
+        '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
+        '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
+        '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
+        '+anos ', ' +cor ', '+sabre ', '+arma '
     );
 
 
