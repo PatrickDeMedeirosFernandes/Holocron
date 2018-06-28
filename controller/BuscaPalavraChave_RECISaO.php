@@ -16,7 +16,7 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt = "o que é o Darth Vader";
+echo $txt = "Quem foi o  aprendiz de Darth Vade";
 
 $txt = nomes($txt);
 

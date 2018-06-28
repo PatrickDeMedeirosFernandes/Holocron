@@ -63,6 +63,25 @@ SELECT `idpergunta_keyworks`, `pergunta_key`, `valida`, `quem_fez`,
     return $result1 = mysqli_query($conn, $sql);
 }
 
+
+/**
+ * lista todas as perguntas nativas
+ * @return type
+ */
+function lista_pergunta_nativa2($inicio,$total_reg) {
+    include '../controller/DB.php';
+
+   $sql = " 
+SELECT `idpergunta_keyworks`, `pergunta_key`, `valida`, `quem_fez`,
+        `Ativador_de_conversa`, `resposta_id`, u.resposta,id            
+    FROM `pergunta_keyworks` p 
+    LEFT JOIN resposta u ON p.resposta_id = u.id 
+     where  quem_fez ='SYSTEM'
+     LIMIT $inicio,$total_reg"; 
+   
+    return  mysqli_query($conn, $sql);
+}
+
 /**
  * lista todas as perguntas sem resposta
  * @return type

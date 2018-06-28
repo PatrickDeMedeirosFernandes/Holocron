@@ -22,7 +22,7 @@ function BuscaDefaut($text, $alfa = true) {
         $resp2 = mysqli_insert_id($conn);
         $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
-                trim(stopwords((strip_tags(($text)))))
+                trim(stopwords($text))
                 .
                 "',1,'$ip',$resp2   );";
         //    echo $sql3;

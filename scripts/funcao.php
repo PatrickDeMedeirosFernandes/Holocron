@@ -379,8 +379,8 @@ function Amais($str)
         'Cad', 'Bane', 'Shmi', 'Bail',
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
-        'anos ', ' cor ', 'sabre ', 'arma '
-    );
+        'anos ', ' cor ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie',' pai '
+   ,'aprendiz ' );
 
     $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
         '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
@@ -389,8 +389,9 @@ function Amais($str)
         '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
         '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
         '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
-        '+anos ', ' +cor ', '+sabre ', '+arma '
-    );
+        '+anos ', ' +cor ', '+sabre ', '+arma ','+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ',' +pai '
+ ,'+aprendiz '
+        );
 
 
 
