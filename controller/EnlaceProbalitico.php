@@ -3,7 +3,7 @@
 //include '../scripts/funcao.php';
 
 function BuscaTermoPersonagem($txt, $call = 0) {
-        $ip = get_client_ip();
+    $ip = get_client_ip();
 
     $call2 = $call;
     include '../controller/DB.php';
@@ -22,14 +22,14 @@ function BuscaTermoPersonagem($txt, $call = 0) {
         $linha8 = mysqli_fetch_assoc($result8);
         $nome = $linha8['nome'];
         $dado = $linha8['dado'];
-        $SAIDA =  $dado;
+        $SAIDA = $dado;
         //==================================================================
         if ($call2 == 0) {
             $sql = "INSERT INTO `resposta`(`resposta`)
                                 VALUES (" . "'" . trim(strip_tags($SAIDA)) . "');";
 
-           // $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
-           // echo $sql3;
+            // $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
+            // echo $sql3;
             mysqli_query($conn, $sql);
 
             $resp = mysqli_insert_id($conn);
@@ -109,7 +109,7 @@ function buscaPorKeyWords($txt, $txt2) {
 
     if ($proximidade2 == 0) {
         return ' ';
-    }  else if ($proximidade2 >= 5.0) {
+    } else if ($proximidade2 >= 5.0) {
         //echo $proximidade;
         return $resposta2;
     } else if ($proximidade2 >= 3) {
@@ -143,6 +143,88 @@ function buscaPorKeyWords($txt, $txt2) {
                             
 <input type='submit' name='submit' value = 'Não'>
                         </form>";
+    } else {
+        return ' ';
+    }
+}
+
+//=========================================================== busca personagem
+function buscaPorPersonagem($txt, $call = 0) {
+    $ip = get_client_ip();
+    $call2 = $call;
+    include '../controller/DB.php';
+    $NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt)))));
+    $ComMais = Amais2($NovaFrase);
+
+//mostra resposta
+    $sql89 = "      
+      SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `nome`)) as maior ,
+  id_personagem as chave, nome,
+    MATCH (nome) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score
+    FROM `personagem` 
+    WHERE MATCH (nome) AGAINST ('($ComMais)' IN BOOLEAN MODE) >0 and (LEVENSHTEIN_RATIO('$NovaFrase', `nome`)) > 40 ORDER BY `maior` DESC limit 1
+         ;";
+    $sql89;
+    //$result8 = mysqli_query($conn, $sql89);
+    $resultFullText = mysqli_query($conn, $sql89);
+//$resultLevel = mysqli_query($conn, $sqlLevel);
+//==========================================================================
+    if (mysqli_num_rows($resultFullText) > 0) {
+        $linhaFull = mysqli_fetch_assoc($resultFullText);
+        $NovaFrase = trim(Limpador2($NovaFrase));
+        $keyword2 = $linhaFull['chave'];
+        $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `valor`)) as maior, 
+         MATCH (`valor`) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score,nome,dado, valor 
+          FROM `personagem` p inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem
+          WHERE MATCH (valor) AGAINST ('($NovaFrase)' IN BOOLEAN MODE)  > 0 and (LEVENSHTEIN_RATIO('$NovaFrase', `valor`)) > 40
+          AND `personagem_id_personagem` =$keyword2
+          ORDER BY `maior` desc";
+
+        $resultFullText = mysqli_query($conn, $sqlFullText);
+        if (mysqli_num_rows($resultFullText) > 0) {
+            $linhaFull = mysqli_fetch_assoc($resultFullText);
+
+
+             $SAIDA = $linhaFull['dado'];
+            //echo '<br><br>';
+            //========================
+            //==================================================================
+            if ($call2 == 0) {
+                $sql = "INSERT INTO `resposta`(`resposta`)
+                                VALUES (" . "'" . trim(strip_tags($SAIDA)) . "');";
+
+                // $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
+                // echo $sql3;
+                 mysqli_query($conn, $sql);
+
+                $resp = mysqli_insert_id($conn);
+                // echo $resp;
+
+                $sql2 = "  INSERT INTO `pergunta_keyworks`(`pergunta_key`, `valida`, `quem_fez`, `resposta_id`)
+                                VALUES (" . "'" . trim(nomes(strip_tags(($txt))))
+                        . "',1,'$ip',$resp);";
+
+                  mysqli_query($conn, $sql2);
+                //    echo $sql2;
+                $resp2 = mysqli_insert_id($conn);
+
+                $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
+                                VALUES (" . "'" . trim(stopwords(nomes(strip_tags($txt))))
+                        . "',1,'$ip',$resp2);";
+                   mysqli_query($conn, $sql3);
+            }
+            //==================================================================
+            return $SAIDA;
+        } else {
+            return $SAIDA = ' ';
+        }
+//    echo "<br>envia resposta \$resposta = $dado" .
+//    //casdastra a pergunta
+//    '<br>cadastra: ' . $txt .
+//    '<br>score: ' . $score
+//    ;
+
+        return $SAIDA;
     } else {
         return ' ';
     }

@@ -10,7 +10,7 @@ else
 {
     $pc = $_GET['pagina'];
 }
-$total_reg = "50";
+$total_reg = "100";
 $inicio = $pc - 1;
 $inicio = $inicio * $total_reg;
 $limite = lista_pergunta_nativa2($inicio, $total_reg);

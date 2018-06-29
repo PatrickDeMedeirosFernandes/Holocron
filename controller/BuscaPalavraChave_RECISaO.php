@@ -16,9 +16,10 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt = "Quem foi o  aprendiz de Darth Vade";
+echo $txt1 = "quem é a esposa darth vader";
+echo $txt = $txt1;
 
-$txt = nomes($txt);
+$txt = nomes($txt1);
 
 
 error_reporting(E_ALL);
@@ -29,8 +30,178 @@ print "<br> " . substr_count(trim(stopwords($txt)), " ") . "<br><br><br>Resposta
 
 
 //verificação e eliminação de stopwords
+$NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt1)))));
+include '../controller/DB.php';
+
+
+
+
+
+
+
+//verificação e eliminação de stopwords
 $NovaFrase = trim(stopwords(rtrim(ltrim(trim($txt)))));
 include '../controller/DB.php';
+$sqlLevel = "";
+echo $NovaFrase;
+echo '<br><br><Br>';
+$ComMais = Amais2($NovaFrase);
+echo $ComMais . "<br><Br>";
+//====
+// SELECT `nome`,dado,
+//      SOUNDEX('$NovaFrase') as textDif, SOUNDEX(`nome`) as txt 
+//      FROM `personagem`  p
+//      inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem 
+//      WHERE SOUNDEX(`nome`) = SOUNDEX('$NovaFrase')
+//      and valor = 'Resumo Sobre
+//
+//SELECT (LEVENSHTEIN_RATIO('aprendiz Darth Vade', `nome`)) as maior, id_personagem as chave, MATCH (nome) AGAINST ('aprendiz +Darth Vade' IN BOOLEAN MODE) AS score,nome,dado, valor FROM `personagem` p inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem WHERE MATCH (nome) AGAINST ('(aprendiz +Darth Vade)' IN BOOLEAN MODE) ORDER BY `maior`
+echo $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `nome`)) as maior ,
+  id_personagem as chave, nome,
+    MATCH (nome) AGAINST ('$ComMais' IN BOOLEAN MODE) AS score
+    FROM `personagem` 
+    WHERE MATCH (nome) AGAINST ('($ComMais)' IN BOOLEAN MODE) >0 and (LEVENSHTEIN_RATIO('$NovaFrase', `nome`)) > 40 ORDER BY `maior` DESC limit 1
+         ;";
+echo '<br><br>';
+//=============================================================================
+$resultFullText = mysqli_query($conn, $sqlFullText);
+//$resultLevel = mysqli_query($conn, $sqlLevel);
+//==========================================================================
+if (mysqli_num_rows($resultFullText) > 0) {
+    $linhaFull = mysqli_fetch_assoc($resultFullText);
+    $NovaFrase = trim(Limpador2($NovaFrase));
+    $keyword2 = $linhaFull['chave'];
+//====
+// SELECT `nome`,dado,
+//      SOUNDEX('$NovaFrase') as textDif, SOUNDEX(`nome`) as txt 
+//      FROM `personagem`  p
+//      inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem 
+//      WHERE SOUNDEX(`nome`) = SOUNDEX('$NovaFrase')
+//      and valor = 'Resumo Sobre
+//
+    echo $sqlFullText = "SELECT (LEVENSHTEIN_RATIO('$NovaFrase', `valor`)) as maior, 
+         MATCH (`valor`) AGAINST ('$NovaFrase' IN BOOLEAN MODE) AS score,nome,dado, valor 
+          FROM `personagem` p inner JOIN valor v ON p.id_personagem = v.personagem_id_personagem
+          WHERE MATCH (valor) AGAINST ('($NovaFrase)' IN BOOLEAN MODE)  > 0 and (LEVENSHTEIN_RATIO('$NovaFrase', `valor`)) > 40
+          AND `personagem_id_personagem` =$keyword2
+          ORDER BY `maior` desc";
+    echo '<br><br>';
+
+//=============================================================================
+    $resultFullText = mysqli_query($conn, $sqlFullText);
+
+//$resultLevel = mysqli_query($conn, $sqlLevel);
+//==========================================================================
+    if (mysqli_num_rows($resultFullText) > 0) {
+        $linhaFull = mysqli_fetch_assoc($resultFullText);
+
+
+        echo $linhaFull['valor'] . ', ' . $linhaFull['dado'];
+        echo '<br><br>';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+echo "
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>";
 $sqlLevel = "SELECT k.keyword, r.resposta as resultado,pk.pergunta_key as pergunta,pk.idpergunta_keyworks as chave, 
         LEVENSHTEIN_RATIO( '$NovaFrase', `keyword` ) as textDiff 
             FROM `keywords` k 
@@ -58,8 +229,7 @@ echo '<br>br<br>';
 $resultFullText = mysqli_query($conn, $sqlFullText);
 //$resultLevel = mysqli_query($conn, $sqlLevel);
 //==========================================================================
-if (mysqli_num_rows($resultFullText) > 0)
-{
+if (mysqli_num_rows($resultFullText) > 0) {
     // $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
 //=============================================================================
@@ -69,9 +239,7 @@ if (mysqli_num_rows($resultFullText) > 0)
     $proximidade2 = $linhaFull['score'];
     $Pergunta2 = $linhaFull['pergunta'];
     $idPregunta2 = $linhaFull['chave'];
-}
-else
-{
+} else {
     $keyword = '';
     $idPregunta = '';
     $resposta = '';
@@ -90,16 +258,11 @@ echo "<br><Br><Br><Br>"
  . "%: $Pergunta2<br>";
 $ip = get_client_ip();
 
-if ($proximidade2 == 0)
-{
+if ($proximidade2 == 0) {
     echo " ";
-}
-else if ($proximidade2 <= 0.09)
-{
+} else if ($proximidade2 <= 0.09) {
     echo ' ';
-}
-else if ($proximidade2 >= 3)
-{
+} else if ($proximidade2 >= 3) {
 
     $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
                                 VALUES (" . "'" .
@@ -113,9 +276,7 @@ else if ($proximidade2 >= 3)
     echo $resposta2;
 
     ///===========================================================
-}
-else if ($proximidade2 > 1)
-{
+} else if ($proximidade2 > 1) {
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
                             <input type='hidden' name='id_pegunta' value='$idPregunta2'>   
@@ -130,9 +291,7 @@ else if ($proximidade2 > 1)
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-}
-else if ($proximidade2 > 0)
-{
+} else if ($proximidade2 > 0) {
 
     echo "<p>Você quis dizer:  $Pergunta2?</p>
                         <form method='post' action='controller/BuscaSimOuNao.php?d=1' style='float:left'>
@@ -148,9 +307,7 @@ else if ($proximidade2 > 0)
                             <input type='hidden' name='kayword' value='$NovaFrase'>
                             <input type='submit' name='submit' value = 'Não'>
                         </form>";
-}
-else
-{
+} else {
     echo ' ';
 }
 
@@ -238,8 +395,7 @@ echo '<br><br><Br><br><br><br>Cruu<br>';
 
 
 //trim pra limpar escesso de espaços no começo e no fim da frase
-if (substr_count(trim($NovaFrase), " ") <= 1)
-{
+if (substr_count(trim($NovaFrase), " ") <= 1) {
     echo '<br>String pesquisada: ' . $NovaFrase . "<br>";
     //mostra resposta
     echo $sql89 = "SELECT `nome`,valor,dado,
@@ -249,17 +405,14 @@ if (substr_count(trim($NovaFrase), " ") <= 1)
       WHERE  LEVENSHTEIN_RATIO('$NovaFrase', `nome` ) > 77 and valor = 'Resumo Sobre'";
 
     $result8 = mysqli_query($conn, $sql89);
-    if (mysqli_num_rows($result8) > 0)
-    {
+    if (mysqli_num_rows($result8) > 0) {
         $linha8 = mysqli_fetch_assoc($result8);
 
         $nome = $linha8['nome'];
         $valor = $linha8['valor'];
         $dado = $linha8['dado'];
         $score = $linha8['textDif'];
-    }
-    else
-    {
+    } else {
 
         $nome = 'nome';
         $valor = 'valor';
@@ -271,9 +424,7 @@ if (substr_count(trim($NovaFrase), " ") <= 1)
     '<br>cadastra: ' . $txt .
     '<br>score: ' . $score
     ;
-}
-else
-{
+} else {
     //fAZER a busca pelo full text e porcent
     // $NovaFrase = Amais($NovaFrase);
 
@@ -324,8 +475,7 @@ $resultFullText = mysqli_query($conn, $sqlFullText);
 $resultLevel = mysqli_query($conn, $sqlLevel);
 
 
-if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0)
-{
+if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0) {
     $linhalevel = mysqli_fetch_assoc($resultLevel);
     $linhaFull = mysqli_fetch_assoc($resultFullText);
 
@@ -342,9 +492,7 @@ if (mysqli_num_rows($resultFullText) > 0 and mysqli_num_rows($resultLevel) > 0)
     $proximidade2 = $linhaFull['score'];
     $Pergunta2 = $linhaFull['pergunta'];
     $idPregunta2 = $linhaFull['chave'];
-}
-else
-{
+} else {
     $keyword = '';
     $idPregunta = '';
     $resposta = '';
@@ -362,49 +510,38 @@ echo "<br><Br><Br><Br>"
  . "Analize probalitica<br>"
  . "Full Text; $proximidade2<br>"
  . "%: $proximidade<br>";
-if ($proximidade >= 100)
-{
+if ($proximidade >= 100) {
     echo "<br><br><br>alpha   Palavras chave: $keyword<br>
     Resposta: $resposta<br>
     Proximidade: $proximidade<br>
     Pergunta: $Pergunta
 <br><br><br>         ";
-}
-else if ($proximidade >= 85)
-{
+} else if ($proximidade >= 85) {
 
     echo "<br><br><br>1   Palavras chave: $keyword<br>
     Resposta: $resposta<br>
     Proximidade: $proximidade<br>
     Pergunta: $Pergunta
 <br><br><br>         ";
-}
-else if ($proximidade2 >= 3.0 && $proximidade >= 70)
-{
+} else if ($proximidade2 >= 3.0 && $proximidade >= 70) {
     echo "2Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-}
-else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2)
-{
+} else if (($Pergunta == $Pergunta2) && $proximidade >= 71 && $proximidade2 >= 2.2) {
     echo "3Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-}
-else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8)
-{
+} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 8) {
     echo "3,5 Palavras chave: $keyword2<br>
     Resposta: $resposta2<br>
     Proximidade: $proximidade2<br>
     Pergunta: $Pergunta2
             <br><br>        ";
-}
-else if (($Pergunta == $Pergunta2) && $proximidade2 >= 1 && ($proximidade > 47 && $proximidade < 71))
-{
+} else if (($Pergunta == $Pergunta2) && $proximidade2 >= 1 && ($proximidade > 47 && $proximidade < 71)) {
 
     echo "3Palavras chave: $keyword2<br>
     Resposta: \$resposta2<br>
@@ -426,9 +563,7 @@ else if (($Pergunta == $Pergunta2) && $proximidade2 >= 1 && ($proximidade > 47 &
             <input type='hidden' name='kayword' value='$NovaFrase'>
             <input type='submit' name='submit' value = 'Não'>
         </form>";
-}
-else if ($proximidade2 > 2.5)
-{
+} else if ($proximidade2 > 2.5) {
 
     echo "3Palavras chave: $keyword2<br>
     Resposta: \$resposta2<br>
@@ -450,21 +585,13 @@ else if ($proximidade2 > 2.5)
             <input type='hidden' name='kayword' value='$NovaFrase'>
             <input type='submit' name='submit' value = 'Não'>
         </form>";
-}
-else if ($proximidade == 0 || $proximidade2 == 0)
-{
+} else if ($proximidade == 0 || $proximidade2 == 0) {
     echo "4FAILL";
-}
-else if ($proximidade2 <= 0.009)
-{
+} else if ($proximidade2 <= 0.009) {
     echo '5 ';
-}
-else if ($proximidade < 50)
-{
+} else if ($proximidade < 50) {
     echo '6 ';
-}
-else
-{
+} else {
     echo '7';
 }
 include './BuscasModulo3.php';
@@ -503,8 +630,7 @@ include './BuscasModulo3.php';
 $personagem = array();
 
 echo "<br><br><br><br><br><br>";
-for ($i = 0; $i < count($personagem); $i++)
-{
+for ($i = 0; $i < count($personagem); $i++) {
 
     echo "
 O $personagem[$i] tem sabre de qual cor?<br>

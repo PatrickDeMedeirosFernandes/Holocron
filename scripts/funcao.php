@@ -357,7 +357,7 @@ function stopwords($str)
         ' formos ', ' forem ', ' serei ', ' será ', ' seremos ', ' serão ', ' seria ', ' terão ', ' teria ',
         ' tenha ', ' tenhamos ', ' tenham ', ' tivesse ', ' tivéssemos ', ' tivessem ', '  a  ',
         ' de ', ' a ', ' o ', 'por que ', ' e ', ' do ', ' da ', ' em ', 'qual ', ' quem ', ' seu ', 'quem ', ' é ', 'não', ' que ',
-        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ', '+', 'quantos ', 'qauntos ', 'quem ', ' com ', 'quando ', 's '
+        '~', ':', ';', '/', '´', '´', '[', ']', '\'', '\\', 'que ', '+', 'quantos ', 'qauntos ', 'quem ', ' com ', 'quando '
     );
 
     $str = str_ireplace($what, '  ', $str);
@@ -380,7 +380,8 @@ function Amais($str)
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
         'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie',' pai '
-   ,'aprendiz ' );
+   ,'aprendiz ',///'esposa '
+    );
 
     $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
         '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
@@ -390,11 +391,144 @@ function Amais($str)
         '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
         '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
         '+anos ', '+sabre ', '+arma ','+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ',' +pai '
- ,'+aprendiz '
+ ,'+aprendiz ' ,//'+esposa '
         );
 
 
 
     $str = str_ireplace($real, $what, $str);
+    return $str;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//============================================================================
+
+
+
+
+function AmaisSom($str)
+{
+    //algumas palavras tem q ficar junto
+
+    $real = array('Darth', 'Vader', 'Anakin', 'Skywalker', 'Obi-Wan', 'Kenobi', 'Princesa', 'Leia', 'Organa',
+        'Luke', 'Yoda',
+        'Imperador', 'Palpatine ', 'Sidious',
+        'C-3PO', 'R2-D2', 'Han', 'Solo', 'Chewbacca ',
+        'Padmé', 'Amidala', 'Conde', 'Dookan', 'Tyranus', 'Lando', 'Calrissian',
+        'Mace', 'Windu', 'Qui-Gon', 'Jinn', 'Vice-Rei', 'Gunray',
+        'Cad', 'Bane', 'Shmi', 'Bail',
+        'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
+        'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
+        'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie',' pai '
+   ,'aprendiz ','esposa '
+    );
+
+    $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
+        '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
+        '+C-3PO', '+R2-D2', '+Han', '+Solo', '+Chewbacca ',
+        '+Padmé', '+Amidala', '+Conde', '+Dookan', '+Tyranus', '+Lando', '+Calrissian',
+        '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
+        '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
+        '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
+        '+anos ', '+sabre ', '+arma ','+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ',' +pai '
+ ,'+aprendiz ' ,'+esposa '
+        );
+
+
+
+    $str = str_ireplace($real, $what, $str);
+    return $str;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Exclusivo para personagem
+ * @param type $str
+ * @return type
+ */
+function Amais2($str)
+{
+    //algumas palavras tem q ficar junto
+
+    $real = array('Darth', 'Vader', 'Anakin', 'Skywalker', 'Obi-Wan', 'Kenobi', 'Princesa', 'Leia', 'Organa',
+        'Luke', 'Yoda',
+        'Imperador', 'Palpatine ', 'Sidious',
+        'C-3PO', 'R2-D2', 'Han', 'Solo', 'Chewbacca ',
+        'Padmé', 'Amidala', 'Conde', 'Dookan', 'Tyranus', 'Lando', 'Calrissian',
+        'Mace', 'Windu', 'Qui-Gon', 'Jinn', 'Vice-Rei', 'Gunray',
+        'Cad', 'Bane', 'Shmi', 'Bail',
+        'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
+        'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin'
+         );
+
+    $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
+        '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
+        '+C-3PO', '+R2-D2', '+Han', '+Solo', '+Chewbacca ',
+        '+Padmé', '+Amidala', '+Conde', '+Dookan', '+Tyranus', '+Lando', '+Calrissian',
+        '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
+        '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
+        '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin'
+      
+        );
+
+
+
+    $str = str_ireplace($real, $what, $str);
+    return $str;
+}
+
+
+function Limpador2($str)
+{
+    //algumas palavras tem q ficar junto
+
+    $real = array('Darth', 'Vader', 'Anakin', 'Skywalker', 'Obi-Wan', 'Kenobi', 'Princesa', 'Leia', 'Organa',
+        'Luke', 'Yoda',
+        'Imperador', 'Palpatine ', 'Sidious',
+        'C-3PO', 'R2-D2', 'Han', 'Solo', 'Chewbacca ',
+        'Padmé', 'Amidala', 'Conde', 'Dookan', 'Tyranus', 'Lando', 'Calrissian',
+        'Mace', 'Windu', 'Qui-Gon', 'Jinn', 'Vice-Rei', 'Gunray',
+        'Cad', 'Bane', 'Shmi', 'Bail',
+        'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
+        'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin'
+         );
+
+
+
+    $str = str_ireplace($real, '', $str);
     return $str;
 }
