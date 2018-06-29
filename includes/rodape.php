@@ -1,3 +1,4 @@
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -13,8 +14,15 @@ https://codepen.io/suez/pen/KGaqD
 //$respostaATT = str_replace("\n", "", $respostaATT);
 //
 $respostaATT = trim((strip_tags($respostaATT)));
-    $respostaATT = str_ireplace('vader', 'veider', $respostaATT);
+$respostaATT = str_ireplace('vader', 'veider', $respostaATT);
+$respostaATT = str_replace('VII', ' 7 ', $respostaATT);
+$respostaATT = str_replace('VI', ' 6 ', $respostaATT);
 
+$respostaATT = str_replace('IV', ' 4 ', $respostaATT);
+$respostaATT = str_replace(' V ', ' 5 ', $respostaATT);
+$respostaATT = str_replace('III ', ' 3 ', $respostaATT);
+$respostaATT = str_replace('I ', ' 1 ', $respostaATT);
+$respostaATT = str_replace('II ', ' 2 ', $respostaATT);
 ?>
 <script type="text/javascript">
     window.onload = function () {
