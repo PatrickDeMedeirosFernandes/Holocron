@@ -16,7 +16,7 @@ include '../scripts/funcao.php';
 //qual é a cor do sabre que o yoda usa?
 //    yoda usa sabre de qual cor?
 //    o sabre que o yoda usa tem qual cor?
-echo $txt1 = "quem é a esposa darth vader";
+echo $txt1 = "humano cor dos olhos ";
 echo $txt = $txt1;
 
 $txt = nomes($txt1);

@@ -35,7 +35,8 @@ if (!isset($_GET['id']) || $_GET['id'] == "") {
             </script>
             <?PHP
         }
-    } else if ($detal == "PERSONAGEM") {
+    }
+    else if ($detal == "PERSONAGEM") {
         $query = "DELETE FROM `valor` WHERE `valor`.`personagem_id_personagem` =$id        ";
         if (mysqli_query($conn, $query)) {
 
@@ -67,7 +68,28 @@ if (!isset($_GET['id']) || $_GET['id'] == "") {
             </script>
             <?PHP
         }
-    } else  {
+    }
+    else if ($detal == "KEY")   {
+        $query = "DELETE FROM `keywords` WHERE `keywords`.`id_key` =$id        ";
+        if (mysqli_query($conn, $query)) {
+            ?>
+            <script>
+                alert('<?= ("Apagado  com sucesso" ) ?>');
+                window.history.go(-1);
+                //window.close();
+            </script>
+            <?PHP
+        } else {
+            ?>
+            <script>
+                alert('<?= "Error description: " . mysqli_error($con); ?>');
+                window.history.go(-1);
+                // window.close();
+            </script>
+            <?PHP
+        }
+    }
+    else  {
                ?>
             <script>
                 alert('Para de fazer o que não deve que sacoo');

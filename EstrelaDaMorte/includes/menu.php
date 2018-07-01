@@ -24,6 +24,10 @@
             <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Perguntas<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                    
+                     <li>
+                        <a href="Keyword">Keyword</a>
+                    </li>
                     <li>
                         <a href="Perguntas_Nativas">Perguntas Nativas</a>
                     </li> 

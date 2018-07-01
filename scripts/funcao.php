@@ -379,8 +379,8 @@ function Amais($str)
         'Cad', 'Bane', 'Shmi', 'Bail',
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
-        'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie',' pai '
-   ,'aprendiz ',///'esposa '
+        'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie', ' pai '
+        , 'aprendiz ', 'esposa '
     );
 
     $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
@@ -390,27 +390,15 @@ function Amais($str)
         '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
         '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
         '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
-        '+anos ', '+sabre ', '+arma ','+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ',' +pai '
- ,'+aprendiz ' ,//'+esposa '
-        );
+        '+anos ', '+sabre ', '+arma ', '+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ', ' +pai '
+        , '+aprendiz ', '+esposa '
+    );
 
 
 
     $str = str_ireplace($real, $what, $str);
     return $str;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 //============================================================================
 
@@ -430,8 +418,8 @@ function AmaisSom($str)
         'Cad', 'Bane', 'Shmi', 'Bail',
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin',
-        'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie',' pai '
-   ,'aprendiz ','esposa '
+        'anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie', ' pai '
+        , 'aprendiz ', 'esposa '
     );
 
     $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
@@ -441,39 +429,36 @@ function AmaisSom($str)
         '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
         '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
         '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin',
-        '+anos ', '+sabre ', '+arma ','+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ',' +pai '
- ,'+aprendiz ' ,'+esposa '
-        );
-
-
-
+        '+anos ', '+sabre ', '+arma ', '+mãe', '+parente ', ' +planeta ', ' +raça ', ' +especie ', ' +pai '
+        , '+aprendiz ', '+esposa '
+    );
+    include '../controller/DB.php';
+    $sql = "SELECT `nome` FROM `personagem`;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
+            $aa = $linha['nome'];
+            $bb = $linha['nome'];
+            $str = str_ireplace("$aa", " +$bb ", $str);
+        }
+    }
+    $sql = "SELECT `valor` FROM `valor` ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
+            $aa = $linha['valor'];
+            $str = str_ireplace("$aa", "+$aa", $str);
+        }
+    }
     $str = str_ireplace($real, $what, $str);
+        $str = str_ireplace(" ++", " +", $str);
+
     return $str;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Exclusivo para personagem
@@ -483,7 +468,6 @@ function AmaisSom($str)
 function Amais2($str)
 {
     //algumas palavras tem q ficar junto
-
     $real = array('Darth', 'Vader', 'Anakin', 'Skywalker', 'Obi-Wan', 'Kenobi', 'Princesa', 'Leia', 'Organa',
         'Luke', 'Yoda',
         'Imperador', 'Palpatine ', 'Sidious',
@@ -493,8 +477,7 @@ function Amais2($str)
         'Cad', 'Bane', 'Shmi', 'Bail',
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin'
-         );
-
+    );
     $what = array('+Darth', '+Vader', '+Anakin', '+Skywalker', '+Obi-Wan', '+Kenobi', '+Princesa', '+Leia', '+Organa',
         '+Luke', '+Yoda', '+Imperador', '+Palpatine ', '+Sidious',
         '+C-3PO', '+R2-D2', '+Han', '+Solo', '+Chewbacca ',
@@ -502,16 +485,32 @@ function Amais2($str)
         '+Mace', '+Windu', '+Qui-Gon', '+Jinn', '+Vice-Rei', '+Gunray',
         '+Cad', '+Bane', '+Shmi', '+Bail', '+Jabba', '+Hutt', '+Warrick ', '+Mace', '+Windu',
         '+Maul', '+Owen', '+Lars', '+Grand', '+Moff', '+Tarkin'
-      
-        );
-
-
-
+    );
     $str = str_ireplace($real, $what, $str);
+    include '../controller/DB.php';
+    $sql = "SELECT `nome` FROM `personagem`;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
+            $aa = $linha['nome'];
+            $bb = $linha['nome'];
+            $str = str_ireplace("$aa", " +$bb ", $str);
+        }
+    }
+    $str = str_ireplace("++", "+", $str);
+
     return $str;
 }
 
-
+//======================================================
+//==================================
+/**
+ * Limpar os nomes de personagens
+ * @param type $str
+ * @return type
+ */
 function Limpador2($str)
 {
     //algumas palavras tem q ficar junto
@@ -525,9 +524,51 @@ function Limpador2($str)
         'Cad', 'Bane', 'Shmi', 'Bail',
         'Jabba', 'Hutt', 'Warrick ', 'Mace', 'Windu',
         'Maul', 'Owen', 'Lars', 'Grand', 'Moff', 'Tarkin'
-         );
+    );
+
+    include '../controller/DB.php';
+    $sql = "SELECT `nome` FROM `personagem`;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
+            $aa = $linha['nome'];
+            $bb = $linha['nome'];
+            $str = str_ireplace("$aa", "", $str);
+        }
+    }
 
 
+    $str = str_ireplace($real, '', $str);
+    return $str;
+}
+
+//======================================================================
+/**
+ * Ele limpa os termos que seram na segunda vez buscados
+ * @param type $str
+ * @return type
+ */
+function Limpador1($str)
+{
+    //algumas palavras tem q ficar junto
+
+    $real = array('anos ', 'sabre ', 'arma ', 'mãe', 'parente ', ' planeta ', 'raça', 'especie', ' pai '
+        , 'aprendiz ', 'esposa ', 'cor ', 'olho ', 'olhos ', 'cabelo ', 'cabelos '
+    );
+
+    include '../controller/DB.php';
+    $sql = "SELECT `valor` FROM `valor` ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+    {
+        while ($linha = $result->fetch_assoc())
+        {
+            $aa = $linha['valor'];
+            $str = str_ireplace("$aa", '', $str);
+        }
+    }
 
     $str = str_ireplace($real, '', $str);
     return $str;

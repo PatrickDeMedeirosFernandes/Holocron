@@ -144,7 +144,7 @@ function lista_pergunta_bot_user_invalidas() {
     include '../controller/DB.php';
 
  $sql = " 
-SELECT `idpergunta_keyworks`, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
+SELECT `idpergunta_keyworks` as id_perg_user, `pergunta_key` as pergunta, `valida`, `quem_fez` as ip,
         `Ativador_de_conversa`, `resposta_id`, u.resposta resposta, id  
     FROM `pergunta_keyworks` p 
     LEFT JOIN resposta u ON p.resposta_id = u.id 
@@ -188,4 +188,31 @@ function lista_dado_unico($id) {
  ";
 
     return $result1 = mysqli_query($conn, $sql);
+}
+//=====================================================================
+function lista_KeyWord() {
+    include '../controller/DB.php';
+
+   $sql = " 
+SELECT `id_key`, `pergunta_key`, p.`valida`, p.`quem_fez` ,`keyword`
+     FROM keywords p 
+     LEFT JOIN pergunta_keyworks u ON p.`pergunta_keyworks` = u.idpergunta_keyworks  ; "; 
+   
+    return $result1 = mysqli_query($conn, $sql);
+}
+
+
+/**
+ * lista todas as perguntas nativas
+ * @return type
+ */
+function lista_KeyWord2($inicio,$total_reg) {
+    include '../controller/DB.php';
+
+   $sql = " 
+SELECT `id_key`, `pergunta_key`, p.`valida`, p.`quem_fez` ,keyword
+FROM keywords p LEFT JOIN pergunta_keyworks u ON p.`pergunta_keyworks` = u.idpergunta_keyworks
+     LIMIT $inicio,$total_reg;"; 
+   
+    return  mysqli_query($conn, $sql);
 }

@@ -13,8 +13,9 @@ else
 $total_reg = "50";
 $inicio = $pc - 1;
 $inicio = $inicio * $total_reg;
-$limite = lista_pergunta_nativa2($inicio, $total_reg);
-$todos = lista_pergunta_nativa();
+$limite = lista_KeyWord2($inicio, $total_reg);
+//$limite = mysqli_query($conn, $sql);
+$todos = lista_KeyWord();
 $result = $limite;
 $tr = mysqli_num_rows($todos); // verifica o número total de registros
 $tp = $tr / $total_reg;
@@ -30,20 +31,20 @@ $tp = $tr / $total_reg;
     <div class="row">
         <div class="col-lg-12">
             <!-- /.panel -->
-            
-                        <?php
-                                    for ($i = 1; $i < $tp + 1; $i++)
-                                    {
-                                        echo "
+
+            <?php
+            for ($i = 1; $i < $tp + 1; $i++)
+            {
+                echo "
                                         <a href='?pagina=$i'>
                                             <p  class='btn btn-primary'style='color:#fff; margin:-10px 5px 10px 5px' >"
-                                                . $i . 
-                                                "</p></a>";
-                                    }
-                                    ?>
+                . $i .
+                "</p></a>";
+            }
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>Lista de Tabela de perguntas        
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Lista de Tabela de KeyWord        
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -58,9 +59,11 @@ $tp = $tr / $total_reg;
                                         <TH>
                                             PERGUNTA
                                         </TH>
-                                        <TH>resposta</TH>
+                                        <TH>KeyWord</TH>
                                         <th>Valida</th>
-                                        <th>Ações</th>
+                                                                                <th>Quem Fez</th>
+
+                                        <th>Apagar</th>
                                     </tr>
                                     <?php
                                     if (mysqli_num_rows($result) > 0)
@@ -78,11 +81,19 @@ $tp = $tr / $total_reg;
                                             }
                                             ?>
                                             <tr>
-                                                <td><?= $row["idpergunta_keyworks"]; ?></td>
+                                                <td><?= $row["id_key"]; ?></td>
                                                 <td><?= $row["pergunta_key"]; ?></td>
-                                                <td><?= $row["resposta"]; ?></td>
+                                                <td><?= $row["keyword"]; ?></td>
+                                                <td><?= $row["quem_fez"]; ?></td>
+
                                                 <td><?= $STATUS ?></td>
-                                                <td><a href="Editar_Pergunta_Nativa-<?= $row["idpergunta_keyworks"]; ?>">Editar</a></td>
+                                                <td>
+                                                 <a style="cursor: pointer;}" class="btn btn-danger" 
+                                                           href="../Controller/ADExclusao.php?OQUE=<?= base64_encode("KEY") . "&id=" .
+                                base64_encode($row["id_key"])
+                                                ?>">
+                                                            EXCLUIR</a>
+                                                </td>
                                             </tr>
                                             <?php
                                         }
@@ -97,16 +108,16 @@ $tp = $tr / $total_reg;
                                     }
                                     ?>
                                 </table>
-                                    <?php
-                                    for ($i = 1; $i < $tp + 1; $i++)
-                                    {
-                                        echo "
+                                <?php
+                                for ($i = 1; $i < $tp + 1; $i++)
+                                {
+                                    echo "
                                         <a style='color:#fff; margin:0 1px' href='?pagina=$i'>
                                             <p  class='btn btn-primary'style='color:#fff; margin:0 5px' >"
-                                        . $i .
-                                        "</p></a>";
-                                    }
-                                    ?>
+                                    . $i .
+                                    "</p></a>";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

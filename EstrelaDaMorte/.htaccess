@@ -15,6 +15,8 @@ RewriteRule ^O_que_e_Holocron/?$   view/sobreholo.php [NC,L]
 RewriteRule ^adm/?$  index.php [NC,L]
 RewriteRule ^Report/?$   report.php [NC,L]
 RewriteRule ^Perguntas_Nativas/?$  PergNat.php [NC,L]
+RewriteRule ^Keyword/?$  PerKeyWord.php [NC,L]
+
 RewriteRule ^Perguntas_Sem_Resp/?$  PergSemResp.php [NC,L]
 RewriteRule ^Perguntas_Usuarios/?$  PergUser.php [NC,L]
 RewriteRule ^Perguntas_Criadas_PorBot/?$  PergCreatBot.php [NC,L]

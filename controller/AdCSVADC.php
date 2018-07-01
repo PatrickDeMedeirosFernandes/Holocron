@@ -73,8 +73,8 @@ else
                                 VALUES (" . "'" . trim(utf8_encode(strip_tags($dados[1]))) . "');";
                         echo $sql;
                         $result = mysqli_query($conn, $sql);
-                        $sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
-                        //             echo $sql3;
+                        //$sql3 = "SELECT id FROM `resposta` ORDER BY id DESC LIMIT 1";
+                        //echo $sql3;
 
                         $resp = mysqli_insert_id($conn);
 
@@ -88,23 +88,26 @@ else
 
 
                         $result4 = mysqli_query($conn, $sql2);
-                        //echo $sql2;
+                        echo $sql2;
                         $resp2 = mysqli_insert_id($conn);
 
 
 
                         $sql3 = "INSERT INTO `keywords`(`keyword`, `valida`, `quem_fez`, `pergunta_keyworks`) 
-                                VALUES (" . "'" . trim(stopwords(nomes(strip_tags(utf8_encode($str))))) . "',1,'SYSTEM',$resp2);";
+                                VALUES (" . "'" . trim(stopwords(nomes(strip_tags(utf8_encode($str))))) . "',1,
+                                'SYSTEM',$resp2);";
 
                         $result5 = mysqli_query($conn, $sql3);
-                        //echo $sql3;
+                        echo $sql3;
                     }
-                    ?><script>
-                        //    alert('Envio de dados terminado');
-                        //  window.location.href = '../EstrelaDaMorte';
+                   
+                        ?><script>
+                        //                            alert('Envio de dados terminado');
+                        //                         window.location.href = '../EstrelaDaMorte';
 
-                    </script>
-                    <?PHP
+                        </script>
+                        <?PHP
+                    
                 }
             }
             else
