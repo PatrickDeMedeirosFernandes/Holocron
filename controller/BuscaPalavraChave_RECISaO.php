@@ -1,8 +1,11 @@
 <?php
 
 $inicio1 = microtime(true);
+echo
+substr("abcdef", 2);
 
-
+echo
+"<br><BR><BR><BR><BR><BR><BR>";
 header('Content-type: text/html; charset=UTF-8');
 
 

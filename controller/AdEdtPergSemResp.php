@@ -60,7 +60,7 @@ if (!isset($_POST['pergunta']) || $_POST['pergunta'] == "") {
     } else {
  
         $query2 = "UPDATE `pergunta_keyworks` SET 
-                `pergunta_key`='$pergunta',`valida`=$valida,
+                `pergunta_key`='$pergunta',`valida`=1,
                 `resposta_id`=$resposta2 WHERE idpergunta_keyworks=$id2   ";
       //  //echo $query2;
         if (mysqli_query($conn, $query2)) {

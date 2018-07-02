@@ -19,7 +19,7 @@ CREATE TABLE `dicionario` (
   KEY `fk_dicionario_expressoes1_idx` (`expressoes_idexpressoes`),
   FULLTEXT KEY `significado` (`texto`),
   CONSTRAINT `fk_dicionario_expressoes1` FOREIGN KEY (`expressoes_idexpressoes`) REFERENCES `expressoes` (`idexpressoes`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=latin1;
 
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('5', ' vc ', '1');
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('7', 'darth', '8');
@@ -141,12 +141,26 @@ insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('12
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('125', ' ran ', '33');
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('126', ' ram ', '33');
 insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('127', ' ham ', '33');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('128', 'Milenium ', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('129', 'Milhenium ', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('130', 'Millenium ', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('131', 'Milennium ', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('132', ' Mileniun ', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('133', 'Millenniun', '34');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('134', 'Falcom', '35');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('135', 'falcão', '35');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('136', 'uquie', '36');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('137', ' uqui', '36');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('138', ' uke', '36');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('139', ' ukie', '36');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('140', ' ukee', '36');
+insert into dicionario(id_dicionario, texto, expressoes_idexpressoes) values('141', ' uookiee', '36');
 
 CREATE TABLE `expressoes` (
   `idexpressoes` int(11) NOT NULL AUTO_INCREMENT,
   `expressao` text COLLATE utf8_german2_ci,
   PRIMARY KEY (`idexpressoes`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 insert into expressoes(idexpressoes, expressao) values('1', 'você');
 insert into expressoes(idexpressoes, expressao) values('8', 'Darth');
@@ -175,6 +189,9 @@ insert into expressoes(idexpressoes, expressao) values('30', 'Luke ');
 insert into expressoes(idexpressoes, expressao) values('31', 'humano');
 insert into expressoes(idexpressoes, expressao) values('32', 'Qui-Gon');
 insert into expressoes(idexpressoes, expressao) values('33', 'Han');
+insert into expressoes(idexpressoes, expressao) values('34', 'Millennium');
+insert into expressoes(idexpressoes, expressao) values('35', 'Falcon');
+insert into expressoes(idexpressoes, expressao) values('36', 'Wookiee');
 
 CREATE TABLE `keywords` (
   `id_key` int(11) NOT NULL AUTO_INCREMENT,
@@ -186,7 +203,7 @@ CREATE TABLE `keywords` (
   KEY `fk_keywords_pergunta_keyworks1_idx` (`pergunta_keyworks`),
   FULLTEXT KEY `keyword` (`keyword`),
   CONSTRAINT `fk_keywords_pergunta_keyworks1` FOREIGN KEY (`pergunta_keyworks`) REFERENCES `pergunta_keyworks` (`idpergunta_keyworks`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=373 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=439 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('17', 'cor  sabre  Yoda', '1', '::1', '32');
 insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('18', 'execute order 66', '1', '::1', '4');
@@ -492,6 +509,72 @@ insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) value
 insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('370', 'filme aprece Imperador Palpatine', '1', 'SYSTEM', '1144');
 insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('371', 'epidodio aparece Imperador Palpatine', '1', 'SYSTEM', '1145');
 insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('372', 'raça Imperador Palpatine', '1', 'SYSTEM', '1146');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('373', 'ator interpretou Imperador Palpatine', '1', 'SYSTEM', '1148');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('374', 'Imperador Palpatine  interpretado  quem', '1', 'SYSTEM', '1149');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('375', 'O Darth Sidious  sabre   cor', '1', 'SYSTEM', '1150');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('376', 'cor  sabre  Darth Sidious', '1', 'SYSTEM', '1151');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('377', 'cor  sabre  luz  Darth Sidious', '1', 'SYSTEM', '1152');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('378', 'arma  Darth Sidious', '1', 'SYSTEM', '1153');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('379', 'Você sabe   arma  escolha  Darth Sidious', '1', 'SYSTEM', '1154');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('380', 'o Darth Sidious usa sabre', '1', 'SYSTEM', '1155');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('381', 'idade Darth Sidious tem', '1', 'SYSTEM', '1156');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('382', 'idade Darth Sidious', '1', 'SYSTEM', '1157');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('383', 'anos  Darth Sidious', '1', 'SYSTEM', '1158');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('384', 'primeiro aprendiz  Darth Sidious', '1', 'SYSTEM', '1159');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('385', 'Com   anos morreu Darth Sidious', '1', 'SYSTEM', '1160');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('386', 'morreu Darth Sidious', '1', 'SYSTEM', '1161');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('387', 'Com   anos morreu Darth Sidious', '1', 'SYSTEM', '1162');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('388', 'matou Darth Sidious', '1', 'SYSTEM', '1163');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('389', 'O  acha  Darth Sidious', '1', 'SYSTEM', '1164');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('390', 'o    Darth Sidious', '1', 'SYSTEM', '1165');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('391', 'me fale sobre Darth Sidious', '1', 'SYSTEM', '1166');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('392', 'Darth Sidious', '1', 'SYSTEM', '1167');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('393', 'Darth Sidious', '1', 'SYSTEM', '1168');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('394', 'nome  mãe  Darth Sidious', '1', 'SYSTEM', '1169');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('395', 'parentes  Darth Sidious', '1', 'SYSTEM', '1170');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('396', 'pai  Darth Sidious', '1', 'SYSTEM', '1171');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('397', 'treinado  Darth Sidious', '1', 'SYSTEM', '1172');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('398', 'Darth Sidious  treinado  quem', '1', 'SYSTEM', '1173');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('399', 'treinou Darth Sidious', '1', 'SYSTEM', '1174');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('400', 'planeta natal  Darth Sidious', '1', 'SYSTEM', '1175');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('401', 'planeta natal  Darth Sidious', '1', 'SYSTEM', '1176');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('402', 'frase marcante  Darth Sidious', '1', 'SYSTEM', '1177');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('403', 'filme aprece Darth Sidious', '1', 'SYSTEM', '1178');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('404', 'raça Darth Sidious', '1', 'SYSTEM', '1180');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('405', 'especie Darth Sidious', '1', 'SYSTEM', '1181');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('406', 'ator interpretou Darth Sidious', '1', 'SYSTEM', '1182');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('407', 'Darth Sidious  interpretado  quem', '1', 'SYSTEM', '1183');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('408', 'O Han Solo  sabre   cor', '1', 'SYSTEM', '1184');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('409', 'cor  sabre  Han Solo', '1', 'SYSTEM', '1185');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('410', 'cor  sabre  luz  Han Solo', '1', 'SYSTEM', '1186');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('411', 'arma  Han Solo', '1', 'SYSTEM', '1187');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('412', 'Você sabe   arma  escolha  Han Solo', '1', 'SYSTEM', '1188');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('413', 'o Han Solo usa sabre', '1', 'SYSTEM', '1189');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('414', 'idade Han Solo tem', '1', 'SYSTEM', '1190');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('415', 'idade Han Solo', '1', 'SYSTEM', '1191');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('416', 'anos  Han Solo', '1', 'SYSTEM', '1192');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('417', 'Com   anos morreu Han Solo', '1', 'SYSTEM', '1193');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('418', 'morreu Han Solo', '1', 'SYSTEM', '1194');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('419', 'Com   anos morreu Han Solo', '1', 'SYSTEM', '1195');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('420', 'matou Han Solo', '1', 'SYSTEM', '1196');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('421', 'O  acha  Han Solo', '1', 'SYSTEM', '1197');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('422', 'o    Han Solo', '1', 'SYSTEM', '1198');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('423', 'me fale sobre Han Solo', '1', 'SYSTEM', '1199');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('424', 'Han Solo', '1', 'SYSTEM', '1200');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('425', 'princesa', '1', '::1', '987');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('426', 'Millennium Falcon', '1', '::1', '1201');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('427', 'Millennium Falcon', '1', '::1', '1202');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('428', 'passageiros comporta Millennium Falcon', '1', '::1', '1203');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('429', 'passageiros comporta Millennium Falcon', '1', '::1', '1204');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('430', 'o   humano', '1', '::1', '1205');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('431', 'humano', '1', '::1', '1206');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('432', 'humano', '1', '::1', '1207');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('433', 'o humano', '1', '::1', '1206');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('434', 'o   Wookiee', '1', '::1', '1208');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('435', 'okiee', '1', '::1', '1209');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('436', 'okiee', '1', '::1', '1210');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('437', 'a Designação  Wookiee', '1', '::1', '1211');
+insert into keywords(id_key, keyword, valida, quem_fez, pergunta_keyworks) values('438', 'a Designação  Wookiee', '1', '::1', '1212');
 
 CREATE TABLE `log_conversa` (
   `id_log_conversa` int(11) NOT NULL AUTO_INCREMENT,
@@ -515,7 +598,7 @@ CREATE TABLE `pergunta_keyworks` (
   KEY `fk_pergunta_keyworks_resposta_idx` (`resposta_id`),
   FULLTEXT KEY `pergunta_key` (`pergunta_key`),
   CONSTRAINT `fk_pergunta_keyworks_resposta` FOREIGN KEY (`resposta_id`) REFERENCES `resposta` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1148 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1213 DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
 
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1', 'EXECUTE ORDER 66', '1', 'System', '', '2');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('2', 'execute order 66', '1', 'System', '', '2');
@@ -649,7 +732,7 @@ insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fe
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('158', 'qual a especie Anakin Skywalker', '1', 'SYSTEM', '', '122');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('159', 'Qual ator interpretou Anakin Skywalker', '1', 'SYSTEM', '', '123');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('160', 'Anakin Skywalker foi interpretado por quem', '1', 'SYSTEM', '', '124');
-insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('161', 'o que é humano', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('161', 'o que é humano', '1', '::1', '', '364');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('940', 'mestre  Anakin Skywalker', '1', '177.79.77.98', '', '');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('941', 'O ObiWan Kenobi tem sabre de qual cor', '1', 'SYSTEM', '', '125');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('942', 'qual a cor do sabre do ObiWan Kenobi', '1', 'SYSTEM', '', '126');
@@ -828,17 +911,84 @@ insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fe
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1145', 'qual epidodio aparece Imperador Palpatine', '1', 'SYSTEM', '', '303');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1146', 'qual a raça Imperador Palpatine', '1', 'SYSTEM', '', '304');
 insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1147', 'qual a especie Imperador Palpatine', '1', 'SYSTEM', '', '305');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1148', 'Qual ator interpretou Imperador Palpatine', '1', 'SYSTEM', '', '306');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1149', 'Imperador Palpatine foi interpretado por quem', '1', 'SYSTEM', '', '307');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1150', 'O Darth Sidious tem sabre de qual cor', '1', 'SYSTEM', '', '308');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1151', 'qual a cor do sabre do Darth Sidious', '1', 'SYSTEM', '', '309');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1152', 'Qual a cor do sabre de luz de Darth Sidious', '1', 'SYSTEM', '', '310');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1153', 'qual é a arma do Darth Sidious', '1', 'SYSTEM', '', '311');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1154', 'Você sabe qual a arma de escolha de Darth Sidious', '1', 'SYSTEM', '', '312');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1155', 'o Darth Sidious usa sabre', '1', 'SYSTEM', '', '313');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1156', 'qual a idade Darth Sidious tem', '1', 'SYSTEM', '', '314');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1157', 'qual a idade Darth Sidious', '1', 'SYSTEM', '', '315');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1158', 'quantos anos tem Darth Sidious', '1', 'SYSTEM', '', '316');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1159', 'Quem foi o primeiro aprendiz de Darth Sidious', '1', 'SYSTEM', '', '317');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1160', 'Com quantos anos morreu Darth Sidious', '1', 'SYSTEM', '', '318');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1161', 'quando morreu Darth Sidious', '1', 'SYSTEM', '', '319');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1162', 'Com quantos anos morreu Darth Sidious', '1', 'SYSTEM', '', '320');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1163', 'quem foi que matou Darth Sidious', '1', 'SYSTEM', '', '321');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1164', 'O que acha do Darth Sidious', '1', 'SYSTEM', '', '322');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1165', 'o que é o Darth Sidious', '1', 'SYSTEM', '', '323');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1166', 'me fale sobre Darth Sidious', '1', 'SYSTEM', '', '324');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1167', 'quem foi Darth Sidious', '1', 'SYSTEM', '', '325');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1168', 'quem é Darth Sidious', '1', 'SYSTEM', '', '326');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1169', 'Qual o nome da mãe de Darth Sidious', '1', 'SYSTEM', '', '327');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1170', 'Quem são os parentes do Darth Sidious', '1', 'SYSTEM', '', '328');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1171', 'Quem é o pai do Darth Sidious', '1', 'SYSTEM', '', '329');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1172', 'Quem não foi treinado por Darth Sidious', '1', 'SYSTEM', '', '330');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1173', 'Darth Sidious foi treinado por quem', '1', 'SYSTEM', '', '331');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1174', 'quem treinou Darth Sidious', '1', 'SYSTEM', '', '332');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1175', 'Qual é o planeta natal de Darth Sidious', '1', 'SYSTEM', '', '333');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1176', 'Qual o planeta natal do Darth Sidious', '1', 'SYSTEM', '', '334');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1177', 'qual a frase marcante de Darth Sidious', '1', 'SYSTEM', '', '335');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1178', 'qual filme aprece Darth Sidious', '1', 'SYSTEM', '', '336');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1179', 'qual epidodio aparece Darth Sidious', '1', 'SYSTEM', '', '337');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1180', 'qual a raça Darth Sidious', '1', 'SYSTEM', '', '338');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1181', 'qual a especie Darth Sidious', '1', 'SYSTEM', '', '339');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1182', 'Qual ator interpretou Darth Sidious', '1', 'SYSTEM', '', '340');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1183', 'Darth Sidious foi interpretado por quem', '1', 'SYSTEM', '', '341');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1184', 'O Han Solo tem sabre de qual cor', '1', 'SYSTEM', '', '342');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1185', 'qual a cor do sabre do Han Solo', '1', 'SYSTEM', '', '343');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1186', 'Qual a cor do sabre de luz de Han Solo', '1', 'SYSTEM', '', '344');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1187', 'qual é a arma do Han Solo', '1', 'SYSTEM', '', '345');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1188', 'Você sabe qual a arma de escolha de Han Solo', '1', 'SYSTEM', '', '346');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1189', 'o Han Solo usa sabre', '1', 'SYSTEM', '', '347');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1190', 'qual a idade Han Solo tem', '1', 'SYSTEM', '', '348');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1191', 'qual a idade Han Solo', '1', 'SYSTEM', '', '349');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1192', 'quantos anos tem Han Solo', '1', 'SYSTEM', '', '350');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1193', 'Com quantos anos morreu Han Solo', '1', 'SYSTEM', '', '351');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1194', 'quando morreu Han Solo', '1', 'SYSTEM', '', '352');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1195', 'Com quantos anos morreu Han Solo', '1', 'SYSTEM', '', '353');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1196', 'quem foi que matou Han Solo', '1', 'SYSTEM', '', '354');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1197', 'O que acha do Han Solo', '1', 'SYSTEM', '', '355');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1198', 'o que é o Han Solo', '1', 'SYSTEM', '', '356');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1199', 'me fale sobre Han Solo', '1', 'SYSTEM', '', '357');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1200', 'quem foi Han Solo', '1', 'SYSTEM', '', '358');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1201', 'Millennium Falcon', '1', '::1', '', '359');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1202', 'Millennium Falcon', '1', '::1', '', '360');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1203', 'quantos passageiros comporta Millennium Falcon', '1', '::1', '', '361');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1204', 'quantos passageiros comporta Millennium Falcon', '1', '::1', '', '362');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1205', 'o   humano', '1', '::1', '', '363');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1206', 'humano', '1', '::1', '', '363');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1207', 'humano', '1', '::1', '', '364');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1208', 'o que é Wookiee', '1', '::1', '', '');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1209', 'okiee', '1', '::1', '', '365');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1210', 'okiee', '1', '::1', '', '366');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1211', 'a Designação dos Wookiee', '1', '::1', '', '367');
+insert into pergunta_keyworks(idpergunta_keyworks, pergunta_key, valida, quem_fez, Ativador_de_conversa, resposta_id) values('1212', 'a Designação dos Wookiee', '1', '::1', '', '368');
 
 CREATE TABLE `personagem` (
   `id_personagem` int(11) NOT NULL AUTO_INCREMENT,
   `nome` text CHARACTER SET utf8,
   PRIMARY KEY (`id_personagem`),
   FULLTEXT KEY `nome` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 insert into personagem(id_personagem, nome) values('3', 'Força');
 insert into personagem(id_personagem, nome) values('4', 'Humano');
 insert into personagem(id_personagem, nome) values('5', 'Darth Vader');
+insert into personagem(id_personagem, nome) values('6', 'Millennium Falcon');
+insert into personagem(id_personagem, nome) values('7', 'Wookiee');
 
 CREATE TABLE `propriedade` (
   `id_propriedade` int(11) NOT NULL AUTO_INCREMENT,
@@ -879,7 +1029,7 @@ CREATE TABLE `resposta` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   FULLTEXT KEY `resposta` (`resposta`)
-) ENGINE=InnoDB AUTO_INCREMENT=306 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=369 DEFAULT CHARSET=latin1;
 
 insert into resposta(id, resposta) values('1', '42');
 insert into resposta(id, resposta) values('2', '=YES MY LORD=');
@@ -1177,6 +1327,69 @@ insert into resposta(id, resposta) values('302', 'dos episodios de I até VI');
 insert into resposta(id, resposta) values('303', 'dos episodios de I até VI');
 insert into resposta(id, resposta) values('304', 'Humano');
 insert into resposta(id, resposta) values('305', 'Humano');
+insert into resposta(id, resposta) values('306', 'É interpretado pelo ator Ian McDiarmid.');
+insert into resposta(id, resposta) values('307', 'É interpretado pelo ator Ian McDiarmid.');
+insert into resposta(id, resposta) values('308', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('309', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('310', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('311', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('312', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('313', 'a arma que o Palpatine, vulgo Darth Sirus usa é um sabre de luz vermelho');
+insert into resposta(id, resposta) values('314', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('315', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('316', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('317', 'Foi mestre de Darth Maul, Darth Tyranus, Darth Vader e foi treinado por Darth Plagueis');
+insert into resposta(id, resposta) values('318', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('319', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('320', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('321', '88 anos ABY, Naboo, e morreu em 4 anos DBY a bordo da Segunda Estrela da Morte sobre Endor, morto por Darth Vader, depois que o mesmo voltou para o lado dos Jedis');
+insert into resposta(id, resposta) values('322', 'Principal vilão de Star Wars, o Imperador Palpatine é um dos Lordes Sith mais poderosos da história, que atende pelo nome de Darth Sidious. Graças as suas habilidades de manipulação, foi o responsável pela destruição da Ordem Jedi e pela instauração do Império Galáctico. Como senador de Naboo, ele articulou secretamente uma série de eventos que o tornaram chanceler da Velha República e, durante as Guerras Clónicas, acumulou poderes emergenciais até se auto-proclamar imperador. Foi o responsável por trazer o jovem aprendiz Anakim Skywalker para o lado negro da força, quando assumiu o título de Darth Vader. Morreu pouco antes da explosão da segunda Estrela da Morte, durante a batalha de Endor.');
+insert into resposta(id, resposta) values('323', 'Principal vilão de Star Wars, o Imperador Palpatine é um dos Lordes Sith mais poderosos da história, que atende pelo nome de Darth Sidious. Graças as suas habilidades de manipulação, foi o responsável pela destruição da Ordem Jedi e pela instauração do Império Galáctico. Como senador de Naboo, ele articulou secretamente uma série de eventos que o tornaram chanceler da Velha República e, durante as Guerras Clónicas, acumulou poderes emergenciais até se auto-proclamar imperador. Foi o responsável por trazer o jovem aprendiz Anakim Skywalker para o lado negro da força, quando assumiu o título de Darth Vader. Morreu pouco antes da explosão da segunda Estrela da Morte, durante a batalha de Endor.');
+insert into resposta(id, resposta) values('324', 'Principal vilão de Star Wars, o Imperador Palpatine é um dos Lordes Sith mais poderosos da história, que atende pelo nome de Darth Sidious. Graças as suas habilidades de manipulação, foi o responsável pela destruição da Ordem Jedi e pela instauração do Império Galáctico. Como senador de Naboo, ele articulou secretamente uma série de eventos que o tornaram chanceler da Velha República e, durante as Guerras Clónicas, acumulou poderes emergenciais até se auto-proclamar imperador. Foi o responsável por trazer o jovem aprendiz Anakim Skywalker para o lado negro da força, quando assumiu o título de Darth Vader. Morreu pouco antes da explosão da segunda Estrela da Morte, durante a batalha de Endor.');
+insert into resposta(id, resposta) values('325', 'Darth Sidious, nascido Sheev Palpatine, (também conhecido como Senador Palpatine, Supremo Chanceler Palpatine, Chanceler Palpatine, Imperador Palpatine, ou simplesmente O Imperador) é, juntamente com Darth Vader, o principal vilão da saga Star Wars.');
+insert into resposta(id, resposta) values('326', 'Darth Sidious, nascido Sheev Palpatine, (também conhecido como Senador Palpatine, Supremo Chanceler Palpatine, Chanceler Palpatine, Imperador Palpatine, ou simplesmente O Imperador) é, juntamente com Darth Vader, o principal vilão da saga Star Wars.');
+insert into resposta(id, resposta) values('327', 'Assim como Yoda, Palpatine tem muitos detalhes de seu passado não revelados.');
+insert into resposta(id, resposta) values('328', 'Assim como Yoda, Palpatine tem muitos detalhes de seu passado não revelados.');
+insert into resposta(id, resposta) values('329', 'Assim como Yoda, Palpatine tem muitos detalhes de seu passado não revelados.');
+insert into resposta(id, resposta) values('330', 'Foi mestre de Darth Maul, Darth Tyranus, Darth Vader e foi treinado por Darth Plagueis');
+insert into resposta(id, resposta) values('331', 'Foi mestre de Darth Maul, Darth Tyranus, Darth Vader e foi treinado por Darth Plagueis');
+insert into resposta(id, resposta) values('332', 'Foi mestre de Darth Maul, Darth Tyranus, Darth Vader e foi treinado por Darth Plagueis');
+insert into resposta(id, resposta) values('333', 'Naboo');
+insert into resposta(id, resposta) values('334', 'Naboo');
+insert into resposta(id, resposta) values('335', 'O lado sombrio é o caminho para várias habilidades que alguns consideram como não-naturais.');
+insert into resposta(id, resposta) values('336', 'dos episodios de I até VI');
+insert into resposta(id, resposta) values('337', 'dos episodios de I até VI');
+insert into resposta(id, resposta) values('338', 'Humano');
+insert into resposta(id, resposta) values('339', 'Humano');
+insert into resposta(id, resposta) values('340', 'É interpretado pelo ator Ian McDiarmid.');
+insert into resposta(id, resposta) values('341', 'É interpretado pelo ator Ian McDiarmid.');
+insert into resposta(id, resposta) values('342', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('343', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('344', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('345', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('346', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('347', 'ele usa uma Pistola Mauser, uma especie de pistola laiser');
+insert into resposta(id, resposta) values('348', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('349', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('350', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('351', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('352', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('353', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('354', 'nasceu mais ou menos 29 anos ABY, e até o final dos acontecimentos do episodio VI ele ainda está vivo');
+insert into resposta(id, resposta) values('355', '"Han Solo era um contrabandista Humano do planeta Corellia. Seu melhor amigo e companheiro de primeira foi Chewbacca, um Wookiee de Kashyyyk, quem Solo apelidou de ""Chewie"". Solo pilotou um cargueiro personalizado, a Millennium Falcon, que tinha ganhado do colega Lando Calrissian."');
+insert into resposta(id, resposta) values('356', '"Han Solo era um contrabandista Humano do planeta Corellia. Seu melhor amigo e companheiro de primeira foi Chewbacca, um Wookiee de Kashyyyk, quem Solo apelidou de ""Chewie"". Solo pilotou um cargueiro personalizado, a Millennium Falcon, que tinha ganhado do colega Lando Calrissian."');
+insert into resposta(id, resposta) values('357', '"Um dos personagens mais queridos da história do cinema: o ex-piloto e contrabandista Han Solo terá presença marcada no filme Star Wars: O Despertar da Força. Ele e seu copiloto Chewbacca passaram a acreditar na causa da liberdade galáctica, juntando­se a Luke Skywalker e à princesa Leia Organa na luta contra o Império. Contrabandista, ordinário e herói, Han Solo é um dos grandes líderes da Aliança Rebelde e da Nova República posteriormente, além de ser Capitão da Millennium Falcon, ""a nave mais veloz da galáxia""."');
+insert into resposta(id, resposta) values('358', '"Um dos personagens mais queridos da história do cinema: o ex-piloto e contrabandista Han Solo terá presença marcada no filme Star Wars: O Despertar da Força. Ele e seu copiloto Chewbacca passaram a acreditar na causa da liberdade galáctica, juntando­se a Luke Skywalker e à princesa Leia Organa na luta contra o Império. Contrabandista, ordinário e herói, Han Solo é um dos grandes líderes da Aliança Rebelde e da Nova República posteriormente, além de ser Capitão da Millennium Falcon, ""a nave mais veloz da galáxia""."');
+insert into resposta(id, resposta) values('359', 'A Millennium Falcon foi uma cargueiro leve corelliana YT-1300 usada pelos contrabandistas Han Solo e Chewbacca durante a Guerra Civil Galáctica. Foi posse anteriormente de Lando Calrissian, quem a perdeu para Solo em um jogo de Sabacc.');
+insert into resposta(id, resposta) values('360', 'A Millennium Falcon foi uma cargueiro leve corelliana YT-1300 usada pelos contrabandistas Han Solo e Chewbacca durante a Guerra Civil Galáctica. Foi posse anteriormente de Lando Calrissian, quem a perdeu para Solo em um jogo de Sabacc.');
+insert into resposta(id, resposta) values('361', '6');
+insert into resposta(id, resposta) values('362', '6');
+insert into resposta(id, resposta) values('363', 'Humanos eram uma espécie bípede com simetria bilateral nativa do planeta Coruscant. Eram normalmente encontrados espalhados pela galáxia, desde mundos como Naboo até lugares desérticos como Tatooine. Humanos eram conhecidos por engajarem em diferentes atividades, como política e caça de recompensas. Algumas espécies que apresentavam estrutura esquelética semelhante a dos humanos eram apelidados de "humanoides".');
+insert into resposta(id, resposta) values('364', 'Humanos eram uma espécie bípede com simetria bilateral nativa do planeta Coruscant. Eram normalmente encontrados espalhados pela galáxia, desde mundos como Naboo até lugares desérticos como Tatooine. Humanos eram conhecidos por engajarem em diferentes atividades, como política e caça de recompensas. Algumas espécies que apresentavam estrutura esquelética semelhante a dos humanos eram apelidados de "humanoides".');
+insert into resposta(id, resposta) values('365', 'Os Wookiees eram uma espécie alta e peluda que eram nativos do planeta Kashyyyk. O membro mais notável desta espécie foi o guerreiro Chewbacca, o melhor amigo e copiloto Han Solo, que desempenhou um papel vital na Guerra Civil Galáctica, ajudando a Aliança Rebelde na sua luta contra o Império Galáctico, bem como a Guerra Fria. onde ele lutou contra a Primeira Ordem. Eles eram bastante fortes e eram conhecidos por arrancarem os braços das pessoas das órbitas quando provocados. Apesar de ser de um planeta temperado mais conhecido por seus pântanos e florestas, eles eram capazes de se sentir confortáveis ??em mundos gelados como Ilum, Hoth sem qualquer roupa protetora.');
+insert into resposta(id, resposta) values('366', 'Os Wookiees eram uma espécie alta e peluda que eram nativos do planeta Kashyyyk. O membro mais notável desta espécie foi o guerreiro Chewbacca, o melhor amigo e copiloto Han Solo, que desempenhou um papel vital na Guerra Civil Galáctica, ajudando a Aliança Rebelde na sua luta contra o Império Galáctico, bem como a Guerra Fria. onde ele lutou contra a Primeira Ordem. Eles eram bastante fortes e eram conhecidos por arrancarem os braços das pessoas das órbitas quando provocados. Apesar de ser de um planeta temperado mais conhecido por seus pântanos e florestas, eles eram capazes de se sentir confortáveis ??em mundos gelados como Ilum, Hoth sem qualquer roupa protetora.');
+insert into resposta(id, resposta) values('367', 'Senciente');
+insert into resposta(id, resposta) values('368', 'Senciente');
 
 CREATE TABLE `temp` (
   `id_temp` int(11) NOT NULL AUTO_INCREMENT,
@@ -1209,7 +1422,7 @@ CREATE TABLE `valor` (
   FULLTEXT KEY `dado` (`dado`),
   FULLTEXT KEY `valor` (`valor`),
   CONSTRAINT `fk_valor_personagem1` FOREIGN KEY (`personagem_id_personagem`) REFERENCES `personagem` (`id_personagem`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 insert into valor(id_valor, valor, dado, personagem_id_personagem) values('4', 'Sobre', 'A Força era um campo de energia que se conectava com todos os seres vivos na galáxia. O poder da Força poderia ser utilizado por indivíduos que eram sensíveis a ela, um poder que era intermediado pelas midi-chlorians. A Força tinha muitos nomes alternativos. Os Lasats, por exemplo, a chamavam de a Ashla, e a descreviam como "o espírito da galáxia". A Força enquanto conceito existia por bem mais de 25000 anos', '3');
 insert into valor(id_valor, valor, dado, personagem_id_personagem) values('5', 'Resumo sobre', 'A Força era um campo de energia que se conectava com todos os seres vivos na galáxia. O poder da Força poderia ser utilizado por indivíduos que eram sensíveis a ela, um poder que era intermediado pelas midi-chlorians. A Força tinha muitos nomes alternativos. Os Lasats, por exemplo, a chamavam de a Ashla, e a descreviam como "o espírito da galáxia". A Força enquanto conceito existia por bem mais de 25000 anos', '3');
@@ -1226,3 +1439,29 @@ insert into valor(id_valor, valor, dado, personagem_id_personagem) values('15', 
 insert into valor(id_valor, valor, dado, personagem_id_personagem) values('16', 'espectativa de vida', 'em media 70 anos', '4');
 insert into valor(id_valor, valor, dado, personagem_id_personagem) values('17', 'Resumo Sobre', 'Humanos eram uma espécie bípede com simetria bilateral nativa do planeta Coruscant. Eram normalmente encontrados espalhados pela galáxia, desde mundos como Naboo até lugares desérticos como Tatooine. Humanos eram conhecidos por engajarem em diferentes atividades, como política e caça de recompensas. Algumas espécies que apresentavam estrutura esquelética semelhante a dos humanos eram apelidados de "humanoides".', '4');
 insert into valor(id_valor, valor, dado, personagem_id_personagem) values('18', 'esposa', 'é a Padmé Amidala', '5');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('19', 'Sobre', 'A Millennium Falcon foi uma cargueiro leve corelliana YT-1300 usada pelos contrabandistas Han Solo e Chewbacca durante a Guerra Civil Galáctica. Foi posse anteriormente de Lando Calrissian, quem a perdeu para Solo em um jogo de Sabacc.', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('20', 'Resumo sobre', 'A Millennium Falcon foi uma cargueiro leve corelliana YT-1300 usada pelos contrabandistas Han Solo e Chewbacca durante a Guerra Civil Galáctica. Foi posse anteriormente de Lando Calrissian, quem a perdeu para Solo em um jogo de Sabacc.', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('21', 'o que é', 'A Millennium Falcon foi uma cargueiro leve corelliana YT-1300 usada pelos contrabandistas Han Solo e Chewbacca durante a Guerra Civil Galáctica. Foi posse anteriormente de Lando Calrissian, quem a perdeu para Solo em um jogo de Sabacc.', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('22', 'Fabricante', ' Corporação de Engenharia Corelliana', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('23', 'Modelo', 'Cargueiro leve YT-1300', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('24', 'Modificado por', 'Lando Calrissian, Han Solo  e Chewbacca', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('25', 'velocidade maxima', '1.050 kph', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('26', 'Passageiros', '6', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('27', 'Capacidade de carga', '100 toneladas', '6');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('28', 'Sobre', 'Os Wookiees eram uma espécie alta e peluda que eram nativos do planeta Kashyyyk. O membro mais notável desta espécie foi o guerreiro Chewbacca, o melhor amigo e copiloto Han Solo, que desempenhou um papel vital na Guerra Civil Galáctica, ajudando a Aliança Rebelde na sua luta contra o Império Galáctico, bem como a Guerra Fria. onde ele lutou contra a Primeira Ordem. Eles eram bastante fortes e eram conhecidos por arrancarem os braços das pessoas das órbitas quando provocados. Apesar de ser de um planeta temperado mais conhecido por seus pântanos e florestas, eles eram capazes de se sentir confortáveis ​​em mundos gelados como Ilum, Hoth sem qualquer roupa protetora.', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('29', 'Resumo sobre', 'Os Wookiees eram uma espécie alta e peluda que eram nativos do planeta Kashyyyk. O membro mais notável desta espécie foi o guerreiro Chewbacca, o melhor amigo e copiloto Han Solo, que desempenhou um papel vital na Guerra Civil Galáctica, ajudando a Aliança Rebelde na sua luta contra o Império Galáctico, bem como a Guerra Fria. onde ele lutou contra a Primeira Ordem. Eles eram bastante fortes e eram conhecidos por arrancarem os braços das pessoas das órbitas quando provocados. Apesar de ser de um planeta temperado mais conhecido por seus pântanos e florestas, eles eram capazes de se sentir confortáveis ​​em mundos gelados como Ilum, Hoth sem qualquer roupa protetora.', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('30', 'o que é', 'Os Wookiees eram uma espécie alta e peluda que eram nativos do planeta Kashyyyk. O membro mais notável desta espécie foi o guerreiro Chewbacca, o melhor amigo e copiloto Han Solo, que desempenhou um papel vital na Guerra Civil Galáctica, ajudando a Aliança Rebelde na sua luta contra o Império Galáctico, bem como a Guerra Fria. onde ele lutou contra a Primeira Ordem. Eles eram bastante fortes e eram conhecidos por arrancarem os braços das pessoas das órbitas quando provocados. Apesar de ser de um planeta temperado mais conhecido por seus pântanos e florestas, eles eram capazes de se sentir confortáveis ​​em mundos gelados como Ilum, Hoth sem qualquer roupa protetora.', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('31', 'Designação', ' Senciente', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('32', 'Altura média', 'entre 2,23 e 2,54 metros', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('33', 'Cor de pele', 'Marrom, preto ou cinza', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('34', 'Cor do cabelo', 'Marrom, preto ou cinza', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('35', 'Cor dos olhos', 'marrom ou azul', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('36', 'Distinções', ' Refestimento de pêlo desgranhado, expectativa de vida longa', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('37', 'Planeta natal', 'Kashyyyk', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('38', 'Língua', 'Shyriiwook, Thykarann e  Xaczik', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('39', 'Membros Conhecidos', 'Chewbacca', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('40', 'espectativa de vida', '400 anos', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('41', 'distinções ', ' Refestimento de pêlo desgranhado, expectativa de vida longa', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('42', 'Habitat ', 'floresta', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('43', 'Dieta', 'herbivoros', '7');
+insert into valor(id_valor, valor, dado, personagem_id_personagem) values('44', 'Língua', 'Shyriiwook, Thykarann e  Xaczik', '7');

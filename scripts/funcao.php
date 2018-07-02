@@ -177,6 +177,11 @@ function CodeLimpaNeve($str)
 function nomes($texto)
 {
     $texto = CodeLimpaNeve($texto);
+       $a= substr($texto, 0,2);
+
+    if($a = 'o '|| $a='O ' ||$a='A '|| $a='a '){
+            $texto =substr($texto, 2);
+    }
     //Variáveis
     $pontuacoes = array(",", ".", "!", "?", ";");
 
