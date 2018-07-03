@@ -27,7 +27,10 @@
                     
                      <li>
                         <a href="Keyword">Keyword</a>
+                    </li> <li>
+                        <a href="Dicionario">Dicionario</a>
                     </li>
+                    
                     <li>
                         <a href="Perguntas_Nativas">Perguntas Nativas</a>
                     </li> 
